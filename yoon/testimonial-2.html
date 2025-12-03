@@ -7,10 +7,9 @@
     <style>
       /* Change these two variables to point to your images */
       :root {
-        --client-photo: url("https://d34u8crftukxnk.cloudfront.net/slackpress/prod/sites/6/IQ-Accountants-managing-partner-Kyelie-Baxter-Slack-customer-story.jpg");
-        --yoon-photo: url("https://stage.paramountbusinesscoach.com/wp-content/uploads/2022/06/2.png");
+        --client-photo: url("https://d34u8crftukxnk.cloudfront.net/slackpress/prod/sites/6/IQ-Accountants-managing-partner-Kyelie-Baxter-Slack-customer-story.jpg"); /* <-- replace with client image URL */
+        --yoon-photo: url("https://stage.paramountbusinesscoach.com/wp-content/uploads/2022/06/2.png"); /* <-- replace with Yoon image URL */
         --card-width: 540px;
-        --card-height: auto; /* allow flexible height for widgets */
         --accent: #f59d0b; /* orange */
         --blue: #105bb0; /* deep blue */
         --dark: #111111;
@@ -31,41 +30,38 @@
       }
 
       .card {
-        width: 100%;
         max-width: var(--card-width);
         background: var(--dark);
         color: #fff;
         border-radius: 10px;
         overflow: hidden;
         box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
-        position: relative;
-        min-height: none; /* flexible for widgets */
+        margin: 0 auto; /* ensure card centers in any container */
       }
 
       /* Top stars row */
       .stars {
         background: #0f0f0f;
-        padding: 0px 0px;
+        padding: 14px 18px;
         text-align: center;
       }
       .stars span {
         color: var(--accent);
-        font-size: 62px; /* increased star size */
+        font-size: 24px;
         letter-spacing: 6px;
       }
 
       /* The diagonal area (blue) and quote text */
       .hero {
         position: relative;
-        padding: 48px 22px 40px; /* vertical padding */
+        padding: 26px 22px 22px;
         display: flex;
-        gap: 24px;
+        flex-wrap: nowrap;
+        gap: 20px;
         align-items: flex-start;
-        flex-wrap: wrap; /* allow wrapping on narrow screens */
         background: linear-gradient(180deg, var(--blue) 0%, var(--blue) 100%);
         /* create diagonal inner shape using pseudo element */
         overflow: visible;
-        justify-content: space-between;
       }
 
       .hero::before {
@@ -86,11 +82,10 @@
         z-index: 2;
         color: #fff;
         font-weight: 700;
-        font-size: clamp(20px, 4.5vw, 44px); /* fluid scaling */
-        line-height: 1.05;
-        max-width: 68%;
+        font-size: 28px;
+        line-height: 1.06;
+        max-width: 64%;
         text-shadow: 0 2px 0 rgba(0, 0, 0, 0.25);
-        word-break: break-word;
       }
 
       .quote .accent {
@@ -101,31 +96,29 @@
       .client-photo {
         position: relative;
         z-index: 3;
-        width: clamp(120px, 22vw, 240px);
-        height: clamp(120px, 22vw, 240px);
+        width: 140px;
+        height: 140px;
         border-radius: 8px;
         flex-shrink: 0;
         overflow: hidden;
         border: 6px solid rgba(255, 255, 255, 0.12);
         background: var(--muted) var(--client-photo) center/cover no-repeat;
         box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
-        min-width: 0;
       }
 
       /* Small circular Yoon photo badge */
       .yoon-badge {
         position: absolute;
         right: 18px;
-        bottom: -44px; /* sit lower relative to bigger client photo */
-        width: 96px;
-        height: 96px;
+        bottom: -28px;
+        width: 72px;
+        height: 72px;
         border-radius: 50%;
         overflow: hidden;
         border: 6px solid #fff;
         background: var(--yoon-photo) center/cover no-repeat;
         z-index: 5;
         box-shadow: 0 6px 18px rgba(0, 0, 0, 0.45);
-        background-size: cover;
       }
 
       /* Bottom black strip with name */
@@ -139,64 +132,44 @@
       }
 
       /* Responsive tweaks */
-      @media (max-width: 768px) {
-        :root {
-          --card-width: 480px;
-        }
-        .hero {
-          flex-direction: column;
-          gap: 18px;
-          padding: 28px 18px 32px;
-          align-items: center;
-        }
-        .quote {
-          font-size: clamp(18px, 4.5vw, 34px);
-          max-width: 100%;
-          text-align: center;
-        }
-        .client-photo {
-          width: clamp(96px, 28vw, 160px);
-          height: clamp(96px, 28vw, 160px);
-          order: -1; /* put image above quote */
-          border-width: 5px;
-        }
-        .yoon-badge {
-          width: 72px;
-          height: 72px;
-          bottom: -32px;
-        }
-      }
-
       @media (max-width: 520px) {
         :root {
           --card-width: 360px;
         }
-        .card {
-          border-radius: 8px;
-        }
-        .stars span {
-          font-size: 42px;
-          letter-spacing: 3px;
-        }
-        .hero {
-          padding: 20px 14px 28px;
-        }
         .quote {
-          font-size: clamp(16px, 6vw, 26px);
+          font-size: 20px;
+          max-width: 100%;
+        }
+        /* allow hero to wrap and stack on small screens */
+        .hero {
+          flex-wrap: wrap;
+          align-items: center;
+          padding: 18px;
         }
         .client-photo {
-          width: 110px;
-          height: 110px;
+          position: relative;
+          left: auto;
+          bottom: auto;
+          z-index: 3;
+          margin: 0 auto 12px;
+          width: 140px;
+          height: 140px;
+          border-radius: 10px;
+          border: 8px solid #fff;
+          box-shadow: 0 8px 18px rgba(0, 0, 0, 0.3);
+        }
+        .quote {
+          padding: 0 6px 12px;
+          max-width: 100%;
+          text-align: left;
         }
         .yoon-badge {
+          position: absolute;
+          right: 14px;
+          bottom: 86px;
           width: 56px;
           height: 56px;
-          bottom: -24px;
-          right: 14px;
-        }
-        .credit {
-          font-size: 14px;
-          padding: 12px 14px;
+          border-width: 5px;
         }
       }
     </style>
