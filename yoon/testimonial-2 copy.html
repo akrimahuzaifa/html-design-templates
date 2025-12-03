@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Testimonial Card</title>
+    <style>
+      /* Change these two variables to point to your images */
+      :root {
+        --client-photo: url("https://d34u8crftukxnk.cloudfront.net/slackpress/prod/sites/6/IQ-Accountants-managing-partner-Kyelie-Baxter-Slack-customer-story.jpg");
+        --yoon-photo: url("https://stage.paramountbusinesscoach.com/wp-content/uploads/2022/06/2.png");
+        --card-width: 540px;
+        --card-height: 680px; /* reduced to remove excess bottom black area */
+        --accent: #f59d0b; /* orange */
+        --blue: #105bb0; /* deep blue */
+        --dark: #111111;
+        --muted: #e9e9e9;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+        margin: 24px;
+        font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto,
+          "Helvetica Neue", Arial;
+      }
+
+      .card {
+        width: 100%;
+        max-width: var(--card-width);
+        background: var(--dark);
+        color: #fff;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+        position: relative;
+        min-height: var(--card-height); /* ensure taller card */
+      }
+
+      /* Top stars row */
+      .stars {
+        background: #0f0f0f;
+        padding: 0px 0px;
+        text-align: center;
+      }
+      .stars span {
+        color: var(--accent);
+        font-size: 62px; /* increased star size */
+        letter-spacing: 6px;
+      }
+
+      /* The diagonal area (blue) and quote text */
+      .hero {
+        position: relative;
+        padding: 48px 22px 40px; /* increased vertical padding for a taller look */
+        display: flex;
+        gap: 24px;
+        align-items: flex-start;
+        background: linear-gradient(180deg, var(--blue) 0%, var(--blue) 100%);
+        /* create diagonal inner shape using pseudo element */
+        overflow: visible;
+      }
+
+      .hero::before {
+        content: "";
+        position: absolute;
+        left: -8%;
+        top: 0;
+        bottom: 0;
+        width: 60%;
+        transform: skewX(-18deg);
+        background: var(--blue);
+        z-index: 0;
+        box-shadow: inset -40px 0 60px rgba(0, 0, 0, 0.15);
+      }
+
+      .quote {
+        position: relative;
+        z-index: 2;
+        color: #fff;
+        font-weight: 700;
+        font-size: 44px; /* larger to fill vertical space */
+        line-height: 1.02;
+        max-width: 68%;
+        text-shadow: 0 2px 0 rgba(0, 0, 0, 0.25);
+      }
+
+      .quote .accent {
+        color: var(--accent);
+      }
+
+      /* Client image on the lower-left overlapping the hero area */
+      .client-photo {
+        position: relative;
+        z-index: 3;
+        width: 240px; /* larger photo to match taller layout */
+        height: 240px;
+        border-radius: 8px;
+        flex-shrink: 0;
+        overflow: hidden;
+        border: 6px solid rgba(255, 255, 255, 0.12);
+        background: var(--muted) var(--client-photo) center/cover no-repeat;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+      }
+
+      /* Small circular Yoon photo badge */
+      .yoon-badge {
+        position: absolute;
+        right: 18px;
+        bottom: -44px; /* sit lower relative to bigger client photo */
+        width: 96px;
+        height: 96px;
+        border-radius: 50%;
+        overflow: hidden;
+        border: 6px solid #fff;
+        background: var(--yoon-photo) center/cover no-repeat;
+        z-index: 5;
+        box-shadow: 0 6px 18px rgba(0, 0, 0, 0.45);
+      }
+
+      /* Bottom black strip with name */
+      .credit {
+        background: #141414;
+        padding: 18px 20px;
+        color: #ddd;
+        font-style: italic;
+        font-size: 15px;
+        border-top: 1px solid rgba(255, 255, 255, 0.03);
+      }
+
+      /* Responsive tweaks */
+      @media (max-width: 520px) {
+        :root {
+          --card-width: 360px;
+          --card-height: 480px;
+        }
+        .quote {
+          font-size: 22px;
+          max-width: 100%;
+        }
+        .client-photo {
+          width: 130px;
+          height: 130px;
+        }
+        .yoon-badge {
+          width: 64px;
+          height: 64px;
+          bottom: -22px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <article class="card" aria-label="Client testimonial">
+      <div class="stars" aria-hidden="true"><span>★★★★★</span></div>
+
+      <section class="hero">
+        <div class="client-photo" role="img" aria-label="Client photo"></div>
+
+        <h1 class="quote">
+          “So <span class="accent">Grateful</span><br />How Much Yoon<br />Helped
+          Me GROW<br /><span class="accent">My Coaching<br />Business!</span>”
+        </h1>
+
+        <div class="yoon-badge" title="Yoon"></div>
+      </section>
+
+      <div class="credit">Linda Anderson, Business Owner, Life Coach</div>
+    </article>
+
+    <!--
+		How to change the images:
+		- Replace the URL in the CSS variables at the top of this file.
+			Example:
+				:root { --client-photo: url('https://example.com/client.jpg'); --yoon-photo: url('https://example.com/yoon.jpg'); }
+
+		This keeps the markup unchanged and allows you to swap images quickly.
+	-->
+  </body>
+</html>
