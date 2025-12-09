@@ -8,6 +8,7 @@ body {
     height: 100vh;
     background-color: #fff;
     position: relative;
+    transition: background-color 0.5s; /* Smooth body bg transition */
 }
 
 .container {
@@ -27,6 +28,7 @@ label {
     cursor: pointer;
     position: relative;
     transition: 0.5s;
+    overflow: hidden; /* Important: keeps the moon/sun inside the toggle while sliding */
 }
 
 .circle {
@@ -38,9 +40,11 @@ label {
     background-color: #fff;
     border-radius: 100px;
     transition: 0.5s;
+    z-index: 10; /* Keeps circle on top */
 }
 
-/* Light Theme Styles */
+/* --- Light Theme Styles --- */
+
 .light_theme {
     transition: 0.5s;
     opacity: 1;
@@ -53,17 +57,21 @@ label {
     background-color: yellow;
     border-radius: 100px;
     right: 80px;
-    top: 8px;
-    transition: 0.5s;
+    /* Default State (Light Mode): */
+    top: 8px; 
+    opacity: 1;
+    transition: 0.5s; 
+    transition-delay: 0.1s; /* Slight delay makes it look smoother */
 }
 
 .clouds {
     position: relative;
     width: 100px;
     height: 70px;
-    border: 1px solid #0000; /* Transparent border for positioning reference */
+    border: 1px solid #0000;
     left: 120px;
     top: 28px;
+    transition: 0.5s;
 }
 
 .cloud1 {
@@ -96,42 +104,41 @@ label {
     border-radius: 100px;
 }
 
-/* Dark Theme Styles */
+/* --- Dark Theme Styles --- */
+
 .dark_theme {
     opacity: 0;
     transition: 0.5s;
 }
 
-/* Crescent moon variant — use this class instead of `.full_moon` to show a crescent moon */
-.moon {
+/* Shared styles for both moon types */
+.moon, .full_moon {
     position: absolute;
     width: 50px;
     height: 50px;
     left: 50px;
-    top: 8px;
     border-radius: 50%;
     transition: 0.5s;
-    /* Layered radial-gradients: top (dark) cuts into bottom (white) to form a crescent.
-       Using gradients avoids subpixel seams that can appear with overlapping elements. */
+    transition-delay: 0.1s;
+    
+    /* Default State (Light Mode/Hidden): */
+    /* Positioned ABOVE the toggle so it can slide DOWN */
+    top: -50px; 
+    opacity: 0;
+}
+
+/* Crescent moon specific art */
+.moon {
     background-image:
         radial-gradient(circle at 65% 50%, #000 0 22px, transparent 23px),
         radial-gradient(circle at 50% 50%, #fff 0 22px, #fff 100%);
     background-repeat: no-repeat;
 }
 
-/* Full moon variant with craters — use this class instead of `.moon` to show a full moon */
+/* Full moon specific art */
 .full_moon {
-    position: absolute;
-    width: 50px;
-    height: 50px;
-    left: 50px;
-    top: 8px;
-    border-radius: 50%;
     background-color: #fff;
-    /* dark rim like the design */
-    /* border: 4px solid #000; */
     box-shadow: inset -6px -6px 10px rgba(0,0,0,0.06);
-    /* multiple subtle radial gradients create crater shapes */
     background-image:
         radial-gradient(circle at 28% 30%, rgba(0,0,0,0.20) 0 6px, transparent 7px),
         radial-gradient(circle at 62% 40%, rgba(0,0,0,0.14) 0 5px, transparent 6px),
@@ -139,6 +146,11 @@ label {
         radial-gradient(circle at 75% 72%, rgba(0,0,0,0.10) 0 6px, transparent 7px),
         radial-gradient(circle at 35% 50%, rgba(0,0,0,0.08) 0 3px, transparent 4px);
     background-repeat: no-repeat;
+}
+
+.stars {
+    opacity: 0; /* Hide stars initially */
+    transition: 0.5s;
 }
 
 .star1 {
@@ -171,28 +183,45 @@ label {
     border-radius: 100px;
 }
 
-/* Logic: Checkbox functionality */
+/* --- Logic: Checkbox functionality --- */
 input[type="checkbox"] {
     display: none;
 }
 
-/* When checked: Move the white circle to the right */
-input[type="checkbox"]:checked + label .circle {
-    left: 155px; 
-}
-
-/* When checked: Change background to black/dark gray */
+/* 1. Toggle Background Color */
 input[type="checkbox"]:checked + label {
     background-color: #000;
 }
 
-/* When checked: Hide light theme elements */
-input[type="checkbox"]:checked + label .light_theme {
+/* 2. Move Circle */
+input[type="checkbox"]:checked + label .circle {
+    left: 155px; 
+}
+
+/* 3. Animate SUN (Slide Down & Hide) */
+input[type="checkbox"]:checked + label .light_theme .sun {
+    top: 80px; /* Moves down */
     opacity: 0;
 }
 
-/* When checked: Show dark theme elements */
+/* 4. Hide Clouds */
+input[type="checkbox"]:checked + label .light_theme .clouds {
+    opacity: 0;
+}
+
+/* 5. Show Dark Theme Container */
 input[type="checkbox"]:checked + label .dark_theme {
     opacity: 1;
 }
 
+/* 6. Animate MOON (Slide In from Top) */
+input[type="checkbox"]:checked + label .dark_theme .moon,
+input[type="checkbox"]:checked + label .dark_theme .full_moon {
+    top: 8px; /* Slides down to standard position */
+    opacity: 1;
+}
+
+/* 7. Show Stars */
+input[type="checkbox"]:checked + label .dark_theme .stars {
+    opacity: 1;
+}
