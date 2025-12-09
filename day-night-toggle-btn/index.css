@@ -71,7 +71,8 @@ label {
     border: 1px solid #0000;
     left: 120px;
     top: 28px;
-    transition: 0.5s;
+    opacity: 1;
+    transition: 0.5s; 
 }
 
 .cloud1 {
@@ -92,12 +93,13 @@ label {
     height: 50px;
     background-color: #fff;
     border-radius: 100px;
+    z-index: 5;
 }
 
 .cloud3 {
     position: absolute;
-    bottom: 10px;
-    left: 60px;
+    bottom: 25px;
+    left: 50px;
     width: 30px;
     height: 30px;
     background-color: #fff;
@@ -121,8 +123,7 @@ label {
     transition: 0.5s;
     transition-delay: 0.1s;
     
-    /* Default State (Light Mode/Hidden): */
-    /* Positioned ABOVE the toggle so it can slide DOWN */
+    /* Default State (Light Mode): Hidden ABOVE the container */
     top: -50px; 
     opacity: 0;
 }
@@ -204,8 +205,10 @@ input[type="checkbox"]:checked + label .light_theme .sun {
     opacity: 0;
 }
 
-/* 4. Hide Clouds */
+/* 2. Animate CLOUDS (Slide Out Left) */
+/* When unchecked, they are at left: 120px. When checked, they move to 0px. */
 input[type="checkbox"]:checked + label .light_theme .clouds {
+    left: 0px; 
     opacity: 0;
 }
 
