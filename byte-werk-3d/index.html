@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Full Screen Media Page</title>
+    <style>
+        /* Remove default margins and prevent scrolling */
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            width: 100%;
+            overflow: hidden; 
+            display: flex;
+            flex-direction: column;
+            font-family: sans-serif;
+        }
+
+        /* Header styling */
+        header {
+            background-color: #ffffff;
+            padding: 10px 20px;
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid #ddd;
+            height: 60px; /* Fixed height for header */
+            box-sizing: border-box;
+        }
+
+        .logo {
+            height: 40px; /* Adjust based on your logo size */
+            width: auto;
+        }
+
+        /* Full-width/height container */
+.content-area {
+    height: calc(100vh - 60px);
+    width: 100%;
+    position: relative;
+    background-color: #000; /* Adds black bars if the ratio is off */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+        /* Ensures the whole image is visible and not cropped */
+.fullscreen-media {
+    height: 100%;
+    width: auto;
+    max-width: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+}
+    </style>
+</head>
+<body>
+
+    <header>
+        <img src="assets/bytewerk3d_logo.png" alt="Logo" class="logo">
+    </header>
+
+    <div class="content-area">
+        <img src="assets/House_1b.jpg" alt="Background" class="fullscreen-media">
+
+        </div>
+
+</body>
+</html>
