@@ -1,0 +1,229 @@
+<style>
+  :root {
+    --footer-sign-font-size: 8pt;
+  }
+  .ax-minimal-footer {
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Change to flex-start for left alignment */
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+      sans-serif;
+    font-size: var(--footer-sign-font-size);
+    color: #cbd5e1;
+    letter-spacing: 0.03em;
+    font-style: italic;
+  }
+
+  .ax-minimal-footer a {
+    color: #cbd5e1;
+    text-decoration: none;
+    transition: opacity 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+  }
+
+  .ax-minimal-footer a:hover {
+    opacity: 0.7; /* Subtle fade effect on hover */
+  }
+
+  .ax-brand {
+    font-weight: 500;
+    margin-left: 4px;
+  }
+
+  .ax-dot-separator {
+    margin: 0 12px;
+    font-size: 8pt;
+    opacity: 0.5;
+    font-style: normal;
+  }
+
+  .ax-socials {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+  }
+
+  /* Adjusting icon sizes to match 10pt text */
+  .ax-socials i {
+    font-size: var(--footer-sign-font-size);
+  }
+</style>
+
+<div class="ax-minimal-footer">
+  <span
+    >Design and Developed by <span class="ax-brand">Alpha Xolution</span></span
+  >
+
+  <span class="ax-dot-separator">|</span>
+
+  <div class="ax-socials">
+    <a href="https://alphaxolution.com/" target="_blank" title="Website">
+      <i class="fas fa-globe"></i>
+    </a>
+
+    <a
+      href="https://www.linkedin.com/company/alpha-solution/"
+      target="_blank"
+      title="LinkedIn"
+    >
+      <i class="fab fa-linkedin-in"></i>
+    </a>
+
+    <a
+      href="https://www.facebook.com/alphasolution.net/"
+      target="_blank"
+      title="Facebook"
+    >
+      <i class="fab fa-facebook-f"></i>
+    </a>
+
+    <a
+      href="https://instagram.com/yourprofile"
+      target="_blank"
+      title="Instagram"
+    >
+      <i class="fab fa-instagram"></i>
+    </a>
+  </div>
+</div>
+
+<!-- Footer Section (SVG) -->
+<style>
+  .alpha-footer {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    font-family: "Inter", "Segoe UI", Arial, sans-serif;
+    font-size: 14px;
+    color: #6b7280;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .alpha-footer a {
+    color: inherit;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+  }
+
+  .alpha-footer .brand {
+    font-weight: 500;
+    color: #111827;
+  }
+
+  .alpha-footer .icons {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .alpha-footer svg {
+    width: 16px;
+    height: 16px;
+    fill: #6b7280;
+    transition: transform 0.2s ease, fill 0.2s ease;
+  }
+
+  .alpha-footer a:hover svg {
+    transform: translateY(-2px);
+  }
+
+  /* Brand hover colors */
+  .alpha-footer a.website:hover svg {
+    fill: #2563eb;
+  }
+  .alpha-footer a.linkedin:hover svg {
+    fill: #0a66c2;
+  }
+  .alpha-footer a.facebook:hover svg {
+    fill: #1877f2;
+  }
+  .alpha-footer a.x:hover svg {
+    fill: #000000;
+  }
+  .alpha-footer a.instagram:hover svg {
+    fill: url(#igGradient);
+  }
+</style>
+
+<div class="alpha-footer">
+  <span>Design & Developed by <span class="brand">Alpha Xolution</span></span>
+
+  <div class="icons">
+    <!-- Website -->
+    <a
+      href="https://yourwebsite.com"
+      target="_blank"
+      class="website"
+      aria-label="Website"
+    >
+      <svg viewBox="0 0 24 24">
+        <path
+          d="M12 2a10 10 0 1 0 10 10A10.01 10.01 0 0 0 12 2Zm6.93 6h-2.95a15.38 15.38 0 0 0-1.27-3.13A8.03 8.03 0 0 1 18.93 8ZM12 4.07A13.4 13.4 0 0 1 13.94 8h-3.88A13.4 13.4 0 0 1 12 4.07ZM4.07 14A7.87 7.87 0 0 1 4.07 10h3.11a17.3 17.3 0 0 0 0 4Zm.99-6A8.03 8.03 0 0 1 9.29 4.87 15.38 15.38 0 0 0 8.02 8Zm4.23 12.13A8.03 8.03 0 0 1 5.06 16h2.96a15.38 15.38 0 0 0 1.27 3.13ZM12 19.93A13.4 13.4 0 0 1 10.06 16h3.88A13.4 13.4 0 0 1 12 19.93ZM14.71 19.13A15.38 15.38 0 0 0 15.98 16h2.96a8.03 8.03 0 0 1-4.23 3.13ZM16.82 14a17.3 17.3 0 0 0 0-4h3.11a7.87 7.87 0 0 1 0 4Zm-.84-6a15.38 15.38 0 0 0-1.27-3.13A8.03 8.03 0 0 1 18.94 8Z"
+        />
+      </svg>
+    </a>
+
+    <!-- LinkedIn -->
+    <a
+      href="https://www.linkedin.com/"
+      target="_blank"
+      class="linkedin"
+      aria-label="LinkedIn"
+    >
+      <svg viewBox="0 0 24 24">
+        <path
+          d="M4.98 3.5c0 1.38-1.11 2.5-2.49 2.5A2.5 2.5 0 0 1 0 3.5C0 2.12 1.11 1 2.49 1c1.38 0 2.49 1.12 2.49 2.5ZM.5 23.5h4V7.98h-4V23.5ZM8.5 7.98h3.8v2.1h.05c.53-1 1.83-2.1 3.77-2.1 4.03 0 4.78 2.65 4.78 6.1v9.42h-4v-8.35c0-2-.04-4.57-2.79-4.57-2.8 0-3.23 2.18-3.23 4.43v8.5h-4V7.98Z"
+        />
+      </svg>
+    </a>
+
+    <!-- Facebook -->
+    <a
+      href="https://www.facebook.com/"
+      target="_blank"
+      class="facebook"
+      aria-label="Facebook"
+    >
+      <svg viewBox="0 0 24 24">
+        <path
+          d="M22.68 0H1.32C.59 0 0 .59 0 1.32v21.36C0 23.41.59 24 1.32 24h11.49v-9.29H9.69V11h3.12V8.41c0-3.1 1.89-4.79 4.66-4.79 1.32 0 2.46.1 2.79.14v3.24h-1.91c-1.5 0-1.79.71-1.79 1.76V11h3.58l-.47 3.71h-3.11V24h6.1c.73 0 1.32-.59 1.32-1.32V1.32C24 .59 23.41 0 22.68 0Z"
+        />
+      </svg>
+    </a>
+
+    <!-- X -->
+    <a href="https://x.com/" target="_blank" class="x" aria-label="X">
+      <svg viewBox="0 0 24 24">
+        <path
+          d="M18.9 1.15h3.68l-8.04 9.19L24 22.85h-7.41l-5.8-7.59-6.64 7.59H.46l8.6-9.83L0 1.15h7.59l5.24 6.93L18.9 1.15Zm-1.29 19.5h2.04L6.54 3.25H4.36l13.25 17.4Z"
+        />
+      </svg>
+    </a>
+
+    <!-- Instagram -->
+    <a
+      href="https://www.instagram.com/"
+      target="_blank"
+      class="instagram"
+      aria-label="Instagram"
+    >
+      <svg viewBox="0 0 24 24">
+        <defs>
+          <linearGradient id="igGradient" x1="0%" y1="100%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#F58529" />
+            <stop offset="30%" stop-color="#DD2A7B" />
+            <stop offset="60%" stop-color="#8134AF" />
+            <stop offset="100%" stop-color="#515BD4" />
+          </linearGradient>
+        </defs>
+        <path
+          d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.8.24 2.22.4a4.4 4.4 0 0 1 1.6 1.04 4.4 4.4 0 0 1 1.04 1.6c.16.42.35 1.05.4 2.22.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.24 1.8-.4 2.22a4.4 4.4 0 0 1-1.04 1.6 4.4 4.4 0 0 1-1.6 1.04c-.42.16-1.05.35-2.22.4-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.24-2.22-.4a4.4 4.4 0 0 1-1.6-1.04 4.4 4.4 0 0 1-1.04-1.6c-.16-.42-.35-1.05-.4-2.22C2.17 15.58 2.16 15.2 2.16 12s.01-3.58.07-4.85c.05-1.17.24-1.8.4-2.22a4.4 4.4 0 0 1 1.04-1.6 4.4 4.4 0 0 1 1.6-1.04c.42-.16 1.05-.35 2.22-.4C8.42 2.17 8.8 2.16 12 2.16Z"
+        />
+      </svg>
+    </a>
+    <i class="fa-solid fa-globe"></i>
+  </div>
+</div>

@@ -1,140 +1,285 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>2001 Beaver Creek Point Association, Inc. | Information Resource</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      2001 Beaver Creek Point Association, Inc. | Information Resource
+    </title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
     <style>
-        :root {
-            --primary-blue: #2563eb;
-            --urgent-red: #991b1b;
-            --urgent-bg: #fef2f2;
-            --priority-gold: #854d0e;
-            --priority-bg: #fefce8;
-            --text-main: #1e293b;
-            --border-light: #e2e8f0;
-            --white: #ffffff;
-        }
+      :root {
+        --primary-blue: #2563eb;
+        --urgent-red: #991b1b;
+        --urgent-bg: #fef2f2;
+        --priority-gold: #854d0e;
+        --priority-bg: #fefce8;
+        --text-main: #1e293b;
+        --border-light: #e2e8f0;
+        --white: #ffffff;
+      }
 
-        body { font-family: 'Inter', sans-serif; color: var(--text-main); background-color: #f8fafc; line-height: 1.6; margin: 0; }
-        
-        .container { max-width: 1200px; margin: 0 auto; padding: 2rem; }
-        h2 { font-size: 1.8rem; margin-bottom: 1.5rem; border-bottom: 2px solid #cbd5e1; padding-bottom: 10px; }
+      body {
+        font-family: "Inter", sans-serif;
+        color: var(--text-main);
+        background-color: #f8fafc;
+        line-height: 1.6;
+        margin: 0;
+      }
 
-        /* General Card Layout */
-        .card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(450px, 1fr)); gap: 2rem; }
-        
-        .card { 
-            background: var(--white); 
-            border: 1px solid var(--border-light); 
-            border-radius: 12px; 
-            padding: 2.5rem; 
-            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
-            position: relative;
-            display: flex;
-            flex-direction: column;
-        }
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 2rem;
+      }
+      h2 {
+        font-size: 1.8rem;
+        margin-bottom: 1.5rem;
+        border-bottom: 2px solid #cbd5e1;
+        padding-bottom: 10px;
+      }
 
-        /* URGENT RED: Court Rulings */
-        .card-urgent { border-left: 8px solid var(--urgent-red); background-color: var(--urgent-bg); }
-        .card-urgent h3 { color: var(--urgent-red); font-size: 1.4rem; margin-top: 0; }
-        .card-urgent .priority-tag { background: var(--urgent-red); color: white; }
+      /* General Card Layout */
+      .card-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+        gap: 2rem;
+      }
 
-        /* PRIORITY GOLD: Governing Docs */
-        .card-priority { border-left: 8px solid var(--priority-gold); background-color: var(--priority-bg); }
-        .card-priority h3 { color: var(--priority-gold); font-size: 1.4rem; margin-top: 0; }
-        .card-priority .priority-tag { background: var(--priority-gold); color: white; }
+      .card {
+        background: var(--white);
+        border: 1px solid var(--border-light);
+        border-radius: 12px;
+        padding: 2.5rem;
+        box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+        position: relative;
+        display: flex;
+        flex-direction: column;
+      }
 
-        /* STANDARD BLUE: General Info */
-        .card-standard { border-left: 8px solid var(--primary-blue); }
-        .card-standard h3 { color: var(--primary-blue); font-size: 1.4rem; margin-top: 0; }
+      /* URGENT RED: Court Rulings */
+      .card-urgent {
+        border-left: 8px solid var(--urgent-red);
+        background-color: var(--urgent-bg);
+      }
+      .card-urgent h3 {
+        color: var(--urgent-red);
+        font-size: 1.4rem;
+        margin-top: 0;
+      }
+      .card-urgent .priority-tag {
+        background: var(--urgent-red);
+        color: white;
+      }
 
-        .priority-tag {
-            position: absolute; top: -12px; right: 20px;
-            padding: 4px 12px; border-radius: 20px;
-            font-size: 0.75rem; font-weight: 700; text-transform: uppercase;
-        }
+      /* PRIORITY GOLD: Governing Docs */
+      .card-priority {
+        border-left: 8px solid var(--priority-gold);
+        background-color: var(--priority-bg);
+      }
+      .card-priority h3 {
+        color: var(--priority-gold);
+        font-size: 1.4rem;
+        margin-top: 0;
+      }
+      .card-priority .priority-tag {
+        background: var(--priority-gold);
+        color: white;
+      }
 
-        /* Card Content */
-        .card-content ul { list-style: none; padding: 0; margin: 1.5rem 0; }
-        .card-content li { margin-bottom: 0.8rem; padding-left: 1.5rem; position: relative; font-size: 0.95rem; }
-        .card-content li::before { content: "•"; position: absolute; left: 0; font-weight: bold; }
+      /* STANDARD BLUE: General Info */
+      .card-standard {
+        border-left: 8px solid var(--primary-blue);
+      }
+      .card-standard h3 {
+        color: var(--primary-blue);
+        font-size: 1.4rem;
+        margin-top: 0;
+      }
 
-        .btn-download {
-            display: inline-flex; align-items: center; justify-content: center;
-            background: #334155; color: white; padding: 12px 24px;
-            border-radius: 6px; text-decoration: none; font-weight: 600;
-            margin-top: auto; transition: opacity 0.2s;
-        }
-        .btn-download:hover { opacity: 0.9; }
+      .priority-tag {
+        position: absolute;
+        top: -12px;
+        right: 20px;
+        padding: 4px 12px;
+        border-radius: 20px;
+        font-size: 0.75rem;
+        font-weight: 700;
+        text-transform: uppercase;
+      }
 
-        .source-link { font-size: 0.85rem; color: #64748b; margin-top: 10px; display: block; font-style: italic; }
+      /* Card Content */
+      .card-content ul {
+        list-style: none;
+        padding: 0;
+        margin: 1.5rem 0;
+      }
+      .card-content li {
+        margin-bottom: 0.8rem;
+        padding-left: 1.5rem;
+        position: relative;
+        font-size: 0.95rem;
+      }
+      .card-content li::before {
+        content: "•";
+        position: absolute;
+        left: 0;
+        font-weight: bold;
+      }
+
+      .btn-download {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        background: #334155;
+        color: white;
+        padding: 12px 24px;
+        border-radius: 6px;
+        text-decoration: none;
+        font-weight: 600;
+        margin-top: auto;
+        transition: opacity 0.2s;
+      }
+      .btn-download:hover {
+        opacity: 0.9;
+      }
+
+      .source-link {
+        font-size: 0.85rem;
+        color: #64748b;
+        margin-top: 10px;
+        display: block;
+        font-style: italic;
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
+    <div class="container">
+      <h2>Primary Document Archive</h2>
 
-<div class="container">
-    <h2>Primary Document Archive</h2>
-
-    <div class="card-grid">
+      <div class="card-grid">
         <div class="card card-urgent">
-            <span class="priority-tag">Highest Priority</span>
-            <h3>AI Analysis: Judicial Findings</h3>
-            <div class="card-content">
-                <p><strong>Crucial Fact:</strong> The Court of Appeals and District Court both found the HOA acted <strong>arbitrarily and capriciously</strong> regarding project rejections[cite: 536, 537].</p>
-                <ul>
-                    <li>Affirmed that rejections were based on pretextual reasons without reviewing actual plans[cite: 540, 541].</li>
-                    <li>Reversed the dismissal of counterclaims; the trial court must now make specific findings on HOA misconduct[cite: 544, 545].</li>
-                    <li>Court findings confirm existing trees already blocked views—not the proposed project[cite: 592].</li>
-                </ul>
-                <a href="#" class="btn-download">Download AI Analysis of Court Rulings (PDF)</a>
-                <span class="source-link">Reference: July 24, 2025 Appellate Ruling & April 3, 2023 District Ruling</span>
-            </div>
+          <span class="priority-tag">Highest Priority</span>
+          <h3>AI Analysis: Judicial Findings</h3>
+          <div class="card-content">
+            <p>
+              <strong>Crucial Fact:</strong> The Court of Appeals and District
+              Court both found the HOA acted
+              <strong>arbitrarily and capriciously</strong> regarding project
+              rejections[cite: 536, 537].
+            </p>
+            <ul>
+              <li>
+                Affirmed that rejections were based on pretextual reasons
+                without reviewing actual plans[cite: 540, 541].
+              </li>
+              <li>
+                Reversed the dismissal of counterclaims; the trial court must
+                now make specific findings on HOA misconduct[cite: 544, 545].
+              </li>
+              <li>
+                Court findings confirm existing trees already blocked views—not
+                the proposed project[cite: 592].
+              </li>
+            </ul>
+            <a href="#" class="btn-download"
+              >Download AI Analysis of Court Rulings (PDF)</a
+            >
+            <span class="source-link"
+              >Reference: July 24, 2025 Appellate Ruling & April 3, 2023
+              District Ruling</span
+            >
+          </div>
         </div>
 
         <div class="card card-priority">
-            <span class="priority-tag">Essential Fact</span>
-            <h3>AI Analysis: Governing Documents</h3>
-            <div class="card-content">
-                <p><strong>Crucial Fact:</strong> The developer legally assigned all maintenance, repair, and replacement duties to individual home owners[cite: 494, 495].</p>
-                <ul>
-                    <li><strong>No Common Elements:</strong> The HOA owns or leases <u>nothing</u>; under Colorado law, no Common Elements exist here[cite: 498, 499].</li>
-                    <li><strong>Maintenance Control:</strong> Rules & Regs §2.2 places responsibility for exterior surfaces and landscaping on individual owners[cite: 496, 497].</li>
-                    <li><strong>Limited Authority:</strong> The 2007 Clarification Amendment narrowed HOA power to only painting/staining and paying for landscaping—not managing it [cite: 527-530].</li>
-                </ul>
-                <a href="#" class="btn-download">AI Analysis: Easements & Who Controls (PDF)</a>
-                <span class="source-link">File: AI analysis of Governing documents - easements and who controls the easements emailed to HOA B</span>
-            </div>
+          <span class="priority-tag">Essential Fact</span>
+          <h3>AI Analysis: Governing Documents</h3>
+          <div class="card-content">
+            <p>
+              <strong>Crucial Fact:</strong> The developer legally assigned all
+              maintenance, repair, and replacement duties to individual home
+              owners[cite: 494, 495].
+            </p>
+            <ul>
+              <li>
+                <strong>No Common Elements:</strong> The HOA owns or leases
+                <u>nothing</u>; under Colorado law, no Common Elements exist
+                here[cite: 498, 499].
+              </li>
+              <li>
+                <strong>Maintenance Control:</strong> Rules & Regs §2.2 places
+                responsibility for exterior surfaces and landscaping on
+                individual owners[cite: 496, 497].
+              </li>
+              <li>
+                <strong>Limited Authority:</strong> The 2007 Clarification
+                Amendment narrowed HOA power to only painting/staining and
+                paying for landscaping—not managing it [cite: 527-530].
+              </li>
+            </ul>
+            <a href="#" class="btn-download"
+              >AI Analysis: Easements & Who Controls (PDF)</a
+            >
+            <span class="source-link"
+              >File: AI analysis of Governing documents - easements and who
+              controls the easements emailed to HOA B</span
+            >
+          </div>
         </div>
 
         <div class="card card-standard">
-            <h3>HOA Dues & Financial Data</h3>
-            <div class="card-content">
-                <p>A historical comparison showing a significant increase in dues despite stable operating requirements[cite: 606, 607].</p>
-                <ul>
-                    <li><strong>2016-2018:</strong> $2,500/year (All 5 owners participated in voting)[cite: 607, 608].</li>
-                    <li><strong>2024:</strong> $9,000/year (Voting restricted to only 3 board members)[cite: 609, 610].</li>
-                    <li>Expenses doubled due to hiring property managers, bookkeepers, and multiple attorneys[cite: 611].</li>
-                </ul>
-                <a href="#" class="btn-download">View Financial Data & CMAs</a>
-            </div>
+          <h3>HOA Dues & Financial Data</h3>
+          <div class="card-content">
+            <p>
+              A historical comparison showing a significant increase in dues
+              despite stable operating requirements[cite: 606, 607].
+            </p>
+            <ul>
+              <li>
+                <strong>2016-2018:</strong> $2,500/year (All 5 owners
+                participated in voting)[cite: 607, 608].
+              </li>
+              <li>
+                <strong>2024:</strong> $9,000/year (Voting restricted to only 3
+                board members)[cite: 609, 610].
+              </li>
+              <li>
+                Expenses doubled due to hiring property managers, bookkeepers,
+                and multiple attorneys[cite: 611].
+              </li>
+            </ul>
+            <a href="#" class="btn-download">View Financial Data & CMAs</a>
+          </div>
         </div>
 
         <div class="card card-standard">
-            <h3>Planned Unit Development (PUD) Map</h3>
-            <div class="card-content">
-                <p>Official subdivision maps and recorded easements for the five-home development[cite: 354, 355].</p>
-                <ul>
-                    <li>Review the original proposed and approved PUD maps[cite: 452].</li>
-                    <li>View 2011 and 2001 Beaver Creek Point property photos[cite: 340, 341].</li>
-                    <li>Documentation of individual fee-simple lot boundaries[cite: 487].</li>
-                </ul>
-                <a href="#" class="btn-download">Download 2 PUD Site Maps (PDF)</a>
-            </div>
+          <h3>Planned Unit Development (PUD) Map</h3>
+          <div class="card-content">
+            <p>
+              Official subdivision maps and recorded easements for the five-home
+              development[cite: 354, 355].
+            </p>
+            <ul>
+              <li>
+                Review the original proposed and approved PUD maps[cite: 452].
+              </li>
+              <li>
+                View 2011 and 2001 Beaver Creek Point property photos[cite: 340,
+                341].
+              </li>
+              <li>
+                Documentation of individual fee-simple lot boundaries[cite:
+                487].
+              </li>
+            </ul>
+            <a href="#" class="btn-download">Download 2 PUD Site Maps (PDF)</a>
+          </div>
         </div>
+      </div>
     </div>
-</div>
-
-</body>
+  </body>
 </html>
