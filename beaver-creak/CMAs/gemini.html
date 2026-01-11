@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CMA Layout Prototype</title>
+    <style>
+      body {
+        font-family: sans-serif;
+        background: #f4f7f6;
+        color: #333;
+        padding: 20px;
+      }
+      .cma-container {
+        max-width: 900px;
+        margin: 0 auto;
+        background: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      }
+
+      h2 {
+        text-align: center;
+        color: #0056b3;
+      }
+      .instruction {
+        text-align: center;
+        font-size: 0.9em;
+        color: #666;
+        margin-bottom: 20px;
+      }
+
+      /* Property Tabs */
+      .tab-wrapper {
+        display: flex;
+        justify-content: center;
+        gap: 5px;
+        margin-bottom: 20px;
+        flex-wrap: wrap;
+      }
+      .tab-btn {
+        padding: 10px 20px;
+        border: none;
+        background: #eee;
+        cursor: pointer;
+        transition: 0.3s;
+        font-weight: bold;
+        border-radius: 4px;
+      }
+      .tab-btn.active {
+        background: #3498db;
+        color: white;
+      }
+
+      /* Display Area */
+      .display-area {
+        border: 2px dashed #ccc;
+        min-height: 300px;
+        padding: 20px;
+        text-align: center;
+        border-radius: 8px;
+        background: #fafafa;
+      }
+      .gallery {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
+      }
+      .img-placeholder {
+        width: 200px;
+        height: 260px;
+        background: #ddd;
+        border: 1px solid #bbb;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.8em;
+        flex-direction: column;
+        text-align: center;
+        padding: 10px;
+      }
+
+      /* Shared Comp Buttons */
+      .comp-wrapper {
+        margin-top: 30px;
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        padding-top: 20px;
+        border-top: 1px solid #eee;
+      }
+      .comp-btn {
+        padding: 12px 25px;
+        border: 2px solid #2c3e50;
+        background: white;
+        color: #2c3e50;
+        cursor: pointer;
+        font-weight: bold;
+        border-radius: 30px;
+        transition: 0.3s;
+      }
+      .comp-btn:hover,
+      .comp-btn.active {
+        background: #2c3e50;
+        color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="cma-container">
+      <h2>Property Values (CMAs)</h2>
+      <p class="instruction">
+        SWITCH BETWEEN TABS TO VIEW THE RESPECTIVE PROPERTY VALUE SUMMARY
+      </p>
+
+      <div class="tab-wrapper" id="propertyTabs">
+        <button class="tab-btn active" onclick="showContent('2001', this)">
+          2001 CMA
+        </button>
+        <button class="tab-btn" onclick="showContent('2003', this)">
+          2003 CMA
+        </button>
+        <button class="tab-btn" onclick="showContent('2011', this)">
+          2011 CMA
+        </button>
+        <button class="tab-btn" onclick="showContent('2013', this)">
+          2013 CMA
+        </button>
+        <button class="tab-btn" onclick="showContent('2019', this)">
+          2019 CMA
+        </button>
+      </div>
+
+      <div class="display-area" id="displayArea">
+        <h3 id="viewTitle">2001 Beaver Creek Point</h3>
+        <div class="gallery" id="galleryContent">
+          <div class="img-placeholder">
+            <b>Page 1</b><br />Cover Photo for 2001
+          </div>
+          <div class="img-placeholder">
+            <b>Page 2</b><br />Value Summary for 2001
+          </div>
+        </div>
+      </div>
+
+      <p class="instruction" style="margin-top: 30px">
+        VIEW MARKET DATA USED ACROSS ALL FIVE CMAS
+      </p>
+
+      <div class="comp-wrapper" id="compButtons">
+        <button class="comp-btn" onclick="showContent('active_comps', this)">
+          Active Comps
+        </button>
+        <button class="comp-btn" onclick="showContent('expired_comps', this)">
+          Expired or Off-Market Comps
+        </button>
+      </div>
+    </div>
+
+    <script>
+      function showContent(type, element) {
+        const title = document.getElementById("viewTitle");
+        const gallery = document.getElementById("galleryContent");
+
+        // Remove active class from all buttons
+        document
+          .querySelectorAll(".tab-btn, .comp-btn")
+          .forEach((btn) => btn.classList.remove("active"));
+
+        // Add active class to clicked button
+        element.classList.add("active");
+
+        // Logic to switch content
+        if (type === "active_comps") {
+          title.innerText = "Shared Report: Active Comparables";
+          gallery.innerHTML = `
+                <div class="img-placeholder"><b>Comp Map</b><br>Location of Active Comps</div>
+                <div class="img-placeholder"><b>Comp List</b><br>Table of Active Prices</div>
+                <div class="img-placeholder"><b>Comp Photo</b><br>Nearby Property A</div>
+            `;
+        } else if (type === "expired_comps") {
+          title.innerText = "Shared Report: Expired / Off-Market";
+          gallery.innerHTML = `
+                <div class="img-placeholder"><b>Market History</b><br>Expired Listings Data</div>
+                <div class="img-placeholder"><b>Off-Market</b><br>Properties recently sold</div>
+            `;
+        } else {
+          // It's a property tab
+          title.innerText = type + " Beaver Creek Point";
+          gallery.innerHTML = `
+                <div class="img-placeholder"><b>Page 1</b><br>Cover Photo for ${type}</div>
+                <div class="img-placeholder"><b>Page 2</b><br>Value Summary for ${type}</div>
+            `;
+        }
+      }
+    </script>
+  </body>
+</html>

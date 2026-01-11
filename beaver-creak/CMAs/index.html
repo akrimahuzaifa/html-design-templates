@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>CMA Layout</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <section class="cma-section">
+      <h2>Property Values (CMAs)</h2>
+
+      <!-- CMA Tabs -->
+      <div class="tab-buttons">
+        <button class="tab-btn active" data-target="cma-2001">2001 CMA</button>
+        <button class="tab-btn" data-target="cma-2003">2003 CMA</button>
+        <button class="tab-btn" data-target="cma-2011">2011 CMA</button>
+        <button class="tab-btn" data-target="cma-2013">2013 CMA</button>
+        <button class="tab-btn" data-target="cma-2019">2019 CMA</button>
+      </div>
+
+      <!-- CMA Content -->
+      <div class="tab-content">
+        <div id="cma-2001" class="tab-panel active">
+          <img src="images/2001-value-1.jpg" alt="2001 CMA Value Page 1" />
+          <img src="images/2001-value-2.jpg" alt="2001 CMA Value Page 2" />
+        </div>
+
+        <div id="cma-2003" class="tab-panel">
+          <img src="images/2003-value-1.jpg" alt="2003 CMA Value Page 1" />
+          <img src="images/2003-value-2.jpg" alt="2003 CMA Value Page 2" />
+        </div>
+
+        <div id="cma-2011" class="tab-panel">
+          <img src="images/2011-value-1.jpg" alt="2011 CMA Value Page 1" />
+          <img src="images/2011-value-2.jpg" alt="2011 CMA Value Page 2" />
+        </div>
+
+        <div id="cma-2013" class="tab-panel">
+          <img src="images/2013-value-1.jpg" alt="2013 CMA Value Page 1" />
+          <img src="images/2013-value-2.jpg" alt="2013 CMA Value Page 2" />
+        </div>
+
+        <div id="cma-2019" class="tab-panel">
+          <img src="images/2019-value-1.jpg" alt="2019 CMA Value Page 1" />
+          <img src="images/2019-value-2.jpg" alt="2019 CMA Value Page 2" />
+        </div>
+      </div>
+    </section>
+
+    <hr />
+
+    <section class="comps-section">
+      <h2>Comparable Properties Used for All CMAs</h2>
+
+      <!-- Comp Buttons -->
+      <div class="tab-buttons">
+        <button class="tab-btn active" data-target="active-comps">
+          Active Comps
+        </button>
+        <button class="tab-btn" data-target="expired-comps">
+          Expired / Off Market Comps
+        </button>
+      </div>
+
+      <!-- Comp Content -->
+      <div class="tab-content">
+        <div id="active-comps" class="tab-panel active">
+          <img src="images/active-comp-1.jpg" alt="Active Comp 1" />
+          <img src="images/active-comp-2.jpg" alt="Active Comp 2" />
+        </div>
+
+        <div id="expired-comps" class="tab-panel">
+          <img src="images/expired-comp-1.jpg" alt="Expired Comp 1" />
+          <img src="images/expired-comp-2.jpg" alt="Expired Comp 2" />
+        </div>
+      </div>
+    </section>
+
+    <script src="script.js"></script>
+  </body>
+</html>
