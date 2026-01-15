@@ -1,0 +1,527 @@
+Questionnaires YAML
+---
+app_one:
+  title: Applicant 1 Info
+  title_es: Solicitante 1 Información
+  questionnaires:
+    one_name:
+      title: Applicant 1 Name
+      title_es: Solicitante 1 Nombre
+    one_contact:
+      title: Applicant 1 Contact
+      title_es: Solicitante 1 Contacto
+    one_background:
+      title: Applicant 1 Background
+      title_es: Solicitante 1 Antecedentes
+    one_education:
+      title: Applicant 1 Education
+      title_es: Educación Solicitante 1
+    one_employment:
+      title: Applicant 1 Employment
+      title_es: Solicitante 1 Empleo
+    one_marital:
+      title: Applicant 1 Marital
+      title_es: Solicitante 1 Estado Civil
+app_two:
+  title: Applicant 2 Info
+  title_es: Solicitante 2 Información
+  hide_from_singles: true
+  questionnaires:
+    two_name:
+      title: Applicant 2 Name
+      title_es: Solicitante 2  Nombre
+    relationship:
+      title: Applicant Relationship
+      title_es: Solicitante Relación
+    two_contact:
+      title: Applicant 2 Contact
+      title_es: Solicitante 2 Contacto
+    two_background:
+      title: Applicant 2 Background
+      title_es: Solicitante 2 Antecedentes
+    two_education:
+      title: Applicant 2 Education
+      title_es: Educación Solicitante 2
+    two_employment:
+      title: Applicant 2 Employment
+      title_es: Solicitante 2 Empleo
+    two_marital:
+      title: Applicant 2 Marital
+      title_es: Solicitante 2 Estado Civil
+household:
+  title: Household Information
+  title_es: Información del Hogar
+  questionnaires:
+    address:
+      title: Home Contact Info
+      title_es: Información de Contacto del Hogar
+    home_info:
+      title: Home Information
+      title_es: Información del Hogar
+    children:
+      title: Minor Children
+      title_es: Niños Menores de Edad
+    hh_members:
+      title: Other Adults / Adult Children
+      title_es: Otros Adultos / Niños Adultos
+adoption:
+  title: Foster / Adoption Info
+  title_es: Información de Acogimiento / Adopción
+  questionnaires:
+    county_agency:
+      title: County / Agency Name
+      title_es: Condado / Nombre de Agencia
+    a_history:
+      title: Applicant 1 Foster / Adoption History
+      title_es: Solicitante 1 Historia de Acogimiento / Adopción
+    b_history:
+      title: Applicant 2 Foster / Adoption History
+      title_es: Solicitante 2 Historia de Acogimiento / Adopción
+      hide_from_singles: true
+    child_desired:
+      title: Child / Nonminor Dependent Desired
+      title_es: Niño / No-Menores Dependientes Deseados
+      description: Please identify any Children or Nonminor Dependents placed in your
+        home in this section.
+      description_es: Por favor, identifique cualquier Niño/No-Menor Dependiente ubicados
+        en su hogar en esta sección.
+Individual Questions YAML
+
+---
+one_name:
+  first:
+    title: First name
+    title_es: Primer Nombre
+    type: string
+    max_characters: 20
+    populate_from_model:
+      model: user.first_name
+      user: applicant
+  middle:
+    title: Middle name
+    title_es: Segundo Nombre
+    type: string
+    max_characters: 20
+    required: false
+    populate_from_model:
+      model: user.middle_name
+      user: applicant
+  last:
+    title: Last name
+    title_es: Apellido
+    type: string
+    max_characters: 20
+    populate_from_model:
+      model: user.last_name
+      user: applicant
+one_contact:
+  email:
+    title: Email address
+    type: string
+    populate_from_model:
+      model: user.email
+      user: applicant
+  cell:
+    title: Primary phone number
+    type: phone_number
+    populate_from_model:
+      model: user.phone_number
+      user: applicant
+one_inquiry:
+  become_parents:
+    title: I'd like information on
+    type: conditional_block
+    values:
+    - Becoming a new foster parent
+    - Transferring my current foster home license from another agency to Lutheran
+      Services Carolinas
+    expand_on:
+    - Becoming a new foster parent
+    items:
+      prefer_child_foster:
+        title: I prefer to foster children in
+        type: radio
+        values:
+        - Family foster care
+        - Therapeutic foster care (moderate needs)
+        - Intensive foster care (high needs)
+        - Pre-Adoption foster care (for families primarily seeking to adopt)
+    expand_on_2:
+    - Transferring my current foster home license from another agency to Lutheran
+      Services Carolinas
+    items_2:
+      name_location:
+        title: Name and location of current licensing agency
+        type: string
+      prefer_transfer_foster:
+        title: I prefer to foster children in
+        type: radio
+        values:
+        - Family foster care
+        - Therapeutic foster care (moderate needs)
+        - Intensive foster care (high needs)
+        - Pre-Adoption foster care (for families primarily seeking to adopt)
+one_inquiry_2:
+  experience:
+    title: Do you have any experience caring for children?
+    type: radio
+    values:
+    - 'Yes'
+    - 'No'
+  licensed:
+    title: Are you licensed as a foster parent?
+    type: conditional_block
+    values:
+    - 'Yes'
+    - 'No'
+    items:
+      explain:
+        title: Agency name and location for prior license
+        type: string
+  languages:
+    title: I (and/or my co-applicant) can speak these languages
+    type: string
+  hear_about:
+    title: How did you hear about us?
+    type: radio
+    values:
+    - Advertisement
+    - Brochure/Flyer
+    - Church Event/Pastor
+    - Community Event
+    - Foster Parent
+    - Friend/Relative
+    - Internet Search/Other Website
+    - Lutheran Services Carolinas Website
+    - Newsletter/Article
+    - Other Agency
+    - Social Media Post
+    - Word of Mouth
+  specific_event:
+    title: Specific person, website, church, agency, event, etc.
+    type: string
+  referred_by:
+    title: Were you referred by one of our current foster parents or staff?
+    type: conditional_block
+    values:
+    - 'Yes'
+    - 'No'
+    items:
+      explain:
+        title: Name of person who referring you to our program
+        type: string
+  unoccupied:
+    title: Do you have an extra unoccupied bedroom in your home?
+    type: radio
+    values:
+    - 'Yes'
+    - 'No'
+two_name:
+  first:
+    title: First name
+    title_es: Primer Nombre
+    type: string
+    max_characters: 20
+    populate_from_model:
+      model: user.first_name
+      user: co_applicant
+  middle:
+    title: Middle name
+    title_es: Segundo Nombre
+    type: string
+    max_characters: 20
+    required: false
+    populate_from_model:
+      model: user.middle_name
+      user: co_applicant
+  last:
+    title: Last name
+    title_es: Apellido
+    type: string
+    max_characters: 20
+    populate_from_model:
+      model: user.last_name
+      user: co_applicant
+two_contact:
+  email:
+    title: Email address
+    type: string
+    populate_from_model:
+      model: user.email
+      user: co_applicant
+  cell:
+    title: Primary phone number
+    type: phone_number
+    populate_from_model:
+      model: user.phone_number
+      user: co_applicant
+two_inquiry:
+  become_parents:
+    title: I'd like information on
+    type: conditional_block
+    values:
+    - Becoming a new foster parent
+    - Transferring my current foster home license from another agency to Lutheran
+      Services Carolinas
+    expand_on:
+    - Becoming a new foster parent
+    items:
+      prefer_child_foster:
+        title: I prefer to foster children in
+        type: radio
+        values:
+        - Family foster care
+        - Therapeutic foster care (moderate needs)
+        - Intensive foster care (high needs)
+        - Pre-Adoption foster care (for families primarily seeking to adopt)
+    expand_on_2:
+    - Transferring my current foster home license from another agency to Lutheran
+      Services Carolinas
+    items_2:
+      name_location:
+        title: Name and location of current licensing agency
+        type: string
+      prefer_transfer_foster:
+        title: I prefer to foster children in
+        type: radio
+        values:
+        - Family foster care
+        - Therapeutic foster care (moderate needs)
+        - Intensive foster care (high needs)
+        - Pre-Adoption foster care (for families primarily seeking to adopt)
+two_inquiry_2:
+  experience:
+    title: Do you have any experience caring for children?
+    type: radio
+    values:
+    - 'Yes'
+    - 'No'
+  licensed:
+    title: Are you licensed as a foster parent?
+    type: conditional_block
+    values:
+    - 'Yes'
+    - 'No'
+    items:
+      explain:
+        title: Agency name and location for prior license
+        type: string
+  languages:
+    title: I (and/or my co-applicant) can speak these languages
+    type: string
+  hear_about:
+    title: How did you hear about us?
+    type: radio
+    values:
+    - Advertisement
+    - Brochure/Flyer
+    - Church Event/Pastor
+    - Community Event
+    - Foster Parent
+    - Friend/Relative
+    - Internet Search/Other Website
+    - Lutheran Services Carolinas Website
+    - Newsletter/Article
+    - Other Agency
+    - Social Media Post
+    - Word of Mouth
+  specific_event:
+    title: Specific person, website, church, agency, event, etc.
+    type: string
+  referred_by:
+    title: Were you referred by one of our current foster parents or staff?
+    type: conditional_block
+    values:
+    - 'Yes'
+    - 'No'
+    items:
+      explain:
+        title: Name of person who referring you to our program
+        type: string
+  unoccupied:
+    title: Do you have an extra unoccupied bedroom in your home?
+    type: radio
+    values:
+    - 'Yes'
+    - 'No'
+address:
+  street:
+    title: Physical Street Address
+    type: string
+    populate_from_model:
+      model: user.address_street
+      user: applicant
+  city:
+    title: City
+    type: string
+    populate_from_model:
+      model: user.address_city
+      user: applicant
+  state:
+    title: State
+    type: radio
+    values:
+    - AK
+    - AL
+    - AR
+    - AZ
+    - CA
+    - CO
+    - CT
+    - DC
+    - DE
+    - FL
+    - GA
+    - HI
+    - IA
+    - ID
+    - IL
+    - IN
+    - KS
+    - KY
+    - LA
+    - MA
+    - MD
+    - ME
+    - MI
+    - MN
+    - MO
+    - MS
+    - MT
+    - NC
+    - ND
+    - NE
+    - NH
+    - NJ
+    - NM
+    - NV
+    - NY
+    - OH
+    - OK
+    - OR
+    - PA
+    - RI
+    - SC
+    - SD
+    - TN
+    - TX
+    - UT
+    - VA
+    - VT
+    - WA
+    - WI
+    - WV
+    - WY
+    populate_from_model:
+      model: user.address_state
+      user: applicant
+  zip:
+    title: Zip Code
+    type: string
+    max_characters: 10
+    populate_from_model:
+      model: user.address_zipcode
+      user: applicant
+  county:
+    title: County
+    type: string
+    populate_from_model:
+      model: user.address_county
+      user: applicant
+  mailing:
+    title: Is your mailing address the same as your physical address?
+    title_es: "¿Su dirección postal es la misma que su dirección física?"
+    type: conditional_block
+    values:
+    - 'Yes'
+    - 'No'
+    values_es:
+    - Si
+    - 'No'
+    expand_on:
+    - 'No'
+    items:
+      street:
+        title: Mailing Street Address
+        title_es: Dirección postal
+        type: string
+        populate_from_model:
+          model: user.mailing_address_street
+          user: applicant
+      city:
+        title: City
+        title_es: Ciudad
+        type: string
+        populate_from_model:
+          model: user.mailing_address_city
+          user: applicant
+      state:
+        title: State
+        title_es: Estado
+        type: radio
+        values:
+        - AK
+        - AL
+        - AR
+        - AZ
+        - CA
+        - CO
+        - CT
+        - DC
+        - DE
+        - FL
+        - GA
+        - HI
+        - IA
+        - ID
+        - IL
+        - IN
+        - KS
+        - KY
+        - LA
+        - MA
+        - MD
+        - ME
+        - MI
+        - MN
+        - MO
+        - MS
+        - MT
+        - NC
+        - ND
+        - NE
+        - NH
+        - NJ
+        - NM
+        - NV
+        - NY
+        - OH
+        - OK
+        - OR
+        - PA
+        - RI
+        - SC
+        - SD
+        - TN
+        - TX
+        - UT
+        - VA
+        - VT
+        - WA
+        - WI
+        - WV
+        - WY
+        populate_from_model:
+          model: user.mailing_address_state
+          user: applicant
+      zip:
+        title: Zip Code
+        title_es: Código Postal
+        type: string
+        max_characters: 10
+        populate_from_model:
+          model: user.mailing_address_zipcode
+          user: applicant
+      county:
+        title: County
+        type: string
