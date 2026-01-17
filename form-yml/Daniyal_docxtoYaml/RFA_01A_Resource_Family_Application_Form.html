@@ -1,0 +1,1922 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RFA 01A - Resource Family Application / Solicitud de Familia de Recursos</title>
+    <style>
+        /* ==========================================
+           GLOBAL STYLES
+           ========================================== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 9.5pt;
+            line-height: 1.4;
+            background-color: #f5f5f5;
+            color: #000;
+        }
+
+        .page {
+            width: 8.5in;
+            min-height: 11in;
+            padding: 0.4in 0.5in 0.6in 0.5in;
+            background: #fff;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            margin: 20px auto;
+            position: relative;
+        }
+
+        /* Header Styles */
+        .page-header {
+            display: flex;
+            justify-content: space-between;
+            font-size: 9pt;
+            margin-bottom: 8px;
+        }
+
+        .page-header .left,
+        .page-header .right {
+            font-weight: normal;
+        }
+
+        /* Main Title */
+        .main-title {
+            font-size: 14pt;
+            font-weight: bold;
+            letter-spacing: 0.5px;
+            text-align: center;
+            margin-bottom: 12px;
+        }
+
+        .main-title .es {
+            font-size: 12pt;
+            color: #444;
+            font-style: italic;
+        }
+
+        /* Table Styles */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 8px;
+        }
+
+        table.bordered {
+            border: 1.5px solid #000;
+        }
+
+        th, td {
+            border: 1px solid #000;
+            padding: 3px 5px;
+            text-align: left;
+            vertical-align: top;
+        }
+
+        th {
+            background: #d9d9d9;
+            font-weight: bold;
+            font-size: 8.5pt;
+        }
+
+        .section-header-row {
+            background: #d9d9d9;
+            font-weight: bold;
+        }
+
+        /* Input Styles */
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        input[type="date"] {
+            border: none;
+            border-bottom: 1px solid #000;
+            background: transparent;
+            width: 100%;
+            padding: 2px 4px;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 9pt;
+        }
+
+        input[type="text"]:focus,
+        input[type="email"]:focus,
+        input[type="tel"]:focus,
+        input[type="date"]:focus {
+            background: #fffde7;
+            outline: none;
+        }
+
+        /* Checkbox Styles */
+        input[type="checkbox"] {
+            width: 11px;
+            height: 11px;
+            accent-color: #000;
+            margin-right: 4px;
+            vertical-align: middle;
+        }
+
+        /* Box Styles */
+        .box {
+            border: 1.5px solid #000;
+            margin-bottom: 8px;
+        }
+
+        .box-header {
+            background: #d9d9d9;
+            font-weight: bold;
+            padding: 3px 5px;
+            font-size: 9pt;
+            border-bottom: 1px solid #000;
+        }
+
+        .box-content {
+            padding: 6px 8px;
+        }
+
+        /* Section Title */
+        .section-title {
+            font-weight: bold;
+            font-size: 9pt;
+            margin: 14px 0 8px 0;
+        }
+
+        .section-title .es {
+            font-size: 8pt;
+            color: #444;
+            font-style: italic;
+            display: block;
+        }
+
+        /* Instruction Text */
+        .instruction-text {
+            font-size: 9pt;
+            margin-bottom: 12px;
+        }
+
+        .instruction-text .es {
+            font-style: italic;
+            color: #444;
+            display: block;
+        }
+
+        /* Checkbox Row */
+        .checkbox-row {
+            display: flex;
+            align-items: center;
+            gap: 3px;
+            margin-bottom: 8px;
+            flex-wrap: wrap;
+        }
+
+        .checkbox-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 4px 15px;
+            align-items: center;
+        }
+
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+            gap: 3px;
+        }
+
+        /* Question Row */
+        .question-row {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 8px;
+        }
+
+        /* County Use Box */
+        .county-use-box {
+            border: 1.5px solid #000;
+            width: 180px;
+            float: right;
+            margin-bottom: 10px;
+        }
+
+        /* Bilingual Label */
+        .label-bilingual {
+            display: block;
+        }
+
+        .label-bilingual .es {
+            font-size: 8pt;
+            color: #555;
+            font-style: italic;
+        }
+
+        /* Footer */
+        .page-footer {
+            position: absolute;
+            bottom: 0.4in;
+            left: 0.5in;
+            right: 0.5in;
+            display: flex;
+            justify-content: space-between;
+            font-size: 8pt;
+            border-top: 1px solid #ccc;
+            padding-top: 5px;
+        }
+
+        /* Signature Line */
+        .signature-line {
+            border-bottom: 1px solid #000;
+            min-height: 25px;
+            margin-top: 5px;
+        }
+
+        /* Note/Subtext */
+        .note {
+            font-size: 7.5pt;
+            font-style: italic;
+        }
+
+        .note .es {
+            color: #555;
+        }
+
+        /* Subtext under headers */
+        .subtext {
+            font-size: 7.5pt;
+            font-style: italic;
+            font-weight: normal;
+        }
+
+        /* Declaration List */
+        .declaration-list {
+            padding-left: 18px;
+            margin-bottom: 12px;
+            font-size: 9pt;
+            line-height: 1.4;
+        }
+
+        .declaration-list li {
+            margin-bottom: 8px;
+        }
+
+        .declaration-list .es {
+            font-style: italic;
+            color: #444;
+            display: block;
+            margin-top: 2px;
+        }
+
+        /* Sub-list */
+        .sub-list {
+            list-style-type: decimal;
+            padding-left: 20px;
+            margin-top: 5px;
+        }
+
+        /* Clear float */
+        .clearfix::after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+
+        /* Row Label */
+        .row-label {
+            font-weight: bold;
+            width: 100px;
+        }
+
+        /* Print Styles */
+        @media print {
+            body {
+                background: #fff;
+            }
+            .page {
+                box-shadow: none;
+                margin: 0;
+                page-break-after: always;
+            }
+            .page:last-child {
+                page-break-after: auto;
+            }
+        }
+
+        /* Repeatable row styles */
+        .repeatable-row td {
+            height: 28px;
+        }
+
+        /* Question cell in table */
+        td.question-cell {
+            background: #d9d9d9;
+            font-weight: bold;
+            width: 45%;
+        }
+
+        /* Flex container */
+        .flex-row {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .flex-wrap {
+            flex-wrap: wrap;
+        }
+
+        /* N/A checkbox alignment */
+        .na-checkbox {
+            margin-left: auto;
+        }
+
+        /* Content section within box */
+        .content-section {
+            border-top: 1px solid #000;
+            padding: 6px 8px;
+        }
+
+        .content-section:first-child {
+            border-top: none;
+        }
+
+        .content-section-header {
+            background: #d9d9d9;
+            font-weight: bold;
+            padding: 3px 5px;
+            margin: -6px -8px 6px -8px;
+        }
+
+        /* Language toggle (optional) */
+        .lang-toggle {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            z-index: 1000;
+            background: #fff;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+
+        .lang-toggle button {
+            padding: 5px 15px;
+            margin: 0 5px;
+            cursor: pointer;
+        }
+
+        /* Hide Spanish by default, show on toggle */
+        body.show-spanish .es {
+            display: block !important;
+        }
+
+        body.hide-spanish .es {
+            display: none !important;
+        }
+    </style>
+</head>
+<body class="show-spanish">
+
+    <!-- Language Toggle -->
+    <div class="lang-toggle">
+        <strong>Language / Idioma:</strong>
+        <button onclick="document.body.classList.remove('hide-spanish'); document.body.classList.add('show-spanish');">Bilingual</button>
+        <button onclick="document.body.classList.add('hide-spanish'); document.body.classList.remove('show-spanish');">English Only</button>
+    </div>
+
+    <!-- ==========================================
+         PAGE 1
+         ========================================== -->
+    <div class="page" id="page1">
+        <!-- Header -->
+        <div class="page-header">
+            <span class="left">California Health &amp; Human Services Agency</span>
+            <span class="right">California Department of Social Services</span>
+        </div>
+
+        <!-- County Use Box -->
+        <div class="county-use-box">
+            <div class="box-header">
+                County Use Only
+                <span class="es">/ Solo para Uso del Condado</span>
+            </div>
+            <div class="box-content">
+                <label class="label-bilingual">
+                    County / <span class="es">Condado</span>
+                </label>
+                <input type="text" name="county" id="county" style="width: 120px;">
+            </div>
+        </div>
+
+        <div class="clearfix"></div>
+
+        <!-- Main Title -->
+        <h1 class="main-title">
+            RESOURCE FAMILY APPLICATION
+            <span class="es">SOLICITUD DE FAMILIA DE RECURSOS</span>
+        </h1>
+
+        <!-- Instructions -->
+        <p class="instruction-text">
+            <strong>Instructions:</strong> This is an application for Resource Family Approval by a County. Please type or print clearly.
+            <span class="es"><strong>Instrucciones:</strong> Esta es una solicitud de Aprobación de Familia de Recursos por un Condado. Por favor escriba a máquina o imprima claramente.</span>
+        </p>
+
+        <!-- Application Type -->
+        <div class="checkbox-row">
+            <label class="checkbox-item">
+                <input type="checkbox" name="application_type" id="application" value="application">
+                Application / <span class="es">Solicitud</span>
+            </label>
+            <label class="checkbox-item">
+                <input type="checkbox" name="application_type" id="other" value="other">
+                Other (Specify): / <span class="es">Otro (Especifique):</span>
+            </label>
+            <input type="text" name="other_specify" id="other_specify" style="width: 320px;">
+        </div>
+
+        <!-- Tribe Referral -->
+        <div class="question-row">
+            <span>
+                Were you referred to the RFA program by a Tribe?
+                <span class="es">/ ¿Fue referido al programa RFA por una Tribu?</span>
+            </span>
+            <label class="checkbox-item">
+                <input type="checkbox" name="tribe_referral" id="tribe-yes" value="yes">
+                Yes / <span class="es">Sí</span>
+            </label>
+            <label class="checkbox-item">
+                <input type="checkbox" name="tribe_referral" id="tribe-no" value="no">
+                No
+            </label>
+        </div>
+
+        <!-- Tribe Info (Conditional) -->
+        <div class="conditional-fields" id="tribe_info">
+            <label class="label-bilingual">
+                If "Yes," provide name of the Tribe and contact information if known
+                <span class="es">Si "Sí", proporcione el nombre de la Tribu e información de contacto si se conoce</span>
+            </label>
+            <input type="text" name="tribe_name_contact" id="tribe_name_contact" style="width: 100%; margin-bottom: 5px;">
+            <input type="text" name="tribe_additional_info" id="tribe_additional_info" style="width: 100%;">
+        </div>
+
+        <!-- Section I - Applicant(s) -->
+        <div class="section-title">
+            I. APPLICANT(S): EACH APPLICANT MUST COMPLETE A CRIMINAL RECORD STATEMENT RFA 01B.
+            <span class="es">I. SOLICITANTE(S): CADA SOLICITANTE DEBE COMPLETAR UNA DECLARACIÓN DE ANTECEDENTES PENALES RFA 01B.</span>
+        </div>
+
+        <!-- Applicant One Name Table -->
+        <table class="bordered">
+            <tr class="section-header-row">
+                <td colspan="3">
+                    Applicant One (Legal Name):
+                    <span class="es">/ Solicitante Uno (Nombre Legal):</span>
+                </td>
+            </tr>
+            <tr>
+                <th style="width: 33%;">
+                    First
+                    <span class="es">/ Primer Nombre</span>
+                </th>
+                <th style="width: 34%;">
+                    Middle
+                    <span class="es">/ Segundo Nombre</span>
+                </th>
+                <th style="width: 33%;">
+                    Last
+                    <span class="es">/ Apellido</span>
+                </th>
+            </tr>
+            <tr>
+                <td><input type="text" name="applicant1_first_name" id="applicant1_first_name" required></td>
+                <td><input type="text" name="applicant1_middle_name" id="applicant1_middle_name"></td>
+                <td><input type="text" name="applicant1_last_name" id="applicant1_last_name" required></td>
+            </tr>
+            <tr class="section-header-row">
+                <td colspan="3">
+                    Preferred/Chosen Name:
+                    <span class="es">/ Nombre Preferido/Elegido:</span>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="3"><input type="text" name="applicant1_preferred_name" id="applicant1_preferred_name"></td>
+            </tr>
+        </table>
+
+        <!-- Applicant One Previous Name & Education -->
+        <table class="bordered">
+            <tr>
+                <th style="width: 50%;">
+                    Previous Name Used:
+                    <span class="es">/ Nombre Anterior Usado:</span>
+                    <br><span class="subtext">*including maiden name / <span class="es">*incluyendo nombre de soltera</span></span>
+                </th>
+                <th style="width: 50%;">
+                    Highest Level of Education Completed
+                    <span class="es">/ Nivel Más Alto de Educación Completado</span>
+                </th>
+            </tr>
+            <tr>
+                <td><input type="text" name="applicant1_previous_name" id="applicant1_previous_name"></td>
+                <td><input type="text" name="applicant1_education" id="applicant1_education"></td>
+            </tr>
+        </table>
+
+        <!-- Applicant One DOB, Gender, Race, License -->
+        <table class="bordered">
+            <tr>
+                <th style="width: 20%;">
+                    Date of Birth
+                    <span class="es">/ Fecha de Nacimiento</span>
+                </th>
+                <th style="width: 20%;">
+                    Gender
+                    <span class="es">/ Género</span>
+                </th>
+                <th style="width: 30%;">
+                    Race/Ethnicity
+                    <span class="es">/ Raza/Etnicidad</span>
+                </th>
+                <th style="width: 30%;">
+                    Driver's License Number
+                    <span class="es">/ Número de Licencia de Conducir</span>
+                </th>
+            </tr>
+            <tr>
+                <td><input type="text" name="applicant1_dob" id="applicant1_dob" placeholder="MM/DD/YYYY" required></td>
+                <td><input type="text" name="applicant1_gender" id="applicant1_gender"></td>
+                <td><input type="text" name="applicant1_race_ethnicity" id="applicant1_race_ethnicity"></td>
+                <td><input type="text" name="applicant1_drivers_license" id="applicant1_drivers_license"></td>
+            </tr>
+        </table>
+
+        <!-- Applicant One Tribal Affiliation -->
+        <div class="box">
+            <div class="box-header">
+                Tribal Affiliation
+                <span class="es">/ Afiliación Tribal</span>
+            </div>
+            <div class="box-content">
+                <div class="checkbox-group">
+                    <label class="checkbox-item">
+                        <input type="checkbox" name="applicant1_tribal_status" id="member1" value="member">
+                        Member / <span class="es">Miembro</span>
+                    </label>
+                    <label class="checkbox-item">
+                        <input type="checkbox" name="applicant1_tribal_status" id="descendant1" value="descendant">
+                        Descendant / <span class="es">Descendiente</span>
+                    </label>
+                    <span style="margin-left: 20px;">
+                        <label>
+                            Name of Tribe / <span class="es">Nombre de la Tribu</span>:
+                            <input type="text" name="applicant1_tribe_name" id="applicant1_tribe_name" style="width: 250px;">
+                        </label>
+                    </span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Applicant One Contact Info -->
+        <table class="bordered">
+            <tr>
+                <th style="width: 33%;">
+                    Email Address (Optional)
+                    <span class="es">/ Dirección de Correo Electrónico (Opcional)</span>
+                </th>
+                <th style="width: 34%;">
+                    Cell Phone Number
+                    <span class="es">/ Número de Teléfono Celular</span>
+                </th>
+                <th style="width: 33%;">
+                    Home Phone Number
+                    <span class="es">/ Número de Teléfono de Casa</span>
+                </th>
+            </tr>
+            <tr>
+                <td><input type="email" name="applicant1_email" id="applicant1_email"></td>
+                <td><input type="tel" name="applicant1_cell_phone" id="applicant1_cell_phone"></td>
+                <td><input type="tel" name="applicant1_home_phone" id="applicant1_home_phone"></td>
+            </tr>
+        </table>
+
+        <!-- Applicant One Employment Info -->
+        <table class="bordered">
+            <tr>
+                <th style="width: 30%;">
+                    Name/Address of Employer
+                    <span class="es">/ Nombre/Dirección del Empleador</span>
+                </th>
+                <th style="width: 25%;">
+                    Work Phone Number
+                    <span class="es">/ Número de Teléfono de Trabajo</span>
+                </th>
+                <th style="width: 22%;">
+                    Occupation
+                    <span class="es">/ Ocupación</span>
+                </th>
+                <th style="width: 23%;">
+                    Annual Income
+                    <span class="es">/ Ingreso Anual</span>
+                </th>
+            </tr>
+            <tr>
+                <td><input type="text" name="applicant1_employer" id="applicant1_employer"></td>
+                <td><input type="tel" name="applicant1_work_phone" id="applicant1_work_phone"></td>
+                <td><input type="text" name="applicant1_occupation" id="applicant1_occupation"></td>
+                <td><input type="text" name="applicant1_annual_income" id="applicant1_annual_income"></td>
+            </tr>
+        </table>
+
+        <!-- Footer -->
+        <div class="page-footer">
+            <span>RFA 01A (10/22) (Mandatory) (Confidential)</span>
+            <span>Page 1 of 7</span>
+        </div>
+    </div>
+
+    <!-- ==========================================
+         PAGE 2
+         ========================================== -->
+    <div class="page" id="page2">
+        <!-- Header -->
+        <div class="page-header">
+            <span class="left">California Health &amp; Human Services Agency</span>
+            <span class="right">California Department of Social Services</span>
+        </div>
+
+        <!-- Applicant Two Name Table -->
+        <table class="bordered">
+            <tr class="section-header-row">
+                <td colspan="3">
+                    Applicant Two (Legal Name):
+                    <span class="es">/ Solicitante Dos (Nombre Legal):</span>
+                </td>
+            </tr>
+            <tr>
+                <th style="width: 33%;">
+                    First
+                    <span class="es">/ Primer Nombre</span>
+                </th>
+                <th style="width: 34%;">
+                    Middle
+                    <span class="es">/ Segundo Nombre</span>
+                </th>
+                <th style="width: 33%;">
+                    Last
+                    <span class="es">/ Apellido</span>
+                </th>
+            </tr>
+            <tr>
+                <td><input type="text" name="applicant2_first_name" id="applicant2_first_name"></td>
+                <td><input type="text" name="applicant2_middle_name" id="applicant2_middle_name"></td>
+                <td><input type="text" name="applicant2_last_name" id="applicant2_last_name"></td>
+            </tr>
+            <tr class="section-header-row">
+                <td colspan="3">
+                    Preferred/Chosen Name:
+                    <span class="es">/ Nombre Preferido/Elegido:</span>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="3"><input type="text" name="applicant2_preferred_name" id="applicant2_preferred_name"></td>
+            </tr>
+        </table>
+
+        <!-- Applicant Two Previous Name & Education -->
+        <table class="bordered">
+            <tr>
+                <th style="width: 50%;">
+                    Previous Name Used:
+                    <span class="es">/ Nombre Anterior Usado:</span>
+                    <br><span class="subtext">*including maiden name / <span class="es">*incluyendo nombre de soltera</span></span>
+                </th>
+                <th style="width: 50%;">
+                    Highest Level of Education Completed
+                    <span class="es">/ Nivel Más Alto de Educación Completado</span>
+                </th>
+            </tr>
+            <tr>
+                <td><input type="text" name="applicant2_previous_name" id="applicant2_previous_name"></td>
+                <td><input type="text" name="applicant2_education" id="applicant2_education"></td>
+            </tr>
+        </table>
+
+        <!-- Applicant Two DOB, Gender, Race, License -->
+        <table class="bordered">
+            <tr>
+                <th style="width: 20%;">
+                    Date of Birth
+                    <span class="es">/ Fecha de Nacimiento</span>
+                </th>
+                <th style="width: 20%;">
+                    Gender
+                    <span class="es">/ Género</span>
+                </th>
+                <th style="width: 30%;">
+                    Race/Ethnicity
+                    <span class="es">/ Raza/Etnicidad</span>
+                </th>
+                <th style="width: 30%;">
+                    Driver's License Number
+                    <span class="es">/ Número de Licencia de Conducir</span>
+                </th>
+            </tr>
+            <tr>
+                <td><input type="text" name="applicant2_dob" id="applicant2_dob" placeholder="MM/DD/YYYY"></td>
+                <td><input type="text" name="applicant2_gender" id="applicant2_gender"></td>
+                <td><input type="text" name="applicant2_race_ethnicity" id="applicant2_race_ethnicity"></td>
+                <td><input type="text" name="applicant2_drivers_license" id="applicant2_drivers_license"></td>
+            </tr>
+        </table>
+
+        <!-- Applicant Two Tribal Affiliation -->
+        <div class="box">
+            <div class="box-header">
+                Tribal Affiliation
+                <span class="es">/ Afiliación Tribal</span>
+            </div>
+            <div class="box-content">
+                <div class="checkbox-group">
+                    <label class="checkbox-item">
+                        <input type="checkbox" name="applicant2_tribal_status" id="member2" value="member">
+                        Member / <span class="es">Miembro</span>
+                    </label>
+                    <label class="checkbox-item">
+                        <input type="checkbox" name="applicant2_tribal_status" id="descendant2" value="descendant">
+                        Descendant / <span class="es">Descendiente</span>
+                    </label>
+                    <span style="margin-left: 20px;">
+                        <label>
+                            Name of Tribe / <span class="es">Nombre de la Tribu</span>:
+                            <input type="text" name="applicant2_tribe_name" id="applicant2_tribe_name" style="width: 250px;">
+                        </label>
+                    </span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Applicant Two Contact Info -->
+        <table class="bordered">
+            <tr>
+                <th style="width: 33%;">
+                    Email Address (Optional)
+                    <span class="es">/ Dirección de Correo Electrónico (Opcional)</span>
+                </th>
+                <th style="width: 34%;">
+                    Cell Phone Number
+                    <span class="es">/ Número de Teléfono Celular</span>
+                </th>
+                <th style="width: 33%;">
+                    Home Phone Number
+                    <span class="es">/ Número de Teléfono de Casa</span>
+                </th>
+            </tr>
+            <tr>
+                <td><input type="email" name="applicant2_email" id="applicant2_email"></td>
+                <td><input type="tel" name="applicant2_cell_phone" id="applicant2_cell_phone"></td>
+                <td><input type="tel" name="applicant2_home_phone" id="applicant2_home_phone"></td>
+            </tr>
+        </table>
+
+        <!-- Applicant Two Employment Info -->
+        <table class="bordered">
+            <tr>
+                <th style="width: 30%;">
+                    Name/Address of Employer
+                    <span class="es">/ Nombre/Dirección del Empleador</span>
+                </th>
+                <th style="width: 25%;">
+                    Work Phone Number
+                    <span class="es">/ Número de Teléfono de Trabajo</span>
+                </th>
+                <th style="width: 22%;">
+                    Occupation
+                    <span class="es">/ Ocupación</span>
+                </th>
+                <th style="width: 23%;">
+                    Annual Income
+                    <span class="es">/ Ingreso Anual</span>
+                </th>
+            </tr>
+            <tr>
+                <td><input type="text" name="applicant2_employer" id="applicant2_employer"></td>
+                <td><input type="tel" name="applicant2_work_phone" id="applicant2_work_phone"></td>
+                <td><input type="text" name="applicant2_occupation" id="applicant2_occupation"></td>
+                <td><input type="text" name="applicant2_annual_income" id="applicant2_annual_income"></td>
+            </tr>
+        </table>
+
+        <!-- Relationship Box -->
+        <div class="box">
+            <div class="box-header">
+                If more than one applicant, what is your relationship?
+                <span class="es">/ ¿Si hay más de un solicitante, cuál es su relación?</span>
+                <span style="font-weight: normal; font-size: 8pt;"> (Please check one. / <span class="es">Por favor marque uno.</span>)</span>
+            </div>
+            <div class="box-content">
+                <div class="checkbox-group">
+                    <label class="checkbox-item">
+                        <input type="checkbox" name="relationship_type" id="married" value="married">
+                        Married / <span class="es">Casado</span>
+                    </label>
+                    <label class="checkbox-item">
+                        <input type="checkbox" name="relationship_type" id="domestic" value="domestic_partnership">
+                        Domestic Partnership / <span class="es">Pareja Doméstica</span>
+                    </label>
+                    <label class="checkbox-item">
+                        <input type="checkbox" name="relationship_type" id="related" value="related">
+                        Related (Family Member) / <span class="es">Relacionado (Miembro de la Familia)</span>
+                    </label>
+                    <label class="checkbox-item">
+                        <input type="checkbox" name="relationship_type" id="cohabitants" value="cohabitants">
+                        Cohabitants / <span class="es">Cohabitantes</span>
+                    </label>
+                    <label class="checkbox-item">
+                        <input type="checkbox" name="relationship_type" id="other-rel" value="other">
+                        Other / <span class="es">Otro</span>:
+                        <input type="text" name="relationship_other_specify" id="relationship_other_specify" style="width: 90px;">
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section II - Applicant(s)' Residence -->
+        <div class="section-title">
+            II. APPLICANT(S)' RESIDENCE
+            <span class="es">II. RESIDENCIA DEL/DE LOS SOLICITANTE(S)</span>
+        </div>
+
+        <!-- Physical Address -->
+        <table class="bordered">
+            <tr>
+                <th style="width: 50%;">
+                    Physical Address
+                    <span class="es">/ Dirección Física</span>
+                </th>
+                <th style="width: 20%;">
+                    City
+                    <span class="es">/ Ciudad</span>
+                </th>
+                <th style="width: 15%;">
+                    State
+                    <span class="es">/ Estado</span>
+                </th>
+                <th style="width: 15%;">
+                    Zip
+                    <span class="es">/ Código Postal</span>
+                </th>
+            </tr>
+            <tr>
+                <td><input type="text" name="physical_address" id="physical_address" required></td>
+                <td><input type="text" name="physical_city" id="physical_city" required></td>
+                <td><input type="text" name="physical_state" id="physical_state" required></td>
+                <td><input type="text" name="physical_zip" id="physical_zip" required></td>
+            </tr>
+        </table>
+
+        <!-- Mailing Address -->
+        <table class="bordered">
+            <tr>
+                <th style="width: 50%;">
+                    Mailing Address (If Different)
+                    <span class="es">/ Dirección Postal (Si es Diferente)</span>
+                </th>
+                <th style="width: 20%;">
+                    City
+                    <span class="es">/ Ciudad</span>
+                </th>
+                <th style="width: 15%;">
+                    State
+                    <span class="es">/ Estado</span>
+                </th>
+                <th style="width: 15%;">
+                    Zip
+                    <span class="es">/ Código Postal</span>
+                </th>
+            </tr>
+            <tr>
+                <td><input type="text" name="mailing_address" id="mailing_address"></td>
+                <td><input type="text" name="mailing_city" id="mailing_city"></td>
+                <td><input type="text" name="mailing_state" id="mailing_state"></td>
+                <td><input type="text" name="mailing_zip" id="mailing_zip"></td>
+            </tr>
+        </table>
+
+        <!-- Residence Questions -->
+        <table class="bordered">
+            <tr>
+                <td class="question-cell">
+                    Do you own, rent or lease?
+                    <span class="es">/ ¿Es propietario, alquila o arrienda?</span>
+                </td>
+                <td>
+                    <span style="font-size: 8pt;">Check one: / <span class="es">Marque uno:</span></span>
+                    <div class="checkbox-group" style="margin-top: 3px;">
+                        <label class="checkbox-item"><input type="checkbox" name="residence_ownership" value="own"> Own</label>
+                        <label class="checkbox-item"><input type="checkbox" name="residence_ownership" value="rent"> Rent</label>
+                        <label class="checkbox-item"><input type="checkbox" name="residence_ownership" value="lease"> Lease</label>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td class="question-cell">
+                    Weapons in the home?
+                    <span class="es">/ ¿Armas en el hogar?</span>
+                </td>
+                <td>
+                    <span style="font-size: 8pt;">Check one: / <span class="es">Marque uno:</span></span>
+                    <div class="checkbox-group" style="margin-top: 3px;">
+                        <label class="checkbox-item"><input type="checkbox" name="weapons_in_home" value="yes"> Yes / <span class="es">Sí</span></label>
+                        <label class="checkbox-item"><input type="checkbox" name="weapons_in_home" value="no"> No</label>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td class="question-cell">
+                    Bodies of water?
+                    <span class="es">/ ¿Cuerpos de agua?</span>
+                </td>
+                <td>
+                    <span style="font-size: 8pt;">Check one: / <span class="es">Marque uno:</span></span>
+                    <div class="checkbox-group" style="margin-top: 3px;">
+                        <label class="checkbox-item"><input type="checkbox" name="bodies_of_water" value="yes"> Yes / <span class="es">Sí</span></label>
+                        <label class="checkbox-item"><input type="checkbox" name="bodies_of_water" value="no"> No</label>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td class="question-cell">
+                    Does any person not listed in this document use the residence as their mailing address?
+                    <span class="es">/ ¿Alguna persona no listada en este documento usa la residencia como su dirección postal?</span>
+                </td>
+                <td>
+                    <div class="checkbox-group">
+                        <label class="checkbox-item"><input type="checkbox" name="unlisted_person_mailing" value="yes"> Yes / <span class="es">Sí</span></label>
+                        <label class="checkbox-item"><input type="checkbox" name="unlisted_person_mailing" value="no"> No</label>
+                    </div>
+                    <div style="margin-top: 5px;">
+                        If yes, explain: / <span class="es">Si sí, explique:</span>
+                        <input type="text" name="unlisted_person_explain" style="width: 100%;">
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td class="question-cell">
+                    Languages spoken in the home:
+                    <span class="es">/ Idiomas hablados en el hogar:</span>
+                </td>
+                <td>
+                    <input type="text" name="languages_spoken" id="languages_spoken" style="width: 100%;">
+                </td>
+            </tr>
+        </table>
+
+        <!-- Footer -->
+        <div class="page-footer">
+            <span>RFA 01A (10/22) (Mandatory) (Confidential)</span>
+            <span>Page 2 of 7</span>
+        </div>
+    </div>
+
+    <!-- ==========================================
+         PAGE 3
+         ========================================== -->
+    <div class="page" id="page3">
+        <!-- Header -->
+        <div class="page-header">
+            <span class="left">California Health &amp; Human Services Agency</span>
+            <span class="right">California Department of Social Services</span>
+        </div>
+
+        <!-- Section III - Relationship History -->
+        <div class="section-title" style="margin-top: 0;">
+            III. RELATIONSHIP HISTORY
+            <span class="es">III. HISTORIAL DE RELACIONES</span>
+        </div>
+
+        <!-- Currently Married/Domestic Partnership with Other Applicant -->
+        <div class="box">
+            <div class="box-header">
+                If currently married or in a domestic partnership with the other applicant:
+                <span class="es">/ Si actualmente está casado o en una pareja doméstica con el otro solicitante:</span>
+            </div>
+            <div class="box-content">
+                <div class="flex-row">
+                    <label>
+                        Date / <span class="es">Fecha</span>:
+                        <input type="text" name="marriage_date_coapplicant" id="marriage_date_coapplicant" style="width: 90px;">
+                    </label>
+                    <label>
+                        Place (City and State) / <span class="es">Lugar (Ciudad y Estado)</span>:
+                        <input type="text" name="marriage_place_coapplicant" id="marriage_place_coapplicant" style="width: 280px;">
+                    </label>
+                    <label class="checkbox-item na-checkbox">
+                        <input type="checkbox" name="marriage_coapplicant_na" id="na1">
+                        N/A
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <!-- Applicant One Relationship History -->
+        <div class="box">
+            <div class="box-header" style="text-decoration: underline;">
+                Applicant One:
+                <span class="es">/ Solicitante Uno:</span>
+            </div>
+            <div class="content-section">
+                <div class="content-section-header">
+                    If currently married or in a domestic partnership with someone who is not an applicant:
+                    <span class="es">/ Si actualmente está casado o en una pareja doméstica con alguien que no es un solicitante:</span>
+                </div>
+                <div class="flex-row">
+                    <label>
+                        Date / <span class="es">Fecha</span>:
+                        <input type="text" name="a1_other_marriage_date" id="a1_other_marriage_date" style="width: 90px;">
+                    </label>
+                    <label>
+                        Place (City and State) / <span class="es">Lugar (Ciudad y Estado)</span>:
+                        <input type="text" name="a1_other_marriage_place" id="a1_other_marriage_place" style="width: 280px;">
+                    </label>
+                    <label class="checkbox-item na-checkbox">
+                        <input type="checkbox" name="a1_other_marriage_na" id="na2">
+                        N/A
+                    </label>
+                </div>
+                <p class="note" style="margin-top: 5px;">
+                    *Please include the individual in Section V. if the individual resides or is regularly present in the home.
+                    <span class="es">/ *Por favor incluya a la persona en la Sección V. si la persona reside o está presente regularmente en el hogar.</span>
+                </p>
+            </div>
+            <div class="content-section">
+                <div class="content-section-header">
+                    Have you had previous marital or domestic partnerships?
+                    <span class="es">/ ¿Ha tenido parejas maritales o domésticas anteriores?</span>
+                </div>
+                <div class="flex-row">
+                    <label class="checkbox-item">
+                        <input type="checkbox" name="a1_previous_partnerships" id="prev-yes1" value="yes">
+                        Yes / <span class="es">Sí</span>
+                    </label>
+                    <label>
+                        If yes, how many? / <span class="es">Si sí, ¿cuántas?</span>:
+                        <input type="text" name="a1_previous_count" id="a1_previous_count" style="width: 50px;">
+                    </label>
+                    <label class="checkbox-item">
+                        <input type="checkbox" name="a1_previous_partnerships" id="prev-none1" value="none">
+                        None / <span class="es">Ninguna</span>
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <!-- Applicant Two Relationship History -->
+        <div class="box">
+            <div class="box-header" style="text-decoration: underline;">
+                Applicant Two:
+                <span class="es">/ Solicitante Dos:</span>
+            </div>
+            <div class="content-section">
+                <div class="content-section-header">
+                    If currently married or in a domestic partnership with someone who is not an applicant:
+                    <span class="es">/ Si actualmente está casado o en una pareja doméstica con alguien que no es un solicitante:</span>
+                </div>
+                <div class="flex-row">
+                    <label>
+                        Date / <span class="es">Fecha</span>:
+                        <input type="text" name="a2_other_marriage_date" id="a2_other_marriage_date" style="width: 90px;">
+                    </label>
+                    <label>
+                        Place (City and State) / <span class="es">Lugar (Ciudad y Estado)</span>:
+                        <input type="text" name="a2_other_marriage_place" id="a2_other_marriage_place" style="width: 280px;">
+                    </label>
+                    <label class="checkbox-item na-checkbox">
+                        <input type="checkbox" name="a2_other_marriage_na" id="na3">
+                        N/A
+                    </label>
+                </div>
+                <p class="note" style="margin-top: 5px;">
+                    *Please include the individual in Section V. if the individual resides or is regularly present in the home.
+                    <span class="es">/ *Por favor incluya a la persona en la Sección V. si la persona reside o está presente regularmente en el hogar.</span>
+                </p>
+            </div>
+            <div class="content-section">
+                <div class="content-section-header">
+                    Have you had previous marital or domestic partnerships?
+                    <span class="es">/ ¿Ha tenido parejas maritales o domésticas anteriores?</span>
+                </div>
+                <div class="flex-row">
+                    <label class="checkbox-item">
+                        <input type="checkbox" name="a2_previous_partnerships" id="prev-yes2" value="yes">
+                        Yes / <span class="es">Sí</span>
+                    </label>
+                    <label>
+                        If yes, how many? / <span class="es">Si sí, ¿cuántas?</span>:
+                        <input type="text" name="a2_previous_count" id="a2_previous_count" style="width: 50px;">
+                    </label>
+                    <label class="checkbox-item">
+                        <input type="checkbox" name="a2_previous_partnerships" id="prev-none2" value="none">
+                        None / <span class="es">Ninguna</span>
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section IV - Minor Children Residing in the Home -->
+        <div class="section-title">
+            IV. MINOR CHILDREN RESIDING IN THE HOME
+            <span class="es">IV. HIJOS MENORES RESIDIENDO EN EL HOGAR</span>
+            <span style="font-size: 8pt; font-weight: bold; display: block; text-indent: 15px;">
+                (PLEASE IDENTIFY DEPENDENT CHILDREN PLACED IN YOUR HOME IN SECTION VI.)
+                <span class="es">/ (POR FAVOR IDENTIFIQUE LOS HIJOS DEPENDIENTES COLOCADOS EN SU HOGAR EN LA SECCIÓN VI.)</span>
+            </span>
+        </div>
+
+        <table class="bordered">
+            <tr>
+                <th style="width: 28%;">
+                    Name of Minor Child
+                    <span class="es">/ Nombre del Hijo Menor</span>
+                </th>
+                <th style="width: 18%;">
+                    Relationship to Applicant(s)
+                    <span class="es">/ Relación con Solicitante(s)</span>
+                </th>
+                <th style="width: 14%;">
+                    Date of Birth
+                    <span class="es">/ Fecha de Nacimiento</span>
+                </th>
+                <th style="width: 12%;">
+                    Gender
+                    <span class="es">/ Género</span>
+                </th>
+                <th style="width: 28%;">
+                    Do You Financially Support This Child?
+                    <span class="es">/ ¿Apoya Financieramente a Este Hijo?</span>
+                </th>
+            </tr>
+            <tr class="repeatable-row">
+                <td><input type="text" name="minor_child_name_1"></td>
+                <td><input type="text" name="minor_child_relationship_1"></td>
+                <td><input type="text" name="minor_child_dob_1"></td>
+                <td><input type="text" name="minor_child_gender_1"></td>
+                <td style="text-align: center;">
+                    <label class="checkbox-item"><input type="checkbox" name="minor_child_support_1" value="yes"> Yes</label>
+                    <label class="checkbox-item"><input type="checkbox" name="minor_child_support_1" value="no"> No</label>
+                </td>
+            </tr>
+            <tr class="repeatable-row">
+                <td><input type="text" name="minor_child_name_2"></td>
+                <td><input type="text" name="minor_child_relationship_2"></td>
+                <td><input type="text" name="minor_child_dob_2"></td>
+                <td><input type="text" name="minor_child_gender_2"></td>
+                <td style="text-align: center;">
+                    <label class="checkbox-item"><input type="checkbox" name="minor_child_support_2" value="yes"> Yes</label>
+                    <label class="checkbox-item"><input type="checkbox" name="minor_child_support_2" value="no"> No</label>
+                </td>
+            </tr>
+            <tr class="repeatable-row">
+                <td><input type="text" name="minor_child_name_3"></td>
+                <td><input type="text" name="minor_child_relationship_3"></td>
+                <td><input type="text" name="minor_child_dob_3"></td>
+                <td><input type="text" name="minor_child_gender_3"></td>
+                <td style="text-align: center;">
+                    <label class="checkbox-item"><input type="checkbox" name="minor_child_support_3" value="yes"> Yes</label>
+                    <label class="checkbox-item"><input type="checkbox" name="minor_child_support_3" value="no"> No</label>
+                </td>
+            </tr>
+            <tr class="repeatable-row">
+                <td><input type="text" name="minor_child_name_4"></td>
+                <td><input type="text" name="minor_child_relationship_4"></td>
+                <td><input type="text" name="minor_child_dob_4"></td>
+                <td><input type="text" name="minor_child_gender_4"></td>
+                <td style="text-align: center;">
+                    <label class="checkbox-item"><input type="checkbox" name="minor_child_support_4" value="yes"> Yes</label>
+                    <label class="checkbox-item"><input type="checkbox" name="minor_child_support_4" value="no"> No</label>
+                </td>
+            </tr>
+        </table>
+
+        <!-- Footer -->
+        <div class="page-footer">
+            <span>RFA 01A (10/22) (Mandatory) (Confidential)</span>
+            <span>Page 3 of 7</span>
+        </div>
+    </div>
+
+    <!-- ==========================================
+         PAGE 4
+         ========================================== -->
+    <div class="page" id="page4">
+        <!-- Header -->
+        <div class="page-header">
+            <span class="left">California Health &amp; Human Services Agency</span>
+            <span class="right">California Department of Social Services</span>
+        </div>
+
+        <!-- Section V - Other Adults -->
+        <div class="section-title" style="margin-top: 0; font-size: 8.5pt; line-height: 1.3;">
+            V. OTHER ADULTS, INCLUDING ADULT CHILDREN OF APPLICANT(S), RESIDING OR REGULARLY PRESENT IN THE HOME (PLEASE IDENTIFY NMDs PLACED IN YOUR HOME IN SECTION VI.)
+            <span class="es">V. OTROS ADULTOS, INCLUYENDO HIJOS ADULTOS DEL/DE LOS SOLICITANTE(S), RESIDIENDO O PRESENTES REGULARMENTE EN EL HOGAR (POR FAVOR IDENTIFIQUE LOS NMDs COLOCADOS EN SU HOGAR EN LA SECCIÓN VI.)</span>
+        </div>
+        <p class="note" style="margin-bottom: 8px;">
+            EACH ADULT RESIDING OR REGULARLY PRESENT IN THE HOME MUST COMPLETE A CRIMINAL RECORD STATEMENT RFA 01B. (DOES NOT APPLY TO NONMINOR DEPENDENTS)
+            <span class="es">/ CADA ADULTO RESIDIENDO O PRESENTE REGULARMENTE EN EL HOGAR DEBE COMPLETAR UNA DECLARACIÓN DE ANTECEDENTES PENALES RFA 01B. (NO APLICA A DEPENDIENTES NO MENORES)</span>
+        </p>
+
+        <table class="bordered">
+            <tr>
+                <th style="width: 32%;">
+                    Full Name (First, Middle Initial &amp; Last)
+                    <span class="es">/ Nombre Completo (Primer Nombre, Inicial del Segundo y Apellido)</span>
+                </th>
+                <th style="width: 12%;">
+                    Date of Birth
+                    <span class="es">/ Fecha de Nacimiento</span>
+                </th>
+                <th style="width: 20%;">
+                    Relationship To Applicant(s)
+                    <span class="es">/ Relación con Solicitante(s)</span>
+                </th>
+                <th style="width: 18%;">
+                    Residing
+                    <span class="es">/ Residiendo</span>
+                </th>
+                <th style="width: 18%;">
+                    Regularly Present
+                    <span class="es">/ Presente Regularmente</span>
+                </th>
+            </tr>
+            <tr class="repeatable-row">
+                <td><input type="text" name="other_adult_name_1"></td>
+                <td><input type="text" name="other_adult_dob_1"></td>
+                <td><input type="text" name="other_adult_relationship_1"></td>
+                <td><input type="text" name="other_adult_residing_1"></td>
+                <td><input type="text" name="other_adult_regularly_present_1"></td>
+            </tr>
+            <tr class="repeatable-row">
+                <td><input type="text" name="other_adult_name_2"></td>
+                <td><input type="text" name="other_adult_dob_2"></td>
+                <td><input type="text" name="other_adult_relationship_2"></td>
+                <td><input type="text" name="other_adult_residing_2"></td>
+                <td><input type="text" name="other_adult_regularly_present_2"></td>
+            </tr>
+            <tr class="repeatable-row">
+                <td><input type="text" name="other_adult_name_3"></td>
+                <td><input type="text" name="other_adult_dob_3"></td>
+                <td><input type="text" name="other_adult_relationship_3"></td>
+                <td><input type="text" name="other_adult_residing_3"></td>
+                <td><input type="text" name="other_adult_regularly_present_3"></td>
+            </tr>
+            <tr class="repeatable-row">
+                <td><input type="text" name="other_adult_name_4"></td>
+                <td><input type="text" name="other_adult_dob_4"></td>
+                <td><input type="text" name="other_adult_relationship_4"></td>
+                <td><input type="text" name="other_adult_residing_4"></td>
+                <td><input type="text" name="other_adult_regularly_present_4"></td>
+            </tr>
+        </table>
+
+        <!-- Section VI - Child/NMD Desired -->
+        <div class="section-title">
+            VI. CHILD/NMD DESIRED
+            <span class="es">VI. HIJO/NMD DESEADO</span>
+        </div>
+
+        <ul style="list-style: disc; padding-left: 18px; margin-bottom: 10px;">
+            <li style="margin-bottom: 8px;">
+                Has a child or nonminor dependent been identified?
+                <span class="es">/ ¿Ha sido identificado un hijo o dependiente no menor?</span>
+                <span style="margin-left: 10px;">
+                    <label class="checkbox-item"><input type="checkbox" name="child_identified" value="yes"> Yes / <span class="es">Sí</span></label>
+                    <label class="checkbox-item"><input type="checkbox" name="child_identified" value="no"> No</label>
+                </span>
+            </li>
+            <li style="margin-bottom: 8px;">
+                Is the child or nonminor dependent currently in your home?
+                <span class="es">/ ¿Está el hijo o dependiente no menor actualmente en su hogar?</span>
+                <span style="margin-left: 10px;">
+                    <label class="checkbox-item"><input type="checkbox" name="child_in_home" value="yes"> Yes / <span class="es">Sí</span></label>
+                    <label class="checkbox-item"><input type="checkbox" name="child_in_home" value="no"> No</label>
+                </span>
+            </li>
+            <li style="margin-bottom: 8px;">
+                Is the child or nonminor dependent a member of a tribe or eligible for membership?
+                <span class="es">/ ¿Es el hijo o dependiente no menor miembro de una tribu o elegible para membresía?</span>
+                <span style="margin-left: 10px;">
+                    <label class="checkbox-item"><input type="checkbox" name="child_tribal_member" value="yes"> Yes / <span class="es">Sí</span></label>
+                    <label class="checkbox-item"><input type="checkbox" name="child_tribal_member" value="no"> No</label>
+                    <label class="checkbox-item"><input type="checkbox" name="child_tribal_member" value="unknown"> Unknown / <span class="es">Desconocido</span></label>
+                </span>
+                <div style="margin-top: 5px;">
+                    <label>
+                        Name of Tribe(s) / <span class="es">Nombre de la(s) Tribu(s)</span>:
+                        <input type="text" name="child_tribe_name" style="width: 300px;">
+                    </label>
+                </div>
+                <div style="margin-top: 5px;">
+                    <label>
+                        Contact Information for Tribe, if known / <span class="es">Información de Contacto de la Tribu, si se conoce</span>:
+                        <input type="text" name="child_tribe_contact" style="width: 300px;">
+                    </label>
+                </div>
+            </li>
+        </ul>
+
+        <!-- Child/NMD Table -->
+        <table class="bordered">
+            <tr>
+                <th style="width: 24%;">
+                    Name of Child or NMD (First &amp; Last)
+                    <span class="es">/ Nombre del Hijo o NMD (Primer Nombre y Apellido)</span>
+                </th>
+                <th style="width: 11%;">
+                    Date of Birth
+                    <span class="es">/ Fecha de Nacimiento</span>
+                </th>
+                <th style="width: 10%;">
+                    Gender
+                    <span class="es">/ Género</span>
+                </th>
+                <th style="width: 17%;">
+                    Relationship to Applicant
+                    <span class="es">/ Relación con Solicitante</span>
+                </th>
+                <th style="width: 18%;">
+                    Date of Placement or Planned Placement
+                    <span class="es">/ Fecha de Colocación o Colocación Planeada</span>
+                </th>
+                <th style="width: 20%;">
+                    County of Jurisdiction
+                    <span class="es">/ Condado de Jurisdicción</span>
+                </th>
+            </tr>
+            <tr class="repeatable-row">
+                <td><input type="text" name="child_nmd_name_1"></td>
+                <td><input type="text" name="child_nmd_dob_1"></td>
+                <td><input type="text" name="child_nmd_gender_1"></td>
+                <td><input type="text" name="child_nmd_relationship_1"></td>
+                <td><input type="text" name="child_nmd_placement_date_1"></td>
+                <td><input type="text" name="child_nmd_county_1"></td>
+            </tr>
+            <tr class="repeatable-row">
+                <td><input type="text" name="child_nmd_name_2"></td>
+                <td><input type="text" name="child_nmd_dob_2"></td>
+                <td><input type="text" name="child_nmd_gender_2"></td>
+                <td><input type="text" name="child_nmd_relationship_2"></td>
+                <td><input type="text" name="child_nmd_placement_date_2"></td>
+                <td><input type="text" name="child_nmd_county_2"></td>
+            </tr>
+            <tr class="repeatable-row">
+                <td><input type="text" name="child_nmd_name_3"></td>
+                <td><input type="text" name="child_nmd_dob_3"></td>
+                <td><input type="text" name="child_nmd_gender_3"></td>
+                <td><input type="text" name="child_nmd_relationship_3"></td>
+                <td><input type="text" name="child_nmd_placement_date_3"></td>
+                <td><input type="text" name="child_nmd_county_3"></td>
+            </tr>
+            <tr class="repeatable-row">
+                <td><input type="text" name="child_nmd_name_4"></td>
+                <td><input type="text" name="child_nmd_dob_4"></td>
+                <td><input type="text" name="child_nmd_gender_4"></td>
+                <td><input type="text" name="child_nmd_relationship_4"></td>
+                <td><input type="text" name="child_nmd_placement_date_4"></td>
+                <td><input type="text" name="child_nmd_county_4"></td>
+            </tr>
+            <tr class="repeatable-row">
+                <td><input type="text" name="child_nmd_name_5"></td>
+                <td><input type="text" name="child_nmd_dob_5"></td>
+                <td><input type="text" name="child_nmd_gender_5"></td>
+                <td><input type="text" name="child_nmd_relationship_5"></td>
+                <td><input type="text" name="child_nmd_placement_date_5"></td>
+                <td><input type="text" name="child_nmd_county_5"></td>
+            </tr>
+        </table>
+
+        <!-- Ages Box -->
+        <div class="box">
+            <div class="box-header">
+                Ages(s)
+                <span class="es">/ Edad(es)</span>
+            </div>
+            <div class="box-content">
+                <div class="checkbox-group flex-wrap">
+                    <label class="checkbox-item">
+                        <input type="checkbox" name="age_preference" value="0-2">
+                        0 to 2 yrs / <span class="es">0 a 2 años</span>
+                    </label>
+                    <label class="checkbox-item">
+                        <input type="checkbox" name="age_preference" value="3-7">
+                        3 to 7 yrs / <span class="es">3 a 7 años</span>
+                    </label>
+                    <label class="checkbox-item">
+                        <input type="checkbox" name="age_preference" value="8-12">
+                        8 to 12 yrs / <span class="es">8 a 12 años</span>
+                    </label>
+                    <label class="checkbox-item">
+                        <input type="checkbox" name="age_preference" value="13-15">
+                        13 to 15 yrs / <span class="es">13 a 15 años</span>
+                    </label>
+                    <label class="checkbox-item">
+                        <input type="checkbox" name="age_preference" value="16-17">
+                        16 to 17 yrs / <span class="es">16 a 17 años</span>
+                    </label>
+                    <label class="checkbox-item">
+                        <input type="checkbox" name="age_preference" value="18-20">
+                        18 to 20 yrs / <span class="es">18 a 20 años</span>
+                    </label>
+                    <label class="checkbox-item">
+                        <input type="checkbox" name="age_preference" value="no-preference">
+                        No preference / <span class="es">Sin preferencia</span>
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sibling Group Box -->
+        <div class="box">
+            <div class="box-header">
+                Sibling Group
+                <span class="es">/ Grupo de Hermanos</span>
+            </div>
+            <div class="box-content">
+                <div class="checkbox-group flex-wrap">
+                    <label class="checkbox-item">
+                        <input type="checkbox" name="sibling_preference" value="none">
+                        None / <span class="es">Ninguno</span>
+                    </label>
+                    <label class="checkbox-item">
+                        <input type="checkbox" name="sibling_preference" value="2">
+                        2
+                    </label>
+                    <label class="checkbox-item">
+                        <input type="checkbox" name="sibling_preference" value="3">
+                        3
+                    </label>
+                    <label class="checkbox-item">
+                        <input type="checkbox" name="sibling_preference" value="4">
+                        4
+                    </label>
+                    <label class="checkbox-item">
+                        <input type="checkbox" name="sibling_preference" value="5+">
+                        5 or more / <span class="es">5 o más</span>
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="page-footer">
+            <span>RFA 01A (10/22) (Mandatory) (Confidential)</span>
+            <span>Page 4 of 7</span>
+        </div>
+    </div>
+
+    <!-- ==========================================
+         PAGE 5
+         ========================================== -->
+    <div class="page" id="page5">
+        <!-- Header -->
+        <div class="page-header">
+            <span class="left">California Health &amp; Human Services Agency</span>
+            <span class="right">California Department of Social Services</span>
+        </div>
+
+        <!-- Section VII - Foster Care/Adoption/Licensure History -->
+        <div class="section-title" style="margin-top: 0;">
+            VII. FOSTER CARE/ADOPTION/LICENSURE HISTORY
+            <span class="es">VII. HISTORIAL DE CUIDADO DE CRIANZA/ADOPCIÓN/LICENCIA</span>
+        </div>
+
+        <!-- Applicant One History -->
+        <div class="box">
+            <div class="box-header" style="text-decoration: underline;">
+                Applicant One:
+                <span class="es">/ Solicitante Uno:</span>
+            </div>
+            <div class="box-content" style="font-size: 8.5pt;">
+                <ol style="margin: 0; padding-left: 20px;">
+                    <li style="margin-bottom: 10px;">
+                        Have you previously been or are you currently approved for adoption, an approved relative or nonrelative extended family member, or previously or currently licensed, certified, or approved to provide foster care?
+                        <span class="es">/ ¿Ha sido previamente o está actualmente aprobado para adopción, un familiar aprobado o miembro de familia extendida no familiar, o previamente o actualmente licenciado, certificado o aprobado para proporcionar cuidado de crianza?</span>
+                        <div style="margin-top: 5px;">
+                            <label class="checkbox-item"><input type="checkbox" name="a1q1" value="yes"> Yes / <span class="es">Sí</span></label>
+                            <label class="checkbox-item"><input type="checkbox" name="a1q1" value="no"> No</label>
+                        </div>
+                        <div style="margin-top: 5px;">
+                            If yes, name of agency(s) / <span class="es">Si sí, nombre de agencia(s)</span>:
+                            <input type="text" name="a1_agency_names" style="width: 55%;">
+                        </div>
+                        <div style="margin-top: 5px;">
+                            Type of license/certification/approval / <span class="es">Tipo de licencia/certificación/aprobación</span>:
+                            <input type="text" name="a1_license_type" style="width: 45%;">
+                        </div>
+                        <div style="margin-top: 5px;">
+                            If yes, are you aware of any pending complaints or administrative actions?
+                            <span class="es">/ Si sí, ¿está consciente de alguna queja pendiente o acciones administrativas?</span>
+                            <label class="checkbox-item"><input type="checkbox" name="a1_pending_complaints" value="yes"> Yes / <span class="es">Sí</span></label>
+                            <label class="checkbox-item"><input type="checkbox" name="a1_pending_complaints" value="no"> No</label>
+                        </div>
+                    </li>
+                    <li style="margin-bottom: 10px;">
+                        Have you previously been or are you currently licensed to operate a child care center, family child care home, or residential care facility for the elderly or chronically ill?
+                        <span class="es">/ ¿Ha sido previamente o está actualmente licenciado para operar un centro de cuidado infantil, hogar de cuidado infantil familiar, o instalación de cuidado residencial para ancianos o enfermos crónicos?</span>
+                        <div style="margin-top: 5px;">
+                            <label class="checkbox-item"><input type="checkbox" name="a1q2" value="yes"> Yes / <span class="es">Sí</span></label>
+                            <label class="checkbox-item"><input type="checkbox" name="a1q2" value="no"> No</label>
+                            If yes, type of license / <span class="es">Si sí, tipo de licencia</span>:
+                            <input type="text" name="a1_childcare_license_type" style="width: 40%;">
+                        </div>
+                    </li>
+                    <li style="margin-bottom: 10px;">
+                        Have you previously been or are you currently employed by or volunteering at a community care facility, child care center, family child care home, or residential care facility for the elderly or chronically ill?
+                        <span class="es">/ ¿Ha sido previamente o está actualmente empleado o voluntario en una instalación de cuidado comunitario, centro de cuidado infantil, hogar de cuidado infantil familiar, o instalación de cuidado residencial para ancianos o enfermos crónicos?</span>
+                        <div style="margin-top: 5px;">
+                            <label class="checkbox-item"><input type="checkbox" name="a1q3" value="yes"> Yes / <span class="es">Sí</span></label>
+                            <label class="checkbox-item"><input type="checkbox" name="a1q3" value="no"> No</label>
+                            If yes, name the facility(s) / <span class="es">Si sí, nombre la(s) instalación(es)</span>:
+                            <input type="text" name="a1_facility_names" style="width: 40%;">
+                        </div>
+                    </li>
+                    <li style="margin-bottom: 10px;">
+                        Have you had a previous license, certification, relative or nonrelative extended family member approval, Resource Family approval, or portability application denial?
+                        <span class="es">/ ¿Ha tenido una denegación previa de licencia, certificación, aprobación de familiar o miembro de familia extendida no familiar, aprobación de Familia de Recursos, o solicitud de portabilidad?</span>
+                        <div style="margin-top: 5px;">
+                            <label class="checkbox-item"><input type="checkbox" name="a1q4" value="yes"> Yes / <span class="es">Sí</span></label>
+                            <label class="checkbox-item"><input type="checkbox" name="a1q4" value="no"> No</label>
+                            If yes, name of agency(s) / <span class="es">Si sí, nombre de agencia(s)</span>:
+                            <input type="text" name="a1_denial_agency_names" style="width: 40%;">
+                        </div>
+                    </li>
+                    <li style="margin-bottom: 10px;">
+                        Have you had a license, certification, or approval suspended, revoked, or rescinded?
+                        <span class="es">/ ¿Ha tenido una licencia, certificación o aprobación suspendida, revocada o rescindida?</span>
+                        <div style="margin-top: 5px;">
+                            <label class="checkbox-item"><input type="checkbox" name="a1q5" value="yes"> Yes / <span class="es">Sí</span></label>
+                            <label class="checkbox-item"><input type="checkbox" name="a1q5" value="no"> No</label>
+                            If yes, name of agency(s) / <span class="es">Si sí, nombre de agencia(s)</span>:
+                            <input type="text" name="a1_revoked_agency_names" style="width: 40%;">
+                        </div>
+                    </li>
+                    <li style="margin-bottom: 10px;">
+                        Have you been subject to an exclusion order?
+                        <span class="es">/ ¿Ha sido sujeto a una orden de exclusión?</span>
+                        <div style="margin-top: 5px;">
+                            <label class="checkbox-item"><input type="checkbox" name="a1q6" value="yes"> Yes / <span class="es">Sí</span></label>
+                            <label class="checkbox-item"><input type="checkbox" name="a1q6" value="no"> No</label>
+                        </div>
+                    </li>
+                </ol>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="page-footer">
+            <span>RFA 01A (10/22) (Mandatory) (Confidential)</span>
+            <span>Page 5 of 7</span>
+        </div>
+    </div>
+
+    <!-- ==========================================
+         PAGE 6
+         ========================================== -->
+    <div class="page" id="page6">
+        <!-- Header -->
+        <div class="page-header">
+            <span class="left">California Health &amp; Human Services Agency</span>
+            <span class="right">California Department of Social Services</span>
+        </div>
+
+        <!-- Section VII Continued -->
+        <div class="section-title" style="margin-top: 0;">
+            VII. FOSTER CARE/ADOPTION/LICENSURE HISTORY (Continued)
+            <span class="es">VII. HISTORIAL DE CUIDADO DE CRIANZA/ADOPCIÓN/LICENCIA (Continuado)</span>
+        </div>
+
+        <!-- Applicant Two History -->
+        <div class="box">
+            <div class="box-header" style="text-decoration: underline;">
+                Applicant Two:
+                <span class="es">/ Solicitante Dos:</span>
+            </div>
+            <div class="box-content" style="font-size: 8.5pt;">
+                <ol style="margin: 0; padding-left: 20px;">
+                    <li style="margin-bottom: 10px;">
+                        Have you previously been or are you currently approved for adoption, an approved relative or nonrelative extended family member, or previously or currently licensed, certified, or approved to provide foster care?
+                        <span class="es">/ ¿Ha sido previamente o está actualmente aprobado para adopción, un familiar aprobado o miembro de familia extendida no familiar, o previamente o actualmente licenciado, certificado o aprobado para proporcionar cuidado de crianza?</span>
+                        <div style="margin-top: 5px;">
+                            <label class="checkbox-item"><input type="checkbox" name="a2q1" value="yes"> Yes / <span class="es">Sí</span></label>
+                            <label class="checkbox-item"><input type="checkbox" name="a2q1" value="no"> No</label>
+                        </div>
+                        <div style="margin-top: 5px;">
+                            If yes, name of agency(s) / <span class="es">Si sí, nombre de agencia(s)</span>:
+                            <input type="text" name="a2_agency_names" style="width: 55%;">
+                        </div>
+                        <div style="margin-top: 5px;">
+                            Type of license/certification/approval / <span class="es">Tipo de licencia/certificación/aprobación</span>:
+                            <input type="text" name="a2_license_type" style="width: 45%;">
+                        </div>
+                        <div style="margin-top: 5px;">
+                            If yes, are you aware of any pending complaints or administrative actions?
+                            <span class="es">/ Si sí, ¿está consciente de alguna queja pendiente o acciones administrativas?</span>
+                            <label class="checkbox-item"><input type="checkbox" name="a2_pending_complaints" value="yes"> Yes / <span class="es">Sí</span></label>
+                            <label class="checkbox-item"><input type="checkbox" name="a2_pending_complaints" value="no"> No</label>
+                        </div>
+                    </li>
+                    <li style="margin-bottom: 10px;">
+                        Have you previously been or are you currently licensed to operate a child care center, family child care home, or residential care facility for the elderly or chronically ill?
+                        <span class="es">/ ¿Ha sido previamente o está actualmente licenciado para operar un centro de cuidado infantil, hogar de cuidado infantil familiar, o instalación de cuidado residencial para ancianos o enfermos crónicos?</span>
+                        <div style="margin-top: 5px;">
+                            <label class="checkbox-item"><input type="checkbox" name="a2q2" value="yes"> Yes / <span class="es">Sí</span></label>
+                            <label class="checkbox-item"><input type="checkbox" name="a2q2" value="no"> No</label>
+                            If yes, type of license / <span class="es">Si sí, tipo de licencia</span>:
+                            <input type="text" name="a2_childcare_license_type" style="width: 40%;">
+                        </div>
+                    </li>
+                    <li style="margin-bottom: 10px;">
+                        Have you previously been or are you currently employed by or volunteering at a community care facility, child care center, family child care home, or residential care facility for the elderly or chronically ill?
+                        <span class="es">/ ¿Ha sido previamente o está actualmente empleado o voluntario en una instalación de cuidado comunitario, centro de cuidado infantil, hogar de cuidado infantil familiar, o instalación de cuidado residencial para ancianos o enfermos crónicos?</span>
+                        <div style="margin-top: 5px;">
+                            <label class="checkbox-item"><input type="checkbox" name="a2q3" value="yes"> Yes / <span class="es">Sí</span></label>
+                            <label class="checkbox-item"><input type="checkbox" name="a2q3" value="no"> No</label>
+                            If yes, name the facility(s) / <span class="es">Si sí, nombre la(s) instalación(es)</span>:
+                            <input type="text" name="a2_facility_names" style="width: 40%;">
+                        </div>
+                    </li>
+                    <li style="margin-bottom: 10px;">
+                        Have you had a previous license, certification, relative or nonrelative extended family member approval, Resource Family approval, or portability application denial?
+                        <span class="es">/ ¿Ha tenido una denegación previa de licencia, certificación, aprobación de familiar o miembro de familia extendida no familiar, aprobación de Familia de Recursos, o solicitud de portabilidad?</span>
+                        <div style="margin-top: 5px;">
+                            <label class="checkbox-item"><input type="checkbox" name="a2q4" value="yes"> Yes / <span class="es">Sí</span></label>
+                            <label class="checkbox-item"><input type="checkbox" name="a2q4" value="no"> No</label>
+                            If yes, name of agency(s) / <span class="es">Si sí, nombre de agencia(s)</span>:
+                            <input type="text" name="a2_denial_agency_names" style="width: 40%;">
+                        </div>
+                    </li>
+                    <li style="margin-bottom: 10px;">
+                        Have you had a license, certification, or approval suspended, revoked, or rescinded?
+                        <span class="es">/ ¿Ha tenido una licencia, certificación o aprobación suspendida, revocada o rescindida?</span>
+                        <div style="margin-top: 5px;">
+                            <label class="checkbox-item"><input type="checkbox" name="a2q5" value="yes"> Yes / <span class="es">Sí</span></label>
+                            <label class="checkbox-item"><input type="checkbox" name="a2q5" value="no"> No</label>
+                            If yes, name of agency(s) / <span class="es">Si sí, nombre de agencia(s)</span>:
+                            <input type="text" name="a2_revoked_agency_names" style="width: 40%;">
+                        </div>
+                    </li>
+                    <li style="margin-bottom: 10px;">
+                        Have you been subject to an exclusion order?
+                        <span class="es">/ ¿Ha sido sujeto a una orden de exclusión?</span>
+                        <div style="margin-top: 5px;">
+                            <label class="checkbox-item"><input type="checkbox" name="a2q6" value="yes"> Yes / <span class="es">Sí</span></label>
+                            <label class="checkbox-item"><input type="checkbox" name="a2q6" value="no"> No</label>
+                        </div>
+                    </li>
+                </ol>
+            </div>
+        </div>
+
+        <!-- Section VIII - References -->
+        <div class="section-title">
+            VIII. REFERENCES
+            <span class="es">VIII. REFERENCIAS</span>
+        </div>
+
+        <table class="bordered">
+            <tr>
+                <td colspan="3" style="background: #fff; font-size: 9pt; padding: 8px; text-align: left; font-weight: normal;">
+                    Please list the name, telephone number(s), and address of two individuals who have knowledge of your home environment, lifestyle, and ability to be a Resource Family.
+                    <span class="es">/ Por favor liste el nombre, número(s) de teléfono y dirección de dos individuos que tengan conocimiento de su ambiente doméstico, estilo de vida y habilidad para ser una Familia de Recursos.</span>
+                </td>
+            </tr>
+            <tr>
+                <th style="width: 30%;">
+                    Full Name
+                    <span class="es">/ Nombre Completo</span>
+                </th>
+                <th style="width: 25%;">
+                    Telephone Number(s)
+                    <span class="es">/ Número(s) de Teléfono</span>
+                </th>
+                <th style="width: 45%;">
+                    Mailing Address/City/State/Zip or Email Address
+                    <span class="es">/ Dirección Postal/Ciudad/Estado/Código Postal o Dirección de Correo Electrónico</span>
+                </th>
+            </tr>
+            <tr style="height: 32px;">
+                <td><input type="text" name="reference_name_1"></td>
+                <td><input type="text" name="reference_phone_1"></td>
+                <td><input type="text" name="reference_address_1"></td>
+            </tr>
+            <tr style="height: 32px;">
+                <td><input type="text" name="reference_name_2"></td>
+                <td><input type="text" name="reference_phone_2"></td>
+                <td><input type="text" name="reference_address_2"></td>
+            </tr>
+        </table>
+
+        <!-- Footer -->
+        <div class="page-footer">
+            <span>RFA 01A (10/22) (Mandatory) (Confidential)</span>
+            <span>Page 6 of 7</span>
+        </div>
+    </div>
+
+    <!-- ==========================================
+         PAGE 7
+         ========================================== -->
+    <div class="page" id="page7">
+        <!-- Header -->
+        <div class="page-header">
+            <span class="left">California Health &amp; Human Services Agency</span>
+            <span class="right">California Department of Social Services</span>
+        </div>
+
+        <!-- Section IX - Applicant(s) Declaration -->
+        <div class="section-title" style="margin-top: 0;">
+            IX. APPLICANT(S) DECLARATION
+            <span class="es">IX. DECLARACIÓN DEL/DE LOS SOLICITANTE(S)</span>
+        </div>
+
+        <p style="margin-bottom: 8px; font-size: 9pt;">
+            I/We declare that:
+            <span class="es">/ Yo/Nosotros declaramos que:</span>
+        </p>
+
+        <ul class="declaration-list">
+            <li>
+                I/We have the financial ability to ensure the stability and financial security of the family.
+                <span class="es">Yo/Nosotros tenemos la capacidad financiera para asegurar la estabilidad y seguridad financiera de la familia.</span>
+            </li>
+            <li>
+                In signing this application, I/we understand that the completion of routine forms will or may be required by my/our references, physician, and employer, that my/our financial status will be verified, and a background check will be conducted.
+                <span class="es">Al firmar esta solicitud, yo/nosotros entendemos que la completación de formularios de rutina será o puede ser requerida por mis/nuestras referencias, médico y empleador, que mi/nuestro estado financiero será verificado, y se realizará una verificación de antecedentes.</span>
+            </li>
+            <li>
+                I/We affirm that the information provided on this form is true, correct, and contains no material omissions of fact to the best of my/our knowledge and belief.
+                <span class="es">Yo/Nosotros afirmamos que la información proporcionada en este formulario es verdadera, correcta y no contiene omisiones materiales de hecho según mi/nuestro mejor conocimiento y creencia.</span>
+            </li>
+            <li>
+                I/We understand any false or misleading statements willfully or knowingly made to the County or Department, or failure to disclose material facts to obtain or maintain Resource Family approval can result in a denial or rescission of a Resource Family Approval.
+                <span class="es">Yo/Nosotros entendemos que cualquier declaración falsa o engañosa hecha intencionalmente o con conocimiento al Condado o Departamento, o la falta de divulgación de hechos materiales para obtener o mantener la aprobación de Familia de Recursos puede resultar en una denegación o rescisión de una Aprobación de Familia de Recursos.</span>
+            </li>
+            <li>
+                I/We understand that I/we have the right to appeal any decision regarding the disposition of this application.
+                <span class="es">Yo/Nosotros entendemos que yo/nosotros tenemos el derecho de apelar cualquier decisión con respecto a la disposición de esta solicitud.</span>
+            </li>
+            <li>
+                I/We understand that personal information contained on this application may be shared with the following:
+                <span class="es">/ Yo/Nosotros entendemos que la información personal contenida en esta solicitud puede ser compartida con lo siguiente:</span>
+                <ol class="sub-list">
+                    <li>A placement agency or juvenile court for the purpose of determining whether to place a child or nonminor dependent. / <span class="es">Una agencia de colocación o tribunal juvenil con el propósito de determinar si colocar un hijo o dependiente no menor.</span></li>
+                    <li>A Tribe for the purpose of tribal approval or for placement of an Indian child. / <span class="es">Una Tribu con el propósito de aprobación tribal o para colocación de un niño indígena.</span></li>
+                    <li>As otherwise required by law. / <span class="es">Según lo requiera la ley.</span></li>
+                </ol>
+            </li>
+        </ul>
+
+        <!-- Signature Table -->
+        <table class="bordered" style="margin-top: 12px;">
+            <tr>
+                <th style="width: 40%;">
+                    Applicant(s) Signature
+                    <span class="es">/ Firma del/de los Solicitante(s)</span>
+                </th>
+                <th style="width: 40%;">
+                    City &amp; County Where Signed
+                    <span class="es">/ Ciudad y Condado Donde se Firmó</span>
+                </th>
+                <th style="width: 20%;">
+                    Date
+                    <span class="es">/ Fecha</span>
+                </th>
+            </tr>
+            <tr style="height: 28px;">
+                <td>
+                    <span style="font-weight: bold; font-size: 8pt;">Applicant One: / <span class="es">Solicitante Uno:</span></span>
+                    <div class="signature-line"></div>
+                </td>
+                <td><input type="text" name="applicant1_sign_location"></td>
+                <td><input type="text" name="applicant1_sign_date"></td>
+            </tr>
+            <tr style="height: 28px;">
+                <td>
+                    <span style="font-weight: bold; font-size: 8pt;">Applicant Two: / <span class="es">Solicitante Dos:</span></span>
+                    <div class="signature-line"></div>
+                </td>
+                <td><input type="text" name="applicant2_sign_location"></td>
+                <td><input type="text" name="applicant2_sign_date"></td>
+            </tr>
+        </table>
+
+        <!-- Resubmission Box -->
+        <div class="box" style="margin-top: 15px;">
+            <div class="box-header" style="text-align: center;">
+                Resubmission of Application
+                <span class="es">/ Re-presentación de Solicitud</span>
+            </div>
+            <div style="padding: 6px 8px; font-size: 8.5pt; border-bottom: 1px solid #000;">
+                If this application is being resubmitted within 12 months of a withdrawal or cease review, the County shall verify the information is current and require the applicant(s) to sign below.
+                <span class="es">/ Si esta solicitud está siendo re-presentada dentro de 12 meses de un retiro o cese de revisión, el Condado verificará que la información sea actual y requerirá que el/los solicitante(s) firme(n) abajo.</span>
+            </div>
+            <table style="border: none; margin: 0;">
+                <tr>
+                    <th style="width: 40%; border: none; border-bottom: 1px solid #000;">
+                        Applicant(s) Signature
+                        <span class="es">/ Firma del/de los Solicitante(s)</span>
+                    </th>
+                    <th style="width: 40%; border: none; border-bottom: 1px solid #000;">
+                        City &amp; County Where Signed
+                        <span class="es">/ Ciudad y Condado Donde se Firmó</span>
+                    </th>
+                    <th style="width: 20%; border: none; border-bottom: 1px solid #000;">
+                        Date
+                        <span class="es">/ Fecha</span>
+                    </th>
+                </tr>
+                <tr style="height: 28px;">
+                    <td style="border: none; border-bottom: 1px solid #000;">
+                        <span style="font-weight: bold; font-size: 8pt;">Applicant One: / <span class="es">Solicitante Uno:</span></span>
+                        <div class="signature-line"></div>
+                    </td>
+                    <td style="border: none; border-bottom: 1px solid #000;"><input type="text" name="resubmit_applicant1_sign_location"></td>
+                    <td style="border: none; border-bottom: 1px solid #000;"><input type="text" name="resubmit_applicant1_sign_date"></td>
+                </tr>
+                <tr style="height: 28px;">
+                    <td style="border: none; border-bottom: 1px solid #000;">
+                        <span style="font-weight: bold; font-size: 8pt;">Applicant Two: / <span class="es">Solicitante Dos:</span></span>
+                        <div class="signature-line"></div>
+                    </td>
+                    <td style="border: none; border-bottom: 1px solid #000;"><input type="text" name="resubmit_applicant2_sign_location"></td>
+                    <td style="border: none; border-bottom: 1px solid #000;"><input type="text" name="resubmit_applicant2_sign_date"></td>
+                </tr>
+                <tr style="height: 28px;">
+                    <td style="border: none;">
+                        <span style="font-weight: bold; font-size: 8pt;">RFA Program Staff: / <span class="es">Personal del Programa RFA:</span></span>
+                        <div class="signature-line"></div>
+                    </td>
+                    <td style="border: none;"><input type="text" name="rfa_staff_sign_location"></td>
+                    <td style="border: none;"><input type="text" name="rfa_staff_sign_date"></td>
+                </tr>
+            </table>
+        </div>
+
+        <!-- Footer -->
+        <div class="page-footer">
+            <span>RFA 01A (10/22) (Mandatory) (Confidential)</span>
+            <span>Page 7 of 7</span>
+        </div>
+    </div>
+
+    <script>
+        // Simple form validation and interactivity
+        document.addEventListener('DOMContentLoaded', function() {
+            // Radio button behavior for checkbox groups (only one selection)
+            const checkboxGroups = {
+                'tribe_referral': ['tribe-yes', 'tribe-no'],
+                'residence_ownership': document.querySelectorAll('input[name="residence_ownership"]'),
+                'weapons_in_home': document.querySelectorAll('input[name="weapons_in_home"]'),
+                'bodies_of_water': document.querySelectorAll('input[name="bodies_of_water"]'),
+                'unlisted_person_mailing': document.querySelectorAll('input[name="unlisted_person_mailing"]')
+            };
+
+            // Make certain checkbox groups behave like radio buttons
+            document.querySelectorAll('input[type="checkbox"]').forEach(function(checkbox) {
+                checkbox.addEventListener('change', function() {
+                    if (this.checked) {
+                        const name = this.getAttribute('name');
+                        const siblings = document.querySelectorAll('input[name="' + name + '"]');
+                        if (siblings.length > 1 && !name.includes('preference') && !name.includes('tribal_status')) {
+                            siblings.forEach(function(sib) {
+                                if (sib !== checkbox) {
+                                    sib.checked = false;
+                                }
+                            });
+                        }
+                    }
+                });
+            });
+
+            // Show/hide tribe info based on tribe referral
+            const tribeYes = document.getElementById('tribe-yes');
+            const tribeNo = document.getElementById('tribe-no');
+            const tribeInfo = document.getElementById('tribe_info');
+
+            if (tribeYes && tribeNo && tribeInfo) {
+                function updateTribeInfo() {
+                    tribeInfo.style.display = tribeYes.checked ? 'block' : 'none';
+                }
+                tribeYes.addEventListener('change', updateTribeInfo);
+                tribeNo.addEventListener('change', updateTribeInfo);
+            }
+
+            console.log('RFA 01A Form loaded successfully!');
+        });
+    </script>
+
+</body>
+</html>

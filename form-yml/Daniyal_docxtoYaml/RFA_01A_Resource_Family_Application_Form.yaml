@@ -1,0 +1,2367 @@
+# RFA 01A - Resource Family Application Form
+# Converted from HTML to YAML structure
+
+form_metadata:
+  title: "RFA 01A - Resource Family Application"
+  title_es: "RFA 01A - Solicitud de Familia de Recursos"
+  version: "10/22"
+  classification: "Mandatory"
+  confidentiality: "Confidential"
+  total_pages: 7
+  issuing_agency:
+    primary: "California Health & Human Services Agency"
+    secondary: "California Department of Social Services"
+
+global_styles:
+  font_family: "Arial, Helvetica, sans-serif"
+  base_font_size: "9.5pt"
+  line_height: 1.4
+  background_color: "#f5f5f5"
+  text_color: "#000"
+  page:
+    width: "8.5in"
+    min_height: "11in"
+    padding: "0.4in 0.5in 0.6in 0.5in"
+    background: "#fff"
+    box_shadow: "0 2px 8px rgba(0,0,0,0.1)"
+  header:
+    font_size: "9pt"
+  main_title:
+    font_size: "14pt"
+    font_weight: "bold"
+    letter_spacing: "0.5px"
+  table:
+    header_background: "#d9d9d9"
+    border_color: "#000"
+    border_weight: "1.5px"
+    cell_padding: "3px 5px"
+  input:
+    border: "none"
+    border_bottom: "1px solid #000"
+    background: "transparent"
+    focus_background: "#fffde7"
+  checkbox:
+    width: "11px"
+    height: "11px"
+    accent_color: "#000"
+
+pages:
+  # ==========================================
+  # PAGE 1
+  # ==========================================
+  - page_number: 1
+    sections:
+      - section_id: "header"
+        type: "header"
+        content:
+          left: "California Health & Human Services Agency"
+          right: "California Department of Social Services"
+
+      - section_id: "main_title"
+        type: "title"
+        content: "RESOURCE FAMILY APPLICATION"
+        content_es: "SOLICITUD DE FAMILIA DE RECURSOS"
+        style_meta:
+          font_size: "14pt"
+          font_weight: "bold"
+          letter_spacing: "0.5px"
+          margin_bottom: "12px"
+
+      - section_id: "county_use"
+        type: "box"
+        header: "County Use Only"
+        header_es: "Solo para Uso del Condado"
+        style_meta:
+          border: "1.5px solid #000"
+          width: "180px"
+          header_background: "#d9d9d9"
+        fields:
+          - id: "county"
+            name: "county"
+            type: "text"
+            label: "County"
+            label_es: "Condado"
+            style_meta:
+              width: "120px"
+              border_bottom: "1px solid #000"
+
+      - section_id: "instructions"
+        type: "instruction_text"
+        content: "Instructions: This is an application for Resource Family Approval by a County. Please type or print clearly."
+        content_es: "Instrucciones: Esta es una solicitud de Aprobación de Familia de Recursos por un Condado. Por favor escriba a máquina o imprima claramente."
+        style_meta:
+          font_size: "9pt"
+          margin_bottom: "12px"
+
+      - section_id: "application_type"
+        type: "checkbox_row"
+        style_meta:
+          display: "flex"
+          align_items: "center"
+          gap: "3px"
+        fields:
+          - id: "application"
+            name: "application_type"
+            type: "checkbox"
+            label: "Application"
+            label_es: "Solicitud"
+          - id: "other"
+            name: "application_type"
+            type: "checkbox"
+            label: "Other (Specify):"
+            label_es: "Otro (Especifique):"
+          - id: "other_specify"
+            name: "other_specify"
+            type: "text"
+            label: ""
+            style_meta:
+              width: "320px"
+              border_bottom: "1px solid #000"
+
+      - section_id: "tribe_referral"
+        type: "question_row"
+        question: "Were you referred to the RFA program by a Tribe?"
+        question_es: "¿Fue referido al programa RFA por una Tribu?"
+        style_meta:
+          display: "flex"
+          align_items: "center"
+          gap: "20px"
+        fields:
+          - id: "tribe-yes"
+            name: "tribe_referral"
+            type: "checkbox"
+            label: "Yes"
+            label_es: "Sí"
+            value: "yes"
+          - id: "tribe-no"
+            name: "tribe_referral"
+            type: "checkbox"
+            label: "No"
+            label_es: "No"
+            value: "no"
+
+      - section_id: "tribe_info"
+        type: "conditional_fields"
+        condition: "tribe_referral == yes"
+        fields:
+          - id: "tribe_name_contact"
+            name: "tribe_name_contact"
+            type: "text"
+            label: "If \"Yes,\" provide name of the Tribe and contact information if known"
+            label_es: "Si \"Sí\", proporcione el nombre de la Tribu e información de contacto si se conoce"
+            style_meta:
+              width: "350px"
+              border_bottom: "1px solid #000"
+          - id: "tribe_additional_info"
+            name: "tribe_additional_info"
+            type: "text"
+            label: ""
+            style_meta:
+              width: "100%"
+              border_bottom: "1px solid #000"
+
+      # Section I - Applicant(s)
+      - section_id: "section_i"
+        type: "section"
+        title: "I. APPLICANT(S): EACH APPLICANT MUST COMPLETE A CRIMINAL RECORD STATEMENT RFA 01B."
+        title_es: "I. SOLICITANTE(S): CADA SOLICITANTE DEBE COMPLETAR UNA DECLARACIÓN DE ANTECEDENTES PENALES RFA 01B."
+        style_meta:
+          font_weight: "bold"
+          font_size: "9pt"
+          margin: "14px 0 8px 0"
+
+        subsections:
+          # Applicant One Name Table
+          - subsection_id: "applicant_one_name"
+            type: "table"
+            style_meta:
+              border: "1.5px solid #000"
+              width: "100%"
+            header_row:
+              - header: "First"
+                width: "33%"
+              - header: "Middle"
+                width: "34%"
+              - header: "Last"
+                width: "33%"
+            rows:
+              - row_type: "section_header"
+                content: "Applicant One (Legal Name):"
+                content_es: "Solicitante Uno (Nombre Legal):"
+                colspan: 3
+                style_meta:
+                  background: "#d9d9d9"
+                  font_weight: "bold"
+              - row_type: "input_row"
+                fields:
+                  - id: "applicant1_first_name"
+                    name: "applicant1_first_name"
+                    type: "text"
+                    label: "First Name"
+                    label_es: "Primer Nombre"
+                    validation:
+                      required: true
+                  - id: "applicant1_middle_name"
+                    name: "applicant1_middle_name"
+                    type: "text"
+                    label: "Middle Name"
+                    label_es: "Segundo Nombre"
+                  - id: "applicant1_last_name"
+                    name: "applicant1_last_name"
+                    type: "text"
+                    label: "Last Name"
+                    label_es: "Apellido"
+                    validation:
+                      required: true
+              - row_type: "section_header"
+                content: "Preferred/Chosen Name:"
+                colspan: 3
+                style_meta:
+                  background: "#d9d9d9"
+                  font_weight: "bold"
+              - row_type: "input_row"
+                fields:
+                  - id: "applicant1_preferred_name"
+                    name: "applicant1_preferred_name"
+                    type: "text"
+                    label: "Preferred/Chosen Name"
+                    label_es: "Nombre Preferido/Elegido"
+                    colspan: 3
+
+          # Applicant One Previous Name & Education
+          - subsection_id: "applicant_one_prev_edu"
+            type: "table"
+            style_meta:
+              border: "1.5px solid #000"
+            header_row:
+              - header: "Previous Name Used:"
+                subtext: "*including maiden name"
+                subtext_style: "italic"
+                width: "50%"
+              - header: "Highest Level of Education Completed"
+                width: "50%"
+            rows:
+              - row_type: "input_row"
+                fields:
+                  - id: "applicant1_previous_name"
+                    name: "applicant1_previous_name"
+                    type: "text"
+                    label: "Previous Name Used"
+                    label_es: "Nombre Anterior Usado"
+                  - id: "applicant1_education"
+                    name: "applicant1_education"
+                    type: "text"
+                    label: "Education Level"
+                    label_es: "Nivel de Educación"
+
+          # Applicant One DOB, Gender, Race, License
+          - subsection_id: "applicant_one_demographics"
+            type: "table"
+            style_meta:
+              border: "1.5px solid #000"
+            header_row:
+              - header: "Date of Birth"
+                width: "20%"
+              - header: "Gender"
+                width: "20%"
+              - header: "Race/Ethnicity"
+                width: "30%"
+              - header: "Driver's License Number"
+                width: "30%"
+            rows:
+              - row_type: "input_row"
+                fields:
+                  - id: "applicant1_dob"
+                    name: "applicant1_dob"
+                    type: "text"
+                    label: "Date of Birth"
+                    label_es: "Fecha de Nacimiento"
+                    placeholder: "MM/DD/YYYY"
+                    validation:
+                      required: true
+                      pattern: "\\d{2}/\\d{2}/\\d{4}"
+                  - id: "applicant1_gender"
+                    name: "applicant1_gender"
+                    type: "text"
+                    label: "Gender"
+                    label_es: "Género"
+                  - id: "applicant1_race_ethnicity"
+                    name: "applicant1_race_ethnicity"
+                    type: "text"
+                    label: "Race/Ethnicity"
+                    label_es: "Raza/Etnicidad"
+                  - id: "applicant1_drivers_license"
+                    name: "applicant1_drivers_license"
+                    type: "text"
+                    label: "Driver's License Number"
+                    label_es: "Número de Licencia de Conducir"
+
+          # Applicant One Tribal Affiliation
+          - subsection_id: "applicant_one_tribal"
+            type: "box"
+            header: "Tribal Affiliation"
+            header_es: "Afiliación Tribal"
+            style_meta:
+              border: "1.5px solid #000"
+              header_background: "#d9d9d9"
+            fields:
+              - field_group:
+                  type: "checkbox_group"
+                  fields:
+                    - id: "member1"
+                      name: "applicant1_tribal_status"
+                      type: "checkbox"
+                      label: "Member"
+                      label_es: "Miembro"
+                      value: "member"
+                    - id: "descendant1"
+                      name: "applicant1_tribal_status"
+                      type: "checkbox"
+                      label: "Descendant"
+                      label_es: "Descendiente"
+                      value: "descendant"
+              - id: "applicant1_tribe_name"
+                name: "applicant1_tribe_name"
+                type: "text"
+                label: "Name of Tribe"
+                label_es: "Nombre de la Tribu"
+                style_meta:
+                  width: "350px"
+                  border_bottom: "1px solid #000"
+
+          # Applicant One Contact Info
+          - subsection_id: "applicant_one_contact"
+            type: "table"
+            style_meta:
+              border: "1.5px solid #000"
+            header_row:
+              - header: "Email Address (Optional)"
+                header_es: "Dirección de Correo Electrónico (Opcional)"
+                width: "33%"
+              - header: "Cell Phone Number"
+                header_es: "Número de Teléfono Celular"
+                width: "34%"
+              - header: "Home Phone Number"
+                header_es: "Número de Teléfono de Casa"
+                width: "33%"
+            rows:
+              - row_type: "input_row"
+                fields:
+                  - id: "applicant1_email"
+                    name: "applicant1_email"
+                    type: "text"
+                    label: "Email Address"
+                    label_es: "Dirección de Correo Electrónico"
+                    validation:
+                      pattern: "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$"
+                  - id: "applicant1_cell_phone"
+                    name: "applicant1_cell_phone"
+                    type: "text"
+                    label: "Cell Phone"
+                    label_es: "Teléfono Celular"
+                  - id: "applicant1_home_phone"
+                    name: "applicant1_home_phone"
+                    type: "text"
+                    label: "Home Phone"
+                    label_es: "Teléfono de Casa"
+
+          # Applicant One Employment Info
+          - subsection_id: "applicant_one_employment"
+            type: "table"
+            style_meta:
+              border: "1.5px solid #000"
+            header_row:
+              - header: "Name/Address of Employer"
+                header_es: "Nombre/Dirección del Empleador"
+                width: "30%"
+              - header: "Work Phone Number"
+                header_es: "Número de Teléfono de Trabajo"
+                width: "25%"
+              - header: "Occupation"
+                header_es: "Ocupación"
+                width: "22%"
+              - header: "Annual Income"
+                header_es: "Ingreso Anual"
+                width: "23%"
+            rows:
+              - row_type: "input_row"
+                fields:
+                  - id: "applicant1_employer"
+                    name: "applicant1_employer"
+                    type: "text"
+                    label: "Employer"
+                    label_es: "Empleador"
+                  - id: "applicant1_work_phone"
+                    name: "applicant1_work_phone"
+                    type: "text"
+                    label: "Work Phone"
+                    label_es: "Teléfono de Trabajo"
+                  - id: "applicant1_occupation"
+                    name: "applicant1_occupation"
+                    type: "text"
+                    label: "Occupation"
+                    label_es: "Ocupación"
+                  - id: "applicant1_annual_income"
+                    name: "applicant1_annual_income"
+                    type: "text"
+                    label: "Annual Income"
+                    label_es: "Ingreso Anual"
+
+    footer:
+      left: "RFA 01A (10/22) (Mandatory) (Confidential)"
+      right: "Page 1 of 7"
+
+  # ==========================================
+  # PAGE 2
+  # ==========================================
+  - page_number: 2
+    sections:
+      - section_id: "header"
+        type: "header"
+        content:
+          left: "California Health & Human Services Agency"
+          right: "California Department of Social Services"
+
+      # Applicant Two Name Table
+      - section_id: "applicant_two_info"
+        type: "section"
+        subsections:
+          - subsection_id: "applicant_two_name"
+            type: "table"
+            style_meta:
+              border: "1.5px solid #000"
+              width: "100%"
+            header_row:
+              - header: "First"
+                header_es: "Primer Nombre"
+                width: "33%"
+              - header: "Middle"
+                header_es: "Segundo Nombre"
+                width: "34%"
+              - header: "Last"
+                header_es: "Apellido"
+                width: "33%"
+            rows:
+              - row_type: "section_header"
+                content: "Applicant Two (Legal Name):"
+                content_es: "Solicitante Dos (Nombre Legal):"
+                colspan: 3
+                style_meta:
+                  background: "#d9d9d9"
+                  font_weight: "bold"
+              - row_type: "input_row"
+                fields:
+                  - id: "applicant2_first_name"
+                    name: "applicant2_first_name"
+                    type: "text"
+                    label: "First Name"
+                    label_es: "Primer Nombre"
+                  - id: "applicant2_middle_name"
+                    name: "applicant2_middle_name"
+                    type: "text"
+                    label: "Middle Name"
+                    label_es: "Segundo Nombre"
+                  - id: "applicant2_last_name"
+                    name: "applicant2_last_name"
+                    type: "text"
+                    label: "Last Name"
+                    label_es: "Apellido"
+              - row_type: "section_header"
+                content: "Preferred/Chosen Name:"
+                content_es: "Nombre Preferido/Elegido:"
+                colspan: 3
+                style_meta:
+                  background: "#d9d9d9"
+                  font_weight: "bold"
+              - row_type: "input_row"
+                fields:
+                  - id: "applicant2_preferred_name"
+                    name: "applicant2_preferred_name"
+                    type: "text"
+                    label: "Preferred/Chosen Name"
+                    label_es: "Nombre Preferido/Elegido"
+                    colspan: 3
+
+          # Applicant Two Previous Name & Education
+          - subsection_id: "applicant_two_prev_edu"
+            type: "table"
+            style_meta:
+              border: "1.5px solid #000"
+            header_row:
+              - header: "Previous Name Used:"
+                header_es: "Nombre Anterior Usado:"
+                subtext: "*including maiden name"
+                subtext_es: "*incluyendo nombre de soltera"
+                subtext_style: "italic"
+                width: "50%"
+              - header: "Highest Level of Education Completed"
+                header_es: "Nivel Más Alto de Educación Completado"
+                width: "50%"
+            rows:
+              - row_type: "input_row"
+                fields:
+                  - id: "applicant2_previous_name"
+                    name: "applicant2_previous_name"
+                    type: "text"
+                    label: "Previous Name Used"
+                    label_es: "Nombre Anterior Usado"
+                  - id: "applicant2_education"
+                    name: "applicant2_education"
+                    type: "text"
+                    label: "Education Level"
+                    label_es: "Nivel de Educación"
+
+          # Applicant Two DOB, Gender, Race, License
+          - subsection_id: "applicant_two_demographics"
+            type: "table"
+            style_meta:
+              border: "1.5px solid #000"
+            header_row:
+              - header: "Date of Birth"
+                header_es: "Fecha de Nacimiento"
+                width: "20%"
+              - header: "Gender"
+                header_es: "Género"
+                width: "20%"
+              - header: "Race/Ethnicity"
+                header_es: "Raza/Etnicidad"
+                width: "30%"
+              - header: "Driver's License Number"
+                header_es: "Número de Licencia de Conducir"
+                width: "30%"
+            rows:
+              - row_type: "input_row"
+                fields:
+                  - id: "applicant2_dob"
+                    name: "applicant2_dob"
+                    type: "text"
+                    label: "Date of Birth"
+                    label_es: "Fecha de Nacimiento"
+                    placeholder: "MM/DD/YYYY"
+                    validation:
+                      pattern: "\\d{2}/\\d{2}/\\d{4}"
+                  - id: "applicant2_gender"
+                    name: "applicant2_gender"
+                    type: "text"
+                    label: "Gender"
+                    label_es: "Género"
+                  - id: "applicant2_race_ethnicity"
+                    name: "applicant2_race_ethnicity"
+                    type: "text"
+                    label: "Race/Ethnicity"
+                    label_es: "Raza/Etnicidad"
+                  - id: "applicant2_drivers_license"
+                    name: "applicant2_drivers_license"
+                    type: "text"
+                    label: "Driver's License Number"
+                    label_es: "Número de Licencia de Conducir"
+
+          # Applicant Two Tribal Affiliation
+          - subsection_id: "applicant_two_tribal"
+            type: "box"
+            header: "Tribal Affiliation"
+            header_es: "Afiliación Tribal"
+            style_meta:
+              border: "1.5px solid #000"
+              header_background: "#d9d9d9"
+            fields:
+              - field_group:
+                  type: "checkbox_group"
+                  fields:
+                    - id: "member2"
+                      name: "applicant2_tribal_status"
+                      type: "checkbox"
+                      label: "Member"
+                      label_es: "Miembro"
+                      value: "member"
+                    - id: "descendant2"
+                      name: "applicant2_tribal_status"
+                      type: "checkbox"
+                      label: "Descendant"
+                      label_es: "Descendiente"
+                      value: "descendant"
+              - id: "applicant2_tribe_name"
+                name: "applicant2_tribe_name"
+                type: "text"
+                label: "Name of Tribe"
+                label_es: "Nombre de la Tribu"
+                style_meta:
+                  width: "350px"
+                  border_bottom: "1px solid #000"
+
+          # Applicant Two Contact Info
+          - subsection_id: "applicant_two_contact"
+            type: "table"
+            style_meta:
+              border: "1.5px solid #000"
+            header_row:
+              - header: "Email Address (Optional)"
+                header_es: "Dirección de Correo Electrónico (Opcional)"
+                width: "33%"
+              - header: "Cell Phone Number"
+                header_es: "Número de Teléfono Celular"
+                width: "34%"
+              - header: "Home Phone Number"
+                header_es: "Número de Teléfono de Casa"
+                width: "33%"
+            rows:
+              - row_type: "input_row"
+                fields:
+                  - id: "applicant2_email"
+                    name: "applicant2_email"
+                    type: "text"
+                    label: "Email Address"
+                    label_es: "Dirección de Correo Electrónico"
+                    validation:
+                      pattern: "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$"
+                  - id: "applicant2_cell_phone"
+                    name: "applicant2_cell_phone"
+                    type: "text"
+                    label: "Cell Phone"
+                    label_es: "Teléfono Celular"
+                  - id: "applicant2_home_phone"
+                    name: "applicant2_home_phone"
+                    type: "text"
+                    label: "Home Phone"
+                    label_es: "Teléfono de Casa"
+
+          # Applicant Two Employment Info
+          - subsection_id: "applicant_two_employment"
+            type: "table"
+            style_meta:
+              border: "1.5px solid #000"
+            header_row:
+              - header: "Name/Address of Employer"
+                header_es: "Nombre/Dirección del Empleador"
+                width: "30%"
+              - header: "Work Phone Number"
+                header_es: "Número de Teléfono de Trabajo"
+                width: "25%"
+              - header: "Occupation"
+                header_es: "Ocupación"
+                width: "22%"
+              - header: "Annual Income"
+                header_es: "Ingreso Anual"
+                width: "23%"
+            rows:
+              - row_type: "input_row"
+                fields:
+                  - id: "applicant2_employer"
+                    name: "applicant2_employer"
+                    type: "text"
+                    label: "Employer"
+                    label_es: "Empleador"
+                  - id: "applicant2_work_phone"
+                    name: "applicant2_work_phone"
+                    type: "text"
+                    label: "Work Phone"
+                    label_es: "Teléfono de Trabajo"
+                  - id: "applicant2_occupation"
+                    name: "applicant2_occupation"
+                    type: "text"
+                    label: "Occupation"
+                    label_es: "Ocupación"
+                  - id: "applicant2_annual_income"
+                    name: "applicant2_annual_income"
+                    type: "text"
+                    label: "Annual Income"
+                    label_es: "Ingreso Anual"
+
+      # Relationship Box
+      - section_id: "relationship"
+        type: "box"
+        header: "If more than one applicant, what is your relationship?"
+        header_es: "¿Si hay más de un solicitante, cuál es su relación?"
+        instruction: "Please check one."
+        instruction_es: "Por favor marque uno."
+        style_meta:
+          border: "1.5px solid #000"
+          padding: "6px 8px"
+        fields:
+          - field_group:
+              type: "checkbox_group"
+              layout: "flex-wrap"
+              gap: "4px 15px"
+              options:
+                - id: "married"
+                  name: "relationship_type"
+                  type: "checkbox"
+                  label: "Married"
+                  label_es: "Casado"
+                  value: "married"
+                - id: "domestic"
+                  name: "relationship_type"
+                  type: "checkbox"
+                  label: "Domestic Partnership"
+                  label_es: "Pareja Doméstica"
+                  value: "domestic_partnership"
+                - id: "related"
+                  name: "relationship_type"
+                  type: "checkbox"
+                  label: "Related (Family Member)"
+                  label_es: "Relacionado (Miembro de la Familia)"
+                  value: "related"
+                - id: "cohabitants"
+                  name: "relationship_type"
+                  type: "checkbox"
+                  label: "Cohabitants"
+                  label_es: "Cohabitantes"
+                  value: "cohabitants"
+                - id: "other-rel"
+                  name: "relationship_type"
+                  type: "checkbox"
+                  label: "Other"
+                  label_es: "Otro"
+                  value: "other"
+                  has_text_field: true
+                  text_field:
+                    id: "relationship_other_specify"
+                    name: "relationship_other_specify"
+                    type: "text"
+                    style_meta:
+                      width: "90px"
+
+      # Section II - Applicant(s)' Residence
+      - section_id: "section_ii"
+        type: "section"
+        title: "II. APPLICANT(S)' RESIDENCE"
+        title_es: "II. RESIDENCIA DEL/DE LOS SOLICITANTE(S)"
+        style_meta:
+          font_weight: "bold"
+          font_size: "9pt"
+          margin: "14px 0 8px 0"
+
+        subsections:
+          # Physical Address
+          - subsection_id: "physical_address"
+            type: "table"
+            style_meta:
+              border: "1.5px solid #000"
+            header_row:
+              - header: "Physical Address"
+                header_es: "Dirección Física"
+                width: "50%"
+              - header: "City"
+                header_es: "Ciudad"
+                width: "20%"
+              - header: "State"
+                header_es: "Estado"
+                width: "15%"
+              - header: "Zip"
+                header_es: "Código Postal"
+                width: "15%"
+            rows:
+              - row_type: "input_row"
+                fields:
+                  - id: "physical_address"
+                    name: "physical_address"
+                    type: "text"
+                    label: "Physical Address"
+                    label_es: "Dirección Física"
+                    validation:
+                      required: true
+                  - id: "physical_city"
+                    name: "physical_city"
+                    type: "text"
+                    label: "City"
+                    label_es: "Ciudad"
+                    validation:
+                      required: true
+                  - id: "physical_state"
+                    name: "physical_state"
+                    type: "text"
+                    label: "State"
+                    label_es: "Estado"
+                    validation:
+                      required: true
+                  - id: "physical_zip"
+                    name: "physical_zip"
+                    type: "text"
+                    label: "Zip"
+                    label_es: "Código Postal"
+                    validation:
+                      required: true
+                      pattern: "\\d{5}(-\\d{4})?"
+
+          # Mailing Address
+          - subsection_id: "mailing_address"
+            type: "table"
+            style_meta:
+              border: "1.5px solid #000"
+            header_row:
+              - header: "Mailing Address (If Different)"
+                header_es: "Dirección Postal (Si es Diferente)"
+                width: "50%"
+              - header: "City"
+                header_es: "Ciudad"
+                width: "20%"
+              - header: "State"
+                header_es: "Estado"
+                width: "15%"
+              - header: "Zip"
+                header_es: "Código Postal"
+                width: "15%"
+            rows:
+              - row_type: "input_row"
+                fields:
+                  - id: "mailing_address"
+                    name: "mailing_address"
+                    type: "text"
+                    label: "Mailing Address"
+                    label_es: "Dirección Postal"
+                  - id: "mailing_city"
+                    name: "mailing_city"
+                    type: "text"
+                    label: "City"
+                    label_es: "Ciudad"
+                  - id: "mailing_state"
+                    name: "mailing_state"
+                    type: "text"
+                    label: "State"
+                    label_es: "Estado"
+                  - id: "mailing_zip"
+                    name: "mailing_zip"
+                    type: "text"
+                    label: "Zip"
+                    label_es: "Código Postal"
+
+          # Residence Questions
+          - subsection_id: "residence_questions"
+            type: "table"
+            style_meta:
+              border: "1.5px solid #000"
+            rows:
+              - row_type: "question_row"
+                question: "Do you own, rent or lease?"
+                question_es: "¿Es propietario, alquila o arrienda?"
+                question_style:
+                  background: "#d9d9d9"
+                  font_weight: "bold"
+                  width: "45%"
+                response:
+                  type: "checkbox_group"
+                  instruction: "Check one:"
+                  instruction_es: "Marque uno:"
+                  options:
+                    - id: "own"
+                      name: "residence_ownership"
+                      type: "checkbox"
+                      label: "Own"
+                      label_es: "Propietario"
+                      value: "own"
+                    - id: "rent"
+                      name: "residence_ownership"
+                      type: "checkbox"
+                      label: "Rent"
+                      label_es: "Alquila"
+                      value: "rent"
+                    - id: "lease"
+                      name: "residence_ownership"
+                      type: "checkbox"
+                      label: "Lease"
+                      label_es: "Arrienda"
+                      value: "lease"
+
+              - row_type: "question_row"
+                question: "Weapons in the home?"
+                question_es: "¿Armas en el hogar?"
+                question_style:
+                  background: "#d9d9d9"
+                  font_weight: "bold"
+                response:
+                  type: "checkbox_group"
+                  instruction: "Check one:"
+                  instruction_es: "Marque uno:"
+                  options:
+                    - id: "weapons-yes"
+                      name: "weapons_in_home"
+                      type: "checkbox"
+                      label: "Yes"
+                      label_es: "Sí"
+                      value: "yes"
+                    - id: "weapons-no"
+                      name: "weapons_in_home"
+                      type: "checkbox"
+                      label: "No"
+                      label_es: "No"
+                      value: "no"
+
+              - row_type: "question_row"
+                question: "Bodies of water?"
+                question_es: "¿Cuerpos de agua?"
+                question_style:
+                  background: "#d9d9d9"
+                  font_weight: "bold"
+                response:
+                  type: "checkbox_group"
+                  instruction: "Check one:"
+                  instruction_es: "Marque uno:"
+                  options:
+                    - id: "water-yes"
+                      name: "bodies_of_water"
+                      type: "checkbox"
+                      label: "Yes"
+                      label_es: "Sí"
+                      value: "yes"
+                    - id: "water-no"
+                      name: "bodies_of_water"
+                      type: "checkbox"
+                      label: "No"
+                      label_es: "No"
+                      value: "no"
+
+              - row_type: "question_row"
+                question: "Does any person not listed in this document use the residence as their mailing address?"
+                question_es: "¿Alguna persona no listada en este documento usa la residencia como su dirección postal?"
+                question_style:
+                  background: "#d9d9d9"
+                  font_weight: "bold"
+                  vertical_align: "top"
+                response:
+                  type: "composite"
+                  fields:
+                    - type: "checkbox_group"
+                      instruction: "Check one:"
+                      options:
+                        - id: "person-yes"
+                          name: "unlisted_person_mailing"
+                          type: "checkbox"
+                          label: "Yes"
+                          label_es: "Sí"
+                          value: "yes"
+                        - id: "person-no"
+                          name: "unlisted_person_mailing"
+                          type: "checkbox"
+                          label: "No"
+                          label_es: "No"
+                          value: "no"
+                    - type: "conditional_text"
+                      condition: "unlisted_person_mailing == yes"
+                      id: "unlisted_person_who"
+                      name: "unlisted_person_who"
+                      label: "If yes, who"
+                      label_es: "Si sí, quién"
+                      style_meta:
+                        width: "calc(100% - 70px)"
+                        border_bottom: "1px solid #000"
+
+              - row_type: "question_row"
+                question: "Languages spoken in the home:"
+                question_es: "Idiomas hablados en el hogar:"
+                question_style:
+                  background: "#d9d9d9"
+                  font_weight: "bold"
+                response:
+                  type: "text"
+                  id: "languages_spoken"
+                  name: "languages_spoken"
+                  style_meta:
+                    width: "100%"
+                    border: "none"
+
+    footer:
+      left: "RFA 01A (10/22) (Mandatory) (Confidential)"
+      right: "Page 2 of 7"
+
+  # ==========================================
+  # PAGE 3
+  # ==========================================
+  - page_number: 3
+    sections:
+      - section_id: "header"
+        type: "header"
+        content:
+          left: "California Health & Human Services Agency"
+          right: "California Department of Social Services"
+
+      # Section III - Relationship History
+      - section_id: "section_iii"
+        type: "section"
+        title: "III. RELATIONSHIP HISTORY"
+        title_es: "III. HISTORIAL DE RELACIONES"
+        style_meta:
+          font_weight: "bold"
+          font_size: "9pt"
+          margin_top: "0"
+
+        subsections:
+          # Currently Married/Domestic Partnership with Other Applicant
+          - subsection_id: "current_marriage_coapplicant"
+            type: "box"
+            header: "If currently married or in a domestic partnership with the other applicant:"
+            header_es: "Si actualmente está casado o en una pareja doméstica con el otro solicitante:"
+            style_meta:
+              border: "1.5px solid #000"
+              header_background: "#d9d9d9"
+            fields:
+              - id: "marriage_date_coapplicant"
+                name: "marriage_date_coapplicant"
+                type: "text"
+                label: "Date"
+                label_es: "Fecha"
+                style_meta:
+                  width: "90px"
+              - id: "marriage_place_coapplicant"
+                name: "marriage_place_coapplicant"
+                type: "text"
+                label: "Place (City and State)"
+                label_es: "Lugar (Ciudad y Estado)"
+                style_meta:
+                  width: "320px"
+              - id: "na1"
+                name: "marriage_coapplicant_na"
+                type: "checkbox"
+                label: "N/A"
+                label_es: "N/A"
+                style_meta:
+                  margin_left: "auto"
+
+          # Applicant One Relationship History
+          - subsection_id: "applicant_one_relationship"
+            type: "box"
+            header: "Applicant One:"
+            header_es: "Solicitante Uno:"
+            header_style:
+              text_decoration: "underline"
+            style_meta:
+              border: "1.5px solid #000"
+              header_background: "#d9d9d9"
+            content_sections:
+              - section_header: "If currently married or in a domestic partnership with someone who is not an applicant:"
+                header_style:
+                  background: "#d9d9d9"
+                fields:
+                  - id: "a1_other_marriage_date"
+                    name: "a1_other_marriage_date"
+                    type: "text"
+                    label: "Date"
+                    label_es: "Fecha"
+                    style_meta:
+                      width: "90px"
+                  - id: "a1_other_marriage_place"
+                    name: "a1_other_marriage_place"
+                    type: "text"
+                    label: "Place (City and State)"
+                    label_es: "Lugar (Ciudad y Estado)"
+                    style_meta:
+                      width: "320px"
+                  - id: "na2"
+                    name: "a1_other_marriage_na"
+                    type: "checkbox"
+                    label: "N/A"
+                    label_es: "N/A"
+                note: "*Please include the individual in Section V. if the individual resides or is regularly present in the home."
+                note_es: "*Por favor incluya a la persona en la Sección V. si la persona reside o está presente regularmente en el hogar."
+                note_style:
+                  font_size: "7.5pt"
+                  font_style: "italic"
+
+              - section_header: "Have you had previous marital or domestic partnerships?"
+                section_header_es: "¿Ha tenido parejas maritales o domésticas anteriores?"
+                header_style:
+                  background: "#d9d9d9"
+                  border_top: "1px solid #000"
+                  border_bottom: "1px solid #000"
+                fields:
+                  - id: "prev-yes1"
+                    name: "a1_previous_partnerships"
+                    type: "checkbox"
+                    label: "Yes"
+                    label_es: "Sí"
+                    value: "yes"
+                  - id: "a1_previous_count"
+                    name: "a1_previous_count"
+                    type: "text"
+                    label: "If yes, how many?"
+                    label_es: "Si sí, ¿cuántas?"
+                    style_meta:
+                      width: "90px"
+                  - id: "prev-none1"
+                    name: "a1_previous_partnerships"
+                    type: "checkbox"
+                    label: "None"
+                    label_es: "Ninguna"
+                    value: "none"
+
+          # Applicant Two Relationship History
+          - subsection_id: "applicant_two_relationship"
+            type: "box"
+            header: "Applicant Two:"
+            header_es: "Solicitante Dos:"
+            style_meta:
+              border: "1.5px solid #000"
+              header_background: "#d9d9d9"
+            content_sections:
+              - section_header: "If currently married or in a domestic partnership with someone who is not an applicant:"
+                section_header_es: "Si actualmente está casado o en una pareja doméstica con alguien que no es un solicitante:"
+                header_style:
+                  background: "#d9d9d9"
+                fields:
+                  - id: "a2_other_marriage_date"
+                    name: "a2_other_marriage_date"
+                    type: "text"
+                    label: "Date"
+                    label_es: "Fecha"
+                    style_meta:
+                      width: "90px"
+                  - id: "a2_other_marriage_place"
+                    name: "a2_other_marriage_place"
+                    type: "text"
+                    label: "Place (City and State)"
+                    label_es: "Lugar (Ciudad y Estado)"
+                    style_meta:
+                      width: "320px"
+                  - id: "na3"
+                    name: "a2_other_marriage_na"
+                    type: "checkbox"
+                    label: "N/A"
+                    label_es: "N/A"
+                note: "*Please include the individual in Section V. if the individual resides or is regularly present in the home."
+                note_es: "*Por favor incluya a la persona en la Sección V. si la persona reside o está presente regularmente en el hogar."
+                note_style:
+                  font_size: "7.5pt"
+                  font_style: "italic"
+
+              - section_header: "Have you had previous marital or domestic partnerships?"
+                section_header_es: "¿Ha tenido parejas maritales o domésticas anteriores?"
+                header_style:
+                  background: "#d9d9d9"
+                  border_top: "1px solid #000"
+                  border_bottom: "1px solid #000"
+                fields:
+                  - id: "prev-yes2"
+                    name: "a2_previous_partnerships"
+                    type: "checkbox"
+                    label: "Yes"
+                    label_es: "Sí"
+                    value: "yes"
+                  - id: "a2_previous_count"
+                    name: "a2_previous_count"
+                    type: "text"
+                    label: "If yes, how many?"
+                    label_es: "Si sí, ¿cuántas?"
+                    style_meta:
+                      width: "90px"
+                  - id: "prev-none2"
+                    name: "a2_previous_partnerships"
+                    type: "checkbox"
+                    label: "None"
+                    label_es: "Ninguna"
+                    value: "none"
+
+      # Section IV - Minor Children Residing in the Home
+      - section_id: "section_iv"
+        type: "section"
+        title: "IV. MINOR CHILDREN RESIDING IN THE HOME"
+        title_es: "IV. HIJOS MENORES RESIDIENDO EN EL HOGAR"
+        subtitle: "(PLEASE IDENTIFY DEPENDENT CHILDREN PLACED IN YOUR HOME IN SECTION VI.)"
+        subtitle_es: "(POR FAVOR IDENTIFIQUE LOS HIJOS DEPENDIENTES COLOCADOS EN SU HOGAR EN LA SECCIÓN VI.)"
+        subtitle_style:
+          font_weight: "bold"
+          font_size: "8pt"
+          text_indent: "15px"
+        style_meta:
+          font_weight: "bold"
+          font_size: "9pt"
+          margin: "14px 0 8px 0"
+
+        subsections:
+          - subsection_id: "minor_children_table"
+            type: "table"
+            style_meta:
+              border: "1.5px solid #000"
+            header_row:
+              - header: "Name of Minor Child"
+                header_es: "Nombre del Hijo Menor"
+                width: "28%"
+              - header: "Relationship to Applicant(s)"
+                header_es: "Relación con Solicitante(s)"
+                width: "18%"
+              - header: "Date of Birth"
+                header_es: "Fecha de Nacimiento"
+                width: "14%"
+              - header: "Gender"
+                header_es: "Género"
+                width: "12%"
+              - header: "Do You Financially Support This Child?"
+                header_es: "¿Apoya Financieramente a Este Hijo?"
+                width: "28%"
+            repeatable_rows:
+              count: 4
+              row_template:
+                fields:
+                  - id: "minor_child_name_{index}"
+                    name: "minor_child_name_{index}"
+                    type: "text"
+                    label: "Name of Minor Child"
+                    label_es: "Nombre del Hijo Menor"
+                  - id: "minor_child_relationship_{index}"
+                    name: "minor_child_relationship_{index}"
+                    type: "text"
+                    label: "Relationship"
+                    label_es: "Relación"
+                  - id: "minor_child_dob_{index}"
+                    name: "minor_child_dob_{index}"
+                    type: "text"
+                    label: "Date of Birth"
+                    label_es: "Fecha de Nacimiento"
+                  - id: "minor_child_gender_{index}"
+                    name: "minor_child_gender_{index}"
+                    type: "text"
+                    label: "Gender"
+                    label_es: "Género"
+                  - field_group:
+                      type: "checkbox_group"
+                      layout: "center"
+                      options:
+                        - id: "support{index}-yes"
+                          name: "minor_child_support_{index}"
+                          type: "checkbox"
+                          label: "Yes"
+                          label_es: "Sí"
+                          value: "yes"
+                        - id: "support{index}-no"
+                          name: "minor_child_support_{index}"
+                          type: "checkbox"
+                          label: "No"
+                          label_es: "No"
+                          value: "no"
+
+    footer:
+      left: "RFA 01A (10/22) (Mandatory) (Confidential)"
+      right: "Page 3 of 7"
+
+  # ==========================================
+  # PAGE 4
+  # ==========================================
+  - page_number: 4
+    sections:
+      - section_id: "header"
+        type: "header"
+        content:
+          left: "California Health & Human Services Agency"
+          right: "California Department of Social Services"
+
+      # Section V - Other Adults
+      - section_id: "section_v"
+        type: "section"
+        title: "V. OTHER ADULTS, INCLUDING ADULT CHILDREN OF APPLICANT(S), RESIDING OR REGULARLY PRESENT IN THE HOME (PLEASE IDENTIFY NMDs PLACED IN YOUR HOME IN SECTION VI.)"
+        title_es: "V. OTROS ADULTOS, INCLUYENDO HIJOS ADULTOS DEL/DE LOS SOLICITANTE(S), RESIDIENDO O PRESENTES REGULARMENTE EN EL HOGAR (POR FAVOR IDENTIFIQUE LOS NMDs COLOCADOS EN SU HOGAR EN LA SECCIÓN VI.)"
+        title_style:
+          font_size: "8.5pt"
+          line_height: "1.3"
+        note: "EACH ADULT RESIDING OR REGULARLY PRESENT IN THE HOME MUST COMPLETE A CRIMINAL RECORD STATEMENT RFA 01B. (DOES NOT APPLY TO NONMINOR DEPENDENTS)"
+        note_es: "CADA ADULTO RESIDIENDO O PRESENTE REGULARMENTE EN EL HOGAR DEBE COMPLETAR UNA DECLARACIÓN DE ANTECEDENTES PENALES RFA 01B. (NO APLICA A DEPENDIENTES NO MENORES)"
+        note_style:
+          font_size: "7.5pt"
+          font_style: "italic"
+        style_meta:
+          font_weight: "bold"
+          margin_top: "0"
+
+        subsections:
+          - subsection_id: "other_adults_table"
+            type: "table"
+            style_meta:
+              border: "1.5px solid #000"
+            header_row:
+              - header: "Full Name (First, Middle Initial & Last)"
+                header_es: "Nombre Completo (Primer Nombre, Inicial del Segundo y Apellido)"
+                width: "32%"
+              - header: "Date of Birth"
+                header_es: "Fecha de Nacimiento"
+                width: "12%"
+              - header: "Relationship To Applicant(s)"
+                header_es: "Relación con Solicitante(s)"
+                width: "20%"
+              - header: "Residing"
+                header_es: "Residiendo"
+                width: "18%"
+              - header: "Regularly Present"
+                header_es: "Presente Regularmente"
+                width: "18%"
+            repeatable_rows:
+              count: 4
+              row_template:
+                fields:
+                  - id: "other_adult_name_{index}"
+                    name: "other_adult_name_{index}"
+                    type: "text"
+                    label: "Full Name"
+                    label_es: "Nombre Completo"
+                  - id: "other_adult_dob_{index}"
+                    name: "other_adult_dob_{index}"
+                    type: "text"
+                    label: "Date of Birth"
+                    label_es: "Fecha de Nacimiento"
+                  - id: "other_adult_relationship_{index}"
+                    name: "other_adult_relationship_{index}"
+                    type: "text"
+                    label: "Relationship"
+                    label_es: "Relación"
+                  - id: "other_adult_residing_{index}"
+                    name: "other_adult_residing_{index}"
+                    type: "text"
+                    label: "Residing"
+                    label_es: "Residiendo"
+                  - id: "other_adult_regularly_present_{index}"
+                    name: "other_adult_regularly_present_{index}"
+                    type: "text"
+                    label: "Regularly Present"
+                    label_es: "Presente Regularmente"
+
+      # Section VI - Child/NMD Desired
+      - section_id: "section_vi"
+        type: "section"
+        title: "VI. CHILD/NMD DESIRED"
+        title_es: "VI. HIJO/NMD DESEADO"
+        style_meta:
+          font_weight: "bold"
+          font_size: "9pt"
+          margin: "14px 0 8px 0"
+
+        subsections:
+          - subsection_id: "child_nmd_questions"
+            type: "question_list"
+            style_meta:
+              list_style: "disc"
+              padding_left: "18px"
+            questions:
+              - question: "Has a child or nonminor dependent been identified?"
+                question_es: "¿Se ha identificado un hijo o dependiente no menor?"
+                fields:
+                  - field_group:
+                      type: "checkbox_group"
+                      instruction: "Check one:"
+                      instruction_es: "Marque uno:"
+                      options:
+                        - id: "identified-yes"
+                          name: "child_identified"
+                          type: "checkbox"
+                          label: "Yes"
+                          label_es: "Sí"
+                          value: "yes"
+                        - id: "identified-no"
+                          name: "child_identified"
+                          type: "checkbox"
+                          label: "No"
+                          label_es: "No"
+                          value: "no"
+
+              - question: "Is the child or nonminor dependent currently in your home?"
+                question_es: "¿El hijo o dependiente no menor está actualmente en su hogar?"
+                fields:
+                  - field_group:
+                      type: "checkbox_group"
+                      instruction: "Check one:"
+                      instruction_es: "Marque uno:"
+                      options:
+                        - id: "inhome-yes"
+                          name: "child_in_home"
+                          type: "checkbox"
+                          label: "Yes"
+                          label_es: "Sí"
+                          value: "yes"
+                        - id: "inhome-no"
+                          name: "child_in_home"
+                          type: "checkbox"
+                          label: "No"
+                          label_es: "No"
+                          value: "no"
+
+              - question: "Is the child or nonminor dependent a member of a tribe or eligible for membership?"
+                question_es: "¿El hijo o dependiente no menor es miembro de una tribu o elegible para membresía?"
+                fields:
+                  - field_group:
+                      type: "checkbox_group"
+                      instruction: "Check one:"
+                      instruction_es: "Marque uno:"
+                      options:
+                        - id: "tribal-yes"
+                          name: "child_tribal_member"
+                          type: "checkbox"
+                          label: "Yes"
+                          label_es: "Sí"
+                          value: "yes"
+                        - id: "tribal-no"
+                          name: "child_tribal_member"
+                          type: "checkbox"
+                          label: "No"
+                          label_es: "No"
+                          value: "no"
+                        - id: "tribal-unknown"
+                          name: "child_tribal_member"
+                          type: "checkbox"
+                          label: "Unknown"
+                          label_es: "Desconocido"
+                          value: "unknown"
+                  - id: "child_tribe_name"
+                    name: "child_tribe_name"
+                    type: "text"
+                    label: "Name of Tribe(s)"
+                    label_es: "Nombre de la(s) Tribu(s)"
+                    style_meta:
+                      width: "350px"
+                  - id: "child_tribe_contact"
+                    name: "child_tribe_contact"
+                    type: "text"
+                    label: "Contact Information for Tribe, if known"
+                    label_es: "Información de Contacto de la Tribu, si se conoce"
+                    style_meta:
+                      width: "350px"
+
+          # Child/NMD Table
+          - subsection_id: "child_nmd_table"
+            type: "table"
+            style_meta:
+              border: "1.5px solid #000"
+            header_row:
+              - header: "Name of Child or NMD (First & Last)"
+                header_es: "Nombre del Hijo o NMD (Primer Nombre y Apellido)"
+                width: "24%"
+              - header: "Date of Birth"
+                header_es: "Fecha de Nacimiento"
+                width: "11%"
+              - header: "Gender"
+                header_es: "Género"
+                width: "10%"
+              - header: "Relationship to Applicant"
+                header_es: "Relación con Solicitante"
+                width: "17%"
+              - header: "Date of Placement or Planned Placement"
+                header_es: "Fecha de Colocación o Colocación Planeada"
+                width: "18%"
+              - header: "County of Jurisdiction"
+                header_es: "Condado de Jurisdicción"
+                width: "20%"
+            repeatable_rows:
+              count: 5
+              row_template:
+                fields:
+                  - id: "child_nmd_name_{index}"
+                    name: "child_nmd_name_{index}"
+                    type: "text"
+                    label: "Name"
+                    label_es: "Nombre"
+                  - id: "child_nmd_dob_{index}"
+                    name: "child_nmd_dob_{index}"
+                    type: "text"
+                    label: "Date of Birth"
+                    label_es: "Fecha de Nacimiento"
+                  - id: "child_nmd_gender_{index}"
+                    name: "child_nmd_gender_{index}"
+                    type: "text"
+                    label: "Gender"
+                    label_es: "Género"
+                  - id: "child_nmd_relationship_{index}"
+                    name: "child_nmd_relationship_{index}"
+                    type: "text"
+                    label: "Relationship"
+                    label_es: "Relación"
+                  - id: "child_nmd_placement_date_{index}"
+                    name: "child_nmd_placement_date_{index}"
+                    type: "text"
+                    label: "Placement Date"
+                    label_es: "Fecha de Colocación"
+                  - id: "child_nmd_county_{index}"
+                    name: "child_nmd_county_{index}"
+                    type: "text"
+                    label: "County"
+                    label_es: "Condado"
+
+          # Ages Box
+          - subsection_id: "ages_preference"
+            type: "box"
+            header: "Ages(s)"
+            header_es: "Edad(es)"
+            style_meta:
+              border: "1.5px solid #000"
+              header_background: "#d9d9d9"
+              content_display: "flex"
+              content_flex_wrap: "wrap"
+              content_gap: "6px 20px"
+            fields:
+              - field_group:
+                  type: "checkbox_group"
+                  layout: "flex-wrap"
+                  options:
+                    - id: "age0-2"
+                      name: "age_preference"
+                      type: "checkbox"
+                      label: "0 to 2 yrs"
+                      label_es: "0 a 2 años"
+                      value: "0-2"
+                    - id: "age3-7"
+                      name: "age_preference"
+                      type: "checkbox"
+                      label: "3 to 7 yrs"
+                      label_es: "3 a 7 años"
+                      value: "3-7"
+                    - id: "age8-12"
+                      name: "age_preference"
+                      type: "checkbox"
+                      label: "8 to 12 yrs"
+                      label_es: "8 a 12 años"
+                      value: "8-12"
+                    - id: "age13-15"
+                      name: "age_preference"
+                      type: "checkbox"
+                      label: "13 to 15 yrs"
+                      label_es: "13 a 15 años"
+                      value: "13-15"
+                    - id: "age16-17"
+                      name: "age_preference"
+                      type: "checkbox"
+                      label: "16 to 17 yrs"
+                      label_es: "16 a 17 años"
+                      value: "16-17"
+                    - id: "age18-20"
+                      name: "age_preference"
+                      type: "checkbox"
+                      label: "18 to 20 yrs"
+                      label_es: "18 a 20 años"
+                      value: "18-20"
+                    - id: "no-pref"
+                      name: "age_preference"
+                      type: "checkbox"
+                      label: "No preference"
+                      label_es: "Sin preferencia"
+                      value: "no-preference"
+
+          # Sibling Group Box
+          - subsection_id: "sibling_preference"
+            type: "box"
+            header: "Sibling Group"
+            header_es: "Grupo de Hermanos"
+            style_meta:
+              border: "1.5px solid #000"
+              header_background: "#d9d9d9"
+              content_display: "flex"
+              content_flex_wrap: "wrap"
+              content_gap: "6px 20px"
+            fields:
+              - field_group:
+                  type: "checkbox_group"
+                  layout: "flex-wrap"
+                  options:
+                    - id: "sib-none"
+                      name: "sibling_preference"
+                      type: "checkbox"
+                      label: "None"
+                      label_es: "Ninguno"
+                      value: "none"
+                    - id: "sib-2"
+                      name: "sibling_preference"
+                      type: "checkbox"
+                      label: "2"
+                      label_es: "2"
+                      value: "2"
+                    - id: "sib-3"
+                      name: "sibling_preference"
+                      type: "checkbox"
+                      label: "3"
+                      label_es: "3"
+                      value: "3"
+                    - id: "sib-4"
+                      name: "sibling_preference"
+                      type: "checkbox"
+                      label: "4"
+                      label_es: "4"
+                      value: "4"
+                    - id: "sib-5plus"
+                      name: "sibling_preference"
+                      type: "checkbox"
+                      label: "5 or more"
+                      label_es: "5 o más"
+                      value: "5+"
+
+    footer:
+      left: "RFA 01A (10/22) (Mandatory) (Confidential)"
+      right: "Page 4 of 7"
+
+  # ==========================================
+  # PAGE 5
+  # ==========================================
+  - page_number: 5
+    sections:
+      - section_id: "header"
+        type: "header"
+        content:
+          left: "California Health & Human Services Agency"
+          right: "California Department of Social Services"
+
+      # Section VII - Foster Care/Adoption/Licensure History (Applicant One)
+      - section_id: "section_vii_part1"
+        type: "section"
+        title: "VII. FOSTER CARE/ADOPTION/LICENSURE HISTORY"
+        title_es: "VII. HISTORIAL DE CUIDADO DE CRIANZA/ADOPCIÓN/LICENCIA"
+        style_meta:
+          font_weight: "bold"
+          font_size: "9pt"
+          margin_top: "0"
+
+        subsections:
+          - subsection_id: "applicant_one_history"
+            type: "foster_section"
+            header: "Applicant One:"
+            header_es: "Solicitante Uno:"
+            header_style:
+              font_weight: "bold"
+              text_decoration: "underline"
+              background: "#d9d9d9"
+            questions:
+              - question_id: "a1q1"
+                question: "Have you previously been or are you currently approved for adoption, an approved relative or nonrelative extended family member, or previously or currently licensed, certified, or approved to provide foster care?"
+                question_es: "¿Ha sido aprobado previamente o está actualmente aprobado para adopción, un familiar relativo o no relativo aprobado, o previamente o actualmente licenciado, certificado, o aprobado para proporcionar cuidado de crianza?"
+                fields:
+                  - field_group:
+                      type: "checkbox_group"
+                      instruction: "Check one:"
+                      instruction_es: "Marque uno:"
+                      options:
+                        - id: "a1q1-yes"
+                          name: "a1_foster_approved"
+                          type: "checkbox"
+                          label: "Yes"
+                          label_es: "Sí"
+                          value: "yes"
+                        - id: "a1q1-no"
+                          name: "a1_foster_approved"
+                          type: "checkbox"
+                          label: "No"
+                          label_es: "No"
+                          value: "no"
+                  - id: "a1_agency_names"
+                    name: "a1_agency_names"
+                    type: "text"
+                    label: "If yes, name of agency(s)"
+                    label_es: "Si sí, nombre de la(s) agencia(s)"
+                    style_meta:
+                      width: "55%"
+                  - id: "a1_license_type"
+                    name: "a1_license_type"
+                    type: "text"
+                    label: "Type of license/certification/approval"
+                    label_es: "Tipo de licencia/certificación/aprobación"
+                    style_meta:
+                      width: "45%"
+                  - field_group:
+                      type: "checkbox_group"
+                      label: "If yes, are you aware of any pending complaints or administrative actions?"
+                      label_es: "Si sí, ¿está consciente de alguna queja pendiente o acción administrativa?"
+                      options:
+                        - id: "a1q1-pending-yes"
+                          name: "a1_pending_complaints"
+                          type: "checkbox"
+                          label: "Yes"
+                          label_es: "Sí"
+                          value: "yes"
+                        - id: "a1q1-pending-no"
+                          name: "a1_pending_complaints"
+                          type: "checkbox"
+                          label: "No"
+                          label_es: "No"
+                          value: "no"
+
+              - question_id: "a1q2"
+                question: "Have you previously been or are you currently licensed to operate a child care center, family child care home, or residential care facility for the elderly or chronically ill?"
+                question_es: "¿Ha sido o está actualmente licenciado para operar un centro de cuidado infantil, hogar de cuidado infantil familiar, o instalación de cuidado residencial para ancianos o enfermos crónicos?"
+                fields:
+                  - field_group:
+                      type: "checkbox_group"
+                      instruction: "Check one:"
+                      instruction_es: "Marque uno:"
+                      options:
+                        - id: "a1q2-yes"
+                          name: "a1_childcare_licensed"
+                          type: "checkbox"
+                          label: "Yes"
+                          label_es: "Sí"
+                          value: "yes"
+                        - id: "a1q2-no"
+                          name: "a1_childcare_licensed"
+                          type: "checkbox"
+                          label: "No"
+                          label_es: "No"
+                          value: "no"
+                  - id: "a1_childcare_license_type"
+                    name: "a1_childcare_license_type"
+                    type: "text"
+                    label: "If yes, type of license"
+                    label_es: "Si sí, tipo de licencia"
+                    style_meta:
+                      width: "55%"
+
+              - question_id: "a1q3"
+                question: "Have you previously been or are you currently employed by or volunteering at a community care facility, child care center, family child care home, or residential care facility for the elderly or chronically ill?"
+                question_es: "¿Ha sido o está actualmente empleado o es voluntario en una instalación de cuidado comunitario, centro de cuidado infantil, hogar de cuidado infantil familiar, o instalación de cuidado residencial para ancianos o enfermos crónicos?"
+                fields:
+                  - field_group:
+                      type: "checkbox_group"
+                      instruction: "Check one:"
+                      instruction_es: "Marque uno:"
+                      options:
+                        - id: "a1q3-yes"
+                          name: "a1_facility_employed"
+                          type: "checkbox"
+                          label: "Yes"
+                          label_es: "Sí"
+                          value: "yes"
+                        - id: "a1q3-no"
+                          name: "a1_facility_employed"
+                          type: "checkbox"
+                          label: "No"
+                          label_es: "No"
+                          value: "no"
+                  - id: "a1_facility_names"
+                    name: "a1_facility_names"
+                    type: "text"
+                    label: "If yes, name the facility(s)"
+                    label_es: "Si sí, nombre de la(s) instalación(es)"
+                    style_meta:
+                      width: "55%"
+
+              - question_id: "a1q4"
+                question: "Have you had a previous license, certification, relative or nonrelative extended family member approval, Resource Family approval, or portability application denial?"
+                question_es: "¿Ha tenido una licencia previa, certificación, aprobación de familiar relativo o no relativo, aprobación de Familia de Recursos, o denegación de solicitud de portabilidad?"
+                fields:
+                  - field_group:
+                      type: "checkbox_group"
+                      instruction: "Check one:"
+                      instruction_es: "Marque uno:"
+                      options:
+                        - id: "a1q4-yes"
+                          name: "a1_previous_denial"
+                          type: "checkbox"
+                          label: "Yes"
+                          label_es: "Sí"
+                          value: "yes"
+                        - id: "a1q4-no"
+                          name: "a1_previous_denial"
+                          type: "checkbox"
+                          label: "No"
+                          label_es: "No"
+                          value: "no"
+                  - id: "a1_denial_agency_names"
+                    name: "a1_denial_agency_names"
+                    type: "text"
+                    label: "If yes, name of agency(s)"
+                    label_es: "Si sí, nombre de la(s) agencia(s)"
+                    style_meta:
+                      width: "60%"
+
+              - question_id: "a1q5"
+                question: "Have you had a license, certification, or approval suspended, revoked, or rescinded?"
+                question_es: "¿Ha tenido una licencia, certificación o aprobación suspendida, revocada o rescindida?"
+                fields:
+                  - field_group:
+                      type: "checkbox_group"
+                      instruction: "Check one:"
+                      instruction_es: "Marque uno:"
+                      options:
+                        - id: "a1q5-yes"
+                          name: "a1_license_revoked"
+                          type: "checkbox"
+                          label: "Yes"
+                          label_es: "Sí"
+                          value: "yes"
+                        - id: "a1q5-no"
+                          name: "a1_license_revoked"
+                          type: "checkbox"
+                          label: "No"
+                          label_es: "No"
+                          value: "no"
+                  - id: "a1_revoked_agency_names"
+                    name: "a1_revoked_agency_names"
+                    type: "text"
+                    label: "If yes, name of agency(s)"
+                    label_es: "Si sí, nombre de la(s) agencia(s)"
+                    style_meta:
+                      width: "60%"
+
+              - question_id: "a1q6"
+                question: "Have you been subject to an exclusion order?"
+                question_es: "¿Ha estado sujeto a una orden de exclusión?"
+                fields:
+                  - field_group:
+                      type: "checkbox_group"
+                      instruction: "Check one:"
+                      instruction_es: "Marque uno:"
+                      options:
+                        - id: "a1q6-yes"
+                          name: "a1_exclusion_order"
+                          type: "checkbox"
+                          label: "Yes"
+                          label_es: "Sí"
+                          value: "yes"
+                        - id: "a1q6-no"
+                          name: "a1_exclusion_order"
+                          type: "checkbox"
+                          label: "No"
+                          label_es: "No"
+                          value: "no"
+
+    footer:
+      left: "RFA 01A (10/22) (Mandatory) (Confidential)"
+      right: "Page 5 of 7"
+
+  # ==========================================
+  # PAGE 6
+  # ==========================================
+  - page_number: 6
+    sections:
+      - section_id: "header"
+        type: "header"
+        content:
+          left: "California Health & Human Services Agency"
+          right: "California Department of Social Services"
+
+      # Section VII Continued - Foster Care/Adoption/Licensure History (Applicant Two)
+      - section_id: "section_vii_part2"
+        type: "section"
+        title: "VII. FOSTER CARE/ADOPTION/LICENSURE HISTORY (Continued)"
+        title_es: "VII. HISTORIAL DE CUIDADO DE CRIANZA/ADOPCIÓN/LICENCIA (Continuado)"
+        style_meta:
+          font_weight: "bold"
+          font_size: "9pt"
+          margin_top: "0"
+
+        subsections:
+          - subsection_id: "applicant_two_history"
+            type: "foster_section"
+            header: "Applicant Two:"
+            header_es: "Solicitante Dos:"
+            header_style:
+              font_weight: "bold"
+              text_decoration: "underline"
+              background: "#d9d9d9"
+            questions:
+              - question_id: "a2q1"
+                question: "Have you previously been or are you currently approved for adoption, an approved relative or nonrelative extended family member, or previously or currently licensed, certified, or approved to provide foster care?"
+                question_es: "¿Ha sido aprobado previamente o está actualmente aprobado para adopción, un familiar relativo o no relativo aprobado, o previamente o actualmente licenciado, certificado, o aprobado para proporcionar cuidado de crianza?"
+                fields:
+                  - field_group:
+                      type: "checkbox_group"
+                      instruction: "Check one:"
+                      instruction_es: "Marque uno:"
+                      options:
+                        - id: "a2q1-yes"
+                          name: "a2_foster_approved"
+                          type: "checkbox"
+                          label: "Yes"
+                          label_es: "Sí"
+                          value: "yes"
+                        - id: "a2q1-no"
+                          name: "a2_foster_approved"
+                          type: "checkbox"
+                          label: "No"
+                          label_es: "No"
+                          value: "no"
+                  - id: "a2_agency_names"
+                    name: "a2_agency_names"
+                    type: "text"
+                    label: "If yes, name of agency(s)"
+                    label_es: "Si sí, nombre de la(s) agencia(s)"
+                    style_meta:
+                      width: "55%"
+                  - id: "a2_license_type"
+                    name: "a2_license_type"
+                    type: "text"
+                    label: "Type of license/certification/approval"
+                    label_es: "Tipo de licencia/certificación/aprobación"
+                    style_meta:
+                      width: "45%"
+                  - field_group:
+                      type: "checkbox_group"
+                      label: "If yes, are you aware of any pending complaints or administrative actions?"
+                      label_es: "Si sí, ¿está consciente de alguna queja pendiente o acción administrativa?"
+                      options:
+                        - id: "a2q1-pending-yes"
+                          name: "a2_pending_complaints"
+                          type: "checkbox"
+                          label: "Yes"
+                          label_es: "Sí"
+                          value: "yes"
+                        - id: "a2q1-pending-no"
+                          name: "a2_pending_complaints"
+                          type: "checkbox"
+                          label: "No"
+                          label_es: "No"
+                          value: "no"
+
+              - question_id: "a2q2"
+                question: "Have you previously been or are you currently licensed to operate a child care center, family child care home, or residential care facility for the elderly or chronically ill?"
+                question_es: "¿Ha sido o está actualmente licenciado para operar un centro de cuidado infantil, hogar de cuidado infantil familiar, o instalación de cuidado residencial para ancianos o enfermos crónicos?"
+                fields:
+                  - field_group:
+                      type: "checkbox_group"
+                      instruction: "Check one:"
+                      instruction_es: "Marque uno:"
+                      options:
+                        - id: "a2q2-yes"
+                          name: "a2_childcare_licensed"
+                          type: "checkbox"
+                          label: "Yes"
+                          label_es: "Sí"
+                          value: "yes"
+                        - id: "a2q2-no"
+                          name: "a2_childcare_licensed"
+                          type: "checkbox"
+                          label: "No"
+                          label_es: "No"
+                          value: "no"
+                  - id: "a2_childcare_license_type"
+                    name: "a2_childcare_license_type"
+                    type: "text"
+                    label: "If yes, type of license"
+                    label_es: "Si sí, tipo de licencia"
+                    style_meta:
+                      width: "55%"
+
+              - question_id: "a2q3"
+                question: "Have you previously been or are you currently employed by or volunteering at a community care facility, child care center, family child care home, or residential care facility for the elderly or chronically ill?"
+                question_es: "¿Ha sido o está actualmente empleado o es voluntario en una instalación de cuidado comunitario, centro de cuidado infantil, hogar de cuidado infantil familiar, o instalación de cuidado residencial para ancianos o enfermos crónicos?"
+                fields:
+                  - field_group:
+                      type: "checkbox_group"
+                      instruction: "Check one:"
+                      instruction_es: "Marque uno:"
+                      options:
+                        - id: "a2q3-yes"
+                          name: "a2_facility_employed"
+                          type: "checkbox"
+                          label: "Yes"
+                          label_es: "Sí"
+                          value: "yes"
+                        - id: "a2q3-no"
+                          name: "a2_facility_employed"
+                          type: "checkbox"
+                          label: "No"
+                          label_es: "No"
+                          value: "no"
+                  - id: "a2_facility_names"
+                    name: "a2_facility_names"
+                    type: "text"
+                    label: "If yes, name the facility(s)"
+                    label_es: "Si sí, nombre de la(s) instalación(es)"
+                    style_meta:
+                      width: "55%"
+
+              - question_id: "a2q4"
+                question: "Have you had a previous license, certification, relative or nonrelative extended family member approval, Resource Family approval, or portability application denial?"
+                question_es: "¿Ha tenido una licencia previa, certificación, aprobación de familiar relativo o no relativo, aprobación de Familia de Recursos, o denegación de solicitud de portabilidad?"
+                fields:
+                  - field_group:
+                      type: "checkbox_group"
+                      instruction: "Check one:"
+                      instruction_es: "Marque uno:"
+                      options:
+                        - id: "a2q4-yes"
+                          name: "a2_previous_denial"
+                          type: "checkbox"
+                          label: "Yes"
+                          label_es: "Sí"
+                          value: "yes"
+                        - id: "a2q4-no"
+                          name: "a2_previous_denial"
+                          type: "checkbox"
+                          label: "No"
+                          label_es: "No"
+                          value: "no"
+                  - id: "a2_denial_agency_names"
+                    name: "a2_denial_agency_names"
+                    type: "text"
+                    label: "If yes, name of agency(s)"
+                    label_es: "Si sí, nombre de la(s) agencia(s)"
+                    style_meta:
+                      width: "60%"
+
+              - question_id: "a2q5"
+                question: "Have you had a license, certification, or approval suspended, revoked, or rescinded?"
+                question_es: "¿Ha tenido una licencia, certificación o aprobación suspendida, revocada o rescindida?"
+                fields:
+                  - field_group:
+                      type: "checkbox_group"
+                      instruction: "Check one:"
+                      instruction_es: "Marque uno:"
+                      options:
+                        - id: "a2q5-yes"
+                          name: "a2_license_revoked"
+                          type: "checkbox"
+                          label: "Yes"
+                          label_es: "Sí"
+                          value: "yes"
+                        - id: "a2q5-no"
+                          name: "a2_license_revoked"
+                          type: "checkbox"
+                          label: "No"
+                          label_es: "No"
+                          value: "no"
+                  - id: "a2_revoked_agency_names"
+                    name: "a2_revoked_agency_names"
+                    type: "text"
+                    label: "If yes, name of agency(s)"
+                    label_es: "Si sí, nombre de la(s) agencia(s)"
+                    style_meta:
+                      width: "60%"
+
+              - question_id: "a2q6"
+                question: "Have you been subject to an exclusion order?"
+                question_es: "¿Ha estado sujeto a una orden de exclusión?"
+                fields:
+                  - field_group:
+                      type: "checkbox_group"
+                      instruction: "Check one:"
+                      instruction_es: "Marque uno:"
+                      options:
+                        - id: "a2q6-yes"
+                          name: "a2_exclusion_order"
+                          type: "checkbox"
+                          label: "Yes"
+                          label_es: "Sí"
+                          value: "yes"
+                        - id: "a2q6-no"
+                          name: "a2_exclusion_order"
+                          type: "checkbox"
+                          label: "No"
+                          label_es: "No"
+                          value: "no"
+
+      # Section VIII - References
+      - section_id: "section_viii"
+        type: "section"
+        title: "VIII. REFERENCES"
+        title_es: "VIII. REFERENCIAS"
+        style_meta:
+          font_weight: "bold"
+          font_size: "9pt"
+          margin: "14px 0 8px 0"
+
+        subsections:
+          - subsection_id: "references_table"
+            type: "table"
+            style_meta:
+              border: "1.5px solid #000"
+            instruction_row:
+              content: "Please list the name, telephone number(s), and address of two individuals who have knowledge of your home environment, lifestyle, and ability to be a Resource Family."
+              content_es: "Por favor liste el nombre, número(s) de teléfono y dirección de dos individuos que tengan conocimiento de su ambiente doméstico, estilo de vida y habilidad para ser una Familia de Recursos."
+              style_meta:
+                background: "#fff"
+                font_size: "9pt"
+                padding: "8px"
+                text_align: "left"
+                font_weight: "normal"
+            header_row:
+              - header: "Full Name"
+                header_es: "Nombre Completo"
+                width: "30%"
+              - header: "Telephone Number(s)"
+                header_es: "Número(s) de Teléfono"
+                width: "25%"
+              - header: "Mailing Address/City/State/Zip or Email Address"
+                header_es: "Dirección Postal/Ciudad/Estado/Código Postal o Dirección de Correo Electrónico"
+                width: "45%"
+            repeatable_rows:
+              count: 2
+              row_template:
+                style_meta:
+                  height: "32px"
+                fields:
+                  - id: "reference_name_{index}"
+                    name: "reference_name_{index}"
+                    type: "text"
+                    label: "Full Name"
+                    label_es: "Nombre Completo"
+                    validation:
+                      required: true
+                  - id: "reference_phone_{index}"
+                    name: "reference_phone_{index}"
+                    type: "text"
+                    label: "Telephone Number(s)"
+                    label_es: "Número(s) de Teléfono"
+                    validation:
+                      required: true
+                  - id: "reference_address_{index}"
+                    name: "reference_address_{index}"
+                    type: "text"
+                    label: "Address or Email"
+                    label_es: "Dirección o Correo Electrónico"
+                    validation:
+                      required: true
+
+    footer:
+      left: "RFA 01A (10/22) (Mandatory) (Confidential)"
+      right: "Page 6 of 7"
+
+  # ==========================================
+  # PAGE 7
+  # ==========================================
+  - page_number: 7
+    sections:
+      - section_id: "header"
+        type: "header"
+        content:
+          left: "California Health & Human Services Agency"
+          right: "California Department of Social Services"
+
+      # Section IX - Applicant(s) Declaration
+      - section_id: "section_ix"
+        type: "section"
+        title: "IX. APPLICANT(S) DECLARATION"
+        title_es: "IX. DECLARACIÓN DEL/DE LOS SOLICITANTE(S)"
+        style_meta:
+          font_weight: "bold"
+          font_size: "9pt"
+          margin_top: "0"
+
+        subsections:
+          - subsection_id: "declaration_intro"
+            type: "text"
+            content: "I/We declare that:"
+            content_es: "Yo/Nosotros declaramos que:"
+            style_meta:
+              margin: "0 0 8px 0"
+              font_size: "9pt"
+
+          - subsection_id: "declaration_list"
+            type: "ordered_list"
+            list_style: "disc"
+            style_meta:
+              padding_left: "18px"
+              margin_bottom: "12px"
+              font_size: "9pt"
+              line_height: "1.4"
+            items:
+              - content: "I/We have the financial ability to ensure the stability and financial security of the family."
+                content_es: "Yo/Nosotros tenemos la capacidad financiera para asegurar la estabilidad y seguridad financiera de la familia."
+
+              - content: "In signing this application, I/we understand that the completion of routine forms will or may be required by my/our references, physician, and employer, that my/our financial status will be verified, and a background check will be conducted."
+                content_es: "Al firmar esta solicitud, yo/nosotros entendemos que la completación de formularios de rutina será o puede ser requerida por mis/nuestras referencias, médico y empleador, que mi/nuestro estado financiero será verificado, y se realizará una verificación de antecedentes."
+
+              - content: "I/We affirm that the information provided on this form is true, correct, and contains no material omissions of fact to the best of my/our knowledge and belief."
+                content_es: "Yo/Nosotros afirmamos que la información proporcionada en este formulario es verdadera, correcta y no contiene omisiones materiales de hecho según mi/nuestro mejor conocimiento y creencia."
+
+              - content: "I/We understand any false or misleading statements willfully or knowingly made to the County or Department, or failure to disclose material facts to obtain or maintain Resource Family approval can result in a denial or rescission of a Resource Family Approval."
+                content_es: "Yo/Nosotros entendemos que cualquier declaración falsa o engañosa hecha intencionalmente o con conocimiento al Condado o Departamento, o la falta de divulgación de hechos materiales para obtener o mantener la aprobación de Familia de Recursos puede resultar en una denegación o rescisión de una Aprobación de Familia de Recursos."
+
+              - content: "I/We understand that I/we have the right to appeal any decision regarding the disposition of this application."
+                content_es: "Yo/Nosotros entendemos que yo/nosotros tenemos el derecho de apelar cualquier decisión con respecto a la disposición de esta solicitud."
+
+              - content: "I/We understand that personal information contained on this application may be shared with the following:"
+                sub_list:
+                  list_style: "decimal"
+                  items:
+                    - "A placement agency or juvenile court for the purpose of determining whether to place a child or nonminor dependent."
+                    - "Any approval agency to which a Resource Family applies for subsequent approval."
+                    - "A tribal agency."
+                    - "The State Department of Social Services."
+                    - "A member of a child welfare agency in the sending state for placement pursuant to the Interstate Compact on the Placement of Children."
+                    - "As otherwise required by law."
+
+          # Signature Table
+          - subsection_id: "signature_table"
+            type: "table"
+            style_meta:
+              border: "1.5px solid #000"
+              margin_top: "12px"
+            header_row:
+              - header: "Applicant(s) Signature"
+                header_es: "Firma del/de los Solicitante(s)"
+                width: "40%"
+              - header: "City & County Where Signed"
+                header_es: "Ciudad y Condado Donde se Firmó"
+                width: "40%"
+              - header: "Date"
+                header_es: "Fecha"
+                width: "20%"
+            rows:
+              - row_type: "signature_row"
+                row_label: "Applicant One:"
+                row_label_es: "Solicitante Uno:"
+                style_meta:
+                  height: "28px"
+                fields:
+                  - id: "applicant1_signature"
+                    name: "applicant1_signature"
+                    type: "signature"
+                    label: "Applicant One Signature"
+                    label_es: "Firma del Solicitante Uno"
+                    validation:
+                      required: true
+                  - id: "applicant1_sign_location"
+                    name: "applicant1_sign_location"
+                    type: "text"
+                    label: "City & County"
+                    label_es: "Ciudad y Condado"
+                    validation:
+                      required: true
+                  - id: "applicant1_sign_date"
+                    name: "applicant1_sign_date"
+                    type: "text"
+                    label: "Date"
+                    label_es: "Fecha"
+                    validation:
+                      required: true
+              - row_type: "signature_row"
+                row_label: "Applicant Two:"
+                row_label_es: "Solicitante Dos:"
+                style_meta:
+                  height: "28px"
+                fields:
+                  - id: "applicant2_signature"
+                    name: "applicant2_signature"
+                    type: "signature"
+                    label: "Applicant Two Signature"
+                    label_es: "Firma del Solicitante Dos"
+                  - id: "applicant2_sign_location"
+                    name: "applicant2_sign_location"
+                    type: "text"
+                    label: "City & County"
+                    label_es: "Ciudad y Condado"
+                  - id: "applicant2_sign_date"
+                    name: "applicant2_sign_date"
+                    type: "text"
+                    label: "Date"
+                    label_es: "Fecha"
+
+      # Resubmission Box
+      - section_id: "resubmission"
+        type: "box"
+        header: "Resubmission of Application"
+        header_es: "Re-presentación de Solicitud"
+        header_style:
+          background: "#d9d9d9"
+          font_weight: "bold"
+          text_align: "center"
+          font_size: "9pt"
+        style_meta:
+          border: "1.5px solid #000"
+          margin_top: "15px"
+
+        content_sections:
+          - type: "text"
+            content: "If this application is being resubmitted within 12 months of a withdrawal or cease review, the County shall verify the information is current and require the applicant(s) to sign below."
+            content_es: "Si esta solicitud está siendo re-presentada dentro de 12 meses de un retiro o cese de revisión, el Condado verificará que la información sea actual y requerirá que el/los solicitante(s) firme(n) abajo."
+            style_meta:
+              padding: "6px 8px"
+              font_size: "8.5pt"
+              border_bottom: "1px solid #000"
+
+          - type: "table"
+            style_meta:
+              border: "none"
+              margin: "0"
+            header_row:
+              - header: "Applicant(s) Signature"
+                header_es: "Firma del/de los Solicitante(s)"
+                width: "40%"
+              - header: "City & County Where Signed"
+                header_es: "Ciudad y Condado Donde se Firmó"
+                width: "40%"
+              - header: "Date"
+                header_es: "Fecha"
+                width: "20%"
+            rows:
+              - row_type: "signature_row"
+                row_label: "Applicant One:"
+                row_label_es: "Solicitante Uno:"
+                style_meta:
+                  height: "28px"
+                fields:
+                  - id: "resubmit_applicant1_signature"
+                    name: "resubmit_applicant1_signature"
+                    type: "signature"
+                    label: "Applicant One Signature"
+                    label_es: "Firma del Solicitante Uno"
+                  - id: "resubmit_applicant1_sign_location"
+                    name: "resubmit_applicant1_sign_location"
+                    type: "text"
+                    label: "City & County"
+                    label_es: "Ciudad y Condado"
+                  - id: "resubmit_applicant1_sign_date"
+                    name: "resubmit_applicant1_sign_date"
+                    type: "text"
+                    label: "Date"
+                    label_es: "Fecha"
+              - row_type: "signature_row"
+                row_label: "Applicant Two:"
+                row_label_es: "Solicitante Dos:"
+                style_meta:
+                  height: "28px"
+                fields:
+                  - id: "resubmit_applicant2_signature"
+                    name: "resubmit_applicant2_signature"
+                    type: "signature"
+                    label: "Applicant Two Signature"
+                    label_es: "Firma del Solicitante Dos"
+                  - id: "resubmit_applicant2_sign_location"
+                    name: "resubmit_applicant2_sign_location"
+                    type: "text"
+                    label: "City & County"
+                    label_es: "Ciudad y Condado"
+                  - id: "resubmit_applicant2_sign_date"
+                    name: "resubmit_applicant2_sign_date"
+                    type: "text"
+                    label: "Date"
+                    label_es: "Fecha"
+              - row_type: "signature_row"
+                row_label: "RFA Program Staff:"
+                row_label_es: "Personal del Programa RFA:"
+                style_meta:
+                  height: "28px"
+                fields:
+                  - id: "rfa_staff_signature"
+                    name: "rfa_staff_signature"
+                    type: "signature"
+                    label: "RFA Staff Signature"
+                    label_es: "Firma del Personal RFA"
+                  - id: "rfa_staff_sign_location"
+                    name: "rfa_staff_sign_location"
+                    type: "text"
+                    label: "City & County"
+                    label_es: "Ciudad y Condado"
+                  - id: "rfa_staff_sign_date"
+                    name: "rfa_staff_sign_date"
+                    type: "text"
+                    label: "Date"
+                    label_es: "Fecha"
+
+    footer:
+      left: "RFA 01A (10/22) (Mandatory) (Confidential)"
+      right: "Page 7 of 7"
+
+# ==========================================
+# FIELD SUMMARY (All form fields indexed)
+# ==========================================
+field_index:
+  total_text_fields: 87
+  total_checkboxes: 98
+  total_signature_fields: 9
+  
+  sections_summary:
+    - section: "I. APPLICANT(S)"
+      fields_count: 24
+      
+    - section: "II. APPLICANT(S)' RESIDENCE"
+      fields_count: 14
+      
+    - section: "III. RELATIONSHIP HISTORY"
+      fields_count: 12
+      
+    - section: "IV. MINOR CHILDREN RESIDING IN THE HOME"
+      fields_count: 20
+      
+    - section: "V. OTHER ADULTS"
+      fields_count: 20
+      
+    - section: "VI. CHILD/NMD DESIRED"
+      fields_count: 42
+      
+    - section: "VII. FOSTER CARE/ADOPTION/LICENSURE HISTORY"
+      fields_count: 36
+      
+    - section: "VIII. REFERENCES"
+      fields_count: 6
+      
+    - section: "IX. APPLICANT(S) DECLARATION"
+      fields_count: 15
