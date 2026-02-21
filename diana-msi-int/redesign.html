@@ -1,0 +1,607 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ISO 14001:2026 Preview | MSI International</title>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --primary-forest: #1b4332;
+        --secondary-mint: #d8f3dc;
+        --accent-green: #52b788;
+        --text-main: #2d3142;
+        --text-muted: #5c637a;
+        --bg-off-white: #f8f9fa;
+        --msi-gold: #b8926a; /* Added for a touch of professional 'veteran-owned' authority */
+        --shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Inter", "Segoe UI", sans-serif;
+      }
+      body {
+        background-color: var(--bg-off-white);
+        color: var(--text-main);
+        line-height: 1.7;
+        scroll-behavior: smooth;
+      }
+
+      /* --- Navigation --- */
+      nav {
+        background: white;
+        padding: 1rem 10%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+      }
+      .logo {
+        font-size: 1.5rem;
+        font-weight: 800;
+        color: var(--primary-forest);
+        text-decoration: none;
+      }
+      .nav-tag {
+        font-size: 0.75rem;
+        color: var(--msi-gold);
+        font-weight: bold;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+
+      /* --- Hero --- */
+      .hero {
+        background:
+          linear-gradient(rgba(27, 67, 50, 0.92), rgba(27, 67, 50, 0.92)),
+          url("https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&q=80&w=2000");
+        background-size: cover;
+        background-position: center;
+        color: white;
+        padding: 100px 10% 140px;
+        text-align: center;
+      }
+      .hero-badge {
+        background: var(--accent-green);
+        padding: 5px 15px;
+        border-radius: 5px;
+        font-weight: bold;
+        font-size: 0.8rem;
+        display: inline-block;
+        margin-bottom: 20px;
+      }
+      .hero h1 {
+        font-size: clamp(2rem, 5vw, 3.5rem);
+        margin-bottom: 1.5rem;
+        line-height: 1.2;
+      }
+      .hero p {
+        font-size: 1.2rem;
+        max-width: 800px;
+        margin: 0 auto 25px;
+        opacity: 0.9;
+      }
+      .audience-tag {
+        font-size: 0.9rem;
+        color: var(--secondary-mint);
+        font-style: italic;
+      }
+
+      /* --- Layout --- */
+      .main-wrapper {
+        max-width: 1200px;
+        margin: -80px auto 100px;
+        display: grid;
+        grid-template-columns: 1fr 320px;
+        gap: 40px;
+        padding: 0 20px;
+      }
+      .content-card {
+        background: white;
+        padding: 50px;
+        border-radius: 12px;
+        box-shadow: var(--shadow);
+      }
+
+      /* --- Inline Elements --- */
+      .disclaimer {
+        font-size: 0.85rem;
+        color: var(--text-muted);
+        background: #fffbe6;
+        border: 1px solid #ffe58f;
+        padding: 15px;
+        border-radius: 6px;
+        margin-bottom: 30px;
+      }
+      h2 {
+        color: var(--primary-forest);
+        font-size: 2rem;
+        margin: 45px 0 20px;
+        border-left: 5px solid var(--accent-green);
+        padding-left: 20px;
+      }
+      h3 {
+        color: var(--primary-forest);
+        font-size: 1.4rem;
+        margin: 30px 0 15px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .example-box {
+        background: #f0f7f4;
+        border-left: 4px solid var(--accent-green);
+        padding: 20px;
+        margin: 20px 0;
+        border-radius: 0 8px 8px 0;
+        font-style: italic;
+      }
+
+      /* --- Three Pillars Framework --- */
+      .pillar-container {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 15px;
+        margin: 30px 0;
+      }
+      .pillar-card {
+        background: var(--bg-off-white);
+        padding: 20px;
+        border-radius: 8px;
+        text-align: center;
+        border-top: 4px solid var(--accent-green);
+      }
+      .pillar-card i {
+        font-size: 1.5rem;
+        color: var(--accent-green);
+        margin-bottom: 10px;
+      }
+      .pillar-card h4 {
+        font-size: 1rem;
+        color: var(--primary-forest);
+      }
+
+      /* --- Inline CTA --- */
+      .inline-cta {
+        background: var(--secondary-mint);
+        padding: 25px;
+        border-radius: 10px;
+        margin: 40px 0;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 20px;
+      }
+      .inline-cta p {
+        margin: 0;
+        font-weight: 600;
+        color: var(--primary-forest);
+      }
+
+      /* --- Timeline --- */
+      .timeline {
+        border-left: 2px solid var(--accent-green);
+        margin-left: 10px;
+        padding-left: 30px;
+        position: relative;
+      }
+      .step {
+        margin-bottom: 40px;
+        position: relative;
+      }
+      .step::before {
+        content: "";
+        width: 14px;
+        height: 14px;
+        background: var(--accent-green);
+        border: 3px solid white;
+        border-radius: 50%;
+        position: absolute;
+        left: -38px;
+        top: 5px;
+      }
+      .msi-note {
+        color: var(--msi-gold);
+        font-size: 0.9rem;
+        font-weight: 600;
+        margin-top: 5px;
+        display: block;
+      }
+
+      /* --- Trust / Author Block --- */
+      .author-block {
+        background: var(--primary-forest);
+        color: white;
+        padding: 30px;
+        border-radius: 12px;
+        margin-top: 60px;
+        display: flex;
+        gap: 25px;
+        align-items: center;
+      }
+      .author-img {
+        width: 80px;
+        height: 80px;
+        background: var(--msi-gold);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 2rem;
+      }
+
+      /* --- Sidebar --- */
+      .sidebar {
+        position: sticky;
+        top: 100px;
+        height: fit-content;
+      }
+      .side-box {
+        background: white;
+        padding: 25px;
+        border-radius: 12px;
+        box-shadow: var(--shadow);
+        margin-bottom: 25px;
+      }
+      .side-box h4 {
+        margin-bottom: 20px;
+        font-size: 0.85rem;
+        text-transform: uppercase;
+        letter-spacing: 1.5px;
+        color: var(--primary-forest);
+        border-bottom: 2px solid var(--secondary-mint);
+        padding-bottom: 10px;
+      }
+      .side-box ul {
+        list-style: none;
+      }
+      .side-box li {
+        margin-bottom: 12px;
+      }
+      .side-box a {
+        text-decoration: none;
+        color: var(--text-main);
+        font-size: 0.95rem;
+        transition: 0.3s;
+        display: block;
+      }
+      .side-box a:hover {
+        color: var(--accent-green);
+        transform: translateX(5px);
+      }
+      .toc-link {
+        display: block;
+        padding: 8px 0;
+        color: var(--text-main);
+        text-decoration: none;
+        font-size: 0.95rem;
+        border-bottom: 1px solid #eee;
+      }
+      .toc-link:hover {
+        color: var(--accent-green);
+        padding-left: 5px;
+        transition: 0.3s;
+      }
+
+      .btn {
+        background: var(--accent-green);
+        color: white;
+        padding: 12px 25px;
+        text-decoration: none;
+        border-radius: 50px;
+        font-weight: bold;
+        display: inline-block;
+        transition: 0.3s;
+        border: none;
+        cursor: pointer;
+      }
+      .btn:hover {
+        background: #3fa173;
+        transform: translateY(-2px);
+      }
+      .btn-sm {
+        padding: 8px 15px;
+        font-size: 0.85rem;
+      }
+
+      @media (max-width: 992px) {
+        .main-wrapper {
+          grid-template-columns: 1fr;
+        }
+        .sidebar {
+          display: none;
+        }
+        .pillar-container {
+          grid-template-columns: 1fr;
+        }
+        .hero {
+          padding: 60px 5%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <a href="#" class="logo"
+        >MSI <span style="font-weight: 300">INTERNATIONAL</span></a
+      >
+      <span class="nav-tag"
+        ><i class="fas fa-medal"></i> Veteran Owned & Operated</span
+      >
+      <a href="#" class="btn btn-sm">Early Access List</a>
+    </nav>
+
+    <header class="hero">
+      <div class="hero-badge">Standard Preview: Expected 2026</div>
+      <h1>ISO 14001:2026 Preview:<br />Intelligence & Change Guide</h1>
+      <p>
+        A strategic early look at how climate, biodiversity, and lifecycle
+        resilience are redefining Environmental Management.
+      </p>
+      <div class="audience-tag">
+        Essential for: EHS Managers, Sustainability Directors, and Operations
+        Leadership
+      </div>
+    </header>
+
+    <div class="main-wrapper">
+      <article class="content-card">
+        <div class="disclaimer">
+          <i class="fas fa-info-circle"></i> <strong>Note:</strong> This content
+          is based on current ISO committee drafts. Final requirements will be
+          confirmed upon official publication, estimated for April 2026.
+        </div>
+
+        <section id="theme">
+          <h2>Strategic Business Value</h2>
+          <p>
+            The 2026 update isn't just about compliance; it's a direct response
+            to global risk profiles. By integrating megatrends like biodiversity
+            and climate resilience, the standard now directly affects your
+            <strong
+              >legal exposure, risk profile, and customer tender
+              eligibility</strong
+            >.
+          </p>
+
+          <div class="pillar-container">
+            <div class="pillar-card">
+              <i class="fas fa-bolt"></i>
+              <h4>Urgency</h4>
+              <p style="font-size: 0.85rem">Direct climate response.</p>
+            </div>
+            <div class="pillar-card">
+              <i class="fas fa-sync"></i>
+              <h4>Lifecycle</h4>
+              <p style="font-size: 0.85rem">Upstream & downstream impact.</p>
+            </div>
+            <div class="pillar-card">
+              <i class="fas fa-user-shield"></i>
+              <h4>Accountability</h4>
+              <p style="font-size: 0.85rem">Engaged executive leadership.</p>
+            </div>
+          </div>
+        </section>
+
+        <section id="changes">
+          <h2>Major Changes Deep Dive</h2>
+
+          <h3><i class="fas fa-leaf"></i> 1. Climate & Biodiversity (4.1)</h3>
+          <p>
+            Context analysis now requires documented consideration of
+            environmental dependencies.
+          </p>
+          <div class="example-box">
+            <strong>Example:</strong> A manufacturer must now evaluate how local
+            biodiversity loss might impact water supply or how climate
+            volatility affects their specific logistics chain.
+          </div>
+
+          <h3>
+            <i class="fas fa-project-diagram"></i> 2. Lifecycle Perspective
+            (4.3)
+          </h3>
+          <p>
+            The scope must extend beyond the "factory gates" to include
+            influence over the entire value chain.
+          </p>
+          <div class="example-box">
+            <strong>Example:</strong> You may need to assess supplier emissions
+            and the environmental impact of product disposal at end-of-life.
+          </div>
+
+          <div class="inline-cta">
+            <p>
+              Want our ISO 14001:2026 Transition Checklist when it's released?
+            </p>
+            <a href="#" class="btn btn-sm">Request Checklist</a>
+          </div>
+
+          <h3>
+            <i class="fas fa-exclamation-triangle"></i> 3. Change Management
+            (6.3)
+          </h3>
+          <p>
+            A new mandatory clause for structured management of EMS-related
+            changes, similar to traditional MOC (Management of Change)
+            processes.
+          </p>
+
+          <h3><i class="fas fa-truck"></i> 4. Supplier Controls (8.1)</h3>
+          <p>
+            Documented influence over "externally provided processes" is no
+            longer optional—it is a core performance metric.
+          </p>
+        </section>
+
+        <section id="roadmap">
+          <h2>Suggested Transition Roadmap</h2>
+          <p style="margin-bottom: 30px">
+            Use this model for planning your 2026-2029 budget and resources.
+          </p>
+
+          <div class="timeline">
+            <div class="step">
+              <strong>Phase 1: Intelligence & Briefing (Pre-April 2026)</strong>
+              <p>
+                Monitor drafts and brief leadership on potential resource needs.
+              </p>
+              <span class="msi-note"
+                >MSI can facilitate executive "Impact Briefings" for your
+                board.</span
+              >
+            </div>
+            <div class="step">
+              <strong>Phase 2: Formal Gap Analysis (Months 1-3)</strong>
+              <p>
+                Compare published requirements against current EMS
+                documentation.
+              </p>
+              <span class="msi-note"
+                >MSI provides facilitated gap analysis workshops.</span
+              >
+            </div>
+            <div class="step">
+              <strong>Phase 3: Integration & Pilot (Months 4-9)</strong>
+              <p>
+                Draft new Change Management procedures and pilot them in one
+                department.
+              </p>
+            </div>
+            <div class="step">
+              <strong>Phase 4: Training & Implementation (Months 10-18)</strong>
+              <p>
+                Upskill internal auditors and supply chain managers on new
+                controls.
+              </p>
+              <span class="msi-note"
+                >MSI offers customized training for internal audit teams.</span
+              >
+            </div>
+          </div>
+        </section>
+
+        <section id="faq">
+          <h2>Transition FAQ</h2>
+          <div style="display: grid; gap: 15px">
+            <p>
+              <strong
+                >Q: How much work is this compared to the 2015
+                transition?</strong
+              ><br />
+              A: While not a total structural overhaul, the technical depth
+              regarding "Lifecycle" and "Change Management" is significantly
+              higher. Expect a moderate effort for documentation updates.
+            </p>
+
+            <p>
+              <strong>Q: What happens if we don't transition in time?</strong
+              ><br />
+              A: Beyond losing your certificate, you risk failing customer
+              audits and being disqualified from tenders that require the
+              "latest" environmental standards.
+            </p>
+          </div>
+        </section>
+
+        <div class="author-block">
+          <div class="author-img"><i class="fas fa-ribbon"></i></div>
+          <div>
+            <h3>The MSI Advantage</h3>
+            <p>
+              MSI International is a <strong>veteran-owned</strong> consulting
+              firm with over 30 years of experience. We've guided 500+
+              organizations through every ISO 14001 transition since its
+              inception. Our <strong>SurePath™</strong> methodology ensures your
+              transition is efficient and business-focused.
+            </p>
+          </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 50px">
+          <h2>Stay Ahead of the Standard</h2>
+          <p>
+            Join our Early Intelligence list to receive a notification the
+            moment the final standard is published, along with our proprietary
+            Readiness Template.
+          </p>
+          <a href="#" class="btn" style="margin-top: 20px"
+            >Join the 2026 Briefing List</a
+          >
+        </div>
+      </article>
+
+      <aside class="sidebar">
+        <div class="side-box">
+          <h4>In This Guide</h4>
+          <ul>
+            <li><a href="#value">Business Value</a></li>
+            <li><a href="#changes">Major Changes</a></li>
+            <li><a href="#roadmap">Transition Roadmap</a></li>
+            <li><a href="#faq">Common Questions</a></li>
+          </ul>
+        </div>
+
+        <div
+          class="side-box"
+          style="background: var(--primary-forest); color: white"
+        >
+          <h4
+            style="
+              color: var(--accent-green);
+              border-color: var(--accent-green);
+            "
+          >
+            Stay Informed
+          </h4>
+          <p style="font-size: 0.85rem; margin-bottom: 15px">
+            Join our early-access list for ISO 14001:2026 briefings.
+          </p>
+          <a href="#" class="btn btn-sm" style="width: 100%; text-align: center"
+            >Join List</a
+          >
+        </div>
+
+        <div style="text-align: center; opacity: 0.5; font-size: 0.75rem">
+          <p>Trusted by Global Leaders</p>
+          <div
+            style="
+              display: flex;
+              justify-content: space-around;
+              margin-top: 15px;
+            "
+          >
+            <i class="fas fa-building fa-2x"></i>
+            <i class="fas fa-industry fa-2x"></i>
+            <i class="fas fa-microchip fa-2x"></i>
+          </div>
+        </div>
+      </aside>
+    </div>
+
+    <footer
+      style="
+        background: var(--primary-forest);
+        color: var(--secondary-mint);
+        padding: 40px 10%;
+        text-align: center;
+        font-size: 0.9rem;
+      "
+    >
+      <p>
+        &copy; 2026 Management Systems International (MSI). Helping
+        organizations achieve resilience through SureResults™.
+      </p>
+    </footer>
+  </body>
+</html>
