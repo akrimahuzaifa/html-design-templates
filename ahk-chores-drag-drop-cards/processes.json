@@ -1,0 +1,128 @@
+{
+  "processes": {
+    "scan_sequence": {
+      "steps": [
+        { "action": "wait_api", "step": "ball1_estimate" },
+
+        { "action": "uart", "cmd": {
+          "pantilt": { "aim_ball": {
+            "x": "$ball1.x",
+            "y": "$ball1.y",
+            "z": "$ball1.z",
+            "refined": false
+          }}
+        }},
+
+        { "action": "wait_api", "step": "ball1_frontlight" },
+        { "action": "camera_capture", "label": "ball1" },
+
+        { "action": "wait_api", "step": "ball1_detect" },
+        { "action": "detect_ball", "label": "ball1" },
+
+        { "action": "wait_api", "step": "ball1_refine" },
+        { "action": "uart", "cmd": {
+          "pantilt": { "aim_ball": {
+            "x": "$ball1.x",
+            "y": "$ball1.y",
+            "z": "$ball1.z",
+            "refined": true
+          }}
+        }},
+
+        { "action": "wait_api", "step": "ball1_measure" },
+        { "action": "laser_measure", "label": "ball1" },
+
+        { "action": "uart", "cmd": {
+          "pantilt": { "set_idle": { "speed": 0 } }
+        }},
+
+        { "action": "wait_api", "step": "ball2_estimate" },
+
+        { "action": "uart", "cmd": {
+          "pantilt": { "aim_ball": {
+            "x": "$ball2.x",
+            "y": "$ball2.y",
+            "z": "$ball2.z",
+            "refined": false
+          }}
+        }},
+
+        { "action": "wait_api", "step": "ball2_frontlight" },
+        { "action": "camera_capture", "label": "ball2" },
+
+        { "action": "wait_api", "step": "ball2_detect" },
+        { "action": "detect_ball", "label": "ball2" },
+
+        { "action": "wait_api", "step": "ball2_refine" },
+        { "action": "uart", "cmd": {
+          "pantilt": { "aim_ball": {
+            "x": "$ball2.x",
+            "y": "$ball2.y",
+            "z": "$ball2.z",
+            "refined": true
+          }}
+        }},
+
+        { "action": "wait_api", "step": "ball2_measure" },
+        { "action": "laser_measure", "label": "ball2" },
+
+        { "action": "uart", "cmd": {
+          "pantilt": { "set_idle": { "speed": 0 } }
+        }},
+
+        { "action": "wait_api", "step": "floor_scan" },
+        { "action": "scan", "label": "floor", "tilt": -35, "step": 60 },
+
+        { "action": "wait_api", "step": "horizontal_scan" },
+        { "action": "scan", "label": "horizontal", "tilt": 0, "step": 60 },
+
+        { "action": "wait_api", "step": "ceiling_scan" },
+        { "action": "scan", "label": "ceiling", "tilt": 45, "step": 60 },
+
+        { "action": "uart", "cmd": {
+          "pantilt": { "set_idle": { "speed": 100 } }
+        }}
+      ]
+    },
+
+    "graceful_shutdown": {
+      "steps": [
+        { "action": "log", "message": "Starting graceful shutdown…" },
+
+        { "action": "uart", "cmd": {
+          "pantilt": { "set_idle": { "speed": 100 } }
+        }},
+
+        { "action": "uart", "cmd": {
+          "pantilt": { "set_idle": { "speed": 0 } }
+        }},
+
+        { "action": "uart", "cmd": {
+          "pantilt": { "rotate": {
+            "pan_angle": 0,
+            "tilt_angle": 45,
+            "fine_pan_angle": 0
+          }}
+        }},
+
+        { "action": "uart", "cmd": {
+          "laser": { "off": {} }
+        }},
+
+        { "action": "uart", "cmd": {
+          "led": { "off": {} }
+        }},
+
+        { "action": "uart", "cmd": {
+          "generic": { "blink": { "count": 1, "interval_ms": 200 } }
+        }},
+
+        { "action": "uart", "cmd": {
+          "generic": { "shutdown": {} }
+        }},
+
+        { "action": "log", "message": "Graceful shutdown completed." }
+      ]
+    }
+  }
+}

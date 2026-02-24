@@ -1,0 +1,62 @@
+:root {
+  color-scheme: dark;
+  font-family: "Segoe UI", system-ui, sans-serif;
+}
+
+body {
+  margin: 0;
+  background: #111;
+  color: #eee;
+}
+
+.app {
+  max-width: 980px;
+  margin: 32px auto;
+  padding: 16px;
+}
+
+.controls {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 16px;
+}
+
+.add-btn {
+  background: #2a2a2a;
+  border: 1px solid #555;
+  color: #eee;
+  padding: 8px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.rail {
+  display: flex;
+  gap: 12px;
+  padding: 16px;
+  min-height: 120px;
+  border: 2px dashed #555;
+  border-radius: 8px;
+  align-items: stretch;
+}
+
+.rail-item {
+  min-width: 140px;
+  background: #2a2a2a;
+  border: 1px solid #555;
+  border-radius: 8px;
+  padding: 10px;
+  cursor: grab;
+  user-select: none;
+}
+
+.rail-item:active {
+  cursor: grabbing;
+}
+
+.placeholder {
+  width: 16px;
+  background: #77aaff;
+  border-radius: 6px;
+}

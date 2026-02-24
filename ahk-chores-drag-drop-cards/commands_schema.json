@@ -1,0 +1,175 @@
+{
+  "drone": {
+    "arm": {
+      "params": [
+        "force"
+      ]
+    },
+    "disarm": {
+      "params": [
+        "force"
+      ]
+    },
+    "upload_mission": {
+      "params": []
+    },
+    "start_mission": {
+      "params": [
+        "mission_json"
+      ]
+    },
+    "kill": {
+      "params": []
+    },
+    "stop_mission": {
+      "params": []
+    },
+    "rtl": {
+      "params": []
+    },
+    "takeoff": {
+      "params": []
+    },
+    "land": {
+      "params": []
+    }
+  },
+  "generic": {
+    "ping": {
+      "params": []
+    },
+    "blink": {
+      "params": [
+        "count",
+        "interval_ms"
+      ]
+    },
+    "status": {
+      "params": []
+    },
+    "reset": {
+      "params": []
+    },
+    "exit": {
+      "params": []
+    }
+  },
+  "scanner": {
+    "BallA": {
+      "params": []
+    },
+    "BallB": {
+      "params": []
+    },
+    "FullScan": {
+      "params": [
+        "tilt",
+        "step"
+      ]
+    },
+    "measure": {
+      "params": []
+    },
+    "measure_single": {
+      "params": []
+    }
+  },
+  "measure_single": {
+    "params": [
+      "index"
+    ]
+  },
+  "pantilt": {
+    "rotate": {
+      "params": [
+        "pan_angle",
+        "tilt_angle",
+        "fine_pan_angle"
+      ]
+    },
+    "aim_ball": {
+      "params": [
+        "x",
+        "y",
+        "z",
+        "refined"
+      ]
+    },
+    "set_idle": {
+      "params": [
+        "speed"
+      ]
+    },
+    "stop": {
+      "params": []
+    }
+  },
+  "laser": {
+    "on": {
+      "params": [
+        "duration_ms"
+      ]
+    },
+    "off": {
+      "params": []
+    },
+    "status": {
+      "params": []
+    },
+    "measure": {
+      "params": [
+        "precision_mode"
+      ]
+    }
+  },
+  "camera": {
+    "take_photo": {
+      "params": [
+        "resolution",
+        "format",
+        "exposure"
+      ]
+    },
+    "stream_video": {
+      "params": [
+        "resolution",
+        "fps"
+      ]
+    }
+  },
+  "led": {
+    "on": {
+      "params": []
+    },
+    "off": {
+      "params": []
+    },
+    "strobe": {
+      "params": [
+        "duration_ms"
+      ]
+    },
+    "blink": {
+      "params": [
+        "count",
+        "interval_ms"
+      ]
+    }
+  },
+  "raspi": {
+    "report_measurement": {
+      "params": [
+        "label",
+        "measurement"
+      ]
+    },
+    "report_scan": {
+      "params": [
+        "label",
+        "angle",
+        "tilt",
+        "result"
+      ]
+    }
+  }
+}

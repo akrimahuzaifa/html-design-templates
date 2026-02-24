@@ -1,0 +1,25 @@
+The Workflow Composer is a graphical front end that can be used to assemble a workflow process for the carrier drone with its scanner and all peripherals. This is done using drag & drop. Individual building blocks (building block = graphical rectangle with corresponding label) for the process can be linked together via a graphical front end to form a process. The workflow is assembled in the same way as the commands. First, a building block is set for a device (scanner, PanTilt, drone, LED, etc.), then a command is selected (rotate, measure, on, strobe, etc.), the parameters of the command are set, and a process step is defined.
+
+The building blocks are arranged on a “rail” using drag & drop. The order on this rail corresponds to the assembled process, which runs from left to right along the rail: First, the step on the far left of the rail is performed, then the step to the right of the first building block, then the step to the right of the second building block, and so on. The user therefore places the corresponding building blocks on the rail from left to right. First, they always place a device (PanTilt, scanner, LED, etc.), then a command (rotate, on, measure, etc.), and then the parameters. When they place a device, a field opens in which they can select the corresponding command. When they set this, a text field for parameters opens, if necessary, which they can also enter. The user can “open” a device again at any time to change their entries. If the user holds a building block over an already placed building block for longer than one second, this building block and all building blocks to its right move one field further to the right.
+
+A JSON file of the process is created via the graphical composition, which is translated into a hardware movement via the system_manager of the ScannerDriver.
+
+To program this task, at least the following scripts should be consulted:
+
+commands.json
+processes.json
+system_manager.py
+
+--------------------
+
+We will use the same command process as before. The command.json is now extended. Please check commands_schema.json in my chore-branch:
+ 
+https://gitea.coloursplash.space/Hardbyte/HardbyteDroneApi/src/branch/kj/chore/update-commands/backend/schemas/commands_schema.json
+ 
+The relevant processes.json can be found here: 
+https://gitea.coloursplash.space/Hardbyte/ScannerDriver/src/branch/kj/feat/process-implementation/processes.json
+ 
+The relevant system_manager.py is this one, not the one in ScannerCam. This is another, only for the camera. You need the main system_manager.py:
+https://gitea.coloursplash.space/Hardbyte/ScannerDriver/src/branch/kj/feat/process-implementation/system_manager.py
+ 
+The idea: In processes.json, you can see how a process is organized. system_manager.py loads this json to map a process. So when you drag the “blocks” onto the “track” in the frontend, you have to make sure that an entry is made in a JSON file, which must end up looking like my processes.json.
