@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2678 Holdings - Future Tech (Dark Glass)</title>
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Configure Tailwind with the Dark/Purple/Blue theme -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'page-bg': '#000000',      // Pure Black
+                        'glass-bg': 'rgba(15, 15, 25, 0.6)', // Dark Translucent
+                        'neon-blue': '#00F0FF',    // Electric Cyan
+                        'neon-purple': '#9D00FF',  // Electric Purple
+                        'text-main': '#FFFFFF',    // White
+                        'text-muted': '#A1A1AA',   // Light Gray
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    boxShadow: {
+                        'neon-blue': '0 0 20px rgba(0, 240, 255, 0.3)',
+                        'neon-purple': '0 0 20px rgba(157, 0, 255, 0.3)',
+                    },
+                    animation: {
+                        'pulse-glow': 'pulseGlow 3s infinite alternate',
+                        'float': 'float 6s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        pulseGlow: {
+                            '0%': { boxShadow: '0 0 10px rgba(0, 240, 255, 0.2)' },
+                            '100%': { boxShadow: '0 0 25px rgba(157, 0, 255, 0.4)' },
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Deep Black Background with Ambient Glows */
+        body {
+            background-color: #000000;
+            background-image: 
+                radial-gradient(circle at 15% 50%, rgba(157, 0, 255, 0.15), transparent 25%),
+                radial-gradient(circle at 85% 30%, rgba(0, 240, 255, 0.15), transparent 25%);
+            background-attachment: fixed;
+            color: #FFFFFF;
+            min-height: 100vh;
+            scroll-behavior: smooth;
+        }
+
+        /* Dark Frosted Glass Effect */
+        .glass-card {
+            background: rgba(10, 10, 15, 0.6); /* Very dark semi-transparent */
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .glass-card:hover {
+            border-color: rgba(0, 240, 255, 0.3);
+            background: rgba(20, 20, 30, 0.7);
+            transform: translateY(-5px);
+            box-shadow: 0 0 30px rgba(0, 240, 255, 0.15);
+        }
+
+        /* Navbar Glass */
+        .glass-nav {
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        /* Scrollbar Styling */
+        body::-webkit-scrollbar { width: 8px; }
+        body::-webkit-scrollbar-track { background: #000; }
+        body::-webkit-scrollbar-thumb { 
+            background: linear-gradient(to bottom, #9D00FF, #00F0FF);
+            border-radius: 4px; 
+        }
+
+        /* Gradient Text (Blue to Purple) */
+        .gradient-text {
+            background: linear-gradient(to right, #00F0FF, #9D00FF);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            font-weight: 800;
+        }
+
+        /* Form Inputs */
+        .glass-input {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: #fff;
+        }
+        .glass-input:focus {
+            outline: none;
+            border-color: #00F0FF;
+            background: rgba(255, 255, 255, 0.1);
+            box-shadow: 0 0 15px rgba(0, 240, 255, 0.2);
+        }
+
+        /* SVG Icon coloring */
+        .icon-blue { color: #00F0FF; }
+        .icon-purple { color: #9D00FF; }
+    </style>
+</head>
+
+<body class="font-sans antialiased selection:bg-neon-blue selection:text-black">
+
+    <!-- Navigation Bar -->
+    <header class="sticky top-0 z-50 glass-nav">
+        <nav class="container mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
+            <div class="text-3xl tracking-tighter">
+                <span class="gradient-text">2678</span><span class="text-white font-bold">Holdings</span>
+            </div>
+            <div class="hidden md:flex space-x-8 text-sm font-medium">
+                <a href="#services" class="text-gray-300 hover:text-neon-blue transition duration-200">Services</a>
+                <a href="#portfolio" class="text-gray-300 hover:text-neon-blue transition duration-200">Portfolio</a>
+                <a href="#about" class="text-gray-300 hover:text-neon-blue transition duration-200">About</a>
+                <a href="#clients" class="text-gray-300 hover:text-neon-blue transition duration-200">Clients</a>
+            </div>
+            <a href="#contact" class="px-5 py-2 text-sm font-bold text-black bg-neon-blue rounded-full hover:bg-neon-purple hover:text-white transition duration-300 shadow-neon-blue">
+                Contact Us
+            </a>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="hero-section" class="relative pt-24 pb-20 md:pt-32 md:pb-32 overflow-hidden">
+        <!-- Background Glow Orb -->
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-neon-purple rounded-full opacity-20 blur-[100px] -z-10 animate-pulse-glow"></div>
+
+        <div class="container mx-auto px-4 relative z-10 text-center">
+            <div class="glass-card max-w-5xl mx-auto p-10 md:p-16 rounded-3xl border-t border-white/10">
+                <h1 class="text-5xl md:text-7xl font-bold mb-6 tracking-tight leading-tight">
+                    Architecting the <br />
+                    <span class="gradient-text">Decentralized Future</span>
+                </h1>
+                <p class="text-lg md:text-xl text-text-muted mb-10 max-w-3xl mx-auto leading-relaxed">
+                    We invest in, build, and operate foundational infrastructure for Web3, Digital Assets, and Immersive AI Environments.
+                </p>
+                <div class="flex flex-col sm:flex-row justify-center gap-4">
+                    <a href="#portfolio" class="px-8 py-4 text-lg font-bold text-black bg-neon-blue rounded-full hover:scale-105 transition transform shadow-neon-blue">
+                        View Portfolio
+                    </a>
+                    <a href="#contact" class="px-8 py-4 text-lg font-bold text-white border border-neon-purple rounded-full hover:bg-neon-purple/20 hover:border-neon-purple hover:text-neon-blue transition">
+                        Partner With Us
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-24 relative">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold mb-4"><span class="text-white">Core</span> <span class="gradient-text">Verticals</span></h2>
+                <p class="text-text-muted max-w-2xl mx-auto text-lg">
+                    High-impact investment areas driving the next evolution of the internet.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Card 1 -->
+                <div class="glass-card p-8 rounded-2xl">
+                    <div class="mb-6 icon-blue">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-3">Immersive Tech (XR)</h3>
+                    <p class="text-text-muted">Investing in hardware and software layers that power Virtual Reality, Augmented Reality, and spatial computing interfaces.</p>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="glass-card p-8 rounded-2xl">
+                    <div class="mb-6 icon-purple">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-3">Web3 Infrastructure</h3>
+                    <p class="text-text-muted">Building the rails for decentralized finance (DeFi), smart contracts, and scalable blockchain interoperability.</p>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="glass-card p-8 rounded-2xl">
+                    <div class="mb-6 icon-blue">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-3">Digital Assets</h3>
+                    <p class="text-text-muted">Strategic management of tokenized real-world assets (RWA), NFTs, and cryptocurrency portfolios.</p>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="glass-card p-8 rounded-2xl">
+                    <div class="mb-6 icon-purple">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 1 0 10 10H12V2z"></path><path d="M12 2a10 10 0 0 1 10 10H12V2z"></path><path d="M12 12 2.1 12a10 10 0 0 1 9.9-10v10z"></path></svg>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-3">AI & Machine Learning</h3>
+                    <p class="text-text-muted">Backing autonomous agents and predictive models that optimize trading and digital interactions.</p>
+                </div>
+
+                <!-- Card 5 -->
+                <div class="glass-card p-8 rounded-2xl">
+                    <div class="mb-6 icon-blue">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5.52 19c.64-2.2 1.84-3 3.22-3h6.52c1.38 0 2.58.8 3.22 3"/><circle cx="12" cy="10" r="3"/><circle cx="12" cy="12" r="10"/></svg>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-3">Decentralized ID</h3>
+                    <p class="text-text-muted">Self-sovereign identity solutions ensuring privacy and security in the metaverse.</p>
+                </div>
+
+                <!-- CTA Card -->
+                <div class="glass-card p-8 rounded-2xl flex flex-col items-center justify-center text-center border-neon-purple/50">
+                    <h3 class="text-2xl font-bold text-white mb-2">Have a Pitch?</h3>
+                    <p class="text-text-muted mb-6">We are actively seeking new ventures.</p>
+                    <a href="#contact" class="px-6 py-2 bg-transparent border border-neon-blue text-neon-blue rounded-full hover:bg-neon-blue hover:text-black transition">Pitch Deck Upload</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="py-24 bg-black/50">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-12">
+                <div>
+                    <h2 class="text-4xl font-bold mb-2">Incubated <span class="text-neon-purple">Ventures</span></h2>
+                    <p class="text-text-muted">Projects currently in our accelerator.</p>
+                </div>
+                <a href="#" class="hidden md:block text-neon-blue hover:text-white transition">View All &rarr;</a>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Portfolio 1 -->
+                <div class="glass-card rounded-xl overflow-hidden group">
+                    <div class="h-48 bg-gray-900 relative overflow-hidden">
+                        <!-- Placeholder Gradient -->
+                        <div class="absolute inset-0 bg-gradient-to-br from-blue-900 to-black opacity-80 group-hover:scale-110 transition duration-500"></div>
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <span class="text-2xl font-bold text-white">TokenCap</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h4 class="text-xl font-bold text-white mb-2">TokenCap Miner</h4>
+                        <p class="text-sm text-text-muted mb-4">Decentralized yield farming protocol.</p>
+                        <span class="text-xs font-bold px-2 py-1 rounded bg-neon-blue/10 text-neon-blue border border-neon-blue/30">DeFi</span>
+                    </div>
+                </div>
+
+                <!-- Portfolio 2 -->
+                <div class="glass-card rounded-xl overflow-hidden group">
+                    <div class="h-48 bg-gray-900 relative overflow-hidden">
+                        <div class="absolute inset-0 bg-gradient-to-br from-purple-900 to-black opacity-80 group-hover:scale-110 transition duration-500"></div>
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <span class="text-2xl font-bold text-white">AlphaTrade</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h4 class="text-xl font-bold text-white mb-2">AlphaTrade AI</h4>
+                        <p class="text-sm text-text-muted mb-4">Algorithmic market prediction engine.</p>
+                        <span class="text-xs font-bold px-2 py-1 rounded bg-neon-purple/10 text-neon-purple border border-neon-purple/30">AI / ML</span>
+                    </div>
+                </div>
+
+                <!-- Portfolio 3 -->
+                <div class="glass-card rounded-xl overflow-hidden group">
+                    <div class="h-48 bg-gray-900 relative overflow-hidden">
+                        <div class="absolute inset-0 bg-gradient-to-br from-cyan-900 to-black opacity-80 group-hover:scale-110 transition duration-500"></div>
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <span class="text-2xl font-bold text-white">MetaVault</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h4 class="text-xl font-bold text-white mb-2">MetaVault</h4>
+                        <p class="text-sm text-text-muted mb-4">Secure digital asset custody for Enterprise.</p>
+                        <span class="text-xs font-bold px-2 py-1 rounded bg-neon-blue/10 text-neon-blue border border-neon-blue/30">Security</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section id="clients" class="py-24 relative overflow-hidden">
+        <!-- Floating shapes -->
+        <div class="absolute right-0 top-1/4 w-64 h-64 bg-neon-blue opacity-10 blur-[80px] rounded-full animate-float"></div>
+
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <h2 class="text-4xl font-bold text-center mb-16">Partner <span class="gradient-text">Voices</span></h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="glass-card p-8 rounded-xl border-l-4 border-l-neon-purple">
+                    <p class="text-gray-300 italic mb-6">"2678 Holdings didn't just provide capital; they provided the technical architecture reviews that saved us months of development time."</p>
+                    <div class="flex items-center gap-4">
+                        <div class="w-10 h-10 rounded-full bg-gradient-to-r from-neon-purple to-blue-600"></div>
+                        <div>
+                            <div class="font-bold text-white">Sarah Jenkins</div>
+                            <div class="text-sm text-text-muted">CEO, BlockChainify</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="glass-card p-8 rounded-xl border-l-4 border-l-neon-blue">
+                    <p class="text-gray-300 italic mb-6">"Their understanding of the intersection between AI and Web3 is unmatched in the venture capital space."</p>
+                    <div class="flex items-center gap-4">
+                        <div class="w-10 h-10 rounded-full bg-gradient-to-r from-neon-blue to-green-400"></div>
+                        <div>
+                            <div class="font-bold text-white">David Chen</div>
+                            <div class="text-sm text-text-muted">Founder, NeuralNet DAO</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-24">
+        <div class="container mx-auto px-4 max-w-4xl">
+            <div class="glass-card p-10 md:p-14 rounded-3xl border border-white/10 shadow-neon-purple">
+                <div class="text-center mb-10">
+                    <h2 class="text-4xl font-bold mb-4">Initialize <span class="text-neon-blue">Protocol</span></h2>
+                    <p class="text-text-muted">Send us a secure transmission.</p>
+                </div>
+
+                <form class="space-y-6">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-400 mb-2">Identity</label>
+                            <input type="text" class="glass-input w-full px-4 py-3 rounded-lg" placeholder="Full Name">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-400 mb-2">Comms Channel</label>
+                            <input type="email" class="glass-input w-full px-4 py-3 rounded-lg" placeholder="Email Address">
+                        </div>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-400 mb-2">Transmission Data</label>
+                        <textarea class="glass-input w-full px-4 py-3 rounded-lg h-32" placeholder="Project Summary..."></textarea>
+                    </div>
+                    <button type="button" class="w-full py-4 bg-gradient-to-r from-neon-blue to-neon-purple text-white font-bold rounded-lg hover:opacity-90 transition transform hover:scale-[1.01]">
+                        Transmit Data
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-10 border-t border-white/10 bg-black">
+        <div class="container mx-auto px-4 text-center">
+            <div class="text-2xl font-bold mb-4 tracking-tighter">2678<span class="text-gray-500">Holdings</span></div>
+            <p class="text-text-muted text-sm mb-6">&copy; 2025 2678 Holdings LLC. All Systems Operational.</p>
+            <div class="flex justify-center space-x-6 text-sm text-gray-500">
+                <a href="#" class="hover:text-neon-blue transition">Privacy Protocol</a>
+                <a href="#" class="hover:text-neon-blue transition">Terms of Engagement</a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
