@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cybersecurity Services | Peak One Solutions</title>
+    <style>
+        :root {
+            --primary-navy: #003366;
+            --accent-blue: #007BFF;
+            --light-bg: #f4f7f9;
+            --text-dark: #222222;
+            --text-muted: #555555;
+            --white: #ffffff;
+        }
+
+        body {
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.8;
+            color: var(--text-dark);
+            margin: 0;
+            padding: 0;
+        }
+
+        .container { max-width: 1140px; margin: 0 auto; padding: 0 20px; }
+
+        /* Navigation Style */
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 5%;
+            background: var(--white);
+            border-bottom: 1px solid #eee;
+        }
+        .logo img { height: 45px; }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0, 51, 102, 0.9), rgba(0, 51, 102, 0.9)), 
+                        url('https://peakonesolutions.net/wp-content/uploads/2026/01/Picture2.png') center/cover;
+            color: var(--white);
+            padding: 100px 0;
+            text-align: center;
+        }
+        .hero h1 { font-size: 3rem; margin-bottom: 20px; }
+        .hero p { font-size: 1.25rem; max-width: 800px; margin: 0 auto; opacity: 0.9; }
+
+        /* Content Sections */
+        .section-padding { padding: 80px 0; }
+        .center-text { text-align: center; max-width: 850px; margin: 0 auto 50px; }
+        
+        h2 { color: var(--primary-navy); font-size: 2.2rem; margin-bottom: 25px; }
+        h3 { color: var(--accent-blue); font-size: 1.5rem; margin-top: 0; }
+
+        /* Services Grid */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        .service-card {
+            background: var(--white);
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            border-top: 4px solid var(--primary-navy);
+            transition: 0.3s;
+        }
+        .service-card:hover { transform: translateY(-10px); }
+
+        /* Highlight Box */
+        .highlight-box {
+            background: var(--light-bg);
+            padding: 60px;
+            border-radius: 12px;
+            margin: 50px 0;
+            border-left: 8px solid var(--accent-blue);
+        }
+
+        /* CTA Button */
+        .btn {
+            background: var(--accent-blue);
+            color: var(--white);
+            padding: 18px 45px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            display: inline-block;
+            transition: 0.3s;
+            font-size: 1.1rem;
+        }
+        .btn:hover { background: #005bbd; box-shadow: 0 5px 15px rgba(0,123,255,0.3); }
+
+        .ext-link { color: var(--accent-blue); text-decoration: none; font-weight: 600; }
+        .ext-link:hover { text-decoration: underline; }
+
+        footer { background: #111; color: #999; padding: 60px 0; text-align: center; font-size: 0.9rem; }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.2rem; }
+            .section-padding { padding: 50px 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="top-nav">
+        <div class="logo">
+            <img src="https://peakonesolutions.net/wp-content/uploads/2026/01/cropped-logo_website_LCC.png" alt="Peak One Solutions Logo">
+        </div>
+        <a href="https://peakonesolutions.net/contact-us/" class="btn" style="padding: 10px 25px;">Book Now</a>
+    </nav>
+
+    <header class="hero">
+        <div class="container">
+            <h1>Cybersecurity Services That Never Sleep</h1>
+            <p>Protect your business with advanced Cybersecurity Services designed to stop sophisticated threats before they impact your operations.</p>
+        </div>
+    </header>
+
+    <main class="container section-padding">
+        
+        <section class="center-text">
+            <h2>Protecting Your Business from Every Angle</h2>
+            <p>In today’s digital world, security isn’t optional—it’s essential. At Peak One Solutions, we provide comprehensive <strong>Cybersecurity Services</strong> designed to safeguard your business, your data, and your hard-earned reputation. The modern threat landscape is evolving daily, requiring more than just a basic antivirus; it requires a proactive, multi-layered defense strategy.</p>
+            <p>Our team leverages frameworks from the <a href="https://www.nist.gov/cyberframework" class="ext-link" target="_blank">NIST Cybersecurity Framework</a> to ensure your organization meets global standards for data protection and risk management.</p>
+        </section>
+
+        <div class="services-grid">
+            <div class="service-card">
+                <h3>Penetration Testing</h3>
+                <p>Identify vulnerabilities before attackers do. As a core part of our <strong>Cybersecurity Services</strong>, our team conducts ethical hacking and thorough penetration tests to uncover hidden weaknesses in your software and infrastructure, providing a roadmap for remediation.</p>
+            </div>
+
+            <div class="service-card">
+                <h3>Network Security</h3>
+                <p>We secure your network infrastructure against unauthorized access. Our <strong>Cybersecurity Services</strong> ensure robust protection for all connected devices, utilizing managed firewalls, intrusion detection systems (IDS), and continuous traffic monitoring.</p>
+            </div>
+
+            <div class="service-card">
+                <h3>Enterprise VPN Solutions</h3>
+                <p>Enable secure remote access with enterprise-grade VPNs. We protect your data in transit, ensuring that your remote workforce stays productive without exposing your internal servers to the public web.</p>
+            </div>
+
+            <div class="service-card">
+                <h3>Privacy & Compliance</h3>
+                <p>Protect sensitive information and meet regulatory requirements (like HIPAA or GDPR). We implement advanced encryption and privacy protocols to keep you compliant with guidance from the <a href="https://www.cisa.gov" class="ext-link" target="_blank">Cybersecurity & Infrastructure Security Agency (CISA)</a>.</p>
+            </div>
+
+            <div class="service-card">
+                <h3>Phishing-Resistant MFA</h3>
+                <p>Go beyond basic SMS codes. We implement phishing-resistant multi-factor authentication (MFA) methods, such as FIDO2 hardware keys, to keep your accounts safe from even the most sophisticated credential harvesting attacks.</p>
+            </div>
+
+            <div class="service-card">
+                <h3>Threat Detection</h3>
+                <p>Our <strong>Cybersecurity Services</strong> include 24/7 proactive monitoring. We use AI-driven tools to detect anomalous behavior on your network, allowing us to isolate threats before they can spread or encrypt your data.</p>
+            </div>
+        </div>
+
+        <div class="highlight-box">
+            <h2>Why Professional Cybersecurity Services Matter</h2>
+            <p>Many small to mid-sized businesses believe they aren't targets for hackers. However, statistics show that nearly 43% of cyberattacks target small businesses. Without dedicated <strong>Cybersecurity Services</strong>, a single data breach can lead to devastating financial loss and permanent damage to client trust.</p>
+            <p>Peak One Solutions acts as your dedicated security partner. We don't just provide tools; we provide a customized security strategy that scales with your business growth while maintaining a "Zero Trust" posture.</p>
+        </div>
+
+        <section class="center-text">
+            <h2>Your Business Deserves Resilience</h2>
+            <p>Don't wait for a breach to happen before taking action. Let us help you stay ahead of cyber threats with <strong>Cybersecurity Services</strong> that provide peace of mind and operational continuity.</p>
+            <div style="margin-top: 40px;">
+                <a href="https://peakonesolutions.net/contact-us/" class="btn">Request Free Demo!</a>
+            </div>
+        </section>
+
+        <div style="text-align: center; margin-top: 60px;">
+            <img src="https://peakonesolutions.net/wp-content/uploads/2026/01/Picture2.png" 
+                 alt="Comprehensive Cybersecurity Services by Peak One Solutions" 
+                 style="max-width: 100%; border-radius: 12px; box-shadow: 0 20px 40px rgba(0,0,0,0.15);">
+        </div>
+
+    </main>
+
+    <footer>
+        <div class="container">
+            <p><strong>Peak One Solutions, LLC</strong><br>
+            Founded in 2014 to help businesses procure, implement, and support Information Technology.</p>
+            <p>Locations: Salt Lake City, UT & Atlanta, GA</p>
+            <p>Copyright © 2026 · Peak One Solutions, LLC · All rights reserved</p>
+        </div>
+    </footer>
+
+</body>
+</html>
