@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio | Byte Werk 3D</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&family=Outfit:wght@500;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="logo">BYTE WERK <span>3D</span></div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="#" class="active">Portfolio</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <header class="portfolio-hero">
+        <h1>Digital <span class="gradient-text">Frontiers</span></h1>
+        <p>A showcase of our immersive experiences, digital twins, and interactive environments.</p>
+    </header>
+
+    <section class="portfolio-container">
+        <div class="filter-bar">
+            <button class="filter-btn active" data-filter="all">All Projects</button>
+            <button class="filter-btn" data-filter="xr">VR / AR</button>
+            <button class="filter-btn" data-filter="twin">Digital Twin</button>
+            <button class="filter-btn" data-filter="games">Game Dev</button>
+        </div>
+
+        <div class="project-grid">
+            
+            <div class="project-card" data-category="xr">
+                <div class="card-media">
+                    <img src="https://images.unsplash.com/photo-1622979135225-d2ba269cf1ac?auto=format&fit=crop&q=80&w=800" alt="VisionSpace XR">
+                    <div class="overlay">
+                        <button class="play-btn">▶ Watch Walkthrough</button>
+                    </div>
+                </div>
+                <div class="card-info">
+                    <span class="tag">Virtual Reality</span>
+                    <h3>VisionSpace XR</h3>
+                    <p>Immersive training simulator for industrial safety and workflow optimization.</p>
+                </div>
+            </div>
+
+            <div class="project-card" data-category="twin">
+                <div class="card-media">
+                    <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc48?auto=format&fit=crop&q=80&w=800" alt="TwinHub 360">
+                    <div class="overlay">
+                        <button class="play-btn">▶ View Animation</button>
+                    </div>
+                </div>
+                <div class="card-info">
+                    <span class="tag">Digital Twin</span>
+                    <h3>TwinHub 360</h3>
+                    <p>Real-time cloud-driven data visualization for smart factory management.</p>
+                </div>
+            </div>
+
+            <div class="project-card" data-category="games">
+                <div class="card-media">
+                    <img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&q=80&w=800" alt="PlayForge Lab">
+                    <div class="overlay">
+                        <button class="play-btn">▶ Play Demo</button>
+                    </div>
+                </div>
+                <div class="card-info">
+                    <span class="tag">Game Development</span>
+                    <h3>PlayForge Lab</h3>
+                    <p>Experimental narrative-driven interactive experience built in Unreal Engine 5.</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <p>© 2025 Byte Werk 3D. All Rights Reserved.</p>
+            <div class="footer-links">
+                <a href="#">Privacy Protocol</a>
+                <a href="#">Terms of Engagement</a>
+            </div>
+        </div>
+    </footer>
+
+    <div id="videoModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div class="video-container">
+                <iframe src="" frameborder="0" allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
