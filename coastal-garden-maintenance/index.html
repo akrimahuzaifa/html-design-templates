@@ -1,0 +1,555 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Coastal Property Care | Jurien Bay & Cervantes</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Playfair+Display:wght@600&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --coastal-blue: #1a3a4a;
+        --ocean-breeze: #f0f7f9;
+        --sand: #f9f7f2;
+        --accent: #d4a373;
+        --text-dark: #2d3436;
+        --text-light: #636e72;
+        --white: #ffffff;
+        --transition: all 0.3s ease;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Inter", sans-serif;
+        color: var(--text-dark);
+        line-height: 1.6;
+        background-color: var(--white);
+        overflow-x: hidden;
+      }
+
+      h1,
+      h2,
+      h3 {
+        font-family: "Playfair Display", serif;
+        font-weight: 600;
+      }
+
+      .container {
+        width: 90%;
+        max-width: 1100px;
+        margin: 0 auto;
+      }
+
+      section {
+        padding: 100px 0;
+      }
+
+      .btn {
+        display: inline-block;
+        padding: 16px 32px;
+        border-radius: 4px;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 0.95rem;
+        transition: var(--transition);
+        cursor: pointer;
+        border: none;
+        text-align: center;
+      }
+
+      .btn-primary {
+        background: var(--coastal-blue);
+        color: white;
+      }
+
+      .btn-primary:hover {
+        background: #0f2530;
+        transform: translateY(-2px);
+      }
+
+      .btn-secondary {
+        background: transparent;
+        border: 2px solid var(--coastal-blue);
+        color: var(--coastal-blue);
+        margin-left: 10px;
+      }
+
+      .btn-secondary:hover {
+        background: var(--ocean-breeze);
+      }
+
+      /* --- SECTION 1: HERO --- */
+      .hero {
+        height: 90vh;
+        min-height: 600px;
+        background:
+          linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.7)),
+          url("https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&q=80&w=2000")
+            no-repeat center center/cover;
+        display: flex;
+        align-items: center;
+        text-align: center;
+      }
+
+      .hero-content h1 {
+        font-size: clamp(2.5rem, 5vw, 4rem);
+        line-height: 1.1;
+        margin-bottom: 20px;
+        color: var(--coastal-blue);
+      }
+
+      .hero-content p {
+        font-size: 1.25rem;
+        color: var(--text-light);
+        max-width: 700px;
+        margin: 0 auto 40px;
+      }
+
+      /* --- SECTION 2: PROBLEM --- */
+      .problem {
+        background-color: var(--ocean-breeze);
+      }
+
+      .section-header {
+        text-align: center;
+        margin-bottom: 60px;
+      }
+
+      .section-header h2 {
+        font-size: 2.5rem;
+        margin-bottom: 15px;
+      }
+
+      .problem-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 30px;
+      }
+
+      .problem-item {
+        background: white;
+        padding: 30px;
+        border-radius: 8px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+      }
+
+      .problem-item b {
+        display: block;
+        margin-bottom: 10px;
+        color: var(--accent);
+        text-transform: uppercase;
+        font-size: 0.8rem;
+        letter-spacing: 1px;
+      }
+
+      /* --- SECTION 3 & 4: SOLUTION/SERVICES --- */
+      .services-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 40px;
+        margin-top: 50px;
+      }
+
+      .service-card {
+        padding: 20px;
+        border-left: 3px solid var(--ocean-breeze);
+        transition: var(--transition);
+      }
+
+      .service-card:hover {
+        border-left: 3px solid var(--accent);
+      }
+
+      .service-card svg {
+        width: 40px;
+        height: 40px;
+        margin-bottom: 15px;
+        stroke: var(--coastal-blue);
+      }
+
+      /* --- SECTION 5 & 6: PRICING --- */
+      .pricing {
+        background-color: var(--sand);
+      }
+
+      .pricing-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 30px;
+        align-items: stretch;
+      }
+
+      .plan-card {
+        background: white;
+        padding: 50px 40px;
+        border-radius: 12px;
+        text-align: center;
+        position: relative;
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.03);
+      }
+
+      .plan-card.featured {
+        border: 2px solid var(--accent);
+        transform: scale(1.05);
+        z-index: 2;
+      }
+
+      .badge {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        background: var(--accent);
+        color: white;
+        font-size: 0.7rem;
+        padding: 5px 12px;
+        border-radius: 20px;
+        text-transform: uppercase;
+        font-weight: 700;
+      }
+
+      .price {
+        font-size: 3rem;
+        font-weight: 700;
+        margin: 20px 0;
+        color: var(--coastal-blue);
+      }
+
+      .price span {
+        font-size: 1rem;
+        color: var(--text-light);
+      }
+
+      .plan-list {
+        list-style: none;
+        margin: 30px 0;
+        text-align: left;
+      }
+
+      .plan-list li {
+        margin-bottom: 12px;
+        display: flex;
+        align-items: center;
+      }
+
+      .plan-list li::before {
+        content: "✓";
+        margin-right: 10px;
+        color: #27ae60;
+        font-weight: bold;
+      }
+
+      /* --- SECTION 7, 8, 9 --- */
+      .trust-points {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        gap: 20px;
+        text-align: center;
+      }
+
+      .area-tag {
+        display: inline-block;
+        padding: 10px 25px;
+        background: var(--ocean-breeze);
+        margin: 5px;
+        border-radius: 50px;
+        font-weight: 600;
+      }
+
+      .testimonial-placeholder {
+        background: var(--sand);
+        padding: 60px;
+        border-radius: 20px;
+        text-align: center;
+        font-style: italic;
+        color: var(--text-light);
+        border: 1px dashed var(--accent);
+      }
+
+      /* --- SECTION 10: FINAL CTA --- */
+      .final-cta {
+        background: var(--coastal-blue);
+        color: white;
+        text-align: center;
+      }
+
+      .final-cta h2 {
+        font-size: 2.5rem;
+        margin-bottom: 20px;
+      }
+
+      /* --- RESPONSIVE --- */
+      @media (max-width: 768px) {
+        section {
+          padding: 60px 0;
+        }
+        .hero {
+          height: auto;
+          padding: 120px 0;
+        }
+        .btn-secondary {
+          margin-left: 0;
+          margin-top: 15px;
+          width: 100%;
+        }
+        .btn-primary {
+          width: 100%;
+        }
+        .plan-card.featured {
+          transform: scale(1);
+          margin-bottom: 20px;
+        }
+        .hero-content h1 {
+          font-size: 2.5rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="hero">
+      <div class="container hero-content">
+        <h1>We Look After Your Coastal Property While You’re Away</h1>
+        <p>
+          Reliable, on-the-ground property care for holiday homes across Jurien
+          Bay, Cervantes & Green Head.
+        </p>
+        <div class="cta-group">
+          <a href="#contact" class="btn btn-primary">Get a Free Quote</a>
+          <a href="#plans" class="btn btn-secondary"
+            >Enquire About Care Plans</a
+          >
+        </div>
+      </div>
+    </header>
+
+    <section class="problem">
+      <div class="container">
+        <div class="section-header">
+          <h2>Owning a Coastal Property Shouldn’t Be Stressful</h2>
+        </div>
+        <div class="problem-grid">
+          <div class="problem-item">
+            <b>Corrosion</b>
+            <p>Salt air eats away at fixtures and fittings 24/7.</p>
+          </div>
+          <div class="problem-item">
+            <b>Storm Damage</b>
+            <p>High coastal winds leave debris and potential damage.</p>
+          </div>
+          <div class="problem-item">
+            <b>Nature</b>
+            <p>Rapid overgrowth and weeds take over when uninhabited.</p>
+          </div>
+          <div class="problem-item">
+            <b>Security</b>
+            <p>Visible debris and mail buildup signal an empty home.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="solution">
+      <div class="container">
+        <div class="section-header">
+          <h2>Your Local Property Care Specialist</h2>
+          <p style="max-width: 800px; margin: 0 auto">
+            We act as your eyes and ears on the ground. We don't just "mow
+            lawns"—we maintain, inspect, and protect your investment so it’s
+            perfect every time you arrive.
+          </p>
+        </div>
+
+        <div class="services-grid">
+          <div class="service-card">
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+              <polyline points="9 22 9 12 15 12 15 22"></polyline>
+            </svg>
+            <h3>Full Property Inspections</h3>
+            <p>
+              Regular check-ins to ensure everything is secure and functioning.
+            </p>
+          </div>
+          <div class="service-card">
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect>
+              <rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect>
+              <line x1="6" y1="6" x2="6.01" y2="6"></line>
+              <line x1="6" y1="18" x2="6.01" y2="18"></line>
+            </svg>
+            <h3>Garden Maintenance</h3>
+            <p>Mowing, weeding, and coastal-specific plant care.</p>
+          </div>
+          <div class="service-card">
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M11 17l-5-5 5-5M18 17l-5-5 5-5"></path>
+            </svg>
+            <h3>Storm Cleanup</h3>
+            <p>Rapid response to clear debris after heavy coastal weather.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="pricing" id="plans">
+      <div class="container">
+        <div class="section-header">
+          <h2>Simple Monthly Care Plans</h2>
+        </div>
+        <div class="pricing-container">
+          <div class="plan-card featured">
+            <div class="badge">Most Popular</div>
+            <h3>Fortnightly Plan</h3>
+            <div class="price">$352<span>/month</span></div>
+            <ul class="plan-list">
+              <li>Two professional visits per month</li>
+              <li>Full exterior debris removal</li>
+              <li>Lawn & Garden upkeep</li>
+              <li>Visual security inspection</li>
+              <li>Monthly status report & photos</li>
+            </ul>
+            <a href="#" class="btn btn-primary">Choose Fortnightly</a>
+          </div>
+
+          <div class="plan-card">
+            <h3>Premium Plan</h3>
+            <div class="price">$500-$700<span>/month</span></div>
+            <ul class="plan-list">
+              <li>All features in Fortnightly</li>
+              <li>Weekly site visits</li>
+              <li>Interior air-out & damp check</li>
+              <li>Post-storm emergency priority</li>
+              <li>Bin service & mail collection</li>
+            </ul>
+            <a href="#" class="btn btn-secondary">Enquire for Premium</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="section-header">
+          <h2>Why Homeowners Trust Us</h2>
+        </div>
+        <div class="trust-points">
+          <div>
+            <h3 style="color: var(--accent)">01</h3>
+            <p>
+              <b>Local Expertise</b><br />We live here and understand the
+              coastal climate.
+            </p>
+          </div>
+          <div>
+            <h3 style="color: var(--accent)">02</h3>
+            <p>
+              <b>Reliability</b><br />We show up when we say we will. No
+              exceptions.
+            </p>
+          </div>
+          <div>
+            <h3 style="color: var(--accent)">03</h3>
+            <p>
+              <b>Transparency</b><br />Photo updates after every single visit.
+            </p>
+          </div>
+          <div>
+            <h3 style="color: var(--accent)">04</h3>
+            <p>
+              <b>All-in-One</b><br />One point of contact for all property
+              needs.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section style="text-align: center; border-top: 1px solid #eee">
+      <div class="container">
+        <h2>Proudly Serving the Turquoise Coast</h2>
+        <div style="margin-top: 30px">
+          <span class="area-tag">Jurien Bay</span>
+          <span class="area-tag">Cervantes</span>
+          <span class="area-tag">Green Head</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="problem">
+      <div class="container">
+        <div class="testimonial-placeholder">
+          <p>
+            "Our holiday home has never looked better. It's such a relief
+            knowing someone is watching over it when we are back in the city."
+          </p>
+          <p
+            style="
+              margin-top: 20px;
+              font-weight: bold;
+              font-style: normal;
+              color: var(--coastal-blue);
+            "
+          >
+            [Client Testimonials Coming Soon]
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="final-cta" id="contact">
+      <div class="container">
+        <h2>Ready for a Stress-Free Holiday Home?</h2>
+        <p style="margin-bottom: 40px; opacity: 0.9">
+          Contact us today for a custom quote or to book your Property Care
+          Plan.
+        </p>
+        <a
+          href="tel:#"
+          class="btn btn-secondary"
+          style="border-color: white; color: white"
+          >Call Us Now</a
+        >
+        <a href="#" class="btn btn-primary" style="background: var(--accent)"
+          >Request a Quote Online</a
+        >
+      </div>
+    </section>
+
+    <footer
+      style="
+        padding: 40px 0;
+        text-align: center;
+        font-size: 0.8rem;
+        color: var(--text-light);
+      "
+    >
+      <p>&copy; 2024 Coastal Property Maintenance. All Rights Reserved.</p>
+    </footer>
+  </body>
+</html>
