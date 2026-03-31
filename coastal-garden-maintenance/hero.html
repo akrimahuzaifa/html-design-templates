@@ -1,0 +1,301 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Premium Hero</title>
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family:
+          -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        background: #f5f7f9;
+        color: #0f2a33;
+      }
+
+      /* HERO */
+      .hero {
+        position: relative;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        padding: 80px 8%;
+        overflow: hidden;
+      }
+
+      /* GRID */
+      .hero::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+
+        background-image:
+          linear-gradient(#e0e1e1 1px, transparent 1px),
+          linear-gradient(90deg, #e0e1e1 1px, transparent 1px);
+
+        background-size: 60px 60px;
+        opacity: 0.8;
+
+        z-index: 0;
+        pointer-events: none;
+
+        animation: moveGrid 60s linear infinite;
+      }
+
+      .hero::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+
+        background-image:
+          linear-gradient(#dbf9ff 1px, transparent 1px),
+          linear-gradient(90deg, #dbf9ff 1px, transparent 1px);
+
+        background-size: 60px 60px;
+
+        opacity: 0; /* hidden by default */
+        z-index: 0;
+        pointer-events: none;
+
+        /* this creates the "hover area" */
+        mask-image: radial-gradient(
+          circle 120px at var(--x, 50%) var(--y, 50%),
+          black 0%,
+          transparent 100%
+        );
+        -webkit-mask-image: radial-gradient(
+          circle 120px at var(--x, 50%) var(--y, 50%),
+          black 0%,
+          transparent 100%
+        );
+
+        transition: opacity 0.2s ease;
+      }
+      /* MOUSE FOLLOW GLOW */
+      .glow {
+        position: absolute;
+        width: 500px;
+        height: 500px;
+        background: radial-gradient(circle, #000000, transparent 70%);
+        border-radius: 50%;
+        pointer-events: none;
+        z-index: 0;
+        transform: translate(-50%, -50%);
+        opacity: 0.5;
+        filter: blur(40px);
+        transition: transform 0.1s linear;
+      }
+
+      /* LAYOUT */
+      .container {
+        position: relative;
+        z-index: 2;
+        display: grid;
+        grid-template-columns: 1.1fr 1fr;
+        gap: 60px;
+        max-width: 1300px;
+        margin: auto;
+      }
+
+      /* GLASS EFFECT PANEL */
+      .hero-content {
+        background: rgba(255, 255, 255, 0.4);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+
+        padding: 40px;
+        border-radius: 16px;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05);
+      }
+
+      /* TEXT */
+      .hero-content small {
+        display: inline-block;
+        margin-bottom: 20px;
+        font-size: 13px;
+        color: #5a6b75;
+      }
+
+      .hero h1 {
+        font-size: 56px;
+        line-height: 1.1;
+        margin-bottom: 20px;
+      }
+
+      .hero h1 span {
+        font-style: italic;
+        font-family: Georgia, serif;
+        color: #000;
+      }
+
+      .hero p {
+        font-size: 18px;
+        color: #5a6b75;
+        line-height: 1.6;
+        margin-bottom: 30px;
+      }
+
+      /* BUTTONS */
+      .buttons {
+        display: flex;
+        gap: 15px;
+      }
+
+      .btn {
+        padding: 14px 22px;
+        border-radius: 8px;
+        font-size: 15px;
+        cursor: pointer;
+        border: none;
+      }
+
+      .btn-primary {
+        background: #0f2a33;
+        color: #fff;
+      }
+
+      .btn-secondary {
+        border: 1px solid #cfd8dc;
+        background: transparent;
+      }
+
+      /* IMAGES */
+      .hero-images {
+        position: relative;
+      }
+
+      .img-main {
+        width: 100%;
+        max-width: 420px;
+        border-radius: 16px;
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
+      }
+
+      .card {
+        position: absolute;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+      }
+
+      .card img {
+        width: 100%;
+      }
+
+      .card-1 {
+        width: 220px;
+        bottom: -30px;
+        left: -40px;
+      }
+
+      .card-2 {
+        width: 260px;
+        bottom: -80px;
+        right: -40px;
+      }
+
+      /* ANIMATION */
+      @keyframes moveGrid {
+        from {
+          background-position:
+            0 0,
+            0 0;
+        }
+        to {
+          background-position:
+            60px 60px,
+            60px 60px;
+        }
+      }
+
+      /* MOBILE */
+      @media (max-width: 900px) {
+        .container {
+          grid-template-columns: 1fr;
+        }
+
+        .hero-content {
+          text-align: center;
+        }
+
+        .card-1,
+        .card-2 {
+          display: none;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <section class="hero">
+      <!-- <div class="glow" id="glow"></div> -->
+
+      <div class="container">
+        <!-- LEFT -->
+        <div class="hero-content">
+          <small>📍 PROUDLY SERVING JURIEN BAY & CERVANTES</small>
+
+          <h1>
+            We Look After Your <br />
+            <span>Coastal</span> Property
+          </h1>
+
+          <p>
+            Reliable, on-the-ground property care for holiday homes across
+            Jurien Bay, Cervantes & Green Head.
+          </p>
+
+          <div class="buttons">
+            <button class="btn btn-primary">Get a Free Quote →</button>
+            <button class="btn btn-secondary">Enquire Now</button>
+          </div>
+        </div>
+
+        <!-- RIGHT -->
+        <div class="hero-images">
+          <img
+            class="img-main"
+            src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c"
+          />
+
+          <div class="card card-1">
+            <img
+              src="https://images.unsplash.com/photo-1505691938895-1758d7feb511"
+            />
+          </div>
+
+          <div class="card card-2">
+            <img
+              src="https://images.unsplash.com/photo-1560185127-6ed189bf02f4"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <script>
+      const hero = document.querySelector(".hero");
+
+      hero.addEventListener("mousemove", (e) => {
+        const rect = hero.getBoundingClientRect();
+
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+
+        hero.style.setProperty("--x", x + "px");
+        hero.style.setProperty("--y", y + "px");
+        hero.style.setProperty("--glow-opacity", 1);
+      });
+
+      hero.addEventListener("mouseleave", () => {
+        hero.style.setProperty("--glow-opacity", 0);
+      });
+    </script>
+  </body>
+</html>
