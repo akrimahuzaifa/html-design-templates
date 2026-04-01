@@ -1,0 +1,264 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      :root {
+        --primary-green: #1b4332;
+        --accent-gold: #c5a059;
+        --light-bg: #fdfdfd;
+        --text-dark: #2d2d2d;
+        --text-muted: #555;
+        --white: #ffffff;
+      }
+
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #f0f2f5;
+        margin: 0;
+        padding: 20px;
+      }
+
+      .hifz-section {
+        max-width: 1100px;
+        margin: 0 auto;
+        background: var(--white);
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        color: var(--text-dark);
+      }
+
+      .hifz-header {
+        background-color: var(--primary-green);
+        color: var(--white);
+        padding: 50px 30px;
+        text-align: center;
+        position: relative;
+      }
+
+      .hifz-header h1 {
+        font-size: 2.2rem;
+        margin: 0 0 15px 0;
+        letter-spacing: 1px;
+      }
+
+      .hifz-header p {
+        font-size: 1.1rem;
+        opacity: 0.9;
+        max-width: 800px;
+        margin: 0 auto;
+        line-height: 1.6;
+      }
+
+      .hifz-content {
+        padding: 40px;
+      }
+
+      .grid-container {
+        display: grid;
+        grid-template-columns: 1.2fr 0.8fr;
+        gap: 40px;
+      }
+
+      .benefits h2 {
+        color: var(--primary-green);
+        border-bottom: 2px solid var(--accent-gold);
+        display: inline-block;
+        margin-bottom: 25px;
+        font-size: 1.5rem;
+      }
+
+      .benefit-list {
+        list-style: none;
+        padding: 0;
+      }
+
+      .benefit-item {
+        display: flex;
+        align-items: flex-start;
+        margin-bottom: 15px;
+        background: #f9fbf9;
+        padding: 15px;
+        border-left: 4px solid var(--primary-green);
+        border-radius: 4px;
+      }
+
+      .benefit-icon {
+        color: var(--accent-gold);
+        margin-right: 15px;
+        font-size: 1.2rem;
+      }
+
+      .schedule-card {
+        background-color: var(--light-bg);
+        border: 1px solid #eee;
+        border-radius: 12px;
+        padding: 25px;
+        height: fit-content;
+      }
+
+      .schedule-group {
+        margin-bottom: 25px;
+      }
+
+      .schedule-group h3 {
+        color: var(--primary-green);
+        font-size: 1.1rem;
+        margin-bottom: 15px;
+        display: flex;
+        align-items: center;
+      }
+
+      .time-row {
+        display: flex;
+        justify-content: space-between;
+        padding: 8px 0;
+        border-bottom: 1px dashed #ddd;
+        font-size: 0.95rem;
+      }
+
+      .day {
+        font-weight: 600;
+        color: var(--text-muted);
+      }
+      .time {
+        color: var(--primary-green);
+        font-weight: 700;
+      }
+
+      .cta-section {
+        text-align: center;
+        padding: 40px;
+        background: #f4f7f6;
+        border-top: 1px solid #eee;
+      }
+
+      .cta-text {
+        font-style: italic;
+        color: var(--text-muted);
+        margin-bottom: 20px;
+        line-height: 1.6;
+      }
+
+      .enroll-btn {
+        display: inline-block;
+        background-color: var(--accent-gold);
+        color: white;
+        padding: 15px 40px;
+        text-decoration: none;
+        border-radius: 30px;
+        font-weight: bold;
+        text-transform: uppercase;
+        transition:
+          transform 0.2s,
+          background-color 0.2s;
+      }
+
+      .enroll-btn:hover {
+        background-color: #b08d4a;
+        transform: translateY(-2px);
+      }
+
+      @media (max-width: 850px) {
+        .grid-container {
+          grid-template-columns: 1fr;
+        }
+        .hifz-header h1 {
+          font-size: 1.8rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <section class="hifz-section">
+      <div class="hifz-header">
+        <h1>Part-Time Hifz Program Launch</h1>
+        <p>
+          A thoughtfully designed pathway for students to memorize the Qur’an
+          while maintaining excellence in their academic journey. Balancing Deen
+          and Dunya has never been more achievable.
+        </p>
+      </div>
+
+      <div class="hifz-content">
+        <div class="grid-container">
+          <div class="benefits">
+            <h2>Why Choose This Program?</h2>
+            <div class="benefit-list">
+              <div class="benefit-item">
+                <span class="benefit-icon">✦</span>
+                <div>
+                  Structured memorization plan tailored to each student.
+                </div>
+              </div>
+              <div class="benefit-item">
+                <span class="benefit-icon">✦</span>
+                <div>Flexible schedule to support school commitments.</div>
+              </div>
+              <div class="benefit-item">
+                <span class="benefit-icon">✦</span>
+                <div>Taught by qualified and experienced teachers.</div>
+              </div>
+              <div class="benefit-item">
+                <span class="benefit-icon">✦</span>
+                <div>Focus on Tajweed, understanding, and retention.</div>
+              </div>
+              <div class="benefit-item">
+                <span class="benefit-icon">✦</span>
+                <div>Supportive and motivating learning environment.</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="schedule-card">
+            <div class="schedule-group">
+              <h3>📖 Hifz Timings</h3>
+              <div class="time-row">
+                <span class="day">Mon – Thurs</span>
+                <span class="time">8:30 AM – 11:00 AM</span>
+              </div>
+              <div class="time-row">
+                <span class="day">Friday</span>
+                <span class="time">8:30 AM – 10:00 AM</span>
+              </div>
+            </div>
+
+            <div class="schedule-group">
+              <h3>🎓 Academic Timings</h3>
+              <div class="time-row">
+                <span class="day">Mon – Thurs</span>
+                <span class="time">11:00 AM – 3:00 PM</span>
+              </div>
+              <div class="time-row">
+                <span class="day">Friday</span>
+                <span class="time">10:00 AM – 12:30 PM</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="cta-section">
+        <p class="cta-text">
+          Whether your child is already enrolled in school or pursuing other
+          academic goals, <br />
+          our mission is to nurture confident, knowledgeable, and spiritually
+          grounded students.
+        </p>
+        <a href="#" class="enroll-btn">Enroll Your Child Today</a>
+        <p
+          style="
+            margin-top: 15px;
+            font-size: 0.9rem;
+            color: var(--primary-green);
+            font-weight: 600;
+          "
+        >
+          Secure your spot and build both strong minds and strong Iman.
+        </p>
+      </div>
+    </section>
+  </body>
+</html>
