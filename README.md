@@ -18,6 +18,9 @@ Open any of the included `index.html` files directly in your browser, or serve t
 # serve on port 8000 using Python 3
 python -m http.server 8000
 # then open in browser, e.g. http://localhost:8000/alpha-footer-signature/index.html
+# For live preview please open. https://akrimahuzaifa.github.io/html-design-templates/directory/file.html
+e.g. https://akrimahuzaifa.github.io/html-design-templates/alpha-footer-signature/index.html
+
 ```
 
 Recommended workflow
