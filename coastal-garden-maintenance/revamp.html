@@ -1,0 +1,263 @@
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Segoe UI',Arial,sans-serif;color:#1a1a1a;background:#fff}
+:root{--orange:#E8650A;--orange-light:#FFF3EB;--orange-dark:#B84D05;--green:#3B7D1C;--green-light:#EAF3DE;--green-dark:#27500A;--navy:#1C2B3A;--gray:#F7F7F5;--text:#1a1a1a;--muted:#5a6370}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.btn-orange{background:var(--orange);color:#fff;border:none;padding:16px 32px;font-size:15px;font-weight:600;border-radius:6px;cursor:pointer;letter-spacing:.5px;transition:background .2s}
+.btn-orange:hover{background:var(--orange-dark)}
+.btn-green{background:var(--green);color:#fff;border:none;padding:14px 28px;font-size:14px;font-weight:600;border-radius:6px;cursor:pointer;transition:background .2s}
+.btn-green:hover{background:var(--green-dark)}
+.section{padding:64px 24px}
+.container{max-width:860px;margin:0 auto}
+.tag{display:inline-block;background:var(--orange-light);color:var(--orange-dark);font-size:11px;font-weight:700;letter-spacing:1px;padding:4px 12px;border-radius:4px;text-transform:uppercase;margin-bottom:14px}
+</style>
+
+<h2 class="sr-only">Coastal Garden & Maintenance — Landing page for Perth-based holiday home owners seeking free property health audits</h2>
+
+<!-- HEADER -->
+<header style="background:var(--navy);padding:0 24px;position:sticky;top:0;z-index:100;border-bottom:3px solid var(--orange)">
+  <div class="container" style="display:flex;align-items:center;justify-content:space-between;height:64px">
+    <div style="display:flex;align-items:center;gap:10px">
+      <div style="width:36px;height:36px;background:var(--orange);border-radius:50%;display:flex;align-items:center;justify-content:center">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+      </div>
+      <span style="color:#fff;font-weight:700;font-size:16px;letter-spacing:.5px">CGM</span>
+      <span style="color:#aaa;font-size:11px;margin-left:2px">Coastal Garden & Maintenance</span>
+    </div>
+    <div style="display:flex;align-items:center;gap:16px">
+      <span style="color:#ccc;font-size:13px">📞 0400 000 000</span>
+      <button class="btn-orange" style="padding:10px 20px;font-size:13px">FREE AUDIT</button>
+    </div>
+  </div>
+</header>
+
+<!-- HERO -->
+<section style="background:linear-gradient(135deg,#1C2B3A 0%,#2E4A28 100%);padding:80px 24px 90px;position:relative;overflow:hidden">
+  <div style="position:absolute;top:0;right:0;width:340px;height:100%;opacity:.08;background:url('data:image/svg+xml,<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 200 200\"><circle cx=\"100\" cy=\"100\" r=\"80\" fill=\"white\"/></svg>') no-repeat center;background-size:cover"></div>
+  <div class="container" style="position:relative;z-index:1">
+    <div style="display:inline-flex;align-items:center;gap:8px;background:rgba(232,101,10,.2);border:1px solid rgba(232,101,10,.4);border-radius:20px;padding:6px 14px;margin-bottom:24px">
+      <span style="width:8px;height:8px;background:#E8650A;border-radius:50%;display:inline-block"></span>
+      <span style="color:#ffb07a;font-size:12px;font-weight:600;letter-spacing:.5px">SERVING THE TURQUOISE COAST</span>
+    </div>
+    <h1 style="color:#fff;font-size:clamp(28px,5vw,46px);font-weight:700;line-height:1.15;margin-bottom:20px;max-width:680px">Stop Worrying About Your<br><span style="color:#E8650A">Turquoise Coast</span> Holiday Home.</h1>
+    <p style="color:#c8d8c0;font-size:17px;line-height:1.7;max-width:580px;margin-bottom:36px">Professional property oversight, storm checks, and rapid guest support for Perth-based owners. Get your weekends back and your property under control.</p>
+    <button class="btn-orange" style="font-size:16px;padding:18px 40px;border-radius:8px;letter-spacing:.5px">GET A FREE PROPERTY HEALTH AUDIT →</button>
+    <p style="color:#8aab80;margin-top:14px;font-size:13px">No cost. No obligation. 15-point health scorecard delivered via WhatsApp.</p>
+  </div>
+</section>
+
+<!-- PAIN POINTS -->
+<section class="section" style="background:var(--gray)">
+  <div class="container">
+    <div style="text-align:center;margin-bottom:44px">
+      <span class="tag">Why Owners Choose CGM</span>
+      <h2 style="font-size:clamp(22px,4vw,34px);font-weight:700;color:var(--navy);margin-top:8px">Out of Sight Shouldn't Mean<br>Out of Control.</h2>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:20px">
+      <div style="background:#fff;border-radius:12px;padding:28px 20px;border-left:4px solid var(--orange);border-top:0.5px solid #e0e0e0">
+        <div style="width:44px;height:44px;background:var(--orange-light);border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:14px">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#E8650A" stroke-width="2" stroke-linecap="round"><path d="M14.5 10c-.83 0-1.5-.67-1.5-1.5v-5c0-.83.67-1.5 1.5-1.5s1.5.67 1.5 1.5v5c0 .83-.67 1.5-1.5 1.5z"/><path d="M20.5 10H19V8.5c0-.83.67-1.5 1.5-1.5s1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/><path d="M9.5 14c.83 0 1.5.67 1.5 1.5v5c0 .83-.67 1.5-1.5 1.5S8 21.33 8 20.5v-5c0-.83.67-1.5 1.5-1.5z"/><path d="M3.5 14H5v1.5c0 .83-.67 1.5-1.5 1.5S2 16.33 2 15.5 2.67 14 3.5 14z"/><path d="M14 14.5c0-.83.67-1.5 1.5-1.5h5c.83 0 1.5.67 1.5 1.5s-.67 1.5-1.5 1.5h-5c-.83 0-1.5-.67-1.5-1.5z"/><path d="M15.5 19H14v1.5c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5-.67-1.5-1.5-1.5z"/><path d="M10 9.5C10 8.67 9.33 8 8.5 8h-5C2.67 8 2 8.67 2 9.5S2.67 11 3.5 11h5c.83 0 1.5-.67 1.5-1.5z"/><path d="M8.5 5H10V3.5C10 2.67 9.33 2 8.5 2S7 2.67 7 3.5 7.67 5 8.5 5z"/></svg>
+        </div>
+        <h3 style="font-size:15px;font-weight:700;color:var(--navy);margin-bottom:8px">Storms</h3>
+        <p style="font-size:13px;color:var(--muted);line-height:1.6">Salt spray and high winds cause rapid deterioration. We check after every event.</p>
+      </div>
+      <div style="background:#fff;border-radius:12px;padding:28px 20px;border-left:4px solid var(--green);border-top:0.5px solid #e0e0e0">
+        <div style="width:44px;height:44px;background:var(--green-light);border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:14px">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#3B7D1C" stroke-width="2" stroke-linecap="round"><path d="M12 22V12"/><path d="M12 12C12 12 7 9 7 5a5 5 0 0110 0c0 4-5 7-5 7z"/></svg>
+        </div>
+        <h3 style="font-size:15px;font-weight:700;color:var(--navy);margin-bottom:8px">Gardens</h3>
+        <p style="font-size:13px;color:var(--muted);line-height:1.6">Coastal weeds move fast. Don't arrive to a jungle — we keep it guest-ready year-round.</p>
+      </div>
+      <div style="background:#fff;border-radius:12px;padding:28px 20px;border-left:4px solid var(--orange);border-top:0.5px solid #e0e0e0">
+        <div style="width:44px;height:44px;background:var(--orange-light);border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:14px">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#E8650A" stroke-width="2" stroke-linecap="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+        </div>
+        <h3 style="font-size:15px;font-weight:700;color:var(--navy);margin-bottom:8px">Guest Calls</h3>
+        <p style="font-size:13px;color:var(--muted);line-height:1.6">Who handles the 8 PM "no hot water" call when you're in Perth? We do.</p>
+      </div>
+      <div style="background:#fff;border-radius:12px;padding:28px 20px;border-left:4px solid var(--green);border-top:0.5px solid #e0e0e0">
+        <div style="width:44px;height:44px;background:var(--green-light);border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:14px">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#3B7D1C" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+        </div>
+        <h3 style="font-size:15px;font-weight:700;color:var(--navy);margin-bottom:8px">Neglect</h3>
+        <p style="font-size:13px;color:var(--muted);line-height:1.6">We catch issues before they become $5,000 repairs. Prevention pays for itself.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROOF / WHATSAPP -->
+<section class="section" style="background:#fff">
+  <div class="container" style="display:flex;flex-wrap:wrap;gap:48px;align-items:center">
+    <div style="flex:1;min-width:260px">
+      <span class="tag">Social Proof</span>
+      <h2 style="font-size:clamp(20px,3vw,30px);font-weight:700;color:var(--navy);margin:12px 0 16px">Know Your Home Is Safe —<br>Without Leaving the City.</h2>
+      <p style="color:var(--muted);font-size:15px;line-height:1.7">Every visit includes a digital update and photo report sent straight to your phone. Full transparency, zero guesswork.</p>
+    </div>
+    <div style="flex:0 0 auto;width:min(320px,100%)">
+      <div style="background:#E8F5E9;border-radius:16px;padding:20px;font-size:13px;position:relative;border:1px solid #c8e6c9">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:16px;padding-bottom:12px;border-bottom:1px solid #c8e6c9">
+          <div style="width:36px;height:36px;background:var(--green);border-radius:50%;display:flex;align-items:center;justify-content:center">
+            <span style="color:#fff;font-weight:700;font-size:13px">CGM</span>
+          </div>
+          <div>
+            <p style="font-weight:700;color:#1a1a1a;font-size:13px">CGM Property Care</p>
+            <p style="color:#4CAF50;font-size:11px">● Online</p>
+          </div>
+        </div>
+        <div style="background:#fff;border-radius:12px;border-radius:2px 12px 12px 12px;padding:14px;margin-bottom:10px;border:0.5px solid #e0e0e0">
+          <p style="color:#1a1a1a;line-height:1.6">Hi Sarah, just finished the fortnightly service at <strong>14 Seaview Dr</strong>. Lawns mown, gas bottles checked, and I've cleared the debris after last night's wind.</p>
+          <p style="margin-top:8px;color:#3B7D1C;font-weight:600">✅ All clear! — CGM</p>
+        </div>
+        <div style="background:#fff;border-radius:12px;border-radius:2px 12px 12px 12px;padding:12px;border:0.5px solid #e0e0e0;display:flex;align-items:center;gap:10px">
+          <div style="width:52px;height:52px;background:#c8e6c9;border-radius:8px;display:flex;align-items:center;justify-content:center">
+            <svg width="24" height="24" fill="#3B7D1C" viewBox="0 0 24 24"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg>
+          </div>
+          <div>
+            <p style="font-size:12px;color:#555">Photo_Report_14Seaview.jpg</p>
+            <p style="font-size:11px;color:#888">2.1 MB · Tap to view</p>
+          </div>
+        </div>
+        <p style="text-align:right;font-size:11px;color:#888;margin-top:8px">Today 10:42 AM ✓✓</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING PLANS -->
+<section class="section" style="background:var(--navy)">
+  <div class="container">
+    <div style="text-align:center;margin-bottom:44px">
+      <span style="display:inline-block;background:rgba(232,101,10,.2);color:#ffb07a;font-size:11px;font-weight:700;letter-spacing:1px;padding:4px 12px;border-radius:4px;text-transform:uppercase;margin-bottom:12px">Subscription Plans</span>
+      <h2 style="font-size:clamp(22px,4vw,34px);font-weight:700;color:#fff;margin-top:8px">Choose Your Level of Property Care.</h2>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:24px;margin-bottom:24px">
+      <!-- Essential Plan -->
+      <div style="background:#fff;border-radius:16px;padding:32px 28px;position:relative">
+        <p style="font-size:12px;color:var(--green);font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:10px">Essential Care Plan</p>
+        <p style="font-size:13px;color:var(--muted);margin-bottom:16px">Best for private holiday homes.</p>
+        <div style="display:flex;align-items:baseline;gap:4px;margin-bottom:24px">
+          <span style="font-size:38px;font-weight:800;color:var(--navy)">$352</span>
+          <span style="color:var(--muted);font-size:14px">/ month</span>
+        </div>
+        <ul style="list-style:none;margin-bottom:28px">
+          <li style="padding:8px 0;border-bottom:0.5px solid #eee;font-size:14px;color:#333;display:flex;align-items:center;gap:10px"><span style="color:var(--green);font-size:16px">✓</span> Fortnightly 2-hour maintenance visit</li>
+          <li style="padding:8px 0;border-bottom:0.5px solid #eee;font-size:14px;color:#333;display:flex;align-items:center;gap:10px"><span style="color:var(--green);font-size:16px">✓</span> Mowing, edging, and blow-down</li>
+          <li style="padding:8px 0;border-bottom:0.5px solid #eee;font-size:14px;color:#333;display:flex;align-items:center;gap:10px"><span style="color:var(--green);font-size:16px">✓</span> Weeding and light pruning</li>
+          <li style="padding:8px 0;border-bottom:0.5px solid #eee;font-size:14px;color:#333;display:flex;align-items:center;gap:10px"><span style="color:var(--green);font-size:16px">✓</span> Routine property inspections</li>
+          <li style="padding:8px 0;font-size:14px;color:#333;display:flex;align-items:center;gap:10px"><span style="color:var(--green);font-size:16px">✓</span> Photo reporting after every visit</li>
+        </ul>
+        <button class="btn-green" style="width:100%;padding:14px">Get Started</button>
+      </div>
+      <!-- Hands-Off Plan -->
+      <div style="background:#fff;border-radius:16px;padding:32px 28px;position:relative;border:3px solid var(--orange)">
+        <div style="position:absolute;top:-14px;left:50%;transform:translateX(-50%);background:var(--orange);color:#fff;font-size:11px;font-weight:800;padding:6px 18px;border-radius:20px;letter-spacing:.5px;white-space:nowrap">MOST POPULAR</div>
+        <p style="font-size:12px;color:var(--orange);font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:10px">The Hands-Off Owner Plan</p>
+        <p style="font-size:13px;color:var(--muted);margin-bottom:16px">Best for high-performing Airbnbs.</p>
+        <div style="display:flex;align-items:baseline;gap:4px;margin-bottom:24px">
+          <span style="font-size:38px;font-weight:800;color:var(--navy)">$500</span>
+          <span style="color:var(--muted);font-size:14px">– $700 / month</span>
+        </div>
+        <ul style="list-style:none;margin-bottom:28px">
+          <li style="padding:8px 0;border-bottom:0.5px solid #eee;font-size:14px;color:#333;display:flex;align-items:center;gap:10px"><span style="color:var(--orange);font-size:16px">✓</span> Everything in Essential Care, PLUS:</li>
+          <li style="padding:8px 0;border-bottom:0.5px solid #eee;font-size:14px;color:#333;display:flex;align-items:center;gap:10px"><span style="color:var(--orange);font-size:16px">✓</span> Pre-arrival / Guest-Ready prep</li>
+          <li style="padding:8px 0;border-bottom:0.5px solid #eee;font-size:14px;color:#333;display:flex;align-items:center;gap:10px"><span style="color:var(--orange);font-size:16px">✓</span> Post-storm inspections & debris clear</li>
+          <li style="padding:8px 0;border-bottom:0.5px solid #eee;font-size:14px;color:#333;display:flex;align-items:center;gap:10px"><span style="color:var(--orange);font-size:16px">✓</span> Gas bottle monitoring</li>
+          <li style="padding:8px 0;font-size:14px;color:#333;display:flex;align-items:center;gap:10px"><span style="color:var(--orange);font-size:16px">✓</span> Priority Emergency Response</li>
+        </ul>
+        <button class="btn-orange" style="width:100%;padding:14px">Get Started</button>
+      </div>
+    </div>
+    <div style="display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-bottom:16px">
+      <div style="background:rgba(255,255,255,.1);border:1px solid rgba(255,100,0,.4);border-radius:20px;padding:6px 18px;font-size:12px;color:#ffb07a;font-weight:600">⚠ Jurien Bay: <strong style="color:#ff7a40">2 spots left</strong></div>
+      <div style="background:rgba(255,255,255,.1);border:1px solid rgba(255,100,0,.4);border-radius:20px;padding:6px 18px;font-size:12px;color:#ffb07a;font-weight:600">⚠ Cervantes: <strong style="color:#ff7a40">1 spot left</strong></div>
+    </div>
+    <p style="text-align:center;color:#8aab80;font-size:12px">Subscription plans cover preventative care. Repairs and emergency labor billed at $110/hr with priority scheduling.</p>
+  </div>
+</section>
+
+<!-- ADD-ON MENU -->
+<section class="section" style="background:#fff">
+  <div class="container">
+    <div style="text-align:center;margin-bottom:40px">
+      <span class="tag">Add-On Services</span>
+      <h2 style="font-size:clamp(20px,3vw,30px);font-weight:700;color:var(--navy);margin:12px 0 8px">One Call. Every Job Handled.</h2>
+      <p style="color:var(--muted);font-size:14px">Exclusively available to our ongoing subscription clients.</p>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px">
+      <div style="background:var(--gray);border-radius:10px;padding:18px 20px;display:flex;align-items:center;gap:14px;border-left:3px solid var(--orange)">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#E8650A" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg>
+        <span style="font-size:14px;font-weight:500;color:var(--navy)">Gutter Cleaning & Roof Fastener Checks</span>
+      </div>
+      <div style="background:var(--gray);border-radius:10px;padding:18px 20px;display:flex;align-items:center;gap:14px;border-left:3px solid var(--green)">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#3B7D1C" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M8 12h8M12 8v8"/></svg>
+        <span style="font-size:14px;font-weight:500;color:var(--navy)">High-Pressure Path & Deck Washing</span>
+      </div>
+      <div style="background:var(--gray);border-radius:10px;padding:18px 20px;display:flex;align-items:center;gap:14px;border-left:3px solid var(--orange)">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#E8650A" stroke-width="2"><path d="M12 2v20M2 12h20"/></svg>
+        <span style="font-size:14px;font-weight:500;color:var(--navy)">Reticulation Repairs & Controller Setups</span>
+      </div>
+      <div style="background:var(--gray);border-radius:10px;padding:18px 20px;display:flex;align-items:center;gap:14px;border-left:3px solid var(--green)">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#3B7D1C" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 9h6M9 15h6"/></svg>
+        <span style="font-size:14px;font-weight:500;color:var(--navy)">Flyscreen & Shade Cloth Replacement</span>
+      </div>
+      <div style="background:var(--gray);border-radius:10px;padding:18px 20px;display:flex;align-items:center;gap:14px;border-left:3px solid var(--orange)">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#E8650A" stroke-width="2"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg>
+        <span style="font-size:14px;font-weight:500;color:var(--navy)">Minor Handyman Fixes & Furniture Assembly</span>
+      </div>
+      <div style="background:var(--gray);border-radius:10px;padding:18px 20px;display:flex;align-items:center;gap:14px;border-left:3px solid var(--green)">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#3B7D1C" stroke-width="2"><path d="M17.5 19H9a7 7 0 110-14h4l.5.5"/><path d="M20 16l2-2-2-2M17 14h5"/></svg>
+        <span style="font-size:14px;font-weight:500;color:var(--navy)">Storm Prep — Securing Furniture & Inspecting Seals</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA / FORM -->
+<section class="section" style="background:linear-gradient(135deg,#EAF3DE 0%,#FFF3EB 100%);border-top:3px solid var(--orange)">
+  <div class="container" style="max-width:600px">
+    <div style="text-align:center;margin-bottom:36px">
+      <span class="tag">Free Audit</span>
+      <h2 style="font-size:clamp(22px,4vw,34px);font-weight:700;color:var(--navy);margin:12px 0 14px">Claim Your Free Property Health Audit.</h2>
+      <p style="color:var(--muted);font-size:15px;line-height:1.7">I'll visit your property, run a 15-point check (Retic, Roof, Weeds, Safety), and send you a <strong>"Health Scorecard"</strong> via WhatsApp. No cost. No obligation.</p>
+    </div>
+    <div style="background:#fff;border-radius:16px;padding:36px 32px;border:0.5px solid #d4e8c4;box-shadow:0 4px 24px rgba(59,125,28,.08)">
+      <div style="margin-bottom:20px">
+        <label style="display:block;font-size:13px;font-weight:600;color:var(--navy);margin-bottom:6px">Your Name</label>
+        <input type="text" placeholder="e.g. Sarah Thompson" style="width:100%;padding:14px 16px;border:1.5px solid #d0d0d0;border-radius:8px;font-size:15px;color:#333;outline:none;height:48px">
+      </div>
+      <div style="margin-bottom:20px">
+        <label style="display:block;font-size:13px;font-weight:600;color:var(--navy);margin-bottom:6px">Property Address</label>
+        <input type="text" placeholder="e.g. 14 Seaview Drive, Jurien Bay" style="width:100%;padding:14px 16px;border:1.5px solid #d0d0d0;border-radius:8px;font-size:15px;color:#333;outline:none;height:48px">
+      </div>
+      <div style="margin-bottom:20px">
+        <label style="display:block;font-size:13px;font-weight:600;color:var(--navy);margin-bottom:6px">Mobile Number (For WhatsApp Report)</label>
+        <input type="tel" inputmode="numeric" placeholder="e.g. 0412 345 678" style="width:100%;padding:14px 16px;border:1.5px solid #d0d0d0;border-radius:8px;font-size:15px;color:#333;outline:none;height:48px">
+      </div>
+      <div style="margin-bottom:28px">
+        <label style="display:block;font-size:13px;font-weight:600;color:var(--navy);margin-bottom:6px">Which plan interests you?</label>
+        <select style="width:100%;padding:14px 16px;border:1.5px solid #d0d0d0;border-radius:8px;font-size:15px;color:#333;outline:none;height:48px;background:#fff;appearance:none">
+          <option value="">Select a plan...</option>
+          <option>Essential Care Plan — $352/month</option>
+          <option>Hands-Off Owner Plan — $500–$700/month</option>
+          <option>Not sure yet</option>
+        </select>
+      </div>
+      <button class="btn-orange" style="width:100%;font-size:16px;padding:18px;border-radius:8px;letter-spacing:.5px">SEND MY FREE AUDIT →</button>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer style="background:var(--navy);padding:28px 24px;text-align:center">
+  <div class="container">
+    <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:16px;margin-bottom:16px">
+      <span style="background:rgba(255,255,255,.1);color:#ccc;font-size:11px;padding:6px 14px;border-radius:20px;font-weight:600">ABN: 00 000 000 000</span>
+      <span style="background:rgba(59,125,28,.3);color:#a8d887;font-size:11px;padding:6px 14px;border-radius:20px;font-weight:600">✓ Fully Insured</span>
+      <span style="background:rgba(59,125,28,.3);color:#a8d887;font-size:11px;padding:6px 14px;border-radius:20px;font-weight:600">✓ Police Clearance Held</span>
+      <span style="background:rgba(232,101,10,.2);color:#ffb07a;font-size:11px;padding:6px 14px;border-radius:20px;font-weight:600;cursor:pointer">💬 Chat on WhatsApp</span>
+    </div>
+    <p style="color:#666;font-size:12px">© 2025 Coastal Garden & Maintenance · Turquoise Coast, WA</p>
+  </div>
+</footer>
