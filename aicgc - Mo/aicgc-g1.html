@@ -1,0 +1,420 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AICG | Excellence in Clinical Training</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Poppins:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --primary: #0a2540;
+        --accent: #00d4ff;
+        --secondary: #635bff;
+        --text-dark: #1a1f36;
+        --text-light: #ffffff;
+        --bg-light: #f7f9fc;
+        --glass: rgba(255, 255, 255, 0.9);
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Inter", sans-serif;
+      }
+
+      body {
+        background-color: var(--bg-light);
+        color: var(--text-dark);
+        line-height: 1.6;
+        overflow-x: hidden;
+      }
+
+      /* --- Animations --- */
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* --- Header & Nav --- */
+      nav {
+        padding: 20px 10%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: white;
+        box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+      }
+
+      .logo {
+        font-family: "Poppins", sans-serif;
+        font-weight: 700;
+        font-size: 1.5rem;
+        color: var(--primary);
+        text-decoration: none;
+      }
+
+      .nav-links a {
+        margin-left: 30px;
+        text-decoration: none;
+        color: var(--text-dark);
+        font-weight: 500;
+        transition: 0.3s;
+      }
+
+      .btn-cta {
+        background: var(--secondary);
+        color: white !important;
+        padding: 10px 25px;
+        border-radius: 50px;
+        transition: 0.3s;
+      }
+
+      .btn-cta:hover {
+        transform: scale(1.05);
+        box-shadow: 0 4px 15px rgba(99, 91, 255, 0.4);
+      }
+
+      /* --- Hero Section --- */
+      .hero {
+        background:
+          linear-gradient(135deg, rgba(10, 37, 64, 0.9), rgba(10, 37, 64, 0.7)),
+          url("https://images.unsplash.com/photo-1551076805-e1869033e561?auto=format&fit=crop&q=80&w=1920");
+        background-size: cover;
+        background-position: center;
+        height: 90vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        color: white;
+        padding: 0 20px;
+      }
+
+      .hero-content {
+        max-width: 800px;
+        animation: fadeIn 1s ease-out;
+      }
+
+      .hero h1 {
+        font-size: 3.5rem;
+        margin-bottom: 20px;
+        font-family: "Poppins", sans-serif;
+      }
+
+      .hero p {
+        font-size: 1.2rem;
+        margin-bottom: 30px;
+        opacity: 0.9;
+      }
+
+      /* --- Mission Section --- */
+      .section-padding {
+        padding: 80px 10%;
+      }
+
+      .welcome-card {
+        background: white;
+        border-radius: 20px;
+        padding: 50px;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
+        margin-top: -100px;
+        position: relative;
+        z-index: 10;
+      }
+
+      .award-banner {
+        background: #eef2ff;
+        padding: 15px 30px;
+        border-radius: 12px;
+        display: inline-flex;
+        align-items: center;
+        margin-bottom: 20px;
+        border-left: 4px solid var(--secondary);
+      }
+
+      /* --- Clinical Tips Grid --- */
+      .grid-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 30px;
+        margin-top: 50px;
+      }
+
+      .tip-card {
+        background: white;
+        padding: 40px;
+        border-radius: 15px;
+        border-bottom: 4px solid transparent;
+        transition: 0.4s;
+        position: relative;
+      }
+
+      .tip-card:hover {
+        transform: translateY(-10px);
+        border-bottom: 4px solid var(--accent);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+      }
+
+      .tip-number {
+        font-size: 3rem;
+        font-weight: 700;
+        color: rgba(0, 212, 255, 0.1);
+        position: absolute;
+        top: 10px;
+        right: 20px;
+      }
+
+      .tip-card h3 {
+        margin-bottom: 15px;
+        color: var(--primary);
+      }
+
+      .read-more {
+        display: inline-block;
+        margin-top: 15px;
+        color: var(--secondary);
+        font-weight: 600;
+        text-decoration: none;
+        font-size: 0.9rem;
+      }
+
+      /* --- Form Section --- */
+      .contact-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 50px;
+        background: var(--primary);
+        color: white;
+        border-radius: 30px;
+        padding: 60px;
+        margin-top: 50px;
+      }
+
+      input,
+      textarea {
+        width: 100%;
+        padding: 15px;
+        margin-bottom: 15px;
+        border-radius: 8px;
+        border: none;
+        background: rgba(255, 255, 255, 0.1);
+        color: white;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+      }
+
+      .submit-btn {
+        background: var(--accent);
+        color: var(--primary);
+        padding: 15px 40px;
+        border: none;
+        border-radius: 8px;
+        font-weight: 700;
+        cursor: pointer;
+        transition: 0.3s;
+      }
+
+      .submit-btn:hover {
+        background: white;
+      }
+
+      /* --- Responsive --- */
+      @media (max-width: 768px) {
+        .hero h1 {
+          font-size: 2.5rem;
+        }
+        .contact-container {
+          grid-template-columns: 1fr;
+          padding: 30px;
+        }
+        .nav-links {
+          display: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <a href="#" class="logo">AICG</a>
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#specialties">Specialties</a>
+        <a href="#tips">Clinical Tips</a>
+        <a href="#contact" class="btn-cta">Apply Now</a>
+      </div>
+    </nav>
+
+    <header class="hero">
+      <div class="hero-content">
+        <h1>Experience Medicine Beyond the Classroom</h1>
+        <p>
+          American International Clinical Group provides medical students and
+          graduates with elite clinical training in certified global teaching
+          hospitals.
+        </p>
+        <a
+          href="#contact"
+          class="btn-cta"
+          style="padding: 18px 40px; font-size: 1.1rem"
+          >Start Your Clinical Journey</a
+        >
+      </div>
+    </header>
+
+    <section class="section-padding" id="about">
+      <div class="welcome-card">
+        <div class="award-banner">
+          🏆 Proud recipient of the Digital Development Corporation Award
+        </div>
+        <h2
+          style="font-size: 2.5rem; margin-bottom: 20px; color: var(--primary)"
+        >
+          Welcome to AICG
+        </h2>
+        <p style="font-size: 1.1rem; color: #555; max-width: 900px">
+          The mission of American International Clinical Group (AICG) is to
+          provide medical students, graduates, and practicing physicians around
+          the globe with top-notch clinical training in certified teaching
+          hospitals. We believe that when medical students begin clinical
+          rotations, they begin to truly experience medicine.
+        </p>
+      </div>
+    </section>
+
+    <section class="section-padding" id="tips" style="background: #f0f4f8">
+      <div style="text-align: center; margin-bottom: 50px">
+        <h2 style="font-size: 2.2rem; color: var(--primary)">
+          Clinical Success Guide
+        </h2>
+        <p>Our advice for medical professionals during clinical rotations</p>
+      </div>
+
+      <div class="grid-container">
+        <div class="tip-card">
+          <span class="tip-number">01</span>
+          <h3>Read!</h3>
+          <p>
+            During clinical rotations, “pocket” books and handbooks are your
+            best friends. Knowledge is your primary tool.
+          </p>
+          <a href="#" class="read-more">Read More →</a>
+        </div>
+
+        <div class="tip-card">
+          <span class="tip-number">02</span>
+          <h3>Always be Prepared</h3>
+          <p>
+            Carry the essentials: penlight, stethoscope, reflex hammer, and your
+            white coat. Never be caught off guard.
+          </p>
+          <a href="#" class="read-more">Read More →</a>
+        </div>
+
+        <div class="tip-card">
+          <span class="tip-number">03</span>
+          <h3>Dress the Part</h3>
+          <p>
+            Professionalism starts with your appearance. Minimize distractions
+            and strive to look presentable every day.
+          </p>
+          <a href="#" class="read-more">Read More →</a>
+        </div>
+
+        <div class="tip-card">
+          <span class="tip-number">04</span>
+          <h3>Take Notes</h3>
+          <p>
+            The learning doesn't end in the ward. Prepare for the USMLE and your
+            future residency by documenting your experiences.
+          </p>
+          <a href="#" class="read-more">Read More →</a>
+        </div>
+
+        <div class="tip-card">
+          <span class="tip-number">05</span>
+          <h3>Play by the Rules</h3>
+          <p>
+            Follow hospital regulations strictly and always wear your
+            identification tag. Integrity is non-negotiable.
+          </p>
+          <a href="#" class="read-more">Read More →</a>
+        </div>
+
+        <div class="tip-card">
+          <span class="tip-number">06</span>
+          <h3>Be Positive</h3>
+          <p>
+            Stay emotionally and mentally resilient. A positive attitude is just
+            as important as physical preparation.
+          </p>
+          <a href="#" class="read-more">Read More →</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-padding" id="contact">
+      <div class="contact-container">
+        <div>
+          <h2 style="font-size: 2.5rem; margin-bottom: 20px">
+            Ready to Elevate Your Education?
+          </h2>
+          <p style="opacity: 0.8; margin-bottom: 30px">
+            Fill out the application form or contact us for any queries
+            regarding rotations, specialties, or hospital placements.
+          </p>
+          <div
+            style="
+              background: rgba(255, 255, 255, 0.1);
+              padding: 20px;
+              border-radius: 15px;
+            "
+          >
+            <p><strong>Application Forms:</strong> Available for download</p>
+            <p><strong>Support:</strong> Global assistance 24/7</p>
+          </div>
+        </div>
+        <div>
+          <form>
+            <input type="text" placeholder="Full Name" required />
+            <input type="email" placeholder="Email Address" required />
+            <textarea rows="5" placeholder="Your Message or Inquiry"></textarea>
+            <button type="submit" class="submit-btn">Send Message</button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <footer
+      style="text-align: center; padding: 40px; color: #777; font-size: 0.9rem"
+    >
+      <p>
+        &copy; 2023 American International Clinical Group (AICG). All rights
+        reserved.
+      </p>
+    </footer>
+
+    <script>
+      // Smooth scroll functionality
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+          document.querySelector(this.getAttribute("href")).scrollIntoView({
+            behavior: "smooth",
+          });
+        });
+      });
+    </script>
+  </body>
+</html>

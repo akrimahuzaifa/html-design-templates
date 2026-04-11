@@ -1,0 +1,265 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AICG - Clinical Rotations USA</title>
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Inter", sans-serif;
+      }
+
+      body {
+        background: #0b0f1a;
+        color: #fff;
+        line-height: 1.6;
+      }
+
+      /* NAV */
+      nav {
+        display: flex;
+        justify-content: space-between;
+        padding: 20px 10%;
+        position: fixed;
+        width: 100%;
+        backdrop-filter: blur(10px);
+        background: rgba(0, 0, 0, 0.4);
+        z-index: 1000;
+      }
+
+      nav h1 {
+        color: #4da3ff;
+      }
+
+      nav ul {
+        display: flex;
+        gap: 25px;
+        list-style: none;
+      }
+      nav ul li {
+        cursor: pointer;
+        transition: 0.3s;
+      }
+      nav ul li:hover {
+        color: #4da3ff;
+      }
+
+      /* HERO */
+      .hero {
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding: 0 10%;
+        background:
+          linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.8)),
+          url("https://images.unsplash.com/photo-1581595219315-a187dd40c322?auto=format&fit=crop&w=1600&q=80");
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+      }
+
+      .hero h2 {
+        font-size: 48px;
+        margin-bottom: 20px;
+      }
+      .hero p {
+        font-size: 18px;
+        opacity: 0.9;
+      }
+
+      .btn {
+        margin-top: 25px;
+        padding: 12px 25px;
+        background: #4da3ff;
+        border: none;
+        border-radius: 30px;
+        cursor: pointer;
+        transition: 0.3s;
+      }
+      .btn:hover {
+        background: #1e7be6;
+      }
+
+      section {
+        padding: 80px 10%;
+      }
+
+      .section-title {
+        font-size: 32px;
+        margin-bottom: 40px;
+        text-align: center;
+      }
+
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 25px;
+      }
+
+      .card {
+        background: rgba(255, 255, 255, 0.05);
+        padding: 25px;
+        border-radius: 20px;
+        backdrop-filter: blur(10px);
+        transition: 0.3s;
+      }
+      .card:hover {
+        transform: translateY(-5px);
+        background: rgba(255, 255, 255, 0.08);
+      }
+
+      /* IMAGE CARDS */
+      .image-card {
+        border-radius: 20px;
+        overflow: hidden;
+        position: relative;
+      }
+
+      .image-card img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+      }
+
+      .image-card p {
+        position: absolute;
+        bottom: 10px;
+        left: 15px;
+        font-weight: 600;
+      }
+
+      /* PARALLAX SECTION */
+      .parallax {
+        background: url("https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=1600&q=80");
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+        padding: 100px 10%;
+        text-align: center;
+      }
+
+      .cta {
+        text-align: center;
+        background: linear-gradient(135deg, #1e3c72, #2a5298);
+        border-radius: 20px;
+        padding: 60px;
+      }
+
+      form input,
+      form textarea {
+        width: 100%;
+        padding: 12px;
+        margin-bottom: 10px;
+        border: none;
+        border-radius: 10px;
+      }
+
+      footer {
+        text-align: center;
+        padding: 30px;
+        opacity: 0.6;
+      }
+    </style>
+  </head>
+
+  <body>
+    <nav>
+      <h1>AICG</h1>
+      <ul>
+        <li>Home</li>
+        <li>Programs</li>
+        <li>Specialties</li>
+        <li>Apply</li>
+        <li>Contact</li>
+      </ul>
+    </nav>
+
+    <!-- HERO -->
+    <div class="hero">
+      <div>
+        <h2>Start Your Clinical Rotations in the USA</h2>
+        <p>
+          Real hospital experience for international medical students &
+          graduates.
+        </p>
+        <button class="btn">Apply Now</button>
+      </div>
+    </div>
+
+    <!-- PROGRAM IMAGES -->
+    <section>
+      <h2 class="section-title">Clinical Experience</h2>
+      <div class="grid">
+        <div class="image-card">
+          <img
+            src="https://images.unsplash.com/photo-1584438784894-089d6a62b8fa?auto=format&fit=crop&w=800&q=80"
+          />
+          <p>Hospital Rotations</p>
+        </div>
+        <div class="image-card">
+          <img
+            src="https://images.unsplash.com/photo-1579154204601-01588f351e67?auto=format&fit=crop&w=800&q=80"
+          />
+          <p>Patient Interaction</p>
+        </div>
+        <div class="image-card">
+          <img
+            src="https://images.unsplash.com/photo-1582750433449-648ed127bb54?auto=format&fit=crop&w=800&q=80"
+          />
+          <p>Medical Training</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- PARALLAX BREAK -->
+    <section class="parallax">
+      <h2>Experience Medicine Beyond Books</h2>
+      <p>Step into real clinical environments and build your future.</p>
+    </section>
+
+    <!-- WHY -->
+    <section>
+      <h2 class="section-title">Why Choose AICG</h2>
+      <div class="grid">
+        <div class="card">✔ U.S. Clinical Experience</div>
+        <div class="card">✔ Residency Preparation</div>
+        <div class="card">✔ Expert Mentorship</div>
+        <div class="card">✔ Global Network</div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section>
+      <div class="cta">
+        <h2>Take the Next Step</h2>
+        <p>Join hundreds of students advancing toward residency.</p>
+        <button class="btn">Apply Now</button>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section>
+      <h2 class="section-title">Contact Us</h2>
+      <form>
+        <input type="text" placeholder="First Name" />
+        <input type="text" placeholder="Last Name" />
+        <input type="email" placeholder="Email" />
+        <textarea rows="4" placeholder="Message"></textarea>
+        <button class="btn">Send Message</button>
+      </form>
+    </section>
+
+    <footer>© 2026 AICG - All Rights Reserved</footer>
+  </body>
+</html>
