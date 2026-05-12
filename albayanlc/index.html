@@ -1,0 +1,2365 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AlBayan Learning Center</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=SF+Pro+Display:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --bg: #000;
+        --bg1: #0a0a0a;
+        --bg2: #111;
+        --bg3: #1a1a1a;
+        --bg4: #222;
+        --border: rgba(255, 255, 255, 0.08);
+        --border2: rgba(255, 255, 255, 0.14);
+        --text: #f5f5f7;
+        --text2: #a1a1a6;
+        --text3: #6e6e73;
+        --accent: #2dd4a8;
+        --accent2: #1db88e;
+        --accent-glow: rgba(45, 212, 168, 0.15);
+        --font: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+      }
+      *,
+      *::before,
+      *::after {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        font-family: var(--font);
+        background: var(--bg);
+        color: var(--text);
+        overflow-x: hidden;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      /* ANIMATIONS */
+      @keyframes fadeUp {
+        from {
+          opacity: 0;
+          transform: translateY(40px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+      @keyframes float {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-12px);
+        }
+      }
+      @keyframes pulse-ring {
+        0% {
+          transform: scale(0.95);
+          box-shadow: 0 0 0 0 rgba(45, 212, 168, 0.4);
+        }
+        70% {
+          transform: scale(1);
+          box-shadow: 0 0 0 20px rgba(45, 212, 168, 0);
+        }
+        100% {
+          transform: scale(0.95);
+        }
+      }
+      @keyframes shimmer {
+        0% {
+          background-position: -1000px 0;
+        }
+        100% {
+          background-position: 1000px 0;
+        }
+      }
+      @keyframes spin-slow {
+        from {
+          transform: rotate(0deg);
+        }
+        to {
+          transform: rotate(360deg);
+        }
+      }
+      @keyframes glow-pulse {
+        0%,
+        100% {
+          opacity: 0.4;
+        }
+        50% {
+          opacity: 0.8;
+        }
+      }
+      @keyframes count-up {
+        from {
+          opacity: 0;
+          transform: scale(0.5);
+        }
+        to {
+          opacity: 1;
+          transform: scale(1);
+        }
+      }
+      @keyframes slide-in-left {
+        from {
+          opacity: 0;
+          transform: translateX(-60px);
+        }
+        to {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+      @keyframes slide-in-right {
+        from {
+          opacity: 0;
+          transform: translateX(60px);
+        }
+        to {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+      @keyframes blob {
+        0%,
+        100% {
+          border-radius: 60% 40% 30% 70%/60% 30% 70% 40%;
+        }
+        50% {
+          border-radius: 30% 60% 70% 40%/50% 60% 30% 60%;
+        }
+      }
+
+      .reveal {
+        opacity: 0;
+        transform: translateY(50px);
+        transition:
+          opacity 0.8s ease,
+          transform 0.8s ease;
+      }
+      .reveal.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      .reveal-left {
+        opacity: 0;
+        transform: translateX(-60px);
+        transition:
+          opacity 0.9s ease,
+          transform 0.9s ease;
+      }
+      .reveal-left.visible {
+        opacity: 1;
+        transform: translateX(0);
+      }
+      .reveal-right {
+        opacity: 0;
+        transform: translateX(60px);
+        transition:
+          opacity 0.9s ease,
+          transform 0.9s ease;
+      }
+      .reveal-right.visible {
+        opacity: 1;
+        transform: translateX(0);
+      }
+      .delay-1 {
+        transition-delay: 0.1s;
+      }
+      .delay-2 {
+        transition-delay: 0.2s;
+      }
+      .delay-3 {
+        transition-delay: 0.3s;
+      }
+      .delay-4 {
+        transition-delay: 0.4s;
+      }
+      .delay-5 {
+        transition-delay: 0.5s;
+      }
+
+      /* NAV */
+      nav {
+        position: sticky;
+        top: 0;
+        z-index: 999;
+        background: rgba(0, 0, 0, 0.72);
+        backdrop-filter: saturate(180%) blur(20px);
+        -webkit-backdrop-filter: saturate(180%) blur(20px);
+        border-bottom: 1px solid var(--border);
+        transition: all 0.3s;
+      }
+      .nav-inner {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 32px;
+        height: 64px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+      .logo {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        text-decoration: none;
+      }
+      .logo-mark {
+        display: flex;
+        align-items: center;
+        height: 36px;
+      }
+      .logo-img {
+        height: 36px;
+        width: auto;
+      }
+      .logo-text-wrap {
+        display: flex;
+        flex-direction: column;
+        line-height: 1;
+      }
+      .logo-name {
+        font-size: 18px;
+        font-weight: 700;
+        color: #fff;
+        letter-spacing: -0.3px;
+      }
+      .logo-sub {
+        font-size: 10px;
+        font-weight: 400;
+        color: var(--text3);
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        margin-top: 2px;
+      }
+      .nav-links {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        list-style: none;
+      }
+      .nav-links a {
+        color: var(--text2);
+        text-decoration: none;
+        font-size: 13px;
+        font-weight: 400;
+        padding: 6px 12px;
+        border-radius: 8px;
+        transition: all 0.2s;
+      }
+      .nav-links a:hover {
+        color: #fff;
+        background: rgba(255, 255, 255, 0.06);
+      }
+      .nav-actions {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      .nav-btn {
+        background: var(--accent);
+        color: #000;
+        padding: 8px 20px;
+        border-radius: 20px;
+        text-decoration: none;
+        font-size: 13px;
+        font-weight: 600;
+        transition: all 0.25s;
+      }
+      .nav-btn:hover {
+        background: #3de0b8;
+        transform: scale(1.03);
+      }
+      .nav-search {
+        width: 34px;
+        height: 34px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.06);
+        border: 1px solid var(--border2);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: all 0.2s;
+        color: var(--text2);
+        font-size: 14px;
+        text-decoration: none;
+      }
+      .nav-search:hover {
+        background: rgba(255, 255, 255, 0.1);
+        color: #fff;
+      }
+
+      /* HERO */
+      .hero {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding: 100px 32px 80px;
+        position: relative;
+        overflow: hidden;
+        background:
+          radial-gradient(
+            ellipse 80% 60% at 50% -10%,
+            rgba(45, 212, 168, 0.12) 0%,
+            transparent 60%
+          ),
+          radial-gradient(
+            ellipse 60% 40% at 80% 80%,
+            rgba(29, 184, 142, 0.06) 0%,
+            transparent 50%
+          ),
+          #000;
+      }
+      .hero-bg-grid {
+        position: absolute;
+        inset: 0;
+        z-index: 0;
+        background-image:
+          linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+          linear-gradient(
+            90deg,
+            rgba(255, 255, 255, 0.025) 1px,
+            transparent 1px
+          );
+        background-size: 60px 60px;
+        mask-image: radial-gradient(
+          ellipse 80% 80% at 50% 50%,
+          black 30%,
+          transparent 100%
+        );
+      }
+      .hero-glow {
+        position: absolute;
+        top: 20%;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 600px;
+        height: 400px;
+        background: radial-gradient(
+          ellipse,
+          rgba(45, 212, 168, 0.12) 0%,
+          transparent 70%
+        );
+        animation: glow-pulse 4s ease-in-out infinite;
+        pointer-events: none;
+        z-index: 0;
+      }
+      .hero-content {
+        position: relative;
+        z-index: 1;
+        max-width: 900px;
+        animation: fadeUp 1s ease both;
+      }
+      .hero-eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: rgba(45, 212, 168, 0.08);
+        border: 1px solid rgba(45, 212, 168, 0.2);
+        color: var(--accent);
+        font-size: 12px;
+        font-weight: 600;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        padding: 7px 18px;
+        border-radius: 20px;
+        margin-bottom: 28px;
+      }
+      .hero-eyebrow::before {
+        content: "";
+        width: 6px;
+        height: 6px;
+        background: var(--accent);
+        border-radius: 50%;
+        animation: pulse-ring 2s infinite;
+      }
+      .hero h1 {
+        font-size: clamp(48px, 7vw, 88px);
+        font-weight: 700;
+        line-height: 1.04;
+        letter-spacing: -2px;
+        background: linear-gradient(
+          180deg,
+          #fff 30%,
+          rgba(255, 255, 255, 0.5) 100%
+        );
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        margin-bottom: 24px;
+      }
+      .hero h1 .accent-word {
+        background: linear-gradient(
+          135deg,
+          #2dd4a8 0%,
+          #14b8a6 50%,
+          #06b6d4 100%
+        );
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+      .hero-desc {
+        font-size: 19px;
+        line-height: 1.65;
+        color: var(--text2);
+        max-width: 600px;
+        margin: 0 auto 40px;
+        font-weight: 300;
+      }
+      .hero-cta {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 14px;
+        flex-wrap: wrap;
+        margin-bottom: 70px;
+      }
+      .btn-hero-primary {
+        background: var(--accent);
+        color: #000;
+        padding: 15px 36px;
+        border-radius: 30px;
+        text-decoration: none;
+        font-size: 16px;
+        font-weight: 600;
+        letter-spacing: -0.2px;
+        transition: all 0.3s;
+        box-shadow: 0 0 40px rgba(45, 212, 168, 0.25);
+      }
+      .btn-hero-primary:hover {
+        background: #3de0b8;
+        box-shadow: 0 0 60px rgba(45, 212, 168, 0.4);
+        transform: translateY(-2px) scale(1.02);
+      }
+      .btn-hero-ghost {
+        color: var(--text);
+        padding: 15px 36px;
+        border-radius: 30px;
+        text-decoration: none;
+        font-size: 16px;
+        font-weight: 500;
+        border: 1px solid var(--border2);
+        background: rgba(255, 255, 255, 0.04);
+        transition: all 0.3s;
+      }
+      .btn-hero-ghost:hover {
+        background: rgba(255, 255, 255, 0.08);
+        border-color: rgba(255, 255, 255, 0.25);
+        transform: translateY(-2px);
+      }
+      .hero-stats {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0;
+      }
+      .hero-stat {
+        padding: 0 40px;
+        text-align: center;
+        position: relative;
+      }
+      .hero-stat + .hero-stat::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        height: 40px;
+        width: 1px;
+        background: var(--border2);
+      }
+      .stat-num {
+        font-size: 36px;
+        font-weight: 700;
+        color: #fff;
+        letter-spacing: -1px;
+      }
+      .stat-num span {
+        color: var(--accent);
+      }
+      .stat-lbl {
+        font-size: 12px;
+        color: var(--text3);
+        font-weight: 400;
+        letter-spacing: 0.5px;
+        margin-top: 4px;
+        text-transform: uppercase;
+      }
+      .hero-scroll {
+        position: absolute;
+        bottom: 32px;
+        left: 50%;
+        transform: translateX(-50%);
+        color: var(--text3);
+        font-size: 12px;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 8px;
+        animation: fadeIn 2s 1.5s both;
+        z-index: 1;
+      }
+      .scroll-line {
+        width: 1px;
+        height: 40px;
+        background: linear-gradient(to bottom, var(--accent), transparent);
+        animation: float 2s ease-in-out infinite;
+      }
+
+      /* SECTION COMMON */
+      .section {
+        padding: 120px 32px;
+      }
+      .w {
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+      .section-label {
+        font-size: 12px;
+        font-weight: 600;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        color: var(--accent);
+        margin-bottom: 16px;
+      }
+      .section-title {
+        font-size: clamp(32px, 4vw, 52px);
+        font-weight: 700;
+        letter-spacing: -1.5px;
+        line-height: 1.1;
+        color: #fff;
+        margin-bottom: 16px;
+      }
+      .section-title .dim {
+        color: var(--text3);
+      }
+      .section-desc {
+        font-size: 17px;
+        color: var(--text2);
+        line-height: 1.7;
+        font-weight: 300;
+        max-width: 520px;
+      }
+
+      /* FEATURED IMAGE SECTION */
+      .featured {
+        background: var(--bg1);
+        padding: 0;
+        overflow: hidden;
+      }
+      .featured-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        min-height: 600px;
+      }
+      .featured-text {
+        padding: 80px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+      .featured-text p {
+        font-size: 16px;
+        color: var(--text2);
+        line-height: 1.8;
+        margin: 20px 0 32px;
+        font-weight: 300;
+      }
+      .featured-image {
+        position: relative;
+        overflow: hidden;
+        background: linear-gradient(
+          135deg,
+          #0d2016 0%,
+          #0a3025 40%,
+          #0f4a35 100%
+        );
+      }
+      .featured-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        opacity: 0.7;
+        transition:
+          transform 0.8s ease,
+          opacity 0.4s;
+      }
+      .featured-image:hover img {
+        transform: scale(1.04);
+        opacity: 0.85;
+      }
+      .featured-image-overlay {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          to right,
+          rgba(10, 10, 10, 0.6) 0%,
+          transparent 60%
+        );
+      }
+      .feat-img-placeholder {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: linear-gradient(135deg, #061a12, #0a3025, #0f5038);
+        position: relative;
+        overflow: hidden;
+      }
+      .feat-img-placeholder::before {
+        content: "";
+        position: absolute;
+        width: 300px;
+        height: 300px;
+        border-radius: 50%;
+        background: radial-gradient(
+          circle,
+          rgba(45, 212, 168, 0.15),
+          transparent
+        );
+        animation: blob 8s ease-in-out infinite;
+      }
+      .feat-illustration {
+        position: relative;
+        z-index: 1;
+        text-align: center;
+      }
+      .feat-illustration .icon-big {
+        font-size: 96px;
+        filter: drop-shadow(0 0 40px rgba(45, 212, 168, 0.4));
+        animation: float 3s ease-in-out infinite;
+        display: block;
+        margin-bottom: 16px;
+      }
+      .feat-illustration p {
+        color: rgba(255, 255, 255, 0.5);
+        font-size: 14px;
+        font-weight: 300;
+        letter-spacing: 1px;
+      }
+
+      /* SERVICES */
+      .services {
+        background: #000;
+      }
+      .services-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 1px;
+        background: var(--border);
+        border: 1px solid var(--border);
+        border-radius: 20px;
+        overflow: hidden;
+        margin-top: 70px;
+      }
+      .service-card {
+        background: var(--bg1);
+        padding: 40px 30px;
+        transition: background 0.3s;
+        cursor: default;
+      }
+      .service-card:hover {
+        background: var(--bg2);
+      }
+      .service-card:hover .svc-icon {
+        background: var(--accent);
+        color: #000;
+        transform: scale(1.1);
+      }
+      .svc-icon {
+        width: 52px;
+        height: 52px;
+        border-radius: 14px;
+        background: rgba(45, 212, 168, 0.1);
+        border: 1px solid rgba(45, 212, 168, 0.2);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 22px;
+        margin-bottom: 20px;
+        transition: all 0.3s;
+      }
+      .service-card h3 {
+        font-size: 16px;
+        font-weight: 600;
+        color: #fff;
+        margin-bottom: 10px;
+        letter-spacing: -0.3px;
+      }
+      .service-card p {
+        font-size: 14px;
+        color: var(--text3);
+        line-height: 1.7;
+      }
+
+      /* COURSES SECTION - FIXED LAYOUT */
+      .courses {
+        background: var(--bg1);
+      }
+      .courses-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        margin-bottom: 50px;
+      }
+      .view-all-link {
+        color: var(--accent);
+        font-size: 14px;
+        font-weight: 500;
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        transition: gap 0.2s;
+      }
+      .view-all-link:hover {
+        gap: 10px;
+      }
+      .bento {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+      }
+      .bento-card {
+        background: var(--bg2);
+        border: 1px solid var(--border);
+        border-radius: 20px;
+        overflow: hidden;
+        cursor: pointer;
+        transition:
+          transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+          border-color 0.3s,
+          box-shadow 0.4s;
+        display: flex;
+        flex-direction: column;
+      }
+      .bento-card:hover {
+        transform: translateY(-6px) scale(1.01);
+        border-color: var(--border2);
+        box-shadow:
+          0 20px 60px rgba(0, 0, 0, 0.6),
+          0 0 0 1px rgba(45, 212, 168, 0.1);
+      }
+      .bento-img {
+        height: 200px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        overflow: hidden;
+        flex-shrink: 0;
+      }
+      .bento-img img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.6s ease;
+      }
+      .bento-card:hover .bento-img img {
+        transform: scale(1.06);
+      }
+      .bento-img-placeholder {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .bento-img-placeholder.blue {
+        background: linear-gradient(135deg, #0c1e3a, #1a3a6b);
+      }
+      .bento-img-placeholder.teal {
+        background: linear-gradient(135deg, #051a12, #0a3825);
+      }
+      .bento-img-placeholder.orange {
+        background: linear-gradient(135deg, #2a0f05, #6b2a10);
+      }
+      .bento-img-placeholder.purple {
+        background: linear-gradient(135deg, #150a2e, #3a1a6b);
+      }
+      .bento-img-placeholder .course-emoji {
+        font-size: 52px;
+        filter: drop-shadow(0 4px 20px rgba(255, 255, 255, 0.1));
+      }
+      .bento-body {
+        padding: 24px;
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+      }
+      .course-tag {
+        display: inline-block;
+        background: rgba(45, 212, 168, 0.1);
+        color: var(--accent);
+        font-size: 10px;
+        font-weight: 700;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        padding: 4px 10px;
+        border-radius: 6px;
+        margin-bottom: 12px;
+      }
+      .bento-body h3 {
+        font-size: 15px;
+        font-weight: 600;
+        color: #fff;
+        line-height: 1.4;
+        margin-bottom: 10px;
+        letter-spacing: -0.2px;
+      }
+      .bento-body p {
+        font-size: 13px;
+        color: var(--text2);
+        line-height: 1.6;
+        margin-bottom: 16px;
+      }
+      .course-meta {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-top: auto;
+        padding-top: 14px;
+        border-top: 1px solid var(--border);
+      }
+      .course-duration {
+        font-size: 12px;
+        color: var(--text3);
+      }
+      .course-price {
+        font-size: 18px;
+        font-weight: 700;
+        color: var(--accent);
+      }
+      .btn-sm {
+        background: rgba(45, 212, 168, 0.1);
+        color: var(--accent);
+        border: 1px solid rgba(45, 212, 168, 0.2);
+        padding: 9px 20px;
+        border-radius: 20px;
+        text-decoration: none;
+        font-size: 13px;
+        font-weight: 500;
+        transition: all 0.25s;
+        display: inline-block;
+        margin-top: 12px;
+      }
+      .btn-sm:hover {
+        background: var(--accent);
+        color: #000;
+      }
+
+      /* STATS MARQUEE */
+      .stats-section {
+        background: var(--bg);
+        padding: 0;
+        border-top: 1px solid var(--border);
+        border-bottom: 1px solid var(--border);
+        overflow: hidden;
+      }
+      .stats-track {
+        display: flex;
+        animation: marquee 25s linear infinite;
+        width: max-content;
+      }
+      @keyframes marquee {
+        from {
+          transform: translateX(0);
+        }
+        to {
+          transform: translateX(-50%);
+        }
+      }
+      .stats-track:hover {
+        animation-play-state: paused;
+      }
+      .stats-item {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 36px 60px;
+        white-space: nowrap;
+        border-right: 1px solid var(--border);
+      }
+      .stats-item .s-num {
+        font-size: 28px;
+        font-weight: 700;
+        color: #fff;
+        letter-spacing: -1px;
+      }
+      .stats-item .s-num em {
+        color: var(--accent);
+        font-style: normal;
+      }
+      .stats-item .s-lbl {
+        font-size: 13px;
+        color: var(--text3);
+        font-weight: 400;
+      }
+      .stats-dot {
+        width: 4px;
+        height: 4px;
+        border-radius: 50%;
+        background: var(--accent);
+        opacity: 0.5;
+      }
+
+      /* ABOUT SECTION */
+      .about {
+        background: #000;
+      }
+      .about-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 80px;
+        align-items: center;
+      }
+      .about-visual {
+        position: relative;
+      }
+      .about-img-wrap {
+        border-radius: 24px;
+        overflow: hidden;
+        position: relative;
+        background: linear-gradient(135deg, #061a12, #0a2a1e, #0e3d2a);
+        aspect-ratio: 4/3;
+      }
+      .about-img-wrap img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        opacity: 0.8;
+        transition: transform 0.6s ease;
+      }
+      .about-img-wrap:hover img {
+        transform: scale(1.04);
+      }
+      .about-img-placeholder {
+        width: 100%;
+        height: 100%;
+        min-height: 360px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        gap: 16px;
+      }
+      .about-img-placeholder .big-emoji {
+        font-size: 80px;
+        filter: drop-shadow(0 0 30px rgba(45, 212, 168, 0.35));
+        animation: float 4s ease-in-out infinite;
+      }
+      .about-float-badge {
+        position: absolute;
+        bottom: -20px;
+        right: -20px;
+        background: var(--bg2);
+        border: 1px solid var(--border2);
+        border-radius: 16px;
+        padding: 20px 24px;
+        backdrop-filter: blur(10px);
+        text-align: center;
+      }
+      .about-float-badge .big-n {
+        font-size: 34px;
+        font-weight: 700;
+        color: var(--accent);
+      }
+      .about-float-badge .lbl {
+        font-size: 11px;
+        color: var(--text3);
+        margin-top: 2px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+      .about-text p {
+        font-size: 16px;
+        color: var(--text2);
+        line-height: 1.85;
+        margin-bottom: 16px;
+        font-weight: 300;
+      }
+      .feature-list {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        margin: 28px 0;
+      }
+      .feature-row {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        font-size: 15px;
+        color: var(--text2);
+      }
+      .feature-check {
+        width: 24px;
+        height: 24px;
+        border-radius: 50%;
+        background: rgba(45, 212, 168, 0.12);
+        border: 1px solid rgba(45, 212, 168, 0.3);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+        font-size: 11px;
+        color: var(--accent);
+        font-weight: 700;
+      }
+      .btn-outline-accent {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        border: 1px solid rgba(45, 212, 168, 0.3);
+        color: var(--accent);
+        padding: 13px 28px;
+        border-radius: 30px;
+        text-decoration: none;
+        font-size: 15px;
+        font-weight: 500;
+        transition: all 0.3s;
+      }
+      .btn-outline-accent:hover {
+        background: rgba(45, 212, 168, 0.08);
+        border-color: var(--accent);
+        transform: translateY(-2px);
+      }
+
+      /* CAMPUS LIFE */
+      .campus {
+        background: var(--bg1);
+      }
+      .campus-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+        margin-top: 60px;
+      }
+      .campus-card {
+        background: var(--bg2);
+        border: 1px solid var(--border);
+        border-radius: 20px;
+        padding: 36px;
+        transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        position: relative;
+        overflow: hidden;
+      }
+      .campus-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 2px;
+        background: linear-gradient(90deg, var(--accent), transparent);
+        opacity: 0;
+        transition: opacity 0.3s;
+      }
+      .campus-card:hover {
+        transform: translateY(-4px);
+        border-color: var(--border2);
+      }
+      .campus-card:hover::before {
+        opacity: 1;
+      }
+      .campus-icon-wrap {
+        width: 56px;
+        height: 56px;
+        border-radius: 16px;
+        background: rgba(45, 212, 168, 0.08);
+        border: 1px solid rgba(45, 212, 168, 0.15);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 24px;
+        margin-bottom: 22px;
+        transition: all 0.3s;
+      }
+      .campus-card:hover .campus-icon-wrap {
+        background: rgba(45, 212, 168, 0.14);
+        border-color: rgba(45, 212, 168, 0.3);
+      }
+      .campus-card h3 {
+        font-size: 17px;
+        font-weight: 600;
+        color: #fff;
+        margin-bottom: 12px;
+        letter-spacing: -0.3px;
+      }
+      .campus-card p {
+        font-size: 14px;
+        color: var(--text3);
+        line-height: 1.7;
+      }
+
+      /* EVENTS */
+      .events {
+        background: #000;
+      }
+      .events-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        margin-bottom: 50px;
+      }
+      .events-list {
+        display: flex;
+        flex-direction: column;
+        gap: 1px;
+        background: var(--border);
+        border: 1px solid var(--border);
+        border-radius: 20px;
+        overflow: hidden;
+      }
+      .event-row {
+        background: var(--bg1);
+        padding: 28px 32px;
+        display: flex;
+        align-items: center;
+        gap: 28px;
+        transition: background 0.2s;
+        cursor: default;
+      }
+      .event-row:hover {
+        background: var(--bg2);
+      }
+      .event-date-box {
+        background: rgba(45, 212, 168, 0.08);
+        border: 1px solid rgba(45, 212, 168, 0.2);
+        border-radius: 12px;
+        padding: 14px 18px;
+        text-align: center;
+        min-width: 64px;
+        flex-shrink: 0;
+      }
+      .event-date-box .day {
+        font-size: 26px;
+        font-weight: 700;
+        color: #fff;
+        line-height: 1;
+      }
+      .event-date-box .mon {
+        font-size: 10px;
+        font-weight: 600;
+        color: var(--accent);
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-top: 3px;
+      }
+      .event-info {
+        flex: 1;
+      }
+      .event-info h4 {
+        font-size: 15px;
+        font-weight: 600;
+        color: #fff;
+        margin-bottom: 5px;
+      }
+      .event-info .meta {
+        font-size: 13px;
+        color: var(--text3);
+        display: flex;
+        gap: 16px;
+      }
+      .event-info .meta span {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+      }
+      .event-tag {
+        background: rgba(255, 255, 255, 0.06);
+        color: var(--text2);
+        border: 1px solid var(--border);
+        padding: 4px 12px;
+        border-radius: 20px;
+        font-size: 11px;
+        font-weight: 500;
+        flex-shrink: 0;
+      }
+      .event-arrow {
+        color: var(--text3);
+        font-size: 18px;
+        flex-shrink: 0;
+        transition:
+          color 0.2s,
+          transform 0.2s;
+      }
+      .event-row:hover .event-arrow {
+        color: var(--accent);
+        transform: translateX(4px);
+      }
+
+      /* TESTIMONIALS */
+      .testimonials {
+        background: var(--bg1);
+      }
+      .testimonials-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 16px;
+        margin-top: 60px;
+      }
+      .testi-card {
+        background: var(--bg2);
+        border: 1px solid var(--border);
+        border-radius: 20px;
+        padding: 32px;
+        transition:
+          transform 0.3s,
+          border-color 0.3s;
+        position: relative;
+      }
+      .testi-card:hover {
+        transform: translateY(-4px);
+        border-color: var(--border2);
+      }
+      .quote-mark {
+        font-size: 48px;
+        line-height: 0.8;
+        color: var(--accent);
+        opacity: 0.3;
+        font-family: Georgia, serif;
+        margin-bottom: 16px;
+        display: block;
+      }
+      .testi-card p {
+        font-size: 15px;
+        color: var(--text2);
+        line-height: 1.8;
+        margin-bottom: 24px;
+        font-weight: 300;
+        font-style: italic;
+      }
+      .testi-author {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+      .testi-avatar {
+        width: 42px;
+        height: 42px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 14px;
+        font-weight: 700;
+        flex-shrink: 0;
+      }
+      .testi-avatar.a1 {
+        background: linear-gradient(135deg, #0a3025, #1d9e75);
+        color: #2dd4a8;
+      }
+      .testi-avatar.a2 {
+        background: linear-gradient(135deg, #0c1e3a, #2563a8);
+        color: #60a5fa;
+      }
+      .testi-avatar.a3 {
+        background: linear-gradient(135deg, #2a0f05, #c05f20);
+        color: #fb923c;
+      }
+      .testi-name {
+        font-size: 14px;
+        font-weight: 600;
+        color: #fff;
+      }
+      .testi-role {
+        font-size: 12px;
+        color: var(--text3);
+        margin-top: 2px;
+      }
+      .testi-stars {
+        color: #f59e0b;
+        font-size: 13px;
+        letter-spacing: 1px;
+      }
+
+      /* BLOG */
+      .blog {
+        background: #000;
+      }
+      .blog-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        margin-bottom: 50px;
+      }
+      .blog-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 16px;
+      }
+      .blog-card {
+        background: var(--bg1);
+        border: 1px solid var(--border);
+        border-radius: 20px;
+        overflow: hidden;
+        transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        cursor: pointer;
+      }
+      .blog-card:hover {
+        transform: translateY(-5px);
+        border-color: var(--border2);
+        box-shadow: 0 24px 60px rgba(0, 0, 0, 0.5);
+      }
+      .blog-img {
+        height: 180px;
+        position: relative;
+        overflow: hidden;
+      }
+      .blog-img img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.6s;
+      }
+      .blog-card:hover .blog-img img {
+        transform: scale(1.08);
+      }
+      .blog-img-placeholder {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 44px;
+      }
+      .blog-img-placeholder.p1 {
+        background: linear-gradient(135deg, #061630, #0c2a5e);
+      }
+      .blog-img-placeholder.p2 {
+        background: linear-gradient(135deg, #061a12, #0a3825);
+      }
+      .blog-img-placeholder.p3 {
+        background: linear-gradient(135deg, #200810, #5e0c28);
+      }
+      .blog-img-placeholder.p4 {
+        background: linear-gradient(135deg, #14080e, #4a1a35);
+      }
+      .blog-body {
+        padding: 22px;
+      }
+      .blog-chip {
+        display: inline-block;
+        background: rgba(45, 212, 168, 0.08);
+        color: var(--accent);
+        border: 1px solid rgba(45, 212, 168, 0.15);
+        font-size: 10px;
+        font-weight: 700;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        padding: 3px 9px;
+        border-radius: 5px;
+        margin-bottom: 10px;
+      }
+      .blog-body h3 {
+        font-size: 14px;
+        font-weight: 600;
+        color: #fff;
+        line-height: 1.5;
+        margin-bottom: 12px;
+        letter-spacing: -0.2px;
+      }
+      .blog-footer {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 12px;
+        color: var(--text3);
+      }
+
+      /* NEWSLETTER */
+      .newsletter {
+        background: var(--bg1);
+        padding: 100px 32px;
+      }
+      .newsletter-box {
+        max-width: 700px;
+        margin: 0 auto;
+        text-align: center;
+        background: linear-gradient(
+          135deg,
+          rgba(45, 212, 168, 0.05),
+          rgba(6, 182, 212, 0.05)
+        );
+        border: 1px solid rgba(45, 212, 168, 0.15);
+        border-radius: 32px;
+        padding: 64px 48px;
+        position: relative;
+        overflow: hidden;
+      }
+      .newsletter-box::before {
+        content: "";
+        position: absolute;
+        top: -100px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 400px;
+        height: 400px;
+        background: radial-gradient(
+          circle,
+          rgba(45, 212, 168, 0.1),
+          transparent 70%
+        );
+        pointer-events: none;
+      }
+      .newsletter-box h2 {
+        font-size: 38px;
+        font-weight: 700;
+        letter-spacing: -1px;
+        color: #fff;
+        margin-bottom: 12px;
+      }
+      .newsletter-box p {
+        color: var(--text2);
+        margin-bottom: 32px;
+        font-size: 16px;
+      }
+      .nl-form {
+        display: flex;
+        gap: 10px;
+        max-width: 480px;
+        margin: 0 auto;
+      }
+      .nl-form input {
+        flex: 1;
+        background: rgba(255, 255, 255, 0.06);
+        border: 1px solid var(--border2);
+        color: #fff;
+        padding: 13px 20px;
+        border-radius: 12px;
+        font-size: 15px;
+        outline: none;
+        transition: border-color 0.2s;
+        font-family: var(--font);
+      }
+      .nl-form input::placeholder {
+        color: var(--text3);
+      }
+      .nl-form input:focus {
+        border-color: rgba(45, 212, 168, 0.4);
+      }
+      .nl-form button {
+        background: var(--accent);
+        color: #000;
+        border: none;
+        padding: 13px 24px;
+        border-radius: 12px;
+        font-size: 15px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.25s;
+        font-family: var(--font);
+        white-space: nowrap;
+      }
+      .nl-form button:hover {
+        background: #3de0b8;
+        transform: scale(1.02);
+      }
+
+      /* FOOTER */
+      footer {
+        background: var(--bg1);
+        border-top: 1px solid var(--border);
+        padding: 64px 32px 0;
+      }
+      .footer-top {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: 2fr 1fr 1fr 1fr;
+        gap: 60px;
+        padding-bottom: 60px;
+      }
+      .footer-brand p {
+        font-size: 14px;
+        color: var(--text3);
+        line-height: 1.8;
+        margin: 16px 0 24px;
+      }
+      .footer-brand .social-row {
+        display: flex;
+        gap: 10px;
+      }
+      .soc-btn {
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid var(--border2);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--text2);
+        font-size: 13px;
+        text-decoration: none;
+        transition: all 0.2s;
+      }
+      .soc-btn:hover {
+        background: rgba(45, 212, 168, 0.1);
+        border-color: rgba(45, 212, 168, 0.3);
+        color: var(--accent);
+      }
+      footer h5 {
+        font-size: 11px;
+        font-weight: 600;
+        color: var(--text3);
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        margin-bottom: 20px;
+      }
+      footer ul {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+      footer ul li a {
+        color: var(--text2);
+        text-decoration: none;
+        font-size: 14px;
+        transition: color 0.2s;
+      }
+      footer ul li a:hover {
+        color: #fff;
+      }
+      .footer-bottom {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 24px 0;
+        border-top: 1px solid var(--border);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 12px;
+        color: var(--text3);
+      }
+
+      /* RESPONSIVE */
+      @media (max-width: 900px) {
+        .featured-grid,
+        .about-grid {
+          grid-template-columns: 1fr;
+        }
+        .services-grid,
+        .campus-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+        .bento {
+          grid-template-columns: 1fr 1fr;
+        }
+        .blog-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+        .testimonials-grid {
+          grid-template-columns: 1fr;
+        }
+        .footer-top {
+          grid-template-columns: 1fr 1fr;
+        }
+        .hero-stats {
+          flex-wrap: wrap;
+        }
+        .hero-stat + .hero-stat::before {
+          display: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- NAV -->
+    <nav>
+      <div class="nav-inner">
+        <a href="#" class="logo">
+          <div class="logo-mark">
+            <img src="albayan.jpg" alt="AlBayan" class="logo-img" />
+          </div>
+          <div class="logo-text-wrap">
+            <span class="logo-name">AlBayan</span>
+            <span class="logo-sub">Learning Center</span>
+          </div>
+        </a>
+        <ul class="nav-links">
+          <li><a href="#">Home</a></li>
+          <li><a href="#">Courses</a></li>
+          <li><a href="#">Events</a></li>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Blog</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+        <div class="nav-actions">
+          <a href="#" class="nav-search" title="Search">&#9906;</a>
+          <a href="#" class="nav-btn">Login</a>
+        </div>
+      </div>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-bg-grid"></div>
+      <div class="hero-glow"></div>
+      <div class="hero-content">
+        <div class="hero-eyebrow">Empowering Learners Since 2010</div>
+        <h1>Learn Without<br /><span class="accent-word">Limits.</span></h1>
+        <p class="hero-desc">
+          AlBayan Learning Center brings world-class education to your
+          fingertips. Expert instructors, cutting-edge curriculum, and a
+          community that lifts you higher.
+        </p>
+        <div class="hero-cta">
+          <a href="#" class="btn-hero-primary">Start Learning &nbsp;→</a>
+          <a href="#" class="btn-hero-ghost">Explore Courses</a>
+        </div>
+        <div class="hero-stats">
+          <div class="hero-stat">
+            <div class="stat-num">12<span>K+</span></div>
+            <div class="stat-lbl">Students Enrolled</div>
+          </div>
+          <div class="hero-stat">
+            <div class="stat-num">200<span>+</span></div>
+            <div class="stat-lbl">Expert Courses</div>
+          </div>
+          <div class="hero-stat">
+            <div class="stat-num">98<span>%</span></div>
+            <div class="stat-lbl">Success Rate</div>
+          </div>
+          <div class="hero-stat">
+            <div class="stat-num">50<span>+</span></div>
+            <div class="stat-lbl">Instructors</div>
+          </div>
+        </div>
+      </div>
+      <div class="hero-scroll">
+        <div class="scroll-line"></div>
+        <span>Scroll</span>
+      </div>
+    </section>
+
+    <!-- STATS TICKER -->
+    <div class="stats-section">
+      <div class="stats-track">
+        <div class="stats-item">
+          <span class="s-num">12,480 <em>+</em></span
+          ><span class="s-dot stats-dot"></span
+          ><span class="s-lbl">Enrolled Learners</span>
+        </div>
+        <div class="stats-item">
+          <span class="s-num">200 <em>+</em></span
+          ><span class="stats-dot"></span
+          ><span class="s-lbl">Expert Courses</span>
+        </div>
+        <div class="stats-item">
+          <span class="s-num">50 <em>+</em></span
+          ><span class="stats-dot"></span
+          ><span class="s-lbl">Faculty Members</span>
+        </div>
+        <div class="stats-item">
+          <span class="s-num">98 <em>%</em></span
+          ><span class="stats-dot"></span
+          ><span class="s-lbl">Student Satisfaction</span>
+        </div>
+        <div class="stats-item">
+          <span class="s-num">15 <em>+</em></span
+          ><span class="stats-dot"></span
+          ><span class="s-lbl">Years Excellence</span>
+        </div>
+        <div class="stats-item">
+          <span class="s-num">85 <em>+</em></span
+          ><span class="stats-dot"></span
+          ><span class="s-lbl">Events per Year</span>
+        </div>
+        <div class="stats-item">
+          <span class="s-num">12,480 <em>+</em></span
+          ><span class="stats-dot"></span
+          ><span class="s-lbl">Enrolled Learners</span>
+        </div>
+        <div class="stats-item">
+          <span class="s-num">200 <em>+</em></span
+          ><span class="stats-dot"></span
+          ><span class="s-lbl">Expert Courses</span>
+        </div>
+        <div class="stats-item">
+          <span class="s-num">50 <em>+</em></span
+          ><span class="stats-dot"></span
+          ><span class="s-lbl">Faculty Members</span>
+        </div>
+        <div class="stats-item">
+          <span class="s-num">98 <em>%</em></span
+          ><span class="stats-dot"></span
+          ><span class="s-lbl">Student Satisfaction</span>
+        </div>
+        <div class="stats-item">
+          <span class="s-num">15 <em>+</em></span
+          ><span class="stats-dot"></span
+          ><span class="s-lbl">Years Excellence</span>
+        </div>
+        <div class="stats-item">
+          <span class="s-num">85 <em>+</em></span
+          ><span class="stats-dot"></span
+          ><span class="s-lbl">Events per Year</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- FEATURED SPLIT -->
+    <div class="featured">
+      <div class="featured-grid">
+        <div class="featured-text reveal-left">
+          <div class="section-label">Our Mission</div>
+          <h2 class="section-title">
+            Education that<br /><span class="dim">transforms lives.</span>
+          </h2>
+          <p>
+            At AlBayan, we believe education is more than acquiring knowledge —
+            it's the integral development of a person. Our programs are built to
+            inspire critical thinking, creativity, and lifelong curiosity.
+          </p>
+          <p>
+            Every course is crafted by experts who bring real-world experience
+            into the classroom, whether you're learning online or on campus.
+          </p>
+          <a href="#" class="btn-outline-accent">Discover Our Story &nbsp;→</a>
+        </div>
+        <div class="featured-image reveal-right">
+          <div class="feat-img-placeholder">
+            <div class="feat-illustration">
+              <span class="icon-big">🎓</span>
+              <p>Shaping Tomorrow's Leaders</p>
+            </div>
+          </div>
+          <div class="featured-image-overlay"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ACADEMICS / SERVICES -->
+    <section class="section services">
+      <div class="w">
+        <div class="reveal">
+          <div class="section-label">Academic Excellence</div>
+          <h2 class="section-title">What we offer.</h2>
+        </div>
+        <div class="services-grid">
+          <div class="service-card reveal delay-1">
+            <div class="svc-icon">🔬</div>
+            <h3>Science & Research</h3>
+            <p>
+              Explore science through hands-on labs, research projects, and
+              expert-led exploration of the world's biggest questions.
+            </p>
+          </div>
+          <div class="service-card reveal delay-2">
+            <div class="svc-icon">💡</div>
+            <h3>Innovative Curriculum</h3>
+            <p>
+              Stay ahead with courses designed around today's demands —
+              combining theory with practical, applicable skill sets.
+            </p>
+          </div>
+          <div class="service-card reveal delay-3">
+            <div class="svc-icon">☁️</div>
+            <h3>Cloud Learning</h3>
+            <p>
+              All your materials, lectures, and resources in one secure place —
+              accessible anywhere, on any device, any time.
+            </p>
+          </div>
+          <div class="service-card reveal delay-4">
+            <div class="svc-icon">🌐</div>
+            <h3>Online Education</h3>
+            <p>
+              Flexible, fully online programs that fit your schedule without
+              compromising on quality or community.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- COURSES BENTO - FIXED 3-COLUMN LAYOUT -->
+    <section class="section courses">
+      <div class="w">
+        <div class="courses-header reveal">
+          <div>
+            <div class="section-label">Top Picks</div>
+            <h2 class="section-title">Popular courses.</h2>
+          </div>
+          <a href="#" class="view-all-link">View all courses &nbsp;→</a>
+        </div>
+        <div class="bento">
+          <div class="bento-card reveal">
+            <div class="bento-img">
+              <div class="bento-img-placeholder teal">
+                <div
+                  class="course-emoji"
+                  style="
+                    font-size: 80px;
+                    filter: drop-shadow(0 0 30px rgba(45, 212, 168, 0.4));
+                  "
+                >
+                  🐍
+                </div>
+              </div>
+            </div>
+            <div class="bento-body">
+              <span class="course-tag">Programming</span>
+              <h3>Python for Data Science & Machine Learning</h3>
+              <p>
+                Master Python from fundamentals to advanced machine learning.
+                Build real-world models and launch a career in data.
+              </p>
+              <div class="course-meta">
+                <span class="course-duration"
+                  >⏱&nbsp; 5h 35min &nbsp;·&nbsp; 6 lessons</span
+                >
+                <span class="course-price">$55</span>
+              </div>
+              <a href="#" class="btn-sm">Enroll now</a>
+            </div>
+          </div>
+          <div class="bento-card reveal delay-1">
+            <div class="bento-img">
+              <div class="bento-img-placeholder purple">
+                <div class="course-emoji">🤖</div>
+              </div>
+            </div>
+            <div class="bento-body">
+              <span class="course-tag">AI / ML</span>
+              <h3>Machine Learning A-Z: Python & Java</h3>
+              <p>
+                Complete machine learning fundamentals with hands-on coding
+                projects and real-world applications.
+              </p>
+              <div class="course-meta">
+                <span class="course-duration">5h 35min · 8 lessons</span>
+                <span class="course-price">$44</span>
+              </div>
+              <a href="#" class="btn-sm">Enroll now</a>
+            </div>
+          </div>
+          <div class="bento-card reveal delay-2">
+            <div class="bento-img">
+              <div class="bento-img-placeholder blue">
+                <div class="course-emoji">⚖️</div>
+              </div>
+            </div>
+            <div class="bento-body">
+              <span class="course-tag">Business</span>
+              <h3>Strategy, Law and Organization Foundation</h3>
+              <p>
+                Learn strategic business thinking and organizational principles
+                from industry leaders and experts.
+              </p>
+              <div class="course-meta">
+                <span class="course-duration">6h 20min · 7 lessons</span>
+                <span class="course-price">$45</span>
+              </div>
+              <a href="#" class="btn-sm">Enroll now</a>
+            </div>
+          </div>
+          <div class="bento-card reveal delay-3">
+            <div class="bento-img">
+              <div class="bento-img-placeholder orange">
+                <div class="course-emoji">💰</div>
+              </div>
+            </div>
+            <div class="bento-body">
+              <span class="course-tag">Finance</span>
+              <h3>Psychology of Financial Success</h3>
+              <p>
+                Understand the behavioral patterns and psychology behind
+                building lasting financial wealth and security.
+              </p>
+              <div class="course-meta">
+                <span class="course-duration">4h 50min · 5 lessons</span>
+                <span class="course-price">$66</span>
+              </div>
+              <a href="#" class="btn-sm">Enroll now</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="section about">
+      <div class="w">
+        <div class="about-grid">
+          <div class="about-visual reveal-left">
+            <div class="about-img-wrap">
+              <div class="about-img-placeholder">
+                <span class="big-emoji">🏛️</span>
+                <p
+                  style="
+                    color: rgba(255, 255, 255, 0.3);
+                    font-size: 13px;
+                    letter-spacing: 1px;
+                  "
+                >
+                  AlBayan Campus
+                </p>
+              </div>
+            </div>
+            <div class="about-float-badge">
+              <div class="big-n">15+</div>
+              <div class="lbl">Years of Excellence</div>
+            </div>
+          </div>
+          <div class="about-text reveal-right">
+            <div class="section-label">About Us</div>
+            <h2 class="section-title">Welcome to<br />AlBayan.</h2>
+            <p>
+              Education is both the act of teaching knowledge to others and the
+              act of receiving knowledge from someone else. At AlBayan, we've
+              been doing both exceptionally well since 2010.
+            </p>
+            <p>
+              Our holistic approach combines academic rigor with personal
+              development, preparing students not just for careers but for life.
+            </p>
+            <div class="feature-list">
+              <div class="feature-row">
+                <div class="feature-check">✓</div>
+                Expert and experienced instructors
+              </div>
+              <div class="feature-row">
+                <div class="feature-check">✓</div>
+                Flexible online and in-person formats
+              </div>
+              <div class="feature-row">
+                <div class="feature-check">✓</div>
+                Globally recognised certifications
+              </div>
+              <div class="feature-row">
+                <div class="feature-check">✓</div>
+                Dedicated student support services
+              </div>
+            </div>
+            <a href="#" class="btn-outline-accent"
+              >Learn more about us &nbsp;→</a
+            >
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CAMPUS LIFE -->
+    <section class="section campus">
+      <div class="w">
+        <div
+          class="reveal"
+          style="text-align: center; max-width: 560px; margin: 0 auto"
+        >
+          <div class="section-label">Experience</div>
+          <h2 class="section-title">Campus life.</h2>
+          <p class="section-desc">
+            Beyond the curriculum — a vibrant, supportive community where growth
+            happens in every corner.
+          </p>
+        </div>
+        <div class="campus-grid">
+          <div class="campus-card reveal delay-1">
+            <div class="campus-icon-wrap">📖</div>
+            <h3>Do More, Stress Less</h3>
+            <p>
+              Our supportive environment and thoughtfully designed learning
+              spaces help you focus on what matters most — growing your
+              knowledge and potential.
+            </p>
+          </div>
+          <div class="campus-card reveal delay-2">
+            <div class="campus-icon-wrap">📊</div>
+            <h3>Business Intelligence</h3>
+            <p>
+              Develop sharp analytical skills through real-world projects and
+              case studies, led by industry professionals with decades of
+              hands-on experience.
+            </p>
+          </div>
+          <div class="campus-card reveal delay-3">
+            <div class="campus-icon-wrap">⚙️</div>
+            <h3>System Administration</h3>
+            <p>
+              Master IT fundamentals and system administration with hands-on
+              training in our fully equipped, state-of-the-art technology labs.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- EVENTS -->
+    <section class="section events">
+      <div class="w">
+        <div class="events-header reveal">
+          <div>
+            <div class="section-label">What's On</div>
+            <h2 class="section-title">Upcoming events.</h2>
+          </div>
+          <a href="#" class="view-all-link">View all events &nbsp;→</a>
+        </div>
+        <div class="events-list reveal">
+          <div class="event-row">
+            <div class="event-date-box">
+              <div class="day">19</div>
+              <div class="mon">Sep</div>
+            </div>
+            <div class="event-info">
+              <h4>Computing Education Practice Conference 2025</h4>
+              <div class="meta">
+                <span>🕘 09:00 AM – 12:00 PM</span
+                ><span>📍 Lahore, Pakistan</span>
+              </div>
+            </div>
+            <span class="event-tag">Conference</span>
+            <span class="event-arrow">→</span>
+          </div>
+          <div class="event-row">
+            <div class="event-date-box">
+              <div class="day">25</div>
+              <div class="mon">Oct</div>
+            </div>
+            <div class="event-info">
+              <h4>Digital Learning Transition Discussion Forum</h4>
+              <div class="meta">
+                <span>🕘 09:00 AM – 12:00 PM</span
+                ><span>📍 Islamabad, Pakistan</span>
+              </div>
+            </div>
+            <span class="event-tag">Forum</span>
+            <span class="event-arrow">→</span>
+          </div>
+          <div class="event-row">
+            <div class="event-date-box">
+              <div class="day">12</div>
+              <div class="mon">Nov</div>
+            </div>
+            <div class="event-info">
+              <h4>Excellence Partner & Education Innovation Summit</h4>
+              <div class="meta">
+                <span>🕙 09:40 AM – 05:00 PM</span
+                ><span>📍 Karachi, Pakistan</span>
+              </div>
+            </div>
+            <span class="event-tag">Summit</span>
+            <span class="event-arrow">→</span>
+          </div>
+          <div class="event-row">
+            <div class="event-date-box">
+              <div class="day">08</div>
+              <div class="mon">Dec</div>
+            </div>
+            <div class="event-info">
+              <h4>Ecosystem Dynamics and Conservation Seminar</h4>
+              <div class="meta">
+                <span>🕙 10:00 AM – 04:00 PM</span
+                ><span>📍 Lahore, Pakistan</span>
+              </div>
+            </div>
+            <span class="event-tag">Seminar</span>
+            <span class="event-arrow">→</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section class="section testimonials">
+      <div class="w">
+        <div
+          class="reveal"
+          style="text-align: center; max-width: 520px; margin: 0 auto"
+        >
+          <div class="section-label">Student Stories</div>
+          <h2 class="section-title">Hear from our<br />graduates.</h2>
+        </div>
+        <div class="testimonials-grid">
+          <div class="testi-card reveal delay-1">
+            <span class="quote-mark">"</span>
+            <p>
+              AlBayan completely transformed my approach to learning. The
+              instructors are phenomenal and the course materials are among the
+              best I've encountered anywhere.
+            </p>
+            <div
+              style="
+                display: flex;
+                justify-content: space-between;
+                align-items: flex-end;
+              "
+            >
+              <div class="testi-author">
+                <div class="testi-avatar a1">FL</div>
+                <div>
+                  <div class="testi-name">Fera Look</div>
+                  <div class="testi-role">Data Analyst</div>
+                </div>
+              </div>
+              <div class="testi-stars">★★★★½</div>
+            </div>
+          </div>
+          <div class="testi-card reveal delay-2">
+            <span class="quote-mark">"</span>
+            <p>
+              I went from zero to landing a data science role in six months. The
+              Python course was incredibly well-structured and the mentorship
+              was outstanding throughout.
+            </p>
+            <div
+              style="
+                display: flex;
+                justify-content: space-between;
+                align-items: flex-end;
+              "
+            >
+              <div class="testi-author">
+                <div class="testi-avatar a2">WS</div>
+                <div>
+                  <div class="testi-name">William Sara</div>
+                  <div class="testi-role">ML Engineer</div>
+                </div>
+              </div>
+              <div class="testi-stars">★★★★★</div>
+            </div>
+          </div>
+          <div class="testi-card reveal delay-3">
+            <span class="quote-mark">"</span>
+            <p>
+              Fantastic learning environment. The online platform is smooth and
+              the community keeps you accountable. I finished my certification
+              ahead of schedule.
+            </p>
+            <div
+              style="
+                display: flex;
+                justify-content: space-between;
+                align-items: flex-end;
+              "
+            >
+              <div class="testi-author">
+                <div class="testi-avatar a3">TL</div>
+                <div>
+                  <div class="testi-name">Tom Lara</div>
+                  <div class="testi-role">Product Manager</div>
+                </div>
+              </div>
+              <div class="testi-stars">★★★★★</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- BLOG -->
+    <section class="section blog">
+      <div class="w">
+        <div class="blog-header reveal">
+          <div>
+            <div class="section-label">Knowledge Hub</div>
+            <h2 class="section-title">Latest insights.</h2>
+          </div>
+          <a href="#" class="view-all-link">View all articles &nbsp;→</a>
+        </div>
+        <div class="blog-grid">
+          <div class="blog-card reveal delay-1">
+            <div class="blog-img">
+              <div class="blog-img-placeholder p1">📰</div>
+            </div>
+            <div class="blog-body">
+              <span class="blog-chip">Education</span>
+              <h3>How Future Schools Are Redefining Student Growth</h3>
+              <div class="blog-footer">
+                <span>Jan 18, 2025</span><span>AlBayan Team</span>
+              </div>
+            </div>
+          </div>
+          <div class="blog-card reveal delay-2">
+            <div class="blog-img">
+              <div class="blog-img-placeholder p2">🌱</div>
+            </div>
+            <div class="blog-body">
+              <span class="blog-chip">Innovation</span>
+              <h3>Social Innovation in Education: What's Working Now</h3>
+              <div class="blog-footer">
+                <span>Jan 18, 2025</span><span>AlBayan Team</span>
+              </div>
+            </div>
+          </div>
+          <div class="blog-card reveal delay-3">
+            <div class="blog-img">
+              <div class="blog-img-placeholder p3">💻</div>
+            </div>
+            <div class="blog-body">
+              <span class="blog-chip">Strategy</span>
+              <h3>7 eLearning Design Tips for Better Student Outcomes</h3>
+              <div class="blog-footer">
+                <span>Jan 18, 2025</span><span>AlBayan Team</span>
+              </div>
+            </div>
+          </div>
+          <div class="blog-card reveal delay-4">
+            <div class="blog-img">
+              <div class="blog-img-placeholder p4">🏫</div>
+            </div>
+            <div class="blog-body">
+              <span class="blog-chip">Students</span>
+              <h3>Why Hybrid Learning Is the Future of Education</h3>
+              <div class="blog-footer">
+                <span>Jan 18, 2025</span><span>AlBayan Team</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- NEWSLETTER -->
+    <div class="newsletter">
+      <div class="newsletter-box reveal">
+        <div class="section-label" style="text-align: center">
+          Stay in the loop
+        </div>
+        <h2>Never miss an update.</h2>
+        <p>
+          Get the latest courses, events, and insights delivered straight to
+          your inbox.
+        </p>
+        <div class="nl-form">
+          <input type="email" placeholder="Enter your email address" />
+          <button>Subscribe</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+      <div class="footer-top">
+        <div class="footer-brand">
+          <a href="#" class="logo">
+            <img
+              src="albayan.jpg"
+              alt="AlBayan"
+              style="height: 28px; width: auto"
+            />
+            <div style="margin-left: 10px">
+              <div style="font-size: 16px; font-weight: 700; color: #fff">
+                AlBayan
+              </div>
+              <div
+                style="
+                  font-size: 9px;
+                  color: var(--text3);
+                  letter-spacing: 1.5px;
+                  text-transform: uppercase;
+                "
+              >
+                Learning Center
+              </div>
+            </div>
+          </a>
+          <p>
+            Empowering learners with world-class education since 2010. Join
+            thousands of students transforming their futures with AlBayan.
+          </p>
+          <div class="social-row">
+            <a href="#" class="soc-btn">f</a>
+            <a href="#" class="soc-btn">𝕏</a>
+            <a href="#" class="soc-btn">in</a>
+            <a href="#" class="soc-btn">▶</a>
+          </div>
+        </div>
+        <div>
+          <h5>Company</h5>
+          <ul>
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">Our Team</a></li>
+            <li><a href="#">Careers</a></li>
+            <li><a href="#">Press</a></li>
+            <li><a href="#">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h5>Learning</h5>
+          <ul>
+            <li><a href="#">All Courses</a></li>
+            <li><a href="#">Events</a></li>
+            <li><a href="#">Certifications</a></li>
+            <li><a href="#">Instructors</a></li>
+            <li><a href="#">Student Portal</a></li>
+          </ul>
+        </div>
+        <div>
+          <h5>Contact</h5>
+          <ul>
+            <li><a href="#">+(92) 300 123 4567</a></li>
+            <li><a href="#">info@albayanlc.com</a></li>
+            <li><a href="#">Lahore, Punjab, PK</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 AlBayan Learning Center. All rights reserved.</span>
+        <span style="color: var(--text3)"
+          >Privacy Policy &nbsp;·&nbsp; Terms of Service</span
+        >
+      </div>
+    </footer>
+
+    <script>
+      const obs = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((e) => {
+            if (e.isIntersecting) {
+              e.target.classList.add("visible");
+            }
+          });
+        },
+        { threshold: 0.1, rootMargin: "0px 0px -60px 0px" },
+      );
+
+      document
+        .querySelectorAll(".reveal, .reveal-left, .reveal-right")
+        .forEach((el) => obs.observe(el));
+
+      let lastScroll = 0;
+      window.addEventListener("scroll", () => {
+        const nav = document.querySelector("nav");
+        const scrollY = window.scrollY;
+        if (scrollY > 80) {
+          nav.style.background = "rgba(0,0,0,0.92)";
+        } else {
+          nav.style.background = "rgba(0,0,0,0.72)";
+        }
+        lastScroll = scrollY;
+      });
+    </script>
+  </body>
+</html>
