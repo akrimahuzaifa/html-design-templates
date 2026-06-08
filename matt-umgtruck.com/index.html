@@ -1,0 +1,576 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ultimate Mobile Gaming - Restructure Mockup</title>
+    <!-- Google Fonts for a modern gaming feel -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Rajdhani:wght@600;700&family=Roboto:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      :root {
+        --bg-dark: #0f111a;
+        --bg-card: #171b2c;
+        --primary: #9d4edf;
+        --primary-glow: #bd5eff;
+        --accent-green: #39ff14;
+        --text-light: #ffffff;
+        --text-muted: #a0aec0;
+        --border-radius: 12px;
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        font-family: "Roboto", sans-serif;
+        background-color: var(--bg-dark);
+        color: var(--text-light);
+        line-height: 1.6;
+        padding: 40px 20px;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      /* Header / Meta section for client preview */
+      .mockup-header {
+        text-align: center;
+        margin-bottom: 60px;
+        border-bottom: 2px dashed rgba(255, 255, 255, 0.1);
+        padding-bottom: 30px;
+      }
+
+      .mockup-header h1 {
+        font-family: "Orbitron", sans-serif;
+        color: var(--accent-green);
+        font-size: 2.5rem;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        margin-bottom: 10px;
+      }
+
+      .mockup-header p {
+        color: var(--text-muted);
+        font-size: 1.1rem;
+      }
+
+      .section-title {
+        font-family: "Orbitron", sans-serif;
+        text-align: center;
+        font-size: 2rem;
+        text-transform: uppercase;
+        margin-bottom: 15px;
+        letter-spacing: 1px;
+        position: relative;
+      }
+
+      .section-title span {
+        color: var(--primary-glow);
+      }
+
+      .section-subtitle {
+        text-align: center;
+        color: var(--text-muted);
+        margin-bottom: 40px;
+        font-size: 1.1rem;
+      }
+
+      /* Promo Badge */
+      .promo-banner {
+        background: linear-gradient(
+          90deg,
+          rgba(157, 78, 223, 0.2) 0%,
+          rgba(57, 255, 20, 0.1) 100%
+        );
+        border: 1px solid var(--accent-green);
+        padding: 15px;
+        border-radius: var(--border-radius);
+        text-align: center;
+        margin-bottom: 40px;
+        font-family: "Rajdhani", sans-serif;
+        font-size: 1.3rem;
+        font-weight: 700;
+      }
+      .promo-banner span {
+        color: var(--accent-green);
+      }
+
+      /* PRICING GRID SYSTEM */
+      .pricing-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: 30px;
+        margin-bottom: 80px;
+        align-items: stretch;
+      }
+
+      .price-card {
+        background-color: var(--bg-card);
+        border: 2px solid rgba(255, 255, 255, 0.05);
+        border-radius: var(--border-radius);
+        padding: 40px 30px;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        transition:
+          transform 0.3s ease,
+          border-color 0.3s ease,
+          box-shadow 0.3s ease;
+      }
+
+      .price-card:hover {
+        transform: translateY(-5px);
+        border-color: rgba(157, 78, 223, 0.4);
+        box-shadow: 0 10px 30px rgba(157, 78, 223, 0.15);
+      }
+
+      /* Featured "Most Popular" Styling */
+      .price-card.featured {
+        border-color: var(--primary);
+        box-shadow: 0 10px 30px rgba(157, 78, 223, 0.25);
+        transform: scale(1.03);
+      }
+
+      .price-card.featured:hover {
+        transform: scale(1.03) translateY(-5px);
+      }
+
+      .popular-badge {
+        position: absolute;
+        top: -15px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: linear-gradient(135deg, var(--primary) 0%, #621fa3; 100%);
+        color: white;
+        padding: 6px 20px;
+        border-radius: 20px;
+        font-family: "Orbitron", sans-serif;
+        font-size: 0.8rem;
+        font-weight: 900;
+        letter-spacing: 1px;
+        box-shadow: 0 4px 15px rgba(157, 78, 223, 0.4);
+      }
+
+      .card-header h3 {
+        font-family: "Orbitron", sans-serif;
+        font-size: 1.5rem;
+        text-transform: uppercase;
+        margin-bottom: 15px;
+        letter-spacing: 1px;
+      }
+
+      .price-box {
+        margin-bottom: 25px;
+        display: flex;
+        align-items: baseline;
+        gap: 10px;
+      }
+
+      .amount {
+        font-family: "Rajdhani", sans-serif;
+        font-size: 3rem;
+        font-weight: 700;
+        color: var(--text-light);
+        line-height: 1;
+      }
+
+      .was-amount {
+        font-family: "Rajdhani", sans-serif;
+        font-size: 1.5rem;
+        color: var(--text-muted);
+        text-decoration: line-through;
+      }
+
+      .duration-selector {
+        display: flex;
+        background: rgba(0, 0, 0, 0.3);
+        padding: 4px;
+        border-radius: 8px;
+        margin-bottom: 25px;
+      }
+
+      .duration-btn {
+        flex: 1;
+        background: transparent;
+        border: none;
+        color: var(--text-muted);
+        padding: 8px;
+        font-family: "Rajdhani", sans-serif;
+        font-weight: 700;
+        font-size: 1rem;
+        cursor: pointer;
+        border-radius: 6px;
+        transition: all 0.2s ease;
+      }
+
+      .duration-btn.active {
+        background-color: var(--primary);
+        color: var(--text-light);
+      }
+
+      .features-list {
+        list-style: none;
+        margin-bottom: 35px;
+        flex-grow: 1;
+      }
+
+      .features-list li {
+        margin-bottom: 12px;
+        padding-left: 28px;
+        position: relative;
+        font-size: 0.95rem;
+        color: #e2e8f0;
+      }
+
+      .features-list li::before {
+        content: "✓";
+        position: absolute;
+        left: 0;
+        color: var(--accent-green);
+        font-weight: bold;
+        font-size: 1.1rem;
+      }
+
+      .book-btn {
+        width: 100%;
+        background: transparent;
+        border: 2px solid var(--primary);
+        color: var(--text-light);
+        padding: 14px;
+        border-radius: 8px;
+        font-family: "Orbitron", sans-serif;
+        font-size: 1rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        letter-spacing: 1px;
+      }
+
+      .price-card.featured .book-btn {
+        background: linear-gradient(135deg, var(--primary) 0%, #7b2cbf 100%);
+        border: none;
+        box-shadow: 0 4px 15px rgba(157, 78, 223, 0.3);
+      }
+
+      .book-btn:hover {
+        background: var(--primary);
+        color: white;
+        box-shadow: 0 0 20px rgba(157, 78, 223, 0.6);
+      }
+
+      /* SOCIAL MEDIA TIMELINE / GRID SECTION */
+      .social-section {
+        background-color: rgba(23, 27, 44, 0.4);
+        border-radius: var(--border-radius);
+        padding: 50px 30px;
+        border: 1px solid rgba(255, 255, 255, 0.05);
+      }
+
+      .timeline-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 30px;
+        flex-wrap: wrap;
+        gap: 20px;
+      }
+
+      .timeline-header-text {
+        text-align: left;
+      }
+
+      .social-handle {
+        color: var(--accent-green);
+        font-family: "Rajdhani", sans-serif;
+        font-size: 1.2rem;
+        font-weight: 700;
+      }
+
+      .social-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 20px;
+      }
+
+      .social-card {
+        background-color: var(--bg-card);
+        border-radius: 8px;
+        overflow: hidden;
+        border: 1px solid rgba(255, 255, 255, 0.03);
+        transition: transform 0.2s ease;
+      }
+
+      .social-card:hover {
+        transform: scale(1.02);
+      }
+
+      .social-img-placeholder {
+        width: 100%;
+        height: 240px;
+        background: linear-gradient(45deg, #1f2438 0%, #2e3552 100%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+      }
+
+      /* Simulating action photo layout symbols */
+      .social-img-placeholder::after {
+        content: "📸 Photo Event Feed";
+        font-family: "Rajdhani", sans-serif;
+        color: rgba(255, 255, 255, 0.4);
+        font-weight: bold;
+        font-size: 1.1rem;
+      }
+
+      .social-badge {
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        background: rgba(0, 0, 0, 0.6);
+        padding: 4px 10px;
+        border-radius: 20px;
+        font-size: 0.8rem;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+      }
+
+      .social-content {
+        padding: 20px;
+      }
+
+      .social-meta {
+        display: flex;
+        justify-content: space-between;
+        color: var(--text-muted);
+        font-size: 0.85rem;
+        margin-bottom: 10px;
+      }
+
+      .social-caption {
+        font-size: 0.9rem;
+        color: #cbd5e1;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+      }
+
+      @media (max-width: 768px) {
+        .price-card.featured {
+          transform: none;
+        }
+        .price-card.featured:hover {
+          transform: translateY(-5px);
+        }
+        .timeline-header {
+          flex-direction: column;
+          text-align: center;
+          align-items: center;
+        }
+        .timeline-header-text {
+          text-align: center;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <!-- PREVIEW BOX TO DEMO TO MATT -->
+      <div class="mockup-header">
+        <h1>UMG Restructure Mockup</h1>
+        <p>Proposed Pricing Matrix Cards & Live Social Feed Section Redesign</p>
+      </div>
+
+      <!-- SPECIAL DISCOUNTS BAR -->
+      <div class="promo-banner">
+        🎮 Booking Tip: Pay via <span>Venmo</span> or <span>CashApp</span> to
+        automatically receive <span>$25 OFF</span> your party package total!
+      </div>
+
+      <!-- PRICING CARDS SECTION -->
+      <h2 class="section-title">Choose Your <span>Party Package</span></h2>
+      <p class="section-subtitle">
+        No need to price shop! We offer the premier, fully self-powered gaming
+        experience in MA.
+      </p>
+
+      <div class="pricing-grid">
+        <!-- CARD 1: VIDEO GAME TRAILER -->
+        <div class="price-card">
+          <div class="card-header">
+            <h3>Video Game Trailer</h3>
+          </div>
+          <div class="price-box">
+            <span class="was-amount">$550</span>
+            <span class="amount">$500</span>
+          </div>
+          <div class="duration-selector">
+            <button class="duration-btn active">2 Hours</button>
+            <button class="duration-btn" onclick="alert('90 Min Option: $450')">
+              90 Mins
+            </button>
+          </div>
+          <ul class="features-list">
+            <li>Luxury limo-style theater on wheels</li>
+            <li>5 HUGE High-Definition widescreen TVs inside</li>
+            <li>Surround sound & custom interior neon lighting</li>
+            <li>Accommodates 16 to 18 players seamlessly</li>
+            <li>Climate controlled & completely self-powered</li>
+            <li>Dedicated on-board professional Game Coach</li>
+          </ul>
+          <button class="book-btn">Book Trailer</button>
+        </div>
+
+        <!-- CARD 2: COMBO PARTY (FEATURED) -->
+        <div class="price-card featured">
+          <div class="popular-badge">MOST POPULAR</div>
+          <div class="card-header">
+            <h3>Combination Party</h3>
+          </div>
+          <div class="price-box">
+            <span class="was-amount">$750</span>
+            <span class="amount">$675</span>
+          </div>
+          <div class="duration-selector">
+            <button class="duration-btn active">2 Hours (Simultaneous)</button>
+            <button
+              class="duration-btn"
+              onclick="
+                alert('1 Hr Each Option: $625 | 90 Min Options available')
+              "
+            >
+              Other Combos
+            </button>
+          </div>
+          <ul class="features-list">
+            <li>
+              <strong>Ultimate Combo:</strong> Game Truck + Laser Tag running
+              together
+            </li>
+            <li>Full access to the 5-screen luxury Video Game Trailer</li>
+            <li>
+              State-of-the-art Laser Tag layout (includes 8 high-tech taggers)
+            </li>
+            <li>Massive throughput—handles up to 22+ kids at once</li>
+            <li>
+              Perfect setup for massive birthdays, schools, or town festivals
+            </li>
+            <li>Includes both Game Coach & Laser Tag coordinator</li>
+          </ul>
+          <button class="book-btn">Book Combo</button>
+        </div>
+
+        <!-- CARD 3: LASER TAG PARTY -->
+        <div class="price-card">
+          <div class="card-header">
+            <h3>Mobile Laser Tag</h3>
+          </div>
+          <div class="price-box">
+            <span class="was-amount">$550</span>
+            <span class="amount">$500</span>
+          </div>
+          <div class="duration-selector">
+            <button class="duration-btn active">2 Hours</button>
+            <button class="duration-btn" onclick="alert('90 Min Option: $450')">
+              90 Mins
+            </button>
+          </div>
+          <ul class="features-list">
+            <li>
+              We bring the full Laser Tag field experience straight to you
+            </li>
+            <li>Includes 8 tactical Laser Tag blasters</li>
+            <li>Pop-up tactical barriers & custom battlefield setup</li>
+            <li>Play outdoors in yards, open parks, woods, or gyms</li>
+            <li>All the rush of paintball without the mess or pain</li>
+            <li>Managed completely by an active event coordinator</li>
+          </ul>
+          <button class="book-btn">Book Laser Tag</button>
+        </div>
+      </div>
+
+      <!-- SOCIAL MEDIA TIMELINE SECTION -->
+      <div class="social-section">
+        <div class="timeline-header">
+          <div class="timeline-header-text">
+            <h2
+              class="section-title"
+              style="text-align: left; margin-bottom: 5px"
+            >
+              See Us <span>In Action</span>
+            </h2>
+            <p class="social-handle">
+              📸 Live Activity Feed • @UltimateMobileGaming
+            </p>
+          </div>
+        </div>
+
+        <div class="social-grid">
+          <!-- SOCIAL POST 1 -->
+          <div class="social-card">
+            <div class="social-img-placeholder"></div>
+            <div class="social-content">
+              <div class="social-meta">
+                <span>❤️ 142 Likes</span>
+                <span>2 hours ago</span>
+              </div>
+              <p class="social-caption">
+                Awesome birthday bash out in Boston today! The kids absolutely
+                crushed it on the new PS5 setups. Parents got a break while our
+                Game Coach handled the rest! 🎮🔥 #GameTruck #BostonMoms
+                #BirthdayPartyIdeas
+              </p>
+            </div>
+          </div>
+
+          <!-- SOCIAL POST 2 -->
+          <div class="social-card">
+            <div class="social-img-placeholder"></div>
+            <div class="social-content">
+              <div class="social-meta">
+                <span>❤️ 98 Likes</span>
+                <span>Yesterday</span>
+              </div>
+              <p class="social-caption">
+                Laser Tag battlefield setup in Worcester! Full tactical barriers
+                out in the woods for a massive combination graduation party. Who
+                wins this round? 🌲🔫 #LaserTagParty #MassEvents #MobileGaming
+              </p>
+            </div>
+          </div>
+
+          <!-- SOCIAL POST 3 -->
+          <div class="social-card">
+            <div class="social-img-placeholder"></div>
+            <div class="social-content">
+              <div class="social-meta">
+                <span>❤️ 215 Likes</span>
+                <span>3 days ago</span>
+              </div>
+              <p class="social-caption">
+                Fully self-powered and perfectly climate controlled inside—rain
+                or shine, summer or winter, the party never stops inside the UMG
+                truck! Book your slot today. ⚡️❄️☀️ #CentralMA #RhodeIsland
+                #CorporateEvents
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
