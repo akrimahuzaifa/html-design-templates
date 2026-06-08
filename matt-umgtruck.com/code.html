@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>UMG TRUCK | Ultimate Mobile Gaming &amp; Laser Tag</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Chivo:ital,wght@0,700;0,800;0,900;1,800;1,900&amp;family=Rubik:wght@400;500;700&amp;family=JetBrains+Mono:wght@700&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Chivo:wght@100..900&amp;family=JetBrains+Mono:wght@100..900&amp;family=Rubik:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                "on-background": "#e2e2e2",
+                "on-primary-fixed-variant": "#015300",
+                "primary-container": "#03ce00",
+                "on-primary": "#013a00",
+                "on-primary-container": "#015000",
+                "on-secondary-fixed": "#151f00",
+                "electric-blue": "#00F0FF",
+                "on-surface": "#e2e2e2",
+                "secondary-fixed-dim": "#b3d26a",
+                "surface-tint": "#36e427",
+                "surface-container-highest": "#353535",
+                "surface-container-high": "#2a2a2a",
+                "on-primary-fixed": "#002200",
+                "on-error-container": "#ffdad6",
+                "secondary": "#b3d26a",
+                "error": "#ffb4ab",
+                "inverse-primary": "#026e00",
+                "on-tertiary": "#5f0e30",
+                "primary-fixed": "#77ff61",
+                "tertiary-fixed-dim": "#ffb1c6",
+                "on-tertiary-fixed": "#3f001b",
+                "secondary-fixed": "#cfef83",
+                "on-error": "#690005",
+                "surface-container-lowest": "#0e0e0e",
+                "on-secondary": "#263500",
+                "secondary-container": "#496200",
+                "on-surface-variant": "#bbcbb2",
+                "surface-variant": "#353535",
+                "inverse-surface": "#e2e2e2",
+                "background": "#131313",
+                "surface-dim": "#131313",
+                "on-tertiary-container": "#792444",
+                "outline": "#86957e",
+                "inverse-on-surface": "#303030",
+                "on-secondary-fixed-variant": "#394d00",
+                "outline-variant": "#3d4b37",
+                "error-container": "#93000a",
+                "primary-fixed-dim": "#36e427",
+                "surface-container-low": "#1b1b1b",
+                "action-orange": "#FF6B00",
+                "surface-bright": "#393939",
+                "tertiary-container": "#ff8fb1",
+                "surface-glass": "rgba(255, 255, 255, 0.05)",
+                "on-tertiary-fixed-variant": "#7d2747",
+                "on-secondary-container": "#bddd73",
+                "tertiary": "#ffbacc",
+                "primary": "#3feb2f",
+                "surface": "#131313",
+                "tertiary-fixed": "#ffd9e1",
+                "surface-container": "#1f1f1f",
+                "void-charcoal": "#0A0A0A"
+            },
+            "borderRadius": {
+                "DEFAULT": "0.25rem",
+                "lg": "0.5rem",
+                "xl": "0.75rem",
+                "full": "9999px"
+            },
+            "spacing": {
+                "gutter": "24px",
+                "margin-desktop": "48px",
+                "container-max": "1280px",
+                "margin-mobile": "16px",
+                "base": "8px"
+            },
+            "fontFamily": {
+                "headline-lg": ["Chivo"],
+                "headline-xl": ["Chivo"],
+                "headline-xl-mobile": ["Chivo"],
+                "body-md": ["Rubik"],
+                "display-lg": ["Chivo"],
+                "body-lg": ["Rubik"],
+                "label-caps": ["JetBrains Mono"]
+            },
+            "fontSize": {
+                "headline-lg": ["32px", {"lineHeight": "1.3", "fontWeight": "700"}],
+                "headline-xl": ["48px", {"lineHeight": "1.2", "fontWeight": "800"}],
+                "headline-xl-mobile": ["32px", {"lineHeight": "1.2", "fontWeight": "800"}],
+                "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                "display-lg": ["72px", {"lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "900"}],
+                "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                "label-caps": ["14px", {"lineHeight": "1.0", "letterSpacing": "0.1em", "fontWeight": "700"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            background-color: #000000;
+            color: #e2e2e2;
+            -webkit-font-smoothing: antialiased;
+        }
+        .neon-glow {
+            text-shadow: 0 0 10px rgba(63, 235, 47, 0.7), 0 0 20px rgba(63, 235, 47, 0.4);
+        }
+        .neon-border {
+            box-shadow: 0 0 15px rgba(63, 235, 47, 0.2);
+        }
+        .neon-border-hover:hover {
+            box-shadow: 0 0 25px rgba(63, 235, 47, 0.5);
+            border-color: #3feb2f;
+        }
+        .glass-card {
+            background: rgba(10, 10, 10, 0.8);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        @keyframes pulse-glow {
+            0%, 100% { box-shadow: 0 0 15px rgba(63, 235, 47, 0.3); }
+            50% { box-shadow: 0 0 30px rgba(63, 235, 47, 0.6); }
+        }
+        .animate-pulse-glow {
+            animation: pulse-glow 3s infinite;
+        }
+        .masonry {
+            column-count: 1;
+            column-gap: 1.5rem;
+        }
+        @media (min-width: 768px) { .masonry { column-count: 2; } }
+        @media (min-width: 1024px) { .masonry { column-count: 3; } }
+        .masonry-item {
+            break-inside: avoid;
+            margin-bottom: 1.5rem;
+        }
+    </style>
+</head>
+<body class="font-body-md text-on-background selection:bg-primary selection:text-on-primary">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-surface-glass backdrop-blur-md border-b border-white/10 shadow-[0_0_15px_rgba(63,235,47,0.2)]">
+<div class="flex justify-between items-center px-gutter py-4 max-w-container-max mx-auto">
+<div class="flex items-center gap-2">
+<span class="font-headline-xl text-headline-xl font-black text-primary italic tracking-tighter">UMG TRUCK</span>
+</div>
+<nav class="hidden md:flex gap-8 items-center">
+<a class="font-label-caps text-label-caps text-primary font-bold border-b-2 border-primary pb-1 hover:text-primary transition-colors duration-300" href="#">Packages</a>
+<a class="font-label-caps text-label-caps text-on-surface-variant font-medium hover:text-primary transition-colors duration-300" href="#">Laser Tag</a>
+<a class="font-label-caps text-label-caps text-on-surface-variant font-medium hover:text-primary transition-colors duration-300" href="#">Combo</a>
+<a class="font-label-caps text-label-caps text-on-surface-variant font-medium hover:text-primary transition-colors duration-300" href="#">About Us</a>
+</nav>
+<button class="bg-primary text-on-primary font-label-caps text-label-caps px-6 py-2.5 rounded-full font-black active:scale-95 transition-transform duration-150 hover:brightness-110 shadow-[0_0_20px_rgba(63,235,47,0.4)]">
+                BOOK NOW
+            </button>
+</div>
+</header>
+<main class="pt-24">
+<!-- Hero Section -->
+<section class="relative min-h-[921px] flex items-center overflow-hidden">
+
+<div class="absolute inset-0 bg-gradient-to-r from-black via-black/80 to-transparent z-10"></div>
+<div class="relative z-20 px-gutter max-w-container-max mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+<div class="space-y-8">
+<div class="inline-flex items-center gap-2 px-4 py-1 bg-primary/10 border border-primary/30 rounded-full">
+<span class="material-symbols-outlined text-primary text-sm" style="font-variation-settings: 'FILL' 1;">stars</span>
+<span class="font-label-caps text-label-caps text-primary">BOSTON'S #1 EVENT CHOICE</span>
+</div>
+<h1 class="font-display-lg text-headline-xl md:text-display-lg text-white leading-none">
+                        The Ultimate <span class="text-primary neon-glow italic">Mobile Gaming</span> Party Delivered!
+                    </h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-xl">
+                        Boston's Best Video Game Truck &amp; Laser Tag Parties for Birthdays, Events, and Schools. We bring the high-octane theater to your doorstep.
+                    </p>
+<div class="flex flex-wrap gap-4 pt-4">
+<button class="px-8 py-4 bg-primary text-on-primary font-label-caps text-label-caps rounded-lg font-black hover:scale-105 transition-all shadow-lg shadow-primary/20">
+                            VIEW PACKAGES
+                        </button>
+<button class="px-8 py-4 border-2 border-primary/50 text-primary font-label-caps text-label-caps rounded-lg font-black hover:bg-primary/10 transition-all backdrop-blur-sm">
+                            EXPLORE LASER TAG
+                        </button>
+</div>
+</div>
+<div class="hidden lg:block relative">
+<div class="relative aspect-video rounded-xl overflow-hidden neon-border group">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="A high-end, futuristic mobile gaming truck trailer parked at night under neon green streetlights. The truck features sleek matte black paneling with glowing Level Up Green LED strips and intricate tech-inspired decals. Several large high-definition screens are visible on the side of the truck showing vibrant game footage, surrounded by excited teenagers bathed in the green glow. The atmosphere is energetic, cinematic, and high-tech." src="https://lh3.googleusercontent.com/aida/AP1WRLvw2-V17CrwZaX54GfK-o0QTaTLQl_KQSaEBri9drFB7s-x-RJvB4g_n-6C9MpI9HhvflqxLgj2K-5mUthILItUtX1O822zfOjHmIZrZgrkt4uBr0Km45eAa2DKWPR8sQX012UuHAkhwA0mihLmPA3O73I5FjeG676kUpHYfAbu6-iNidkzw-MFQu4j1QcmNAIftNvvStN3kWX8EZEtgr6jzfJgYrFEer6lM2nIs9skvJhSRbpgdnGJ2t4"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+</div>
+<div class="absolute -bottom-6 -left-6 p-4 glass-card rounded-xl border-primary/20 flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary">groups</span>
+</div>
+<div>
+<p class="font-label-caps text-[10px] text-on-surface-variant">PLAYER CAPACITY</p>
+<p class="font-headline-lg text-headline-lg leading-none">28+ GUESTS</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Pricing Section -->
+<section class="py-24 px-gutter max-w-container-max mx-auto relative">
+<div class="text-center mb-16 space-y-4">
+<h2 class="font-headline-xl text-headline-xl text-white">Choose Your <span class="text-primary italic">Adventure</span></h2>
+<p class="text-on-surface-variant font-body-lg">Premium entertainment packages tailored for your squad.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<!-- Package 1 -->
+<div class="glass-card p-8 rounded-2xl border-white/5 hover:border-primary/50 transition-all duration-300 group">
+<div class="mb-6">
+<span class="font-label-caps text-label-caps text-primary bg-primary/10 px-3 py-1 rounded">2 HOURS</span>
+<h3 class="font-headline-lg text-headline-lg text-white mt-4">Gaming Truck Party</h3>
+</div>
+<div class="mb-8">
+<span class="font-label-caps text-label-caps text-4xl text-white">$349</span>
+</div>
+<ul class="space-y-4 mb-10 text-on-surface-variant">
+<li class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary text-xl">check_circle</span>
+                            28+ Simultaneous Players
+                        </li>
+<li class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary text-xl">check_circle</span>
+                            All Next-Gen Consoles
+                        </li>
+<li class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary text-xl">check_circle</span>
+                            Climate Controlled Theater
+                        </li>
+<li class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary text-xl">check_circle</span>
+                            Professional Game Coach
+                        </li>
+</ul>
+<button class="w-full py-4 border border-white/20 rounded-lg font-label-caps text-label-caps hover:bg-white/10 transition-colors">SELECT PACKAGE</button>
+</div>
+<!-- Package 3 (Most Popular) -->
+<div class="relative glass-card p-8 rounded-2xl border-primary/50 bg-primary/5 animate-pulse-glow z-10 scale-105 group">
+<div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-primary text-on-primary font-label-caps text-[10px] px-4 py-1 rounded-full font-black">MOST POPULAR</div>
+<div class="mb-6">
+<span class="font-label-caps text-label-caps text-primary bg-primary/20 px-3 py-1 rounded">3 HOURS</span>
+<h3 class="font-headline-lg text-headline-lg text-white mt-4">The Ultimate Combo</h3>
+</div>
+<div class="mb-8">
+<span class="font-label-caps text-label-caps text-4xl text-white">$599</span>
+</div>
+<ul class="space-y-4 mb-10 text-on-surface-variant">
+<li class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary text-xl" style="font-variation-settings: 'FILL' 1;">bolt</span>
+                            Gaming Truck + Laser Tag
+                        </li>
+<li class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary text-xl">check_circle</span>
+                            Best Overall Value
+                        </li>
+<li class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary text-xl">check_circle</span>
+                            Max Player Engagement
+                        </li>
+<li class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary text-xl">check_circle</span>
+                            Extended Event Duration
+                        </li>
+</ul>
+<button class="w-full py-4 bg-primary text-on-primary rounded-lg font-label-caps text-label-caps font-black hover:brightness-110 transition-all">LEVEL UP NOW</button>
+</div>
+<!-- Package 2 -->
+<div class="glass-card p-8 rounded-2xl border-white/5 hover:border-primary/50 transition-all duration-300 group">
+<div class="mb-6">
+<span class="font-label-caps text-label-caps text-primary bg-primary/10 px-3 py-1 rounded">90 MINS</span>
+<h3 class="font-headline-lg text-headline-lg text-white mt-4">Laser Tag Party</h3>
+</div>
+<div class="mb-8">
+<span class="font-label-caps text-label-caps text-4xl text-white">$399</span>
+</div>
+<ul class="space-y-4 mb-10 text-on-surface-variant">
+<li class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary text-xl">check_circle</span>
+                            16+ Pro Taggers
+                        </li>
+<li class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary text-xl">check_circle</span>
+                            High-Tech Bunkers &amp; Obstacles
+                        </li>
+<li class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary text-xl">check_circle</span>
+                            Mission-Based Gameplay
+                        </li>
+<li class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary text-xl">check_circle</span>
+                            Mobile Battlefield Setup
+                        </li>
+</ul>
+<button class="w-full py-4 border border-white/20 rounded-lg font-label-caps text-label-caps hover:bg-white/10 transition-colors">SELECT PACKAGE</button>
+</div>
+</div>
+</section>
+<!-- Social Feed -->
+<section class="py-24 bg-void-charcoal">
+<div class="px-gutter max-w-container-max mx-auto">
+<div class="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
+<div>
+<h2 class="font-headline-xl text-headline-xl text-white">See the <span class="text-electric-blue italic">Action</span> Live</h2>
+<p class="text-on-surface-variant mt-2 font-body-lg">Join the 10,000+ happy players across Massachusetts.</p>
+</div>
+<div class="flex gap-4">
+<div class="flex items-center gap-2 bg-white/5 px-4 py-2 rounded-lg border border-white/10">
+<span class="material-symbols-outlined text-primary">person</span>
+<span class="font-label-caps text-xs">12.4K FOLLOWERS</span>
+</div>
+</div>
+</div>
+<div class="masonry">
+<div class="masonry-item relative group overflow-hidden rounded-xl bg-surface-container">
+<img class="w-full h-auto grayscale group-hover:grayscale-0 transition-all duration-500" data-alt="An interior shot of a mobile gaming truck filled with vibrant neon green and electric blue ambient lighting. Multiple large screens line the walls, showcasing high-paced racing games. Groups of children and teenagers are sitting in high-back ergonomic gaming chairs, holding controllers with expressions of intense focus and joy. The space feels immersive, high-tech, and futuristic." src="https://lh3.googleusercontent.com/aida/AP1WRLv93BVjDgnFu7OSHJqQAyeR3j_RqqVcRatbMwInmI0SBDt1gvLsXurBxWy1lIHp_yc-3WziH05P1FvOT6QSBgqxZ7pMsdW2VWYV3PsBXonR4ZKoASOVhYe4E0LFJmau3DHgoZv0M8EOlRMdIwtWG0Iw-UfbQsoTdjMB2m-J5SEUsVr9bbSwjPgO4v1x2sUgZ9as3pWMtd1wKTZtrOAkTiy8V7z6xJSiYMWJXAUuF3TwtRx0p9txQUTKcxs"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity p-4 flex flex-col justify-end">
+<div class="flex items-center gap-2 text-white font-label-caps text-[12px]">
+<span class="material-symbols-outlined text-sm">favorite</span> 1,204
+                                <span class="material-symbols-outlined text-sm ml-2">chat_bubble</span> 42
+                            </div>
+</div>
+</div>
+<div class="masonry-item relative group overflow-hidden rounded-xl bg-surface-container">
+<img class="w-full h-auto" data-alt="A dynamic outdoor laser tag setup in a sunny suburban backyard in Boston. High-tech black bunkers and camouflage inflatable barriers are strategically placed across the lawn. Children wearing tactical-style vests with glowing blue sensors are aiming futuristic laser tagger units at each other. The scene is energetic, suggesting a professional and organized mission-based party." src="https://lh3.googleusercontent.com/aida/AP1WRLvn_1s1LtGDT2xOqk4zo5qhgaxs31lS2gIL2ci6ZCcKijlif0HuhBuWBoMJ_NnvLRwltCUxLREBwY_zy6YpUkQw1s0IBSK6rsTuW6nsAIj7tY9fZD31FaFo6HJnzemCo-GZsktAdd7WkSwl_5j31SnS31Rl8eDnQ_qfZgfa736WzywgeAFCiUhFFra5EEfLpishM6dmtlOJC76Ed2EZGNuBzRWFomRAl9UmghD-5drERYNlihqIUvEe2ws"/>
+<div class="absolute top-4 right-4 bg-electric-blue/20 backdrop-blur-md p-2 rounded-full">
+<span class="material-symbols-outlined text-electric-blue" style="font-variation-settings: 'FILL' 1;">play_arrow</span>
+</div>
+</div>
+<div class="masonry-item relative group overflow-hidden rounded-xl bg-surface-container">
+<img class="w-full h-auto grayscale group-hover:grayscale-0 transition-all duration-500" data-alt="A close-up of a child's face lit by the green glow of a gaming console screen inside the UMG truck. The child has a wide smile and is holding a glowing green controller. In the background, other children are cheered on by a game coach wearing a branded UMG Truck polo. The atmosphere is warm, exciting, and captures the peak moment of a birthday celebration." src="https://lh3.googleusercontent.com/aida/AP1WRLv5eeirAlSn87x7SJ5Wb4Y27V3lYv68ROXoNxHWPLHaj0q3S2lCssaBLFanYvndfZwtbRnNa8YQWCrhPJDFWE9UgWBAJfBrskt9NPKUVAhif_qUMlqNinPOWCASW3QwOgUjxzfJNE_f5AwKxZCyH1V6V4tfIVxyphe9_apcS7oDej_EZiIBrNFC1DEp5HCxpSKRGJeYreZxOo2b8fgePrY0oHmi25rj3uXTJPB6VCxBcT_fmC8IS0piEI4"/>
+</div>
+<div class="masonry-item relative group overflow-hidden rounded-xl bg-surface-container">
+<img class="w-full h-auto" data-alt="A wide shot of a neighborhood cul-de-sac at sunset with the massive UMG Truck parked at the curb. The truck's custom wrap is illuminated by its own external LED lighting system, casting a long green shadow on the pavement. Parents are gathered in folding chairs on a nearby lawn, chatting and watching as their kids play in the high-tech mobile theater." src="https://lh3.googleusercontent.com/aida/AP1WRLuphwl3E7O2iaFvAZeusiFUo7QxDtPHcck4pHCoPbtsp2LbpJICvYVe76uHHlr3GTa-9cjF7ImqaHsn0_8QCW7sokXvACgm00t3578mSySD1c_nDbyMLM9erSx85k9YmN8_0n-fI_6zE89KBrqXBDadB8XqgndWzYLVW_c-k-72HsiQmHXR0VsC-ZFRpHbGkKkF3SLkFkr6_33G8X3VugWK8PhVdCZSvN47BQiu0-0rwptsoeRzmg3E1cc"/>
+</div>
+<div class="masonry-item relative group overflow-hidden rounded-xl bg-surface-container">
+<img class="w-full h-auto grayscale group-hover:grayscale-0 transition-all duration-500" data-alt="A grid layout showing various video game characters and game menus on the screens inside the UMG Truck. The focus is on the variety of games available, from popular battle royales to classic racing games. The lighting is dark and cinematic with high contrast, highlighting the premium quality of the mobile gaming setup." src="https://lh3.googleusercontent.com/aida/AP1WRLsJc-U6LJsKeFfj9ttED_cYB8KfQQQOHVkaa7ZtgPLR2L52FbvPA0ZPQCkkNJh0QtHNaCXLXtB3fXePQ0PjnTIaJC5lesAi6on2JYiwI08PtveWtOXTD4QhQifW6Q6PF1X-tAqnbigiGSn6Kkh2QQcf0EshgXcuSwC6-SJGdYX1L0M4Kp1Or2Hz5fNWrrNFfuXu2qC3-4pyC3EbDrjMAcW3trUjNHLZFjcdYQTU2_yPiZR2PBFuN2HbeQ"/>
+</div>
+<div class="masonry-item relative group overflow-hidden rounded-xl bg-surface-container">
+<img class="w-full h-auto" data-alt="Action shot of a group of teenagers doing a victory pose in front of the UMG Laser Tag bunkers. They are all wearing high-tech vests and holding their gear, illuminated by the fading golden hour light. They look thrilled and bonded, showcasing the team-building aspect of the laser tag experience." src="https://lh3.googleusercontent.com/aida/AP1WRLvFXxHy9eBp9ogJKQR6AK7gVcA82nVerW23lMLFuh9qguesapaiQZm9njmSB_Bs7Vaw5_8va_Y1WKfXX5-SzOjmkpLk9lpWm9ZniJrQuTX5wovQVQF-vMgQ0EgJx3Ma22NvcD9F14SZWq5QIRxxqC0rqUUtvzHXkwe3RfdqEyxSg0SkttyR2fhs1PFXxMlhXNk-dNnC2TkVK5KQVS0UwHhK40ZM0Wi38fwXh8sJ0MwKOkaTmM310Fvn5g"/>
+</div>
+</div>
+</div>
+</section>
+<!-- SEO Content Block -->
+<section class="py-20 px-gutter border-t border-white/5">
+<div class="max-w-4xl mx-auto text-center">
+<h3 class="font-headline-lg text-headline-lg text-white mb-6">Serving All of <span class="text-primary italic">Massachusetts</span></h3>
+<p class="text-on-surface-variant font-body-md leading-relaxed">
+                    Ultimate Mobile Gaming Truck is the premier provider of mobile entertainment in New England. We proudly serve **Boston**, **Worcester**, and the **MA South Shore**. Whether you're planning a birthday party in Newton, a corporate team-building event in Quincy, or a school festival in Worcester, our high-tech theater and professional laser tag equipment bring the excitement directly to you. We handle everything from setup to game coaching, ensuring a stress-free experience for parents and organizers.
+                </p>
+<div class="mt-10 flex flex-wrap justify-center gap-8 opacity-50">
+<span class="font-label-caps text-xs">BOSTON</span>
+<span class="font-label-caps text-xs">WORCESTER</span>
+<span class="font-label-caps text-xs">CAMBRIDGE</span>
+<span class="font-label-caps text-xs">QUINCY</span>
+<span class="font-label-caps text-xs">BROOKLINE</span>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-void-charcoal w-full py-12 border-t border-white/5">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-8 px-gutter max-w-container-max mx-auto">
+<div class="space-y-4">
+<span class="font-headline-lg text-headline-lg text-primary italic font-black">UMG TRUCK</span>
+<p class="font-body-md text-body-md text-on-surface-variant">The #1 choice for mobile gaming and laser tag in Massachusetts.</p>
+<div class="flex gap-4">
+<a class="w-8 h-8 rounded-full border border-white/10 flex items-center justify-center hover:bg-primary/20 hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined text-sm">face_nod</span>
+</a>
+<a class="w-8 h-8 rounded-full border border-white/10 flex items-center justify-center hover:bg-primary/20 hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined text-sm">camera_alt</span>
+</a>
+</div>
+</div>
+<div class="space-y-4">
+<h4 class="font-label-caps text-label-caps text-white">SERVICES</h4>
+<ul class="space-y-2">
+<li><a class="font-body-md text-body-md text-on-surface-variant hover:text-electric-blue transition-colors" href="#">Gaming Parties Boston</a></li>
+<li><a class="font-body-md text-body-md text-on-surface-variant hover:text-electric-blue transition-colors" href="#">Laser Tag Worcester</a></li>
+<li><a class="font-body-md text-body-md text-on-surface-variant hover:text-electric-blue transition-colors" href="#">Birthday Packages</a></li>
+</ul>
+</div>
+<div class="space-y-4">
+<h4 class="font-label-caps text-label-caps text-white">RESOURCES</h4>
+<ul class="space-y-2">
+<li><a class="font-body-md text-body-md text-on-surface-variant hover:text-electric-blue transition-colors" href="#">Privacy Policy</a></li>
+<li><a class="font-body-md text-body-md text-on-surface-variant hover:text-electric-blue transition-colors" href="#">Contact Support</a></li>
+<li><a class="font-body-md text-body-md text-on-surface-variant hover:text-electric-blue transition-colors" href="#">FAQ</a></li>
+</ul>
+</div>
+<div class="space-y-4">
+<h4 class="font-label-caps text-label-caps text-white">CONTACT</h4>
+<p class="font-body-md text-body-md text-on-surface-variant">Serving Boston, Worcester &amp; MA.</p>
+<div class="flex items-center gap-2 text-primary font-bold">
+<span class="material-symbols-outlined">call</span>
+<span>(800) 555-UMGT</span>
+</div>
+</div>
+</div>
+<div class="px-gutter max-w-container-max mx-auto mt-12 pt-8 border-t border-white/5">
+<p class="font-label-caps text-[12px] text-on-surface-variant text-center">© 2024 Ultimate Mobile Gaming Truck. Serving Boston, Worcester &amp; MA.</p>
+</div>
+</footer>
+<script>
+        // Simple scroll interaction for header
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.classList.add('py-2');
+                header.classList.remove('py-4');
+                header.classList.add('bg-black/90');
+            } else {
+                header.classList.add('py-4');
+                header.classList.remove('py-2');
+                header.classList.remove('bg-black/90');
+            }
+        });
+
+        // Hover effect for cards
+        document.querySelectorAll('.glass-card').forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                card.style.setProperty('--mouse-x', `${x}px`);
+                card.style.setProperty('--mouse-y', `${y}px`);
+            });
+        });
+    </script>
+</body></html>
