@@ -110,7 +110,7 @@
     footer.innerHTML = `
         <span>
             ${config.text}:
-            <span>
+            <span class="ax-brand">
 
                 <a
                     href="${config.url}"
