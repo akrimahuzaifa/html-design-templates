@@ -44,7 +44,7 @@
     style.textContent = `
         :root{
             --footer-sign-font-size:8pt;
-            --font-color:black;
+            --font-color:white;
         }
 
         .ax-minimal-footer{
