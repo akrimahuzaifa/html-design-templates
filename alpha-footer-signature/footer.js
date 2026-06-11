@@ -88,6 +88,16 @@
             vertical-align:middle;
             margin-left:.35em;
         }
+        .ax-arrow{
+            display:inline-flex;
+            align-items:center;
+            margin-left:.35em;
+        }
+        .ax-arrow svg, .ax-arrow img{
+            width:0.9em;
+            height:0.9em;
+            vertical-align:middle;
+        }
     `;
 
     document.head.appendChild(style);
@@ -107,7 +117,7 @@
                     rel="noopener noreferrer"
                     title="${config.company}"
                 >
-                    ${config.company}
+                    <u>${config.company}</u>
 
                     <svg
                         class="ax-logo"
@@ -139,11 +149,41 @@
               transform="translate(19,49)"
             />  
                     </svg>
-
-                </a>
+                </a>         
             </span>
         </span>
     `;
+    // //#region Optional: Load external arrow SVG and insert it after the inline logo SVG
+    // // Load external arrow SVG and insert it after the inline logo SVG
+    // try {
+    //     const arrowUrl = new URL(
+    //         'assets/arrow-up-right.svg',
+    //         (scriptEl && scriptEl.src) ? scriptEl.src : location.href
+    //     ).href;
+    //     console.debug && console.debug('Footer: arrow SVG URL =', arrowUrl);
+
+    //     const arrowResp = await fetch(arrowUrl, { cache: 'no-store', mode: 'cors' });
+    //     if (arrowResp.ok) {
+    //         const arrowText = await arrowResp.text();
+    //         const arrowSpan = document.createElement('span');
+    //         arrowSpan.className = 'ax-arrow';
+    //         arrowSpan.innerHTML = arrowText;
+
+    //         footer.appendChild(arrowSpan);
+
+    //         // const logoSvg = footer.querySelector('svg.ax-logo');
+    //         // if (logoSvg && logoSvg.parentNode) {
+    //         //     logoSvg.parentNode.insertBefore(arrowSpan, logoSvg.nextSibling);
+    //         // } else {
+    //         //     footer.appendChild(arrowSpan);
+    //         // }
+    //     } else {
+    //         console.warn('Footer: arrow SVG fetch failed:', arrowResp.status, arrowUrl);
+    //     }
+    // } catch (err) {
+    //     console.warn('Footer: failed to load arrow SVG', err);
+    // }
+    // //#endregion
 
     if (scriptEl && scriptEl.parentNode && typeof scriptEl.replaceWith === 'function') {
         scriptEl.replaceWith(footer);
