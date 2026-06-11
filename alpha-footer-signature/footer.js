@@ -100,7 +100,7 @@
         <span>
             ${config.text}:
             <span class="">
-            <b>
+
                 <a
                     href="${config.url}"
                     target="_blank"
@@ -141,7 +141,6 @@
                     </svg>
 
                 </a>
-                </b>
             </span>
         </span>
     `;
