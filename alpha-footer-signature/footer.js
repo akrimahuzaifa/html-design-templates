@@ -70,6 +70,7 @@
             transition:opacity .2s ease;
             display:inline-flex;
             align-items:center;
+            font-size:var(--footer-sign-font-size);
         }
 
         .ax-minimal-footer a:hover{
@@ -109,7 +110,7 @@
     footer.innerHTML = `
         <span>
             ${config.text}:
-            <span class="">
+            <span>
 
                 <a
                     href="${config.url}"
