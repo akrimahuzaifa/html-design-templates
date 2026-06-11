@@ -77,7 +77,7 @@
         }
 
         .ax-brand{
-            font-weight:400;
+            font-weight:500;
             margin-left:4px;
         }
 
@@ -98,8 +98,9 @@
 
     footer.innerHTML = `
         <span>
-            ${config.text}
-            <span class="ax-brand">
+            ${config.text}:
+            <span class="">
+            <b>
                 <a
                     href="${config.url}"
                     target="_blank"
@@ -140,6 +141,7 @@
                     </svg>
 
                 </a>
+                </b>
             </span>
         </span>
     `;
